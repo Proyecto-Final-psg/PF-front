@@ -1,0 +1,33 @@
+@keyframes blinker {
+
+  50% { opacity: 0.0; }
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.2);
+		transform: translate(0px, 0px);
+	}
+	25% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translate(-10px, 0);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translate(-10px, -10px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.2);
+		transform: translate(0px, 0px);
+	}
+}
+
+@keyframes dotFlashing {
+  0% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: .6
+  }
+}
