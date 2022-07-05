@@ -4,7 +4,7 @@ const Hero = () => {
   const state = useSelector(state => state)
   return (
     <div className="cmp-hero">
-      Soy herooooooo
+     ahora quiero ser otra rama
       {console.log(state)}
     </div>
   );
