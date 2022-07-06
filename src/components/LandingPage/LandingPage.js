@@ -6,8 +6,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 
 const LandingPage = () => {
-    useEffect(()=>{
-        if(isAuthenticated){
+    useEffect(() => {
+        if (isAuthenticated) {
             Navigate('./home')
         }
     })
@@ -24,5 +24,4 @@ const LandingPage = () => {
         </div>
     )
 }
-
 export default LandingPage

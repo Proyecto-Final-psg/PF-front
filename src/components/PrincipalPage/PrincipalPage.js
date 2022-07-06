@@ -7,6 +7,7 @@ const PrincipalPage = () => {
     return (
         <div>
             <Profile />
+            <Logout/>
         </div>
     )
 }
