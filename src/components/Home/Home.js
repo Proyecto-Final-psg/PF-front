@@ -1,13 +1,16 @@
-import "./Hero.scss";
+import "./Home.scss";
 import { useSelector } from "react-redux";
-const Hero = () => {
+
+
+
+const Home = () => {
   const state = useSelector(state => state)
   return (
     <div className="cmp-hero">
-      Soy herooooooooooooo
+      Soy heroooooooo
       {console.log(state)}
     </div>
   );
 };
 
-export default Hero;
+export default Home;
