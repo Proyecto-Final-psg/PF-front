@@ -1,4 +1,4 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES } from "./Constants"
 
 
 export function getAllProducts(){
@@ -22,6 +22,19 @@ export function getProductById(id){
         .then(data =>{
             dispatch({
                 type: GET_PRODUCT_BY_ID,
+                payload: data
+            })
+        })
+    }
+}
+
+export function getAllCategories(){
+    return function(dispatch){
+        return fetch(`${API_URL}/category`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_CATEGORIES,
                 payload: data
             })
         })
