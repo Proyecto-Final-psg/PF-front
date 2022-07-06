@@ -1,13 +1,14 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import Hero from './components/Hero/Hero';
+import Home from './components/Home/Home';
+
 
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Hero />} exact />
-       
+        <Route path='/' element={<Home />} exact />
+
       </Routes>
     </BrowserRouter>
   );
