@@ -1,0 +1,9 @@
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    height: 200px;
+    background-color: rgb(222, 233, 243);
+}
