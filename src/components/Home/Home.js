@@ -1,14 +1,17 @@
 import "./Home.scss";
 import { useSelector } from "react-redux";
-
-
+import { Routes, Route, } from 'react-router-dom'
+import Nav from "../Nav/Nav";
+import PrincipalPage from "../PrincipalPage/PrincipalPage";
 
 const Home = () => {
-  const state = useSelector(state => state)
   return (
     <div className="cmp-hero">
-      Soy heroooooooo
-      {console.log(state)}
+      <Nav />
+      <Routes>
+        <Route path='/Home' element={<PrincipalPage />} exact />
+      </Routes>
+
     </div>
   );
 };
