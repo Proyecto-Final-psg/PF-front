@@ -1,26 +1,33 @@
 /* From uiverse.io by @alexruix */
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
 .card {
     width: 190px;
     height: 254px;
     border-radius: 20px;
-    background: #f5f5f5;
+    background: #a23a3a;
     position: relative;
     padding: 1.8rem;
     border: 2px solid #c3c6ce;
     transition: 0.5s ease-out;
-    overflow: visible;    
+    overflow: visible;
     margin: 10px;
-   }
-   
-   .card-details {
+    // @include respond-to('medium') {
+    //     background: rgb(192, 188, 188);
+  
+    // }
+}
+
+.card-details {
     color: black;
     height: 100%;
     gap: .5em;
     display: grid;
     place-content: center;
-   }
-   
-   .card-button {
+}
+
+.card-button {
     transform: translate(-50%, 125%);
     width: 60%;
     border-radius: 1rem;
@@ -34,25 +41,26 @@
     bottom: 0;
     opacity: 0;
     transition: 0.3s ease-out;
-   }
-   
-   .text-body {
+}
+
+.text-body {
     color: rgb(134, 134, 134);
-   }
-   
-   /*Text*/
-   .text-title {
+}
+
+/*Text*/
+.text-title {
     font-size: 1.5em;
     font-weight: bold;
-   }
-   
-   /*Hover*/
-   .card:hover {
-    border-color: #baea7f;;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);    
-   }
-   
-   .card:hover .card-button {
+}
+
+/*Hover*/
+.card:hover {
+    border-color: #baea7f;
+    ;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card:hover .card-button {
     transform: translate(-50%, 50%);
     opacity: 1;
-   }
+}
