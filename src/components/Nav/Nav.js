@@ -5,7 +5,7 @@ const Nav = () => {
 
     return (
         <div>
-            <h1>Soy Nav</h1>
+            <h1>NAV</h1>
         </div>
     )
 

@@ -16,7 +16,7 @@ const LandingPage = () => {
     return (
         <div>
             <h1>
-                LANDING
+                LANDING PAGE
             </h1>
             <Login />
             <NavLink to='./home'>Guest</NavLink>
