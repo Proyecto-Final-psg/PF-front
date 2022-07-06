@@ -4,7 +4,6 @@ import { Routes, Route, } from 'react-router-dom'
 import Nav from "../Nav/Nav";
 import PrincipalPage from "../PrincipalPage/PrincipalPage";
 
-
 const Home = () => {
   return (
     <div className="cmp-hero">
@@ -12,9 +11,7 @@ const Home = () => {
       <Routes>
         <Route path='/home' element={<PrincipalPage />} exact />
       </Routes>
-
     </div>
   );
 };
-
 export default Home;
