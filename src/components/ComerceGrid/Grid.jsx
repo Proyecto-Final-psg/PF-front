@@ -25,7 +25,8 @@ function Grid() {
 
                 <label>Category</label><br />
                 <select name="category" id="">
-                    {allCategories && allCategories.map(c => <option value={c.category}>{c.category}</option>)}                    
+                    <option value="all" key='all'>All Categories</option>
+                    {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}                    
                 </select>
                 <br /><br />
 
