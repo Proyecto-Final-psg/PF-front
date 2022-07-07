@@ -1,25 +1,19 @@
 import "./Home.scss";
 import { useSelector } from "react-redux";
-import { Carousel } from "../Carousel/Carousel";
-import { Info } from "../Info Panel/Info";
-import { Grid } from "../Comerce Grid/Grid";
-import { Footer } from "../Footer/Footer";
-import { NavBar } from "../NavBar/NavBar";
-
-
+import { Routes, Route, } from 'react-router-dom'
+import Nav from "../Nav/Nav";
+import PrincipalPage from "../PrincipalPage/PrincipalPage";
+import { CardDetails } from "../CardDetails/CardDetails";
 
 const Home = () => {
-  const state = useSelector(state => state)
   return (
-    <div className="cmp-hero">     
-      <NavBar /> 
-      <Carousel />
-      <Info />
-      <Grid />
-      <Footer />
-      {console.log(state)}
+    <div className="cmp-hero">
+      <Nav />
+      <Routes>
+        <Route path='/home' element={<PrincipalPage />} exact />
+        <Route path='/products/:id' element={<CardDetails />} />
+      </Routes>
     </div>
   );
 };
-
 export default Home;

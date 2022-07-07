@@ -1,9 +1,30 @@
+import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES } from "./Constants"
 
 const initialState = {
-    state: ["prueba"]
+    state: ["prueba"],
+    products: [],
+    product:{},
+    categories: []
 }
+
+
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_ALL_PRODUCTS:
+            return{
+                ...state,
+                products : action.payload
+            }
+        case GET_PRODUCT_BY_ID:
+            return{
+                ...state,
+                product: action.payload
+            }
+        case GET_ALL_CATEGORIES:
+            return{
+                ...state,
+                categories: action.payload
+            }
 
         default:
             return state
