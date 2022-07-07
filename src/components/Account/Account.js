@@ -5,7 +5,6 @@ const Account = () => {
   return (
     <>
         <Profile />
-        sadsd
     </>
   )
 }
