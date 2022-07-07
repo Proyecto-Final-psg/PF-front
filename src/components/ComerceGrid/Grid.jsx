@@ -1,7 +1,19 @@
 import './grid.scss'
 import Card from "../Card/Card";
+import { useEffect } from 'react';
+import {useSelector, useDispatch} from 'react-redux'
+import { getAllProducts } from '../../Redux/Actions';
 
 function Grid() {
+
+    const allProducts = useSelector(store => store.products)
+    const dispatch = useDispatch()
+    
+    useEffect(()=>{
+        dispatch(getAllProducts())
+        console.log('redux products ',allProducts)
+    },[])
+
     return <div className="grid">
         <div className="filters">
             <span>filters</span>
@@ -22,7 +34,9 @@ function Grid() {
         </div>
 
         <div className="cards">
-            <Card />
+            {allProducts && allProducts.map( p => <Card name={p.name} />)}
+
+            
         </div>
     </div>
 }

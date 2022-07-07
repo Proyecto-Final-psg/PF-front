@@ -1,10 +1,14 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductById } from "../../Redux/Actions";
 import "./Card.scss";
 
-const Card = () => {
+const Card = ({name}) => {
+
   return (
     <div class="card" style={{backgroundImage:""}}>
   <div class="card-details">
-    <p class="text-title">Product</p>
+    <p class="text-title">{name}</p>
     <p class="text-body">Here are the details of the card</p>
   </div>
   <button class="card-button">
