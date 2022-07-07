@@ -1,45 +1,65 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER } from "./Constants"
 
 
-export function getAllProducts(){
-    return function(dispatch){
+export function getAllProducts() {
+    return function (dispatch) {
         return fetch(`${API_URL}/products`)
-        .then(res => res.json())
-        .then(data => {
-            console.log('data de action ',data)
-            dispatch({
-                type: GET_ALL_PRODUCTS,
-                payload : data
+            .then(res => res.json())
+            .then(data => {
+                console.log('data de action ', data)
+                dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: data
+                })
             })
-        })
     }
 }
 
-export function getProductById(id){
-    return function(dispatch){
+export function getProductById(id) {
+    return function (dispatch) {
         return fetch(`${API_URL}/products/${id}`)
-        .then(res => res.json())
-        .then(data =>{
-            dispatch({
-                type: GET_PRODUCT_BY_ID,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_PRODUCT_BY_ID,
+                    payload: data
+                })
             })
-        })
     }
 }
 
-export function getAllCategories(){
-    return function(dispatch){
+export function getAllCategories() {
+    return function (dispatch) {
         return fetch(`${API_URL}/category`)
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_CATEGORIES,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_CATEGORIES,
+                    payload: data
+                })
             })
-        })
     }
 }
+
+export function registerUser(user) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/ath0log`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(user), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: REGISTER_USER,
+                    payload: data
+                })
+            })
+    }
+}
+
 
 ////////////////////////Ejemplos/////////////////////////////////////
 // export const AgregarMovie = (movieNew) => {
