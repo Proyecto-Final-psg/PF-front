@@ -52,7 +52,7 @@
     height: 50px;
     border-width: 3px;
     color: #fff;
-    border-color: #5da657;
+    border-color: #60ae00;
     font-weight: bold;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
@@ -93,9 +93,15 @@
     display: flex;
     width: 90%;
     height: 3px;
-    background-color: #5da657;
+    background-color: #60ae00;
     margin: 5%;
     margin-top: 45px;
+}
+
+.landing-brand{
+    width: 330px;
+    margin-top: 100px;
+    margin-bottom: 15px;
 }
 
 .landing-linea-botton {
@@ -103,7 +109,7 @@
     bottom: 5%;
     width: 90%;
     height: 3px;
-    background-color: #5da657;
+    background-color: #60ae00;
     margin: 5%;
     margin-bottom: 0px;
 
