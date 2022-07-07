@@ -5,7 +5,6 @@ import { getProductById } from "../../Redux/Actions";
 import "./Card.scss";
 
 const Card = ({name, id}) => {
-
   return (
     <div className="card" style={{backgroundImage:""}}>
       <NavLink to={`/products/${id}`}>
