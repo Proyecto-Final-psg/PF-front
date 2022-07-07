@@ -1,0 +1,25 @@
+
+
+.detail{
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;    
+}
+
+.image{
+    width: 30%;    
+    border: 1px solid rgb(201, 201, 201);
+    padding: 20px;
+}
+
+.image img{
+    width: 100%;
+}
+
+.description{
+    border: 1px solid rgb(201, 201, 201);
+    width: 70%;
+    padding: 20px;
+}
