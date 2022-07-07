@@ -1,7 +1,21 @@
 import './grid.scss'
 import Card from "../Card/Card";
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllCategories, getAllProducts } from '../../Redux/Actions';
 
 function Grid() {
+
+    const allProducts = useSelector(store => store.products)
+    const allCategories = useSelector(store => store.categories)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getAllCategories())
+        dispatch(getAllProducts())
+        console.log('redux products ', allProducts)
+    }, [])
+
     return <div className="grid">
         <div className="filters">
             <span>filters</span>
@@ -11,7 +25,8 @@ function Grid() {
 
                 <label>Category</label><br />
                 <select name="category" id="">
-                    <option value="all">All categories</option>
+                    <option value="all" key='all'>All Categories</option>
+                    {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select>
                 <br /><br />
 
@@ -22,7 +37,9 @@ function Grid() {
         </div>
 
         <div className="cards">
-            <Card />
+            {allProducts && allProducts.map((p, i) => <Card key={i} name={p.name} />)}
+
+
         </div>
     </div>
 }
