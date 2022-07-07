@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 import Logo from './logo_navbar.png'
 import Carrito from './carrito.png'
-//import { useAuth0 } from '@auth0/auth0-react'
+import { useAuth0 } from '@auth0/auth0-react'
 import './Nav.scss'
 import Logout from '../Logout/Logout'
 
 
 const Nav = () => {
 
-    //const { isAuthenticated } = useAuth0()
+    const { user, isAuthenticated } = useAuth0()
 
     return (
         <div>
@@ -29,15 +29,19 @@ const Nav = () => {
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Categories</a>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Username
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><Link className="dropdown-item" to="/account">Profile</Link></li>
-                                    <li><Logout /></li>
-                                </ul>
-                            </li>
+                            {
+                                isAuthenticated &&
+                                <li className="nav-item dropdown">
+                                    <img src={user.picture} alt={user.name}/>
+                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {user.name}
+                                    </a>
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><Link className="dropdown-item" to="/account">Profile</Link></li>
+                                        <li><Logout /></li>
+                                    </ul>
+                                </li>
+                            }
                             <li className="nav-item carrito">
                                 <Link className="nav-link" to="#"><img src={Carrito} /></Link>
                             </li>
