@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getProductById } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import './CardDetails.scss'
@@ -28,6 +28,8 @@ export function CardDetails(){
         <button className='btn back' onClick={() => navigate(-1)}>
             <span class="material-symbols-outlined">keyboard_backspace</span>
         </button>
+
+            <NavLink to={`/products/edit/${id}`}>Edit</NavLink>
                 <h1>{product.name}</h1>
                 <hr />
                 {product && product.description ? <h5>{product.description}</h5> : <p>No description added</p>}
