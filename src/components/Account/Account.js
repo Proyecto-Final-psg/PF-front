@@ -9,6 +9,6 @@ const Account = () => {
   )
 }
 
-Account.propTypes = {}
+
 
 export default Account
