@@ -5,8 +5,14 @@
 }
 
 .dropdown {
+    display: flex;
+    align-items: center;
     position: absolute;
     right: 100px;
+}
+.dropdown img {
+    height: 26px;
+    border-radius: 50%;
 }
 
 .carrito img {

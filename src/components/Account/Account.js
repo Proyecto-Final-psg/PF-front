@@ -5,11 +5,10 @@ const Account = () => {
   return (
     <>
         <Profile />
-        sadsd
     </>
   )
 }
 
-Account.propTypes = {}
+
 
 export default Account
