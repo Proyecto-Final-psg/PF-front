@@ -1,0 +1,19 @@
+.edit{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-edit{
+    background-color: rebeccapurple;
+    width: 200px;
+    height: 300px;
+    margin: 40px;
+    padding: 20px;
+}
+
+.card-edit img{
+    width: 100%;    
+}
