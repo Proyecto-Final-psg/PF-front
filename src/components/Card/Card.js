@@ -6,13 +6,13 @@ import "./Card.scss";
 const Card = ({name}) => {
 
   return (
-    <div class="card" style={{backgroundImage:""}}>
-  <div class="card-details">
-    <p class="text-title">{name}</p>
-    <p class="text-body">Here are the details of the card</p>
+    <div className="card" style={{backgroundImage:""}}>
+  <div className="card-details">
+    <p className="text-title">{name}</p>
+    <p className="text-body">Here are the details of the card</p>
   </div>
-  <button class="card-button">
-    <span class="material-symbols-outlined">add_shopping_cart</span>
+  <button className="card-button">
+    <span className="material-symbols-outlined">add_shopping_cart</span>
   </button>
 </div>
   );
