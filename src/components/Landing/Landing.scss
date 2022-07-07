@@ -14,20 +14,21 @@
     margin-right: 85px;
     font-size: 50px;
     margin-bottom: 0px;
-    margin-top: 200px;
-}
+    margin-top: 100px;
+  }
 
 .landing-subtitle {
-    background: -webkit-linear-gradient(#21c46d, #0f9c4f);
+    background: -webkit-linear-gradient(#5da657, #285a2b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 80px;
     font-family: 'Arial Narrow Bold', sans-serif;
-    margin-top: -35px;
+    margin-top: -25px;
     font-weight: 800;
 }
 
 .landing-conteiner-title {
+    margin-left: 30px;
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -41,7 +42,7 @@
 
 .landing-image {
     height: 100%;
-   
+
 }
 
 .landing-button {
@@ -51,26 +52,40 @@
     height: 50px;
     border-width: 3px;
     color: #fff;
-    border-color: #18ab2987;
+    border-color: #5da657;
     font-weight: bold;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
     border-bottom-left-radius: 28px;
     border-bottom-right-radius: 28px;
     background-color: transparent;
-    margin: 25px;
+    margin: 15px;
+    text-decoration: none;
+
+}
+
+.landing-button:visited {
     text-decoration: none;
 }
 
+.landing-button:active {
+    text-decoration: none;
+}
 
 .landing-button:hover {
 
-    background-image: -webkit-linear-gradient(top, #21c46d, #0e8f48);
-    background-image: -moz-linear-gradient(top, #21c46d, #0c783d);
-    background-image: -ms-linear-gradient(top, #21c46d, #0b7c3e);
-    background-image: -o-linear-gradient(top, #21c46d, #0d7e40);
-    background-image: linear-gradient(to bottom, #21c46d, #0c773c);
+    background-image: -webkit-linear-gradient(top, #5da657, #285a2b);
+    background-image: -moz-linear-gradient(top, #5da657, #285a2b);
+    background-image: -ms-linear-gradient(top, #5da657, #285a2b);
+    background-image: -o-linear-gradient(top, #5da657, #285a2b);
+    background-image: linear-gradient(to bottom, #5da657, #285a2b);
     text-decoration: none;
+}
+
+.landing-paragraph{
+    color: rgb(221, 221, 221);
+    width: 320px;
+    justify-content: space-around;
 }
 
 .landing-linea {
@@ -78,7 +93,7 @@
     display: flex;
     width: 90%;
     height: 3px;
-    background-color: #21c46d;
+    background-color: #5da657;
     margin: 5%;
     margin-top: 45px;
 }
@@ -86,10 +101,18 @@
 .landing-linea-botton {
     position: absolute;
     bottom: 5%;
-        width: 90%;
+    width: 90%;
     height: 3px;
-    background-color: #21c46d;
+    background-color: #5da657;
     margin: 5%;
     margin-bottom: 0px;
-    
+
+}
+
+@media (max-width: 850px) {
+    .landing-conteiner-title {
+        margin-left: 25%;
+        width: 20%;
+    }
+
 }

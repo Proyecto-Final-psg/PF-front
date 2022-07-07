@@ -6,7 +6,7 @@ const Login = () => {
     const { loginWithRedirect } = useAuth0()
     const Navigate = useNavigate()
     return (
-        <button onClick={() => { loginWithRedirect() }}>
+        <button className="landing-button" onClick={() => { loginWithRedirect() }}>
             Login
         </button>
     )

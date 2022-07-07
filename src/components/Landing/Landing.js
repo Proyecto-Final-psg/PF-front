@@ -19,8 +19,20 @@ export function Landing() {
             <div className="landing-conteiner-title">
                 <h2 className="landing-title">Cannabis</h2>
                 <h1 className="landing-subtitle">STORE</h1>
+                <p className="landing-paragraph">
+                    Es una realidad, cada vez hay más productos derivados del cannabis en el mercado.
+                    Y lejos de lo que muchas personas podrían pensar, sus usos no son recreativos.
+                    En Cannabis Store nos desempeñamos en acercar estos derivados.
+                    <p>
+                        PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS
+                    </p>
+                </p>
                 <Login />
-                <NavLink to='./home' className="landing-button">Ingresar como invitado</NavLink>
+                <NavLink to='./home' >
+                    <button className="landing-button">
+                        Ingresar como invitado
+                    </button>
+                </NavLink>
             </div>
             <div className="landing-conteiner-image">
                 <img src={Landingimage} className="landing-image" />
