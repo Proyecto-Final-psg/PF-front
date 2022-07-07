@@ -11,9 +11,9 @@ function Grid() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getAllCategories())
-        dispatch(getAllProducts())
-        console.log('redux products ', allProducts)
+        // dispatch(getAllCategories())
+        // dispatch(getAllProducts())
+        // console.log('redux products ', allProducts)
     }, [])
 
     return <div className="grid">
