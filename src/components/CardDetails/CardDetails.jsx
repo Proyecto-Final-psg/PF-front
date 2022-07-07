@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProductById } from '../../Redux/Actions'
+import { Review } from '../Review/Review'
 import './CardDetails.scss'
 
 export function CardDetails(){
@@ -33,6 +34,16 @@ export function CardDetails(){
                 
                 Stock: <span style={{fontWeight:"bold"}}>{product.stock}</span>
             </div>
+            
+            <h5 className='mt-5'>Reviews</h5>
+        <div className="reviews">
+            <hr />
+            <Review />
+            <Review />
+            <Review />
+            {/* {reviews && revies.map} */}
         </div>
+        </div>
+
     </div>
 }
