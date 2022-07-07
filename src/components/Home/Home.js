@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Routes, Route, } from 'react-router-dom'
 import Nav from "../Nav/Nav";
 import PrincipalPage from "../PrincipalPage/PrincipalPage";
+import { CardDetails } from "../CardDetails/CardDetails";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Nav />
       <Routes>
         <Route path='/home' element={<PrincipalPage />} exact />
+        <Route path='/products/:id' element={<CardDetails />} />
       </Routes>
     </div>
   );

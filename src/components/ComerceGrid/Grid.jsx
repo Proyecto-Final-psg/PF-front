@@ -37,7 +37,7 @@ function Grid() {
         </div>
 
         <div className="cards">
-            {allProducts && allProducts.map((p, i) => <Card key={i} name={p.name} />)}
+            {allProducts && allProducts.map((p, i) => <Card key={i} name={p.name} id={p.id} />)}
 
 
         </div>
