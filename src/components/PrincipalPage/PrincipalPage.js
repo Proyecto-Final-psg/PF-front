@@ -8,8 +8,6 @@ import Carousel from '../Carousel/Carousel'
 const PrincipalPage = () => {
     return (
         <div>
-
-
             <h1>PRINCIPAL PAGE</h1>
             <Profile />
             <Logout />
