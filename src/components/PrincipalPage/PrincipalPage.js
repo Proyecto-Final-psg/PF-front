@@ -1,5 +1,4 @@
 import './PrincipalPage.scss'
-import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile'
 import Footer from '../Footer/Footer'
 import Grid from '../ComerceGrid/Grid'
@@ -12,7 +11,6 @@ const PrincipalPage = () => {
 
             <h1>PRINCIPAL PAGE</h1>
             <Profile />
-            <Logout />
             <Carousel />
             <Info />
             <Grid />
