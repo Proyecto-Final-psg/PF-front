@@ -1,7 +1,7 @@
 import './grid.scss'
 import Card from "../Card/Card";
 import { useEffect } from 'react';
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { getAllCategories, getAllProducts } from '../../Redux/Actions';
 
 function Grid() {
@@ -9,12 +9,12 @@ function Grid() {
     const allProducts = useSelector(store => store.products)
     const allCategories = useSelector(store => store.categories)
     const dispatch = useDispatch()
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         dispatch(getAllCategories())
         dispatch(getAllProducts())
-        console.log('redux products ',allProducts)
-    },[])
+        console.log('redux products ', allProducts)
+    }, [])
 
     return <div className="grid">
         <div className="filters">
@@ -26,7 +26,7 @@ function Grid() {
                 <label>Category</label><br />
                 <select name="category" id="">
                     <option value="all" key='all'>All Categories</option>
-                    {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}                    
+                    {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select>
                 <br /><br />
 
@@ -37,9 +37,9 @@ function Grid() {
         </div>
 
         <div className="cards">
-            {allProducts && allProducts.map( p => <Card name={p.name} />)}
+            {allProducts && allProducts.map((p, i) => <Card key={i} name={p.name} />)}
 
-            
+
         </div>
     </div>
 }
