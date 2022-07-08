@@ -25,10 +25,17 @@ export function Landing() {
                     Es una realidad, cada vez hay más productos derivados del cannabis en el mercado.
                     Y lejos de lo que muchas personas podrían pensar, sus usos no son recreativos.
                     En Cannabis Store nos desempeñamos en acercar estos derivados.
+<<<<<<< HEAD
                     <p>
                         PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS
                     </p>
            
+=======
+                </p>
+                <p className="landing-paragraph">
+                    PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS
+                </p>
+>>>>>>> 4e8623f4cbc0ac91595aaa759d4e132eb5ee7e10
                 <Login />
                 <NavLink to='./home' >
                     <button className="landing-button">
