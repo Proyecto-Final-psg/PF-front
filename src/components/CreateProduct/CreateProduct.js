@@ -28,7 +28,6 @@ const CreateProduct = () => {
             [e.target.name]: e.target.value
         })
     }
-    console.log(createProd)
     
     const handleSubmit = (e) => {
         e.preventDefault()
