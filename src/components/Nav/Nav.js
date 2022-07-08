@@ -14,7 +14,7 @@ const Nav = () => {
         <div>
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">
+                    <Link className="navbar-brand" to="/home">
                         <img className="navbar-brand-image" src={Logo} />
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@ const Nav = () => {
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Products</a>
+                                <Link className="nav-link active"  to="/products/create">Create Product</Link>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Categories</a>
