@@ -19,7 +19,7 @@ export function Landing() {
         <div className="landing" >
             <div className="landing-linea"></div>
             <div className="landing-conteiner-title">
-                
+
                 <img className="landing-brand" src={Brand} alt={Brand} />
                 <p className="landing-paragraph">
                     Es una realidad, cada vez hay más productos derivados del cannabis en el mercado.
@@ -28,7 +28,7 @@ export function Landing() {
                     <p>
                         PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS
                     </p>
-                </p>
+           
                 <Login />
                 <NavLink to='./home' >
                     <button className="landing-button">
