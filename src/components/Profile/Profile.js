@@ -21,7 +21,7 @@ const Profile = () => {
     return (
         <div>
             {/* {console.log(user, isAuthenticated, isLoading)}
-            {console.log(isAuthenticated)} */}
+            {console.log(isAuthenticated)}
             {console.log(userState)}
             {isAuthenticated &&
                 <div>
@@ -30,7 +30,7 @@ const Profile = () => {
                     <p>{user.email}</p>
                     <p>{user.family_name}</p>
                 </div>
-            }
+            } */}
         </div>
     )
 }
