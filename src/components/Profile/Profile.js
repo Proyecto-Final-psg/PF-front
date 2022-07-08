@@ -15,7 +15,7 @@ const Profile = () => {
                 email: user.email,
                 name: user.name
             }
-            // dispatch(registerUser(nuevo))
+            dispatch(registerUser(nuevo))
         }
     }, [])
 
