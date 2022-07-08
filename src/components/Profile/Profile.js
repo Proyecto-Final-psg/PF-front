@@ -10,7 +10,7 @@ const Profile = () => {
     const userRedux = useSelector(state => state.user)
     async function token() {
         const token = await getAccessTokenSilently()
-        user.token = token
+        user.token=token
     }
     token()
     const dispatch = useDispatch()
@@ -18,14 +18,15 @@ const Profile = () => {
         if (user) {
             let nuevo = {
                 email: user.email,
-                name: user.name
+                name: user.name,
+                token: user.token
             }
             dispatch(registerUser(nuevo))
         }
     }, [])
     return (
         <div>
-            {console.log(user)}
+    
         </div>
     )
 }
