@@ -25,7 +25,6 @@ export function getProductById(id) {
             })
     }
 }
-
 export function getAllCategories() {
     return function (dispatch) {
         return fetch(`${API_URL}/category`)

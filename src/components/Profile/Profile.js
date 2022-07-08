@@ -10,6 +10,7 @@ const Profile = () => {
     const userState = useSelector(state => state.user)
     const dispatch = useDispatch()
     useEffect(() => {
+        
         if (user) {
             let nuevo = {
                 email: user.email,

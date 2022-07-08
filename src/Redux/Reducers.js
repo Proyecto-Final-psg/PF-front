@@ -4,7 +4,8 @@ const initialState = {
     user: {},
     products: [],
     product: {},
-    categories: []
+    categories: [],
+ 
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
