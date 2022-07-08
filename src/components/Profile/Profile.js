@@ -6,11 +6,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { registerUser } from '../../Redux/Actions'
 
 const Profile = () => {
-    const { user, isAuthenticated, isLoading } = useAuth0()
-    const userState = useSelector(state => state.user)
+    const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
+    const userRedux = useSelector(state => state.user)
+    async function token() {
+        const token = await getAccessTokenSilently()
+        user.token = token
+    }
+    token()
     const dispatch = useDispatch()
     useEffect(() => {
-        
         if (user) {
             let nuevo = {
                 email: user.email,
@@ -21,17 +25,7 @@ const Profile = () => {
     }, [])
     return (
         <div>
-            {/* {console.log(user, isAuthenticated, isLoading)}
-            {console.log(isAuthenticated)}
-            {console.log(userState)}
-            {isAuthenticated &&
-                <div>
-                    <img src={user.picture}></img>
-                    <p>{user.name}</p>
-                    <p>{user.email}</p>
-                    <p>{user.family_name}</p>
-                </div>
-            } */}
+            {console.log(user)}
         </div>
     )
 }

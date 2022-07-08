@@ -5,7 +5,7 @@ export function getAllProducts() {
         return fetch(`${API_URL}/products`)
             .then(res => res.json())
             .then(data => {
-                console.log('data de action ', data)
+                // console.log('data de action ', data)
                 dispatch({
                     type: GET_ALL_PRODUCTS,
                     payload: data

@@ -4,7 +4,7 @@ import Carrito from './carrito.png'
 import { useAuth0 } from '@auth0/auth0-react'
 import './Nav.scss'
 import Logout from '../Logout/Logout'
-
+import Profile from '../Profile/Profile'
 
 const Nav = () => {
 
@@ -12,6 +12,7 @@ const Nav = () => {
 
     return (
         <div>
+            {/* <Profile /> */}
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/home">
@@ -24,7 +25,7 @@ const Nav = () => {
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link active"  to="/products/create">Create Product</Link>
+                                <Link className="nav-link active" to="/products/create">Create Product</Link>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Categories</a>
