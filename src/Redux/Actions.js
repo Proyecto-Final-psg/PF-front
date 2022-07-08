@@ -1,6 +1,5 @@
 import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER } from "./Constants"
 
-
 export function getAllProducts() {
     return function (dispatch) {
         return fetch(`${API_URL}/products`)
@@ -14,7 +13,6 @@ export function getAllProducts() {
             })
     }
 }
-
 export function getProductById(id) {
     return function (dispatch) {
         return fetch(`${API_URL}/products/${id}`)
