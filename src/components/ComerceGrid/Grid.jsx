@@ -5,11 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllCategories, getAllProducts } from '../../Redux/Actions';
 
 function Grid() {
-
     const allProducts = useSelector(store => store.products)
     const allCategories = useSelector(store => store.categories)
     const dispatch = useDispatch()
-
     useEffect(() => {
         // dispatch(getAllCategories())
         // dispatch(getAllProducts())
