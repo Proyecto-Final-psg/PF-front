@@ -1,4 +1,4 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, SEARCH_PRODUCTS_BY_NAME_CATEGORY, SEARCH_PRODUCTS_BY_NAME } from "./Constants"
 
 
 export function getAllProducts() {
@@ -68,6 +68,20 @@ export function createProduct(product) {
             headers: {
                 'Content-Type': 'application/json'
             }
+        })
+    }
+}
+
+
+export function searchProductByName(search){
+    return function(dispatch){
+        return fetch(`${API_URL}/products/search/${search.name}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: SEARCH_PRODUCTS_BY_NAME,
+                payload:data
+            })
         })
     }
 }

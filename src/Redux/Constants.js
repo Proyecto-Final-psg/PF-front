@@ -1,5 +1,9 @@
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID'
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES'
-export const API_URL = 'https://desarrollo-back.herokuapp.com'
+export const SEARCH_PRODUCTS_BY_NAME = 'SEARCH_PRODUCTS_BY_NAME'
+export const SEARCH_PRODUCTS_BY_NAME_CATEGORY = 'SEARCH_PRODUCTS_BY_NAME_CATEGORY'
 export const REGISTER_USER = "REGISTER_USER"
+
+
+export const API_URL = 'https://desarrollo-back.herokuapp.com'
