@@ -9,8 +9,8 @@ function Grid() {
     const allCategories = useSelector(store => store.categories)
     const dispatch = useDispatch()
     useEffect(() => {
-        // dispatch(getAllCategories())
-        // dispatch(getAllProducts())
+        dispatch(getAllCategories())
+        dispatch(getAllProducts())
         // console.log('redux products ', allProducts)
     }, [])
 
@@ -35,8 +35,17 @@ function Grid() {
         </div>
 
         <div className="cards">
-            {allProducts && allProducts.map((p, i) => <Card key={i} name={p.name} id={p.id} />)}
+            {allProducts && allProducts.map((p, i) => 
+            <Card key={i} 
+            name={p.name} 
+            id={p.id}
+            img={p.img}
+             description={p.description}
+             price={p.price}
+             stock={p.stock}
 
+             
+             />)}
 
         </div>
     </div>

@@ -14,7 +14,7 @@ export function CardDetails(){
     
     useEffect(()=>{
         console.log('id', id)
-        // dispatch(getProductById(id))
+        dispatch(getProductById(id))
     },[])
     
     return <div className=''>
@@ -22,7 +22,7 @@ export function CardDetails(){
 
         <div className="detail">
             <div className="image">
-                <img src="" alt="Product pic" />
+                <img src={product.img} alt="Product pic" />
             </div>
             <div className="description">
         <button className='btn back' onClick={() => navigate(-1)}>
