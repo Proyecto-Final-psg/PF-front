@@ -8,6 +8,7 @@ import './CreateProduct.scss'
 const CreateProduct = () => {
 
     const state = useSelector( state => state.categories );
+    console.log(state.category)
     const dispatch = useDispatch();
 
     const [ createProd, setCreateProd ] = useState({
@@ -64,8 +65,8 @@ const CreateProduct = () => {
                     <select className='select' type='text' name='categories' onChange={handleInputChange} >
                         <option value="">categories</option>
                         {
-                            state?.map( c => (
-                                <option value={c} key={c}>{c}</option>
+                            state?.map( (c,i) => (
+                                <option value={c.category} key={i}>{c.category}</option>
                             ) )
                         }
                     </select>
