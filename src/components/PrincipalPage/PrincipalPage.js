@@ -8,10 +8,10 @@ import Carousel from '../Carousel/Carousel'
 const PrincipalPage = () => {
     return (
         <div>
-            <h1>PRINCIPAL PAGE</h1>
-            <Profile />
+            {/* <h1>PRINCIPAL PAGE</h1>
+            <Profile /> */}
             <Carousel />
-            <Info />
+            {/* <Info /> */}
             <Grid />
             <Footer />
         </div>
