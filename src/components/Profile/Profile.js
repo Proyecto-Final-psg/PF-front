@@ -18,7 +18,6 @@ const Profile = () => {
             dispatch(registerUser(nuevo))
         }
     }, [])
-
     return (
         <div>
             {/* {console.log(user, isAuthenticated, isLoading)}
