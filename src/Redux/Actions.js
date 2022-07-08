@@ -60,6 +60,18 @@ export function registerUser(user) {
     }
 }
 
+export function createProduct(product) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/products`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(product), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+}
+
 
 ////////////////////////Ejemplos/////////////////////////////////////
 // export const AgregarMovie = (movieNew) => {
