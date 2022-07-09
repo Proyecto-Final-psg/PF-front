@@ -25,6 +25,20 @@ export function getProductById(id) {
             })
     }
 }
+
+export function getProductByName(name){
+    return function(dispatch){
+        return fetch(`${API_URL}/products/search?name=${name}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: data
+            })
+        })
+    }
+}
+
 export function getAllCategories() {
     return function (dispatch) {
         return fetch(`${API_URL}/category`)
@@ -68,6 +82,49 @@ export function createProduct(product) {
         })
     }
 }
+
+export function orderProductsCbd(azOrZa){
+    return function(dispatch){
+        return fetch(`${API_URL}/products/orderCbd/${azOrZa}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: data
+            })
+        })
+        .catch(e => console.log(e))
+    }
+}
+
+export function orderProductsThc(azOrZa){
+    return function(dispatch){
+        return fetch(`${API_URL}/products/orderThc/${azOrZa}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: data
+            })
+        })
+        .catch(e => console.log(e))
+    }
+}
+
+export function orderProductsPrice(azOrZa){
+    return function(dispatch){
+        return fetch(`${API_URL}/products/orderPrice/${azOrZa}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: data
+            })
+        })
+        .catch(e => console.log(e))
+    }
+}
+
 
 
 ////////////////////////Ejemplos/////////////////////////////////////
