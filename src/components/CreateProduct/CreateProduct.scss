@@ -23,6 +23,22 @@
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.create_form textarea {
+    resize: none;
+    height: 70px;
+}
+
+.field {
+    width: 250px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.error-message {
+    height: 10px;
+    color: red;
+}
+
 .img-create{
     background-image: url('../../assets/empty.png');
     background-position: center;
