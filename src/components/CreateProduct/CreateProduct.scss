@@ -33,3 +33,42 @@
     height: 10px;
     color: red;
 }
+
+.img-create{
+    background-image: url('../../assets/empty.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 500px;
+}
+
+.img-create #name{
+    height: 83px;
+    margin-top: 230px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    width: 200px;
+    overflow: hidden;
+    border: none;
+    resize: none;
+}
+
+.img-create h4{
+    // margin-top: 50px;
+    color: yellow;
+    margin-right: 52px;
+    text-align: right;
+}
+
+.img-create #description    {
+    height: 115px;
+    width: 200px;
+    background-color: transparent;
+    overflow: hidden;
+    border: none;
+    resize: none;
+    color: grey;
+}

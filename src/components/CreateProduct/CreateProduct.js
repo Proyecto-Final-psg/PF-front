@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
+import imgCreate from '../../assets/empty.png'
 import './CreateProduct.scss'
 
 const CreateProduct = () => {
@@ -72,7 +73,7 @@ const CreateProduct = () => {
     }
 
     return (
-        <div className='create'>
+        <>
             <h1>Create Product</h1>
             {/* <img src={file} /> */}
             <form onSubmit={handleSubmit} className='create_form'>
@@ -118,7 +119,16 @@ const CreateProduct = () => {
                 </label>
                 <button type='submit'>Crear</button>
             </form>
-        </div>
+
+            <div className='img-create'>
+                <textarea value={createProd.name} id='name' />
+
+                <textarea value={createProd.description} id='description' />
+
+                <h4>${createProd.price}</h4>
+
+            </div>
+        </>
     )
 }
 
