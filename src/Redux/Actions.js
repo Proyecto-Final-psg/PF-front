@@ -1,12 +1,11 @@
 import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER } from "./Constants"
 
-
 export function getAllProducts() {
     return function (dispatch) {
         return fetch(`${API_URL}/products`)
             .then(res => res.json())
             .then(data => {
-                //console.log('data de action ', data)
+                // console.log('data de action ', data)
                 dispatch({
                     type: GET_ALL_PRODUCTS,
                     payload: data
@@ -14,7 +13,6 @@ export function getAllProducts() {
             })
     }
 }
-
 export function getProductById(id) {
     return function (dispatch) {
         return fetch(`${API_URL}/products/${id}`)
@@ -27,7 +25,6 @@ export function getProductById(id) {
             })
     }
 }
-
 export function getAllCategories() {
     return function (dispatch) {
         return fetch(`${API_URL}/category`)
