@@ -1,5 +1,5 @@
 import './Profile.scss'
-import axios from './axios'
+import axios from "axios";
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -12,9 +12,9 @@ const Profile = () => {
     async function token() {
         try {
             const token = await getAccessTokenSilently()
-            const response = await axios.get('http://localhost:8081/products', {
+            const response = await axios.get('http://localhost:8081/prueba', {
                 headers: {
-                    authorization: `Bearer  ${token}`
+                    authorization: `Bearer ${token}`
                 }
             })
             console.log(response.data)
@@ -34,11 +34,9 @@ const Profile = () => {
     }, [])
     return (
         <div>
-
+            {console.log(userRedux)}
+            {/* <button onClick={token}>probando</button> */}
         </div>
     )
 }
 export default Profile
-
-
-
