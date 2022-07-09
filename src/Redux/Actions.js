@@ -1,4 +1,5 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER } from "./Constants"
+import axios from 'axios';
+import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER,GET_PRODUCT_BY_NAME } from "./Constants"
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -25,6 +26,23 @@ export function getProductById(id) {
             })
     }
 }
+
+export function getProductByName(name) {
+    return async function (dispatch) {
+        try {
+            let productByName = await axios.get(`${API_URL}/products/search?name=${name}`)
+            return dispatch({
+                type: GET_PRODUCT_BY_NAME,
+                payload: productByName.data,
+            })
+        } catch (error) {
+            return alert(`No se encontro ningun elemento`);
+        }
+    };
+};
+
+
+
 export function getAllCategories() {
     return function (dispatch) {
         return fetch(`${API_URL}/category`)
