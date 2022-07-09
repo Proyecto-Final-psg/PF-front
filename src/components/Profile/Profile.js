@@ -1,5 +1,5 @@
 import './Profile.scss'
-
+import axios from './axios'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,12 +8,20 @@ import { registerUser } from '../../Redux/Actions'
 const Profile = () => {
     const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
     const userRedux = useSelector(state => state.user)
-    async function token() {
-        const token = await getAccessTokenSilently()
-        user.token=token
-    }
-    token()
     const dispatch = useDispatch()
+    async function token() {
+        try {
+            const token = await getAccessTokenSilently()
+            const response = await axios.get('http://localhost:8081/products', {
+                headers: {
+                    authorization: `Bearer  ${token}`
+                }
+            })
+            console.log(response.data)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
     useEffect(() => {
         if (user) {
             let nuevo = {
@@ -31,3 +39,6 @@ const Profile = () => {
     )
 }
 export default Profile
+
+
+
