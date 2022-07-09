@@ -64,7 +64,8 @@ export function createProduct(product) {
             body: JSON.stringify(product),
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+           /*  mode: 'no-cors' */
         })
     }
 }

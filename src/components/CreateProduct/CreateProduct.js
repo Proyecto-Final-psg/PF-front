@@ -7,7 +7,7 @@ import imgCreate from '../../assets/empty.png'
 import './CreateProduct.scss'
 
 const CreateProduct = () => {
-
+    
     const state = useSelector(state => state.categories);
     const dispatch = useDispatch();
 
@@ -22,9 +22,11 @@ const CreateProduct = () => {
         cbd: 0,
         categories: ''
     })
-    //console.log(createProd.img)
+    console.log(createProd)
+
     const [error, setError] = useState({
-        state: false,
+        stateName: false,
+        stateMessage: false,
         messageName: '',
         messageDescription: ''
     })
@@ -35,24 +37,26 @@ const CreateProduct = () => {
         if (e.target.name === 'name' && cond_name.test(e.target.value) === true) {
             setError({
                 ...error,
-                state: false
+                stateName: false
             })
         }
         else if (e.target.name === 'name' && cond_name.test(e.target.value) === false) {
             setError({
-                state: true,
+                ...error,
+                stateName: true,
                 messageName: 'Invalid name of product'
             })
         }
         else if (e.target.name === 'description' && cond_description.test(e.target.value) === true) {
             setError({
                 ...error,
-                state: false
+                stateMessage: false
             })
         }
         else if (e.target.name === 'description' && cond_description.test(e.target.value) === false) {
             setError({
-                state: true,
+                ...error,
+                stateMessage: true,
                 messageDescription: 'No symbols allowed on description'
             })
         }
@@ -65,6 +69,16 @@ const CreateProduct = () => {
 
     const handleImage = (image) => {
         console.log(image)
+        let reader = new FileReader()
+        reader.readAsDataURL(image)
+        reader.onload = function() {
+            let base64 = reader.result
+            console.log(base64) 
+            setCreateProd({
+                ...createProd,
+                img: base64
+            })
+        }
     }
 
     const handleSubmit = (e) => {
@@ -80,7 +94,7 @@ const CreateProduct = () => {
                     <form onSubmit={handleSubmit} className='create_form'>
                         <label htmlFor='name'>
                             {
-                                <span className='error-message'>{error.state ? error.messageDescription : ''}</span>
+                                <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
                             }
                             <input className='field' type="text" value={createProd.name} placeholder='name' name='name' onChange={handleInputChange} />
                         </label>
@@ -88,7 +102,7 @@ const CreateProduct = () => {
                             <input className='field' type="number" value={createProd.stock} placeholder='stock' name='stock' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='price'>
-                            <input className='field' type="number" value={createProd.price} placeholder='price' name='price' onChange={handleInputChange} />
+                            <input className='field' type="number" value={createProd.price} placeholder='price' name='price' step='0.01' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='type'>
                             <select className='field' type='text' name='type' onChange={handleInputChange} >
@@ -99,14 +113,14 @@ const CreateProduct = () => {
                             <input className='field' type="file" name="image" onChange={(e) => handleImage(e.target.files[0])} />
                         </label>
                         {
-                            <span className='error-message'>{error.state ? error.messageDescription : ''}</span>
+                            <span className='error-message'>{error.stateMessage ? error.messageDescription : ''}</span>
                         }
                         <textarea className='field' name='description' value={createProd.description} type="text" placeholder="description" onChange={handleInputChange} />
                         <label htmlFor='thc'>
-                            <input className='field' type="number" value={createProd.thc} placeholder='thc' name='thc' onChange={handleInputChange} />
+                            <input className='field' type="number" value={createProd.thc} placeholder='thc' name='thc' step='0.01' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='cbd'>
-                            <input className='field' type="number" value={createProd.cbd} placeholder='cbd' name='cbd' onChange={handleInputChange} />
+                            <input className='field' type="number" value={createProd.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='categories'>
                             <select className='field' type='text' name='categories' onChange={handleInputChange} >
