@@ -6,7 +6,7 @@ export function getAllProducts() {
         return fetch(`${API_URL}/products`)
             .then(res => res.json())
             .then(data => {
-                console.log('data de action ', data)
+                //console.log('data de action ', data)
                 dispatch({
                     type: GET_ALL_PRODUCTS,
                     payload: data
@@ -63,8 +63,8 @@ export function registerUser(user) {
 export function createProduct(product) {
     return function (dispatch) {
         return fetch(`${API_URL}/products`, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(product), // data can be `string` or {object}!
+            method: 'POST',
+            body: JSON.stringify(product),
             headers: {
                 'Content-Type': 'application/json'
             }
