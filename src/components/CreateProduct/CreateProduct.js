@@ -64,7 +64,7 @@ const CreateProduct = () => {
     }
 
     const handleImage = (image) => {
-
+        console.log(image)
     }
 
     const handleSubmit = (e) => {
@@ -124,9 +124,9 @@ const CreateProduct = () => {
                 </div>
 
                 <div className='img-create'>
-                    <textarea value={createProd.name} id='name' />
+                    <textarea defaultValue={createProd.name} id='name' />
 
-                    <textarea value={createProd.description} id='description' />
+                    <textarea defaultValue={createProd.description} id='description' />
 
                     <h4>${createProd.price}</h4>
 
