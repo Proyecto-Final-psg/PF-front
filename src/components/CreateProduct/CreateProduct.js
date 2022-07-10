@@ -83,13 +83,31 @@ const CreateProduct = () => {
             categories: [...createProd.categories, newCategory],
         })
     }
-    console.log(createProd.categories)
 
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(createProduct(createProd)) 
-        e.target.reset()
+        setCreateProd(
+           {name: '',
+            stock: 0,
+            price: 0,
+            img: '',
+            type: '',
+            description: '',
+            thc: 0,
+            cbd: 0,
+            categories: []
+        })
+      //  e.target.reset()
     }
+
+    function handleDeleteCategory(e){  
+        e.preventDefault();
+        setCreateProd({
+           ...createProd,
+           categories: createProd.categories.filter(category => category !== e.target.name)  
+        });
+     }
 
     return (
         <div>
@@ -142,23 +160,24 @@ const CreateProduct = () => {
                             <input className='field input-cbd' min="0" max="100" type="number" value={createProd.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
                             <span>mg</span>
                         </label>
+
                         <label htmlFor='categories'>
                             <select className='field' type='text' name='categories' onChange={handleSelectCategories} >
-                                <option value="" disabled >Categories</option>
+                                <option value="" disabled selected>Categories</option>
                                 {
                                     state?.map((c, i) => (
                                         <option value={c.category} key={i}>{c.category}</option>
                                     ))
                                 }
                             </select>
-                            <input className='field' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories'/>
-                            <button onClick={handleClickCategory}>Ok</button>
+                        <input className='field' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories'/>
+                        <button onClick={handleClickCategory}>Ok</button>
                         </label>
                         <button type='submit'>Crear</button>
                     </form>
 
                 </div>
-
+            <div className='mockup-product'>
                 <div className='img-create'>
                     <textarea defaultValue={createProd.name} id='name' />
 
@@ -167,6 +186,11 @@ const CreateProduct = () => {
                     <h4>${createProd.price}</h4>
 
                 </div>
+                <div className="buttons-categories">
+                {createProd.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
+                </div>
+            </div>
+                  
             </div>
         </div>
     )
