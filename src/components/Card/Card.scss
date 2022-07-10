@@ -44,6 +44,30 @@
     transition: 0.3s ease-out;
 }
 
+.stock {
+    transform: translate(-50%, 125%);
+    width: 60%;
+    text-align: center;
+    border: none;
+    border-radius: 1rem;
+    background-color: #6dc007;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    opacity: 0;
+    transition: 0.3s ease-out;
+}
+
+.low {
+    background-color: #faa320;
+}
+
+.none {
+    background-color: #f83434;
+
+}
+
 .text-body {
     position: absolute;
     top: 370px;
@@ -89,6 +113,11 @@
 
 .card:hover .card-button {
     transform: translate(-50%, -10%);
+    opacity: 1;
+}
+
+.card:hover .stock {
+    transform: translate(-50%, -80%);
     opacity: 1;
 }
 
