@@ -83,9 +83,15 @@ export function createProduct(product) {
     }
 }
 
-export function orderProductsCbd(azOrZa){
+export function orderProductsCbd(allProducts, azOrZa){
     return function(dispatch){
-        return fetch(`${API_URL}/products/orderCbd/${azOrZa}`)
+        return fetch(`${API_URL}/products/orderCbd/${azOrZa}`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(allProducts), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then(res => res.json())
         .then(data => {
             dispatch({
@@ -97,9 +103,15 @@ export function orderProductsCbd(azOrZa){
     }
 }
 
-export function orderProductsThc(azOrZa){
+export function orderProductsThc(allProducts, azOrZa){
     return function(dispatch){
-        return fetch(`${API_URL}/products/orderThc/${azOrZa}`)
+        return fetch(`${API_URL}/products/orderThc/${azOrZa}`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(allProducts), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then(res => res.json())
         .then(data => {
             dispatch({
@@ -111,9 +123,29 @@ export function orderProductsThc(azOrZa){
     }
 }
 
-export function orderProductsPrice(azOrZa){
+export function orderProductsPrice(allProducts, azOrZa){
     return function(dispatch){
-        return fetch(`${API_URL}/products/orderPrice/${azOrZa}`)
+        return fetch(`${API_URL}/products/orderPrice/${azOrZa}`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(allProducts), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: data
+            })
+        })
+        .catch(e => console.log(e))
+    }
+}
+
+export function filterByCategory(category){
+    return function(dispatch){
+        return fetch(`${API_URL}/products/filter/${category}`)
         .then(res => res.json())
         .then(data => {
             dispatch({
