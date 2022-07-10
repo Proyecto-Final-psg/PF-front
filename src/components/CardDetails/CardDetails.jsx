@@ -34,8 +34,8 @@ export function CardDetails() {
                     <hr />
                     {product && product.description ? <h5>{product.description}</h5> : <p>No description added</p>}
 
-                    {/* <span style={{ fontWeight: "bold" }}>{product.stock}</span> */}
                     <div className={`stock-detail ${product.stock === 0 ? 'none' : (product.stock < 10 ? 'low' : '')}`}>{product.stock === 0 ? 'No stock' : (product.stock < 10 ? 'Low stock' : 'Stock')}</div>
+
                     {
                         product.stock > 0 &&
                         <button className='button'>
