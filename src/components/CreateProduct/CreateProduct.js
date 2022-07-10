@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
-import imgCreate from '../../assets/empty.png'
 import './CreateProduct.scss'
+import { Widget } from "@uploadcare/react-widget";
 
 const CreateProduct = () => {
-    
+
     const state = useSelector(state => state.categories);
     const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ const CreateProduct = () => {
         cbd: 0,
         categories: ''
     })
-    console.log(createProd)
+    //console.log(createProd)
 
     const [error, setError] = useState({
         stateName: false,
@@ -67,23 +67,10 @@ const CreateProduct = () => {
         })
     }
 
-    const handleImage = (image) => {
-        console.log(image)
-        let reader = new FileReader()
-        reader.readAsDataURL(image)
-        reader.onload = function() {
-            let base64 = reader.result
-            console.log(base64) 
-            setCreateProd({
-                ...createProd,
-                img: base64
-            })
-        }
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(createProduct(createProd))
+        dispatch(createProduct(createProd)) 
+        e.target.reset()
     }
 
     return (
@@ -109,9 +96,17 @@ const CreateProduct = () => {
                                 <option value="">type</option>
                             </select>
                         </label>
-                        <label htmlFor='image'>
-                            <input className='field' type="file" name="image" onChange={(e) => handleImage(e.target.files[0])} />
-                        </label>
+                        <Widget
+                            publicKey="269841dc43864e62c49d"
+                            id="file"
+                            name="photos"
+                            onChange={(e) => {
+                                setCreateProd({
+                                    ...createProd,
+                                    img: e.originalUrl
+                                })
+                            }}
+                        />
                         {
                             <span className='error-message'>{error.stateMessage ? error.messageDescription : ''}</span>
                         }
