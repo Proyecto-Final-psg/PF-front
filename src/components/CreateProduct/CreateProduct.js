@@ -10,6 +10,7 @@ const CreateProduct = () => {
 
     const state = useSelector(state => state.categories);
     const dispatch = useDispatch();
+    const [newCategory, setNewCategory] = useState('')
 
     const [createProd, setCreateProd] = useState({
         name: '',
@@ -20,7 +21,7 @@ const CreateProduct = () => {
         description: '',
         thc: 0,
         cbd: 0,
-        categories: ''
+        categories: []
     })
     //console.log(createProd)
 
@@ -63,15 +64,50 @@ const CreateProduct = () => {
 
         setCreateProd({
             ...createProd,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+        })
+    }
+    function handleSelectCategories(e){
+       // console.log(e.target.value)
+        setCreateProd({
+            ...createProd,
+            categories: [...createProd.categories, e.target.value],
+        })
+    }
+
+    function handleClickCategory(e){
+        e.preventDefault()
+       // console.log(e.target.value)
+        setCreateProd({
+            ...createProd,
+            categories: [...createProd.categories, newCategory],
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(createProduct(createProd)) 
-        e.target.reset()
+        setCreateProd(
+           {name: '',
+            stock: 0,
+            price: 0,
+            img: '',
+            type: '',
+            description: '',
+            thc: 0,
+            cbd: 0,
+            categories: []
+        })
+      //  e.target.reset()
     }
+
+    function handleDeleteCategory(e){  
+        e.preventDefault();
+        setCreateProd({
+           ...createProd,
+           categories: createProd.categories.filter(category => category !== e.target.name)  
+        });
+     }
 
     return (
         <div>
@@ -80,24 +116,27 @@ const CreateProduct = () => {
                     <h1>Create Product</h1>
                     <form onSubmit={handleSubmit} className='create_form'>
                         <label htmlFor='name'>
+                            <span>Name: </span> 
                             {
                                 <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
                             }
-                            <input className='field' type="text" value={createProd.name} placeholder='name' name='name' onChange={handleInputChange} />
+                            <input className='field' type="text" value={createProd.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='stock'>
+                            <span>Stock: </span> 
                             <input className='field' type="number" value={createProd.stock} placeholder='stock' name='stock' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='price'>
-                            <input className='field' type="number" value={createProd.price} placeholder='price' name='price' step='0.01' onChange={handleInputChange} />
+                            <span>Price: </span> 
+                            <input className='field' type="number" value={createProd.price} placeholder='50.3' name='price' step='0.01' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='type'>
-                            <select className='field' type='text' name='type' onChange={handleInputChange} >
-                                <option value="">type</option>
-                            </select>
+                            <span>Type: </span> 
+                            <input className='field' type="text" value={createProd.type} placeholder='Oil...' name='type'  onChange={handleInputChange} />
                         </label>
                         <Widget
                             publicKey="269841dc43864e62c49d"
+                            Clearable={true}
                             id="file"
                             name="photos"
                             onChange={(e) => {
@@ -110,28 +149,35 @@ const CreateProduct = () => {
                         {
                             <span className='error-message'>{error.stateMessage ? error.messageDescription : ''}</span>
                         }
-                        <textarea className='field' name='description' value={createProd.description} type="text" placeholder="description" onChange={handleInputChange} />
+                        <textarea className='field' name='description' value={createProd.description} type="text" placeholder="Description..." onChange={handleInputChange} />
                         <label htmlFor='thc'>
-                            <input className='field' type="number" value={createProd.thc} placeholder='thc' name='thc' step='0.01' onChange={handleInputChange} />
+                            <span>Thc: </span> 
+                            <input className='field input-cbd' min="0" max="100" type="number" value={createProd.thc} placeholder='thc' name='thc' step='0.01' onChange={handleInputChange} />
+                            <span>mg</span>
                         </label>
-                        <label htmlFor='cbd'>
-                            <input className='field' type="number" value={createProd.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
+                        <label htmlFor='cbd' >
+                            <span>Cbd: </span>
+                            <input className='field input-cbd' min="0" max="100" type="number" value={createProd.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
+                            <span>mg</span>
                         </label>
+
                         <label htmlFor='categories'>
-                            <select className='field' type='text' name='categories' onChange={handleInputChange} >
-                                <option value="">categories</option>
+                            <select className='field' type='text' name='categories' onChange={handleSelectCategories} >
+                                <option value="" disabled selected>Categories</option>
                                 {
                                     state?.map((c, i) => (
                                         <option value={c.category} key={i}>{c.category}</option>
                                     ))
                                 }
                             </select>
+                        <input className='field' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories'/>
+                        <button onClick={handleClickCategory}>Ok</button>
                         </label>
                         <button type='submit'>Crear</button>
                     </form>
 
                 </div>
-
+            <div className='mockup-product'>
                 <div className='img-create'>
                     <textarea defaultValue={createProd.name} id='name' />
 
@@ -140,6 +186,11 @@ const CreateProduct = () => {
                     <h4>${createProd.price}</h4>
 
                 </div>
+                <div className="buttons-categories">
+                {createProd.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
+                </div>
+            </div>
+                  
             </div>
         </div>
     )
