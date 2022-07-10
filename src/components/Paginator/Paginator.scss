@@ -1,27 +1,28 @@
-.pagination{
+.pagination {
     display: flex;
     margin-bottom: 40px;
 }
 
-.active-pag{
+.active-pag {
     background-color: rgb(36, 92, 73);
     border-radius: 10%;
-    height: 30px;
-    border: none;    
+    height: 34px;
+    border: none;
     color: white;
+    margin-top: 5px;
 }
 
-.inactive{
+.inactive {
     background-color: rgba(128, 128, 128, 0);
     color: black;
-    height: 0px;
+    height: 13px;
 }
 
 .pags {
     font-family: inherit;
     font-size: 15px;
     background: transparent;
-    color:black;
+    color: black;
     padding: 0.7em 1em;
     padding-left: 0.9em;
     display: flex;
@@ -31,9 +32,9 @@
     overflow: hidden;
     transition: all 0.2s;
     margin-top: 10px;
-   }
+}
 
-.paginatorMove{
+.paginatorMove {
     border: none;
     background-color: transparent;
     display: flex;
@@ -42,7 +43,7 @@
     border-radius: 10px;
 }
 
-.paginatorMove:hover{
+.paginatorMove:hover {
     background-color: rgb(36, 92, 73);
     color: white;
     transition: 0.6s;
