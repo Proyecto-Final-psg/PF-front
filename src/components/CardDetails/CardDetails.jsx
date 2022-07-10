@@ -15,7 +15,7 @@ export function CardDetails(){
     useEffect(()=>{
         console.log('id', id)
         dispatch(getProductById(id))
-    },[dispatch, id])
+    },[])
     
     return <div className=''>
         

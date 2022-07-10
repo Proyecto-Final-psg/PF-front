@@ -74,6 +74,10 @@ function Grid() {
         
     }
 
+    function resetFilters(){
+        dispatch(getAllProducts())
+    }
+
     function orderByPrice(){
         setAzOrZaCBD('az')
         setAzOrZaTHC('az')
@@ -113,6 +117,8 @@ function Grid() {
 
 
             </form>
+            <button onClick={resetFilters}>Reset filter</button>
+            <br/>
             <span>Order by</span>
             <ul>
                 
@@ -142,6 +148,9 @@ function Grid() {
                             }
                         </button>
                 </li>
+                
+                
+                
                 
             </ul>
         </div>
