@@ -65,7 +65,6 @@ export function createProduct(product) {
             headers: {
                 'Content-Type': 'application/json'
             },
-           /*  mode: 'no-cors' */
         })
     }
 }
