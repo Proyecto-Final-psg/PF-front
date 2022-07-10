@@ -95,6 +95,11 @@ function Grid() {
         dispatch(getProductByName(searchProd.toLowerCase()))
     }
 
+    function resetFilters(){
+        dispatch(getAllProducts())
+    }
+          
+
     return <div className="grid">
         <div className="filters">
             <span>filters</span>
@@ -113,6 +118,8 @@ function Grid() {
 
 
             </form>
+            
+           
             <span>Order by</span>
             <ul>
                 
@@ -144,6 +151,7 @@ function Grid() {
                 </li>
                 
             </ul>
+            <button onClick={resetFilters}>Reset filters</button>
         </div>
 
         <div className="cards">
