@@ -39,7 +39,7 @@
 
 
 /* From uiverse.io by @adamgiebl */
-.button {
+.button:not(.back, #carousel-btn) {
     font-family: inherit;
     font-size: 15px;
     background: rgb(88, 124, 89);
@@ -53,6 +53,22 @@
     overflow: hidden;
     transition: all 0.2s;
     margin-top: 10px;
+   }
+
+   .back{
+    font-family: inherit;
+    font-size: 15px;
+    background: rgb(182, 182, 182);
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    margin: 10px;
    }
    
    .button span {
