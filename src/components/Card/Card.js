@@ -5,6 +5,7 @@ import { getProductById } from "../../Redux/Actions";
 import "./Card.scss";
 
 const Card = ({ name, id, description, img, price, stock }) => {
+
   return (
     <div className="card" style={{ backgroundImage: "" }}>
       <NavLink to={`/products/${id}`}>
@@ -19,13 +20,16 @@ const Card = ({ name, id, description, img, price, stock }) => {
         </div>
 
       </NavLink>
+      
       <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' : (stock < 10 ? 'Low stock' : 'Stock')}</div>
+      
       {
         stock > 0 &&
         <button className="card-button">
           <span className="material-symbols-outlined">add_shopping_cart</span>
         </button>
       }
+    
     </div>
   );
 };
