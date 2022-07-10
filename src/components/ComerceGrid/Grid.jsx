@@ -2,7 +2,7 @@ import './grid.scss'
 import Card from "../Card/Card";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllCategories, getAllProducts, getProductByName, orderProductsCbd, orderProductsPrice, orderProductsThc } from '../../Redux/Actions';
+import { getAllCategories, getAllProducts, getProductByName, orderProductsCbd, orderProductsPrice, orderProductsThc, filterByCategory } from '../../Redux/Actions';
 import { Paginator } from '../Paginator/Paginator';
 import { useState } from 'react';
 import { Cards } from '../Cards/Cards';
@@ -59,7 +59,7 @@ function Grid() {
         else 
             setAzOrZaCBD('az')
 
-        dispatch(orderProductsCbd(azOrZaCBD))
+        dispatch(orderProductsCbd(allProducts, azOrZaCBD))
     }
 
     function orderMinorToMaxThc(){
@@ -70,7 +70,7 @@ function Grid() {
         else 
             setAzOrZaTHC('az')
 
-        dispatch(orderProductsThc(azOrZaTHC))
+        dispatch(orderProductsThc(allProducts, azOrZaTHC))
         
     }
 
@@ -82,7 +82,7 @@ function Grid() {
         else 
             setAzOrZaPrice('az')
 
-        dispatch(orderProductsPrice(azOrZaPrice))
+        dispatch(orderProductsPrice(allProducts, azOrZaPrice))
     }
 
     function fillProdSearch(e){
@@ -93,6 +93,10 @@ function Grid() {
         e.preventDefault()
         // dispatch(getAllProducts())
         dispatch(getProductByName(searchProd.toLowerCase()))
+    }
+
+    function handleFilterCategory(e){
+        dispatch(filterByCategory(e.target.value))
     }
 
     function resetFilters(){
@@ -108,7 +112,7 @@ function Grid() {
                 <input type="text" name="name" id="name" placeholder='Enter name product' onChange={fillProdSearch}/><br /><br />
 
                 <label>Category</label><br />
-                <select name="category" id="">
+                <select name="category" id="" onChange={handleFilterCategory}>
                     <option value="all" key='all'>All Categories</option>
                     {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select>
