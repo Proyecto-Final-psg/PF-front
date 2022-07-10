@@ -5,14 +5,16 @@ import { useAuth0 } from '@auth0/auth0-react'
 import './Nav.scss'
 import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile'
-
+import { useSelector } from 'react-redux'
 const Nav = () => {
-
+    const userRedux = useSelector(state => state.user)
     const { user, isAuthenticated } = useAuth0()
 
     return (
         <div>
             <Profile />
+            {console.log(user)}
+            {console.log(userRedux)}
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/home">

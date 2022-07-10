@@ -30,7 +30,16 @@ const Profile = () => {
                 token: user.token
             }
             dispatch(registerUser(nuevo))
+        } else {
+
+            let guest = {
+                email: "guest",
+                name: "guest",
+                roll: "guest"
+            }
+            dispatch(registerUser(guest))
         }
+
     }, [])
     return (
         <div>
