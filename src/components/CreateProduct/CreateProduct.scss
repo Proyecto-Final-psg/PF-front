@@ -48,14 +48,22 @@
     height: 500px;
 }
 
+.img-create img{
+    width: 179px;
+    position: absolute;
+    margin-top: 276px;
+    height: 119px;
+    border-radius: 20px;
+}
+
 .img-create #name{
-    height: 83px;
-    margin-top: 230px;
+    height: 115px;
+    margin-top: 213px;
     background-color: transparent;
     color: white;
     font-weight: bold;
-    font-size: 30px;
-    width: 200px;
+    font-size: 20px;
+    width: 180px;
     overflow: hidden;
     border: none;
     resize: none;
@@ -69,13 +77,15 @@
 }
 
 .img-create #description    {
-    height: 115px;
+    height: 47px;
     width: 200px;
     background-color: transparent;
     overflow: hidden;
     border: none;
     resize: none;
     color: grey;
+    margin-top: 57px;
+    font-size: 10px;
 }
 
 .input-cbd{
