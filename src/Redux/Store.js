@@ -2,9 +2,9 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 import { reducer } from "./Reducers";
-import  Thunk from "redux-thunk";   //asyncronico!
+// import  Thunk from "redux-thunk";   //asyncronico!
 import storage from 'redux-persist/lib/storage';
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 import {
     persistReducer,
     FLUSH,
