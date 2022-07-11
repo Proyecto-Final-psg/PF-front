@@ -1,51 +1,32 @@
 import "./Users.scss";
 import User from "../User/User"
+import { getAllUsers } from '../../Redux/Actions';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 
 
-var usersprueba = [{
-  name: "John",
-  email: "john@example.com",
-  roll: "admin"
-},
-{
-  name: "Margin",
-  email: "Margin@example.com",
-  roll: "user"
-},
-{
-  name: "John",
-  email: "john@example.com",
-  roll: "user"
-},
-{
-  name: "John",
-  email: "john@example.com",
-  roll: "admin"
-},
-{
-  name: "Margin",
-  email: "Margin@example.com",
-  roll: "user"
-},
-{
-  name: "John",
-  email: "john@example.com",
-  roll: "user"
-}
-]
 
-const Users = ({ name, roll, email }) => {
+const Users = () => {
+
+
+  const usersprueba = useSelector(store => store.users)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllUsers())
+    console.log(usersprueba)
+  }, [])
 
   return (
     <div className="users" >
       {usersprueba && usersprueba.map(user =>
-       <User 
-       name={user.name}
-       email={user.email}
-       roll={user.roll}
-       />
-        )}
-     
+        <User
+          key={user.user_email}
+          name={user.user_name}
+          roll={user.roll}
+        />
+      )}
+
     </div>
   );
 };

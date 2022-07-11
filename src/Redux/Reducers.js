@@ -1,10 +1,11 @@
-import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
+import { GET_ALL_PRODUCTS,GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
 
 const initialState = {
     user: {},
     products: [],
     product: {},
     categories: [],
+    users:[],
 
 }
 export const reducer = (state = initialState, action) => {
@@ -34,6 +35,11 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 user: action.guest
             }
+            case GET_ALL_USERS:
+                return {
+                    ...state,
+                    users: action.payload
+                }
 
         default:
             return state

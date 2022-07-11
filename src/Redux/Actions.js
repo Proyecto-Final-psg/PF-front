@@ -1,4 +1,4 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS,GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -46,6 +46,19 @@ export function getAllCategories() {
             .then(data => {
                 dispatch({
                     type: GET_ALL_CATEGORIES,
+                    payload: data
+                })
+            })
+    }
+}
+
+export function getAllUsers() {
+    return function (dispatch) {
+        return fetch(`${API_URL}/getAllUsers`)
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_USERS,
                     payload: data
                 })
             })

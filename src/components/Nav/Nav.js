@@ -32,7 +32,7 @@ const Nav = () => {
                                 <Link className="nav-link active" to="/users">Users Roll</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href={() => false}>Categories</a>
+                                {/* <a className="nav-link" href={() => false}>Categories</a> */}
                             </li>
                             {
                                 isAuthenticated ?
