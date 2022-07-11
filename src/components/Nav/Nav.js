@@ -6,6 +6,7 @@ import './Nav.scss'
 import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile'
 import { useSelector } from 'react-redux'
+
 const Nav = () => {
     const userRedux = useSelector(state => state.user)
     const { user, isAuthenticated } = useAuth0()
@@ -28,6 +29,9 @@ const Nav = () => {
                         <ul className="navbar-nav">
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/products/create">Create Product</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" to="/users">Users Roll</Link>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Categories</a>
