@@ -8,7 +8,7 @@ import Login from '../Login/Login';
 import Brand from './Brand.png'
 
 export function Landing() {
-    const { user, isAuthenticated, isLoading } = useAuth0()
+    const {  isAuthenticated} = useAuth0()
     const Navigate = useNavigate()
     useEffect(() => {
         if (isAuthenticated) {
@@ -37,7 +37,7 @@ export function Landing() {
                 </NavLink>
             </div>
             <div className="landing-conteiner-image">
-                <img src={Landingimage} className="landing-image" />
+                <img src={Landingimage} className="landing-image" alt="landing-img" />
             </div>
             <div className="landing-linea-botton"></div>
         </div >

@@ -1,5 +1,5 @@
 import "./Home.scss";
-import { useSelector } from "react-redux";
+
 import { Routes, Route, } from 'react-router-dom'
 import Nav from "../Nav/Nav";
 import PrincipalPage from "../PrincipalPage/PrincipalPage";
