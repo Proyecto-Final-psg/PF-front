@@ -5,8 +5,10 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import Login from '../Login/Login';
+import Brand from './Brand.png'
+
 export function Landing() {
-    const { user, isAuthenticated, isLoading } = useAuth0()
+    const {  isAuthenticated} = useAuth0()
     const Navigate = useNavigate()
     useEffect(() => {
         if (isAuthenticated) {
@@ -17,15 +19,15 @@ export function Landing() {
         <div className="landing" >
             <div className="landing-linea"></div>
             <div className="landing-conteiner-title">
-                <h2 className="landing-title">Cannabis</h2>
-                <h1 className="landing-subtitle">STORE</h1>
+
+                <img className="landing-brand" src={Brand} alt={Brand} />
                 <p className="landing-paragraph">
                     Es una realidad, cada vez hay más productos derivados del cannabis en el mercado.
                     Y lejos de lo que muchas personas podrían pensar, sus usos no son recreativos.
                     En Cannabis Store nos desempeñamos en acercar estos derivados.
-                    <p>
-                        PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS
-                    </p>
+                </p>
+                <p className="landing-paragraph">
+                    PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS
                 </p>
                 <Login />
                 <NavLink to='./home' >
@@ -35,7 +37,7 @@ export function Landing() {
                 </NavLink>
             </div>
             <div className="landing-conteiner-image">
-                <img src={Landingimage} className="landing-image" />
+                <img src={Landingimage} className="landing-image" alt="landing-img" />
             </div>
             <div className="landing-linea-botton"></div>
         </div >

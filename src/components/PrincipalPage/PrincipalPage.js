@@ -1,18 +1,17 @@
 import './PrincipalPage.scss'
-import Logout from '../Logout/Logout'
-import Profile from '../Profile/Profile'
+
 import Footer from '../Footer/Footer'
 import Grid from '../ComerceGrid/Grid'
-import Info from '../Info Panel/Info'
+// import Info from '../Info Panel/Info'
 import Carousel from '../Carousel/Carousel'
+import { useSelector } from 'react-redux'
 const PrincipalPage = () => {
+    const userRedux = useSelector(state => state.user)
     return (
         <div>
-            <h1>PRINCIPAL PAGE</h1>
-            <Profile />
-            <Logout />
+            {console.log(userRedux)}
             <Carousel />
-            <Info />
+            {/* <Info /> */}
             <Grid />
             <Footer />
         </div>
