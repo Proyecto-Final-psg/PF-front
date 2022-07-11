@@ -33,7 +33,7 @@
     width: 60%;
     border-radius: 1rem;
     border: none;
-    background-color: #baea7f;
+    background-color: #6dc007;
     color: #fff;
     font-size: 1rem;
     padding: .5rem 1rem;
@@ -57,6 +57,7 @@
     bottom: 40px;
     opacity: 0;
     transition: 0.3s ease-out;
+    box-shadow: 0px 5px 13px 3px rgba(0,0,0,0.7);
 }
 
 .low {
@@ -116,7 +117,7 @@
     ;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
     background: rgb(189,255,70);
-background: linear-gradient(0deg, rgba(189,255,70,0.6591678907891281) 0%, rgba(87,87,87,0) 68%);
+background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87,87,87,0) 68%);
 }
 
 .card:hover .card-button {
