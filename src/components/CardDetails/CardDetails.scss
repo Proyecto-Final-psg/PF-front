@@ -1,6 +1,8 @@
 
 
 .detail{
+    width: 80%;
+    margin: auto;
     padding: 40px;
     display: flex;
     flex-direction: row;
@@ -22,6 +24,24 @@
     border: 1px solid rgb(201, 201, 201);
     width: 70%;
     padding: 20px;
+}
+
+.stock-detail {
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    border: none;
+    border-radius: 1rem;
+    background-color: #6dc007;
+    color: #fff;
+}
+
+.low {
+    background-color: #faa320;
+}
+
+.none {
+    background-color: #f83434;
 }
 
 .reviews{

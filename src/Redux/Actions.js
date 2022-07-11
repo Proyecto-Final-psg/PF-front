@@ -1,4 +1,4 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -69,6 +69,11 @@ export function registerUser(user) {
                 })
             })
     }
+}
+export const addGuest= (guest) => {
+    return (
+        { type: ADD_GUEST, guest: guest }
+    )
 }
 
 export function createProduct(product) {

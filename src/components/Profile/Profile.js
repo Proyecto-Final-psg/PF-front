@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { registerUser } from '../../Redux/Actions'
+import { registerUser,addGuest } from '../../Redux/Actions'
 
 const Profile = () => {
     const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
@@ -37,7 +37,7 @@ const Profile = () => {
                 name: "guest",
                 roll: "guest"
             }
-            dispatch(registerUser(guest))
+            dispatch(addGuest(guest))
         }
 
     }, [])

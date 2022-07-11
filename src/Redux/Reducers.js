@@ -1,11 +1,11 @@
-import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER } from "./Constants"
+import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
 
 const initialState = {
     user: {},
     products: [],
     product: {},
     categories: [],
- 
+
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -28,6 +28,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.payload
+            }
+        case ADD_GUEST:
+            return {
+                ...state,
+                user: action.guest
             }
 
         default:
