@@ -15,6 +15,40 @@
     border-radius: 50%;
 }
 
+.sign {
+    width: 250px;
+    height: 40px;
+    position: absolute;
+    right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn_in, .btn_up {
+    width: 80px;
+    height: 100%;
+    outline: none;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 4px;
+}
+
+.btn_in {
+    border: 1px solid #438a00;
+    color: #438a00;
+}
+
+.btn_up {
+    background-color: #438a00;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+.btn_up:hover {
+    background-color: #2B5800;
+}
+
 .carrito img {
     position: absolute;
     right: 50px;
