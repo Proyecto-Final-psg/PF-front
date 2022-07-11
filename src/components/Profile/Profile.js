@@ -1,12 +1,12 @@
 import './Profile.scss'
-import axios from "axios";
+
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { registerUser,addGuest } from '../../Redux/Actions'
+import { registerUser, addGuest } from '../../Redux/Actions'
 
 const Profile = () => {
-    const { user,  getAccessTokenSilently } = useAuth0()
+    const { user } = useAuth0()
     const userRedux = useSelector(state => state.user)
     const dispatch = useDispatch()
     // async function token() {

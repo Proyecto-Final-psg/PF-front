@@ -180,7 +180,7 @@ const CreateProduct = () => {
             <div className='mockup-product'>
                 <div className='img-create'>
                     {createProd.img !== '' ?
-                    <img src={createProd.img} />
+                    <img src={createProd.img}  atl="alt"/>
                 : null    
                 }
                     <textarea defaultValue={createProd.name} id='name' />

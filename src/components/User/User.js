@@ -6,9 +6,9 @@ const User = ({ name, roll, email }) => {
 const [role, setRole] = useState ("admin")
 
 function ChangeRoll() {
-if(role == "admin")
+if(role === "admin")
 setRole("user")
-if(role == "user")
+if(role === "user")
 setRole("admin")
 
 }

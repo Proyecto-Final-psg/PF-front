@@ -32,13 +32,13 @@ const Nav = () => {
                                 <Link className="nav-link active" to="/users">Users Roll</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Categories</a>
+                                <a className="nav-link" href={() => false}>Categories</a>
                             </li>
                             {
                                 isAuthenticated &&
                                 <li className="nav-item dropdown">
                                     <img src={user?.picture} alt={user.name} />
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a className="nav-link dropdown-toggle" href={() => false} id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {user.name}
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -48,7 +48,7 @@ const Nav = () => {
                                 </li>
                             }
                             <li className="nav-item carrito">
-                                <Link className="nav-link" to="#"><img src={Carrito} /></Link>
+                                <Link className="nav-link" to="#"><img src={Carrito} alt="alti1" /></Link>
                             </li>
                         </ul>
                     </div>
