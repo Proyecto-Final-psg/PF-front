@@ -179,10 +179,10 @@ const CreateProduct = () => {
                 </div>
             <div className='mockup-product'>
                 <div className='img-create'>
-                    {createProd.img !== '' ?
+                    {/* {createProd.img !== '' ?
                     <img src={createProd.img}  atl="alt4"/>
                 : null    
-                }
+                } */}
                     <textarea defaultValue={createProd.name} id='name' />
 
                     <textarea defaultValue={createProd.description} id='description' />
