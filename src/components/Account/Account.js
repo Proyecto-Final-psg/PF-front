@@ -40,7 +40,7 @@ const Account = () => {
           <div className="col-sm-4">
             <div className="user-profile">
             
-              <div className="card">
+              <div className="cardAcc">
                 <div className="card-image">
                   {/* <img src={boy2} alt=""  /> */}
                 </div>
