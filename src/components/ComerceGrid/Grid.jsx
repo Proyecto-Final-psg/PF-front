@@ -37,6 +37,9 @@ function Grid() {
     let currentPosts = null;
     currentPosts = allProducts.slice(indexOfFirstPost, indexOfLastPost).sort(compare)
 
+
+    const [categorySelected, setCategorySelected] = useState('')
+
     useEffect(() => {
         dispatch(getAllCategories())
         dispatch(getAllProducts())
@@ -59,7 +62,7 @@ function Grid() {
         else 
             setAzOrZaCBD('az')
 
-        dispatch(orderProductsCbd(allProducts, azOrZaCBD))
+        dispatch(orderProductsCbd(categorySelected, azOrZaCBD))
     }
 
     function orderMinorToMaxThc(){
@@ -70,7 +73,7 @@ function Grid() {
         else 
             setAzOrZaTHC('az')
 
-        dispatch(orderProductsThc(allProducts, azOrZaTHC))
+        dispatch(orderProductsThc(categorySelected, azOrZaTHC))
         
     }
 
@@ -82,7 +85,7 @@ function Grid() {
         else 
             setAzOrZaPrice('az')
 
-        dispatch(orderProductsPrice(allProducts, azOrZaPrice))
+        dispatch(orderProductsPrice(categorySelected, azOrZaPrice))
     }
 
     function fillProdSearch(e){
@@ -96,6 +99,7 @@ function Grid() {
     }
 
     function handleFilterCategory(e){
+        setCategorySelected(e.target.value)
         dispatch(filterByCategory(e.target.value))
     }
 
