@@ -1,12 +1,11 @@
 import './grid.scss'
-import Card from "../Card/Card";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllCategories, getAllProducts, getProductByName, orderProductsCbd, orderProductsPrice, orderProductsThc, filterByCategory } from '../../Redux/Actions';
 import { Paginator } from '../Paginator/Paginator';
 import { useState } from 'react';
 import { Cards } from '../Cards/Cards';
-import { API_URL, GET_ALL_PRODUCTS } from '../../Redux/Constants';
+
 
 
 function Grid() {
@@ -27,7 +26,8 @@ function Grid() {
 
     //PAGINATOR
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage, setItemsPerPage] = useState(6)
+
+    const itemsPerPage=6
     const [azOrZaCBD, setAzOrZaCBD] = useState('az')
     const [azOrZaTHC, setAzOrZaTHC] = useState('az')
     const [azOrZaPrice, setAzOrZaPrice] = useState('az')

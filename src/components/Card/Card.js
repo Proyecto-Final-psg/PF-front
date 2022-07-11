@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getProductById } from "../../Redux/Actions";
 import "./Card.scss";
 
 const Card = ({ name, id, description, img, price, stock }) => {

@@ -15,20 +15,20 @@ import {
     REGISTER,
 } from 'redux-persist';
 const persistConfig = {
-   key: 'counter',
-   storage,
+    key: 'counter',
+    storage,
 };
 const reducers = reducer;
 const persistedReducer = persistReducer(persistConfig, reducers);
 export default configureStore({
-  reducer: persistedReducer ,
-  middleware: (getDefaultMiddleware) =>
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }),
-  
+
 })
 
 
