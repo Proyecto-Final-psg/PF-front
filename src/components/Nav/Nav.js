@@ -10,11 +10,9 @@ import { useSelector } from 'react-redux'
 const Nav = () => {
     const userRedux = useSelector(state => state.user)
     const { user, isAuthenticated } = useAuth0()
-
     return (
         <div>
             <Profile />
-            {console.log(user)}
             {console.log(userRedux)}
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
