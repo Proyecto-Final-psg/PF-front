@@ -29,7 +29,7 @@ const Nav = () => {
                                 <Link className="nav-link active" to="/products/create">Create Product</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/users">Users Roll</Link>
+                                <Link className="nav-link active" to="/users">Users Role</Link>
                             </li>
                             <li className="nav-item">
                                 {/* <a className="nav-link" href={() => false}>Categories</a> */}
