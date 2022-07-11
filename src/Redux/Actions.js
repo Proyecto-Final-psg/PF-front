@@ -83,11 +83,11 @@ export function createProduct(product) {
     }
 }
 
-export function orderProductsCbd(allProducts, azOrZa){
+export function orderProductsCbd(category, azOrZa){
     return function(dispatch){
-        return fetch(`${API_URL}/products/orderCbd/${azOrZa}`, {
+        return fetch(`${API_URL}/products/orderCbd/`, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(allProducts), // data can be `string` or {object}!
+            body: JSON.stringify({category: category, setOrder: azOrZa}), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -103,11 +103,11 @@ export function orderProductsCbd(allProducts, azOrZa){
     }
 }
 
-export function orderProductsThc(allProducts, azOrZa){
+export function orderProductsThc(category, azOrZa){
     return function(dispatch){
-        return fetch(`${API_URL}/products/orderThc/${azOrZa}`, {
+        return fetch(`${API_URL}/products/orderThc/`, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(allProducts), // data can be `string` or {object}!
+            body: JSON.stringify({category: category, setOrder: azOrZa}), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -123,11 +123,12 @@ export function orderProductsThc(allProducts, azOrZa){
     }
 }
 
-export function orderProductsPrice(allProducts, azOrZa){
+export function orderProductsPrice(category, azOrZa){
+   
     return function(dispatch){
-        return fetch(`${API_URL}/products/orderPrice/${azOrZa}`, {
+        return fetch(`${API_URL}/products/orderPrice/`, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(allProducts), // data can be `string` or {object}!
+            body: JSON.stringify({category: category, setOrder: azOrZa}), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
