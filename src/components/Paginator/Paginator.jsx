@@ -8,13 +8,11 @@ export function Paginator({ postsPerPage, totalPosts, paginate, currentPage }) {
     for (let i = 1; i <= maxPags; i++) {
         pageNumbers.push(i)
     }
-    
+
     function up() {
         // console.log('maxpag', maxPags)
         if (currentPage < maxPags)
             paginate(currentPage + 1)
-
-
     }
 
     function back() {

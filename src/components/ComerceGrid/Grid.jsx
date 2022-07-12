@@ -50,7 +50,7 @@ function Grid() {
 
     const paginate = (pageNumber) => {
         if (pageNumber > 0 && pageNumber < 26) {
-            console.log('page', pageNumber)
+            // console.log('page', pageNumber)
             setCurrentPage(pageNumber)
         }
     }
