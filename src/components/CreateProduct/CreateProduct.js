@@ -180,19 +180,15 @@ const CreateProduct = () => {
                 </div>
                 <div className='mockup-product'>
                     <div className='img-create'>
-
+                        <textarea className='img-create_title' defaultValue={createProd.name} id='name' />
+                        {console.log(createProd.img)}
                         {
                             createProd.img !== '' ?
-                            <img src={createProd.img} alt="alt4" />
-                            : null
+                                <img src={createProd.img} alt="alt4" />
+                                : null
                         }
-
-                        <textarea defaultValue={createProd.name} id='name' />
-
                         <textarea defaultValue={createProd.description} id='description' />
-
-                        <h4>${createProd.price}</h4>7
-
+                        <h4>${createProd.price}</h4>
 
                     </div>
                     <div className="buttons-categories">
