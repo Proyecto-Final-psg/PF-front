@@ -28,7 +28,7 @@ export function CardDetails() {
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <span className="material-symbols-outlined">keyboard_backspace</span>
                     </button>
-{console.log(admin)}
+                   
                     {admin && <div className='container-buttons_edit_remove'>
                         <NavLink className='button buton-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                         <button className='button '>Remove</button>
