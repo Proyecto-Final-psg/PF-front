@@ -83,10 +83,10 @@ export function EditCard() {
 
      function handleClickCategory(e){
         e.preventDefault()
-       // console.log(e.target.value)
+        categoryFound = editedProduct.categories.find(a => a === e.target.value)
         setEditProduct({
             ...editedProduct,
-            categories: [...editedProduct.categories, newCategory],
+            categories: categoryFound ? [...editedProduct.categories] : [...editedProduct.categories, e.target.value],
         })
     }
 
