@@ -25,15 +25,20 @@ const Nav = () => {
                     {/* //////DEFINIR LINKS SEGUN ADMIN O USER /////// */}
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link active" to="/products/create">Create Product</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" to="/users">Users Role</Link>
-                            </li>
-                            <li className="nav-item">
-                                {/* <a className="nav-link" href={() => false}>Categories</a> */}
-                            </li>
+                            {
+                                userRedux[0].roll !== 'guest' && 
+                                <>
+                                    <li className="nav-item">
+                                        <Link className="nav-link active" to="/products/create">Create Product</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link active" to="/users">Users Role</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        {/* <a className="nav-link" href={() => false}>Categories</a> */}
+                                    </li>
+                                </>
+                            }
                             {
                                 isAuthenticated ?
                                 <li className="nav-item dropdown">
