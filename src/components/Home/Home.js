@@ -1,6 +1,6 @@
 import "./Home.scss";
 
-import { Routes, Route, } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Nav from "../Nav/Nav";
 import PrincipalPage from "../PrincipalPage/PrincipalPage";
 import { CardDetails } from "../CardDetails/CardDetails";

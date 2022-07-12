@@ -6,13 +6,28 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import Login from '../Login/Login';
 import Brand from './Brand.png'
-
+import { addGuest } from '../../Redux/Actions'
+import { useDispatch } from 'react-redux';
 export function Landing() {
-    const {  isAuthenticated} = useAuth0()
+    const { isAuthenticated } = useAuth0()
+    const dispatch = useDispatch()
     const Navigate = useNavigate()
     useEffect(() => {
+        let guest = [
+            {
+                email: "guest",
+                name: "guest",
+                roll: "guest"
+            }
+        ]
+
+
+
+        dispatch(addGuest(guest))
         if (isAuthenticated) {
             Navigate('./home')
+        } else {
+
         }
     })
     return (

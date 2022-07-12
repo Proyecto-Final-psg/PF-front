@@ -12,8 +12,7 @@ const Nav = () => {
     const { user, isAuthenticated, loginWithRedirect } = useAuth0()
     return (
         <div>
-            <Profile />
-            {console.log(userRedux)}
+                 <Profile />
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/home">
