@@ -114,7 +114,6 @@ const CreateProduct = () => {
         <div>
 
             <div className='title-edit'>
-
                 <button className='btn back' onClick={() => navigate(-1)}>
                     <span class="material-symbols-outlined">keyboard_backspace</span>
                 </button>
