@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 const Nav = () => {
     const userRedux = useSelector(state => state.user[0])
     const { user, isAuthenticated, loginWithRedirect } = useAuth0()
+    var admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     return (
         <div>
             <Profile />
@@ -25,16 +26,13 @@ const Nav = () => {
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav">
                             {
-                                userRedux.roll === 'admin' && 
+                                admin && 
                                 <>
                                     <li className="nav-item">
                                         <Link className="nav-link active" to="/products/create">Create Product</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link active" to="/users">Users Role</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        {/* <a className="nav-link" href={() => false}>Categories</a> */}
                                     </li>
                                 </>
                             }
