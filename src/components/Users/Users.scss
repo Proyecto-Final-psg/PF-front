@@ -1,8 +1,17 @@
-.users{
+.users {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     height: max-content;
-    min-height: 85vh;
+    min-height: 100vh;
+}
+
+.users_container {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }

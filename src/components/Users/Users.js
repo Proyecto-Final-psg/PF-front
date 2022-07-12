@@ -16,14 +16,16 @@ const Users = () => {
 
   return (
     <div className="users" >
-      {usersprueba && usersprueba.map(user =>
-        <User
-          key={user.user_email}
-          name={user.user_name}
-          roll={user.roll}
-          user_id={user.user_id}
-        />
-      )}
+      <div className="users_container">
+        {usersprueba && usersprueba.map(user =>
+          <User
+            key={user.user_email}
+            name={user.user_name}
+            roll={user.roll}
+            user_id={user.user_id}
+          />
+        )}
+      </div>
 
     </div>
   );
