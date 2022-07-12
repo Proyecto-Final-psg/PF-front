@@ -53,15 +53,13 @@ export function getAllCategories() {
 }
 
 export function getAllUsers() {
-    return function (dispatch) {
-        return fetch(`${API_URL}/getAllUsers`)
-            .then(res => res.json())
-            .then(data => {
-                dispatch({
-                    type: GET_ALL_USERS,
-                    payload: data
-                })
-            })
+    return async function (dispatch) {
+        const res = await fetch(`${API_URL}/getAllUsers`)
+        const data = await res.json()
+        dispatch({
+            type: GET_ALL_USERS,
+            payload: data
+        })
     }
 }
 
@@ -100,6 +98,19 @@ export function createProduct(product) {
         })
     }
 }
+
+export function changeRoles(nuevoroll) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/changeRoles`, {
+            method: 'PUT',
+            body: JSON.stringify(nuevoroll),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+    }
+}
+
 
 export function orderProductsCbd(category, azOrZa){
     return function(dispatch){

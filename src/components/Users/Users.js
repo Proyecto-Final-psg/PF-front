@@ -10,12 +10,12 @@ const Users = () => {
 
 
   const usersprueba = useSelector(store => store.users)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getAllUsers())
-    console.log(usersprueba)
-  }, [])
+  }, [usersprueba])
 
   return (
     <div className="users" >
@@ -24,6 +24,7 @@ const Users = () => {
           key={user.user_email}
           name={user.user_name}
           roll={user.roll}
+          user_id={user.user_id}
         />
       )}
 
