@@ -11,9 +11,10 @@ export function CardDetails() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
+    const userRedux = useSelector(state => state.user[0])
 
     useEffect(() => {
-        console.log('id', id)
+        // console.log('id', id)
         dispatch(getProductById(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -28,10 +29,11 @@ export function CardDetails() {
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <span className="material-symbols-outlined">keyboard_backspace</span>
                     </button>
-                    <div className='container-buttons_edit_remove'>
+                  
+                    {userRedux.roll === "admin" || userRedux.roll === "superAdmin"&& <div className='container-buttons_edit_remove'>
                         <NavLink className='button buton-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                         <button className='button '>Remove</button>
-                    </div>
+                    </div>}
 
                     <h1>{product.name}</h1>
                     <hr />

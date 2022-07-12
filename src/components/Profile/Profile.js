@@ -32,11 +32,11 @@ const Profile = () => {
             dispatch(registerUser(nuevo))
         } else {
 
-            let guest = {
+            let guest = [{
                 email: "guest",
                 name: "guest",
                 roll: "guest"
-            }
+            }]
             dispatch(addGuest(guest))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

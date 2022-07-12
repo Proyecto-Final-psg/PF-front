@@ -1,15 +1,15 @@
 import './Review.scss'
 
-export function Review(){
+export function Review() {
     return <div className="review">
         <div className="review-header">
             <h5>User</h5>
             <div className="stars">
-                <span class="material-symbols-outlined">star</span>
-                <span class="material-symbols-outlined">star</span>
-                <span class="material-symbols-outlined">star</span>
-                <span class="material-symbols-outlined">grade</span>
-                <span class="material-symbols-outlined">grade</span>
+                <span className="material-symbols-outlined">star</span>
+                <span className="material-symbols-outlined">star</span>
+                <span className="material-symbols-outlined">star</span>
+                <span className="material-symbols-outlined">grade</span>
+                <span className="material-symbols-outlined">grade</span>
             </div>
 
         </div>
