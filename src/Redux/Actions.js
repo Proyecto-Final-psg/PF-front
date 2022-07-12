@@ -98,7 +98,8 @@ export const addToCart = (id, name, img, price) => {
                 id: id,
                 name: name,
                 price: price,
-                img: img
+                img: img,
+                cant: 1
             }
         }
     )

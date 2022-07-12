@@ -1,14 +1,14 @@
 import "./CartItems.scss";
 
-const CartItems = ({ name, id, img, price }) => {
+const CartItems = ({ name, id, img, price, cant }) => {
 
 
   return (
     <div className="cart-items">
+      <input  className="cart-cant" type="number" placeholder={cant} ></input>
       <span>{name}</span>
-      <span>{id}</span>
-      <span>{img}</span>
-      <span>{price}</span>
+      <span>${price}</span>
+      <button className="item-delete">BORRAR</button>
     </div>
   );
 };

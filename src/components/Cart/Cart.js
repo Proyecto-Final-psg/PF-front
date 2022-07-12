@@ -2,7 +2,7 @@ import "./Cart.scss";
 import { useSelector, useDispatch } from 'react-redux'
 import CardItems from '../CartItems/CartItems'
 import { useEffect } from 'react';
-import { addToCart,getAllItems } from '../../Redux/Actions';
+import { addToCart, getAllItems } from '../../Redux/Actions';
 
 const Cart = () => {
 
@@ -10,8 +10,7 @@ const Cart = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getAllItems() )
-   
+    dispatch(getAllItems())
   })
 
 
@@ -20,18 +19,19 @@ const Cart = () => {
   return (
     <div className="cart">
       {allCartItems && allCartItems.map(item =>
-     
+
         <CardItems
           name={item.name}
           id={item.id}
           key={item.id}
           img={item.img}
           price={item.price}
-        ></CardItems>
+          cant={item.cant}
+        />
       )}
-
+      <button className="cart-purchase">Realizar compra por ${allCartItems.reduce(function (a, b) { return (a.price) + (b.price) })}</button>
     </div>
-    
+
   );
 };
 export default Cart;
