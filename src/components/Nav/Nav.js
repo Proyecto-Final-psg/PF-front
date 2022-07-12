@@ -38,7 +38,7 @@ const Nav = () => {
                                 isAuthenticated ?
                                 <li className="nav-item dropdown">
                                     <img src={user?.picture} alt={user.name} />
-                                    <a className="nav-link dropdown-toggle" href={() => false} id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a className="nav-link dropdown-toggle" href='#' id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {user.name}
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
