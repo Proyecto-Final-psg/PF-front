@@ -1,5 +1,5 @@
 
-import { API_URL, GET_ALL_PRODUCTS,GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS, GET_ALL_ITEMS, ADD_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
 
 
 export function getAllProducts() {
@@ -29,16 +29,16 @@ export function getProductById(id) {
     }
 }
 
-export function getProductByName(name){
-    return function(dispatch){
+export function getProductByName(name) {
+    return function (dispatch) {
         return fetch(`${API_URL}/products/search?name=${name}`)
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_PRODUCTS,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: data
+                })
             })
-        })
     }
 }
 
@@ -84,11 +84,35 @@ export function registerUser(user) {
             })
     }
 }
-export const addGuest= (guest) => {
+export const addGuest = (guest) => {
     return (
         { type: ADD_GUEST, guest: guest }
     )
 }
+
+export const addToCart = (id, name, img, price) => {
+    return (
+        {
+            type: ADD_TO_CART,
+            payload: {
+                id: id,
+                name: name,
+                price: price,
+                img: img,
+                cant: 1
+            }
+        }
+    )
+}
+
+export const getAllItems = () => {
+    return (
+        {
+            type: GET_ALL_ITEMS,
+        }
+    )
+}
+
 
 export function createProduct(product) {
     return function (dispatch) {
@@ -135,78 +159,78 @@ export function changeRoles(nuevoroll) {
     }
 }
 
-export function orderProductsCbd(category, azOrZa){
-    return function(dispatch){
+export function orderProductsCbd(category, azOrZa) {
+    return function (dispatch) {
         return fetch(`${API_URL}/products/orderCbd/`, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify({category: category, setOrder: azOrZa}), // data can be `string` or {object}!
+            body: JSON.stringify({ category: category, setOrder: azOrZa }), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_PRODUCTS,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: data
+                })
             })
-        })
-        .catch(e => console.log(e))
+            .catch(e => console.log(e))
     }
 }
 
-export function orderProductsThc(category, azOrZa){
-    return function(dispatch){
+export function orderProductsThc(category, azOrZa) {
+    return function (dispatch) {
         return fetch(`${API_URL}/products/orderThc/`, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify({category: category, setOrder: azOrZa}), // data can be `string` or {object}!
+            body: JSON.stringify({ category: category, setOrder: azOrZa }), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_PRODUCTS,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: data
+                })
             })
-        })
-        .catch(e => console.log(e))
+            .catch(e => console.log(e))
     }
 }
 
-export function orderProductsPrice(category, azOrZa){
-   
-    return function(dispatch){
+export function orderProductsPrice(category, azOrZa) {
+
+    return function (dispatch) {
         return fetch(`${API_URL}/products/orderPrice/`, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify({category: category, setOrder: azOrZa}), // data can be `string` or {object}!
+            body: JSON.stringify({ category: category, setOrder: azOrZa }), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_PRODUCTS,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: data
+                })
             })
-        })
-        .catch(e => console.log(e))
+            .catch(e => console.log(e))
     }
 }
 
-export function filterByCategory(category){
-    return function(dispatch){
+export function filterByCategory(category) {
+    return function (dispatch) {
         return fetch(`${API_URL}/products/filter/${category}`)
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_PRODUCTS,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: data
+                })
             })
-        })
-        .catch(e => console.log(e))
+            .catch(e => console.log(e))
     }
 }
 

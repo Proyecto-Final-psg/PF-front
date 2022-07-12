@@ -8,6 +8,7 @@ import { EditCard } from "../EditCard/EditCard";
 import Account from "../Account/Account";
 import CreateProduct from "../CreateProduct/CreateProduct";
 import Users from "../Users/Users";
+import Cart from "../Cart/Cart";
 import Footer from "../Footer/Footer";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
         <Route path='/products/create' element={<CreateProduct />} />
         <Route path='/users' element={<Users />}></Route>
         <Route path='/account' element={<Account />} exact />
+        <Route path='/cart' element={<Cart />} exact />
       </Routes>
       <Footer />
     </div>

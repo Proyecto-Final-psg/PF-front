@@ -54,12 +54,23 @@
 }
 
 .carrito img {
-    position: absolute;
-    right: 50px;
+position: absolute;
+      right: 50px;
     height: 26px;
+    transition:2s;
 }
 
 .navbar-brand-image{
     width: 40px;
 }
 
+@media (max-width: 992px) {
+    .carrito img  {
+     
+        right: 70px;
+        top: 5px;
+        height: 26px;
+        transition:2s;
+    }
+
+}
