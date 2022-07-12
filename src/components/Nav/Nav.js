@@ -8,7 +8,7 @@ import Profile from '../Profile/Profile'
 import { useSelector } from 'react-redux'
 
 const Nav = () => {
-    const userRedux = useSelector(state => state.user)
+    const userRedux = useSelector(state => state.user[0])
     const { user, isAuthenticated, loginWithRedirect } = useAuth0()
     return (
         <div>
@@ -25,7 +25,7 @@ const Nav = () => {
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav">
                             {
-                                userRedux[0].roll !== 'guest' && 
+                                userRedux.roll === 'admin' && 
                                 <>
                                     <li className="nav-item">
                                         <Link className="nav-link active" to="/products/create">Create Product</Link>
