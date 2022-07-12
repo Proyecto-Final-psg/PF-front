@@ -119,7 +119,7 @@ const CreateProduct = () => {
                         <label htmlFor='name'>
                             <span>Name: </span>
                             {
-                                <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
+                                <span  className='error-message'>{error.stateName ? error.messageName : ''}</span>
                             }
                             <input className='field' type="text" value={createProd.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} />
                         </label>
