@@ -5,6 +5,7 @@ import { getAllCategories, getAllProducts, getProductByName, orderProductsCbd, o
 import { Paginator } from '../Paginator/Paginator';
 import { useState } from 'react';
 import { Cards } from '../Cards/Cards';
+import Info from '../Info Panel/Info';
 
 
 
@@ -116,6 +117,8 @@ function Grid() {
 
 
     return <div className="grid">
+
+        {/* <Info /> */}
         <div className="filters">
 
 
