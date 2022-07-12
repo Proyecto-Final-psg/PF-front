@@ -1,6 +1,8 @@
 .create {
     width: 100%;
     height: 85vh;
+    height: max-content;
+    min-height: 85vh;
     text-align: center;
     display: flex;
     flex-direction: row;
