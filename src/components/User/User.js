@@ -1,7 +1,7 @@
 import "./User.scss";
-import { changeRoles, getAllUsers } from '../../Redux/Actions';
+import { changeRoles} from '../../Redux/Actions';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+
 
 const User = ({ name, roll, user_id }) => {
   const dispatch = useDispatch();

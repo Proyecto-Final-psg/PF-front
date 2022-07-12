@@ -7,14 +7,11 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 const Users = () => {
-
-
   const usersprueba = useSelector(store => store.users)
-
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(getAllUsers())
+           // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usersprueba])
 
   return (
