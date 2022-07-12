@@ -170,7 +170,7 @@ function Grid() {
         </div>
 
         <div className="cards">
-            <Paginator postsPerPage={itemsPerPage} totalPosts={allProducts.length} paginate={paginate} currentPage={currentPage} />
+            <Paginator postsPerPage={itemsPerPage} totalPosts={allProducts.length} paginate={paginate} currentPage={currentPage}  />
 
 
             <Cards items={currentPosts} />
