@@ -1,4 +1,4 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -13,6 +13,7 @@ export function getAllProducts() {
             })
     }
 }
+
 export function getProductById(id) {
     return function (dispatch) {
         return fetch(`${API_URL}/products/${id}`)
@@ -85,6 +86,25 @@ export function createProduct(product) {
                 'Content-Type': 'application/json'
             },
         })
+    }
+}
+
+export function editProduct(id, editedProduct) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/products/${id}`, {
+            method: 'PUT', // or 'PUT'
+            body: JSON.stringify(editedProduct), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: EDIT_PRODUCT,
+                    payload: data
+                })
+            })
     }
 }
 
