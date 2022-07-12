@@ -9,6 +9,7 @@ import Account from "../Account/Account";
 import CreateProduct from "../CreateProduct/CreateProduct";
 import Users from "../Users/Users";
 import Cart from "../Cart/Cart";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
         <Route path='/account' element={<Account />} exact />
         <Route path='/cart' element={<Cart />} exact />
       </Routes>
+      <Footer />
     </div>
   );
 };

@@ -42,12 +42,18 @@ const Account = () => {
             
               <div className="cardAcc">
                 <div className="card-image">
+                  {user && user.picture 
+                  ?
+                  <img src={user.picture} alt='profile pic' />
+                  :
+                  <img src={boy2} alt='profile pic' />
+                  }
                   {/* <img src={boy2} alt=""  /> */}
                 </div>
-                <div class="category"> {usr[0].user_name} </div>
+                <div class="category"> {usr[0] && usr[0].user_name} </div>
                 <div class="heading">
-                  <span>{usr[0].user_email}</span>
-                  {user.email_verified ? (
+                  <span>{usr[0] && usr[0].user_email}</span>
+                  {user && user.email_verified ? (
                     <>
                       <span>Account Verified</span>
                       <span
@@ -69,7 +75,7 @@ const Account = () => {
                     </>
                   )}
                   <div class="author">
-                    <span>Rol: {usr[0].roll}</span>
+                    <span>Rol: {usr[0] && usr[0].roll}</span>
                   </div>
                 </div>
               </div>

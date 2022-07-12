@@ -36,28 +36,21 @@ const Nav = () => {
                             </li>
                             {
                                 isAuthenticated ?
-                                    <li className="nav-item dropdown">
-                                        <img src={user?.picture} alt={user.name} />
-                                        <a
-                                            className="nav-link dropdown-toggle"
-                                            // href={() => false}
-                                            id="navbarDropdownMenuLink"
-                                            role="button"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-
-                                            {user.name}
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><Link className="dropdown-item" to="/account">Profile</Link></li>
-                                            <li><Logout /></li>
-                                        </ul>
-                                    </li>
-                                    :
-                                    <div className='sign'>
-                                        <button className='btn_in' onClick={() => { loginWithRedirect() }}>Sign in</button>
-                                        <button className='btn_up' onClick={() => { loginWithRedirect({ screen_hint: 'signup' }) }}>Sign up</button>
-                                    </div>
+                                <li className="nav-item dropdown">
+                                    <img src={user?.picture} alt={user.name} />
+                                    <a className="nav-link dropdown-toggle" href='#' id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {user.name}
+                                    </a>
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><Link className="dropdown-item" to="/account">Profile</Link></li>
+                                        <li><Logout /></li>
+                                    </ul>
+                                </li>
+                                :
+                                <div className='sign'>
+                                    <button className='btn_in' onClick={() => { loginWithRedirect() }}>Sign in</button>
+                                    <button className='btn_up' onClick={() => { loginWithRedirect({ screen_hint: 'signup' }) }}>Sign up</button>
+                                </div>
                             }
                             <li className="nav-item carrito">
                                 <Link className="nav-link" to="/cart"><img src={Carrito} alt="alti1" /></Link>

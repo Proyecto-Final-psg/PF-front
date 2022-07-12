@@ -15,7 +15,7 @@ export function CardDetails() {
     useEffect(() => {
         console.log('id', id)
         dispatch(getProductById(id))
-         // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -28,8 +28,11 @@ export function CardDetails() {
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <span className="material-symbols-outlined">keyboard_backspace</span>
                     </button>
+                    <div className='container-buttons_edit_remove'>
+                        <NavLink className='button buton-edit' to={`/products/edit/${id}`}>Edit</NavLink>
+                        <button className='button '>Remove</button>
+                    </div>
 
-                    <NavLink to={`/products/edit/${id}`}>Edit</NavLink>
                     <h1>{product.name}</h1>
                     <hr />
                     {product && product.description ? <h5>{product.description}</h5> : <p>No description added</p>}
