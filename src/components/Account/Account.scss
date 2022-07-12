@@ -1,0 +1,183 @@
+.profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding:20px;
+    
+}
+
+.user-profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    // width:30%;
+    margin:10px;
+}
+
+.user-history img{
+    width: 50px;
+   
+}
+
+.user-history{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start ;
+    flex-wrap: nowrap;
+    // width:60%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.447);
+}
+
+.user-history-title{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.user-profile-data{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width:400px;
+    // height: 200px;
+    border: 1px solid black;
+    // padding:20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.user-profile-pic img{
+    width: 100%;
+}
+
+.user-profile-info{
+    background-color: azure;
+    width: 100%;
+}
+
+.account{
+    display: flex;
+    align-items: center;
+}
+
+.account img{
+    width: 50px;
+    height: 37px;
+}
+
+
+.a{
+    background: rgb(180,235,82);
+background: linear-gradient(0deg, rgba(180,235,82,1) 0%, rgba(87,87,87,0) 24%, rgba(87,87,87,0) 80%, rgba(180,235,82,0.6591678907891281) 100%);
+}
+
+
+
+
+/* From uiverse.io by @alexmaracinaru */
+.cardAcc {
+    width: 300px;
+    height: 374px;
+    background: white;
+    padding: .4em;
+    border-radius: 6px;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow: -5px 10px 25px 5px #000000;
+  }
+
+  .cardAcc:hover{
+    box-shadow: -5px 10px 25px 5px #416620;
+  }
+  
+  .card-image {
+    background-color: rgb(236, 236, 236);
+    width: 100%;
+    height: 60%;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    background-image: url('../../assets/boy1.png');
+    background-size: cover;
+    border-radius: 30px;
+  }
+
+  .card-image:hover {
+    // background-color: rgb(67, 67, 67);
+    width: 100%;
+    height: 60%;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    background-image: url('../../assets/boy2.png');
+    background-size: cover;
+    transition: 0.5s;
+    border-radius: 30px;
+  }
+
+  .card-image img{
+    width: 100%;
+  }
+  
+  .card-image:hover {
+    transform: scale(0.98);
+  }
+  
+  .category {
+    text-transform: uppercase;
+    font-size: 1.7em;
+    font-weight: 600;
+    color: rgb(28, 121, 42);
+    padding: 10px 7px 0;
+  }
+  
+  .category:hover {
+    cursor: pointer;
+  }
+  
+  .heading {
+    font-weight: 600;
+    color: rgb(88, 87, 87);
+    padding: 7px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .heading:hover {
+    cursor: pointer;
+  }
+  
+  .author {
+    color: gray;
+    font-weight: 400;
+    font-size: 11px;
+    padding-top: 20px;
+  }
+  
+  .name {
+    font-weight: 600;
+  }
+  
+  .name:hover {
+    cursor: pointer;
+  }
+
+  
+  .inf{
+    align-items: center;
+  }
+
+  .table{
+    padding: 20px;
+  }
+
+  

@@ -38,7 +38,7 @@ function Grid() {
     currentPosts = allProducts.slice(indexOfFirstPost, indexOfLastPost).sort(compare)
 
 
-    const [categorySelected, setCategorySelected] = useState('')
+    const [categorySelected, setCategorySelected] = useState('none')
 
     useEffect(() => {
         dispatch(getAllCategories())
@@ -100,8 +100,14 @@ function Grid() {
     }
 
     function handleFilterCategory(e) {
-        setCategorySelected(e.target.value)
-        dispatch(filterByCategory(e.target.value))
+        if(e.target.value === 'all'){
+            dispatch(getAllProducts())
+            setCategorySelected('none')
+        }else{
+            setCategorySelected(e.target.value)
+            dispatch(filterByCategory(e.target.value))
+        }
+        
     }
 
     function resetFilters() {

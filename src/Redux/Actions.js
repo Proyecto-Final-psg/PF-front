@@ -1,4 +1,6 @@
-import { API_URL, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
+
+import { API_URL, GET_ALL_PRODUCTS,GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
+
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -53,6 +55,17 @@ export function getAllCategories() {
     }
 }
 
+export function getAllUsers() {
+    return async function (dispatch) {
+        const res = await fetch(`${API_URL}/getAllUsers`)
+        const data = await res.json()
+        dispatch({
+            type: GET_ALL_USERS,
+            payload: data
+        })
+    }
+}
+
 export function registerUser(user) {
     return function (dispatch) {
         return fetch(`${API_URL}/ath0log`, {
@@ -89,6 +102,7 @@ export function createProduct(product) {
     }
 }
 
+
 export function editProduct(id, editedProduct) {
     return function (dispatch) {
         return fetch(`${API_URL}/products/${id}`, {
@@ -105,6 +119,19 @@ export function editProduct(id, editedProduct) {
                     payload: data
                 })
             })
+    }
+}
+
+
+export function changeRoles(nuevoroll) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/changeRoles`, {
+            method: 'PUT',
+            body: JSON.stringify(nuevoroll),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
     }
 }
 
