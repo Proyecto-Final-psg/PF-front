@@ -26,15 +26,15 @@ export function EditCard() {
     // const [prodPrice, setProdPrice] = useState(product.price)
 
     const [editedProduct, setEditProduct] = useState({
-        name : product.name,
-        stock : product.stock,
-        price : product.price,
-        img : product.img,
-        type : product.type,
-        description : product.description,
-        thc : product.thc,
-        cbd : product.cbd,
-        categories : product.categories
+        name: product.name,
+        stock: product.stock,
+        price: product.price,
+        img: product.img,
+        type: product.type,
+        description: product.description,
+        thc: product.thc,
+        cbd: product.cbd,
+        categories: product.categories
     })
 
     const handleInputChange = (e) => {
@@ -69,53 +69,53 @@ export function EditCard() {
 
         setEditProduct({
             ...editedProduct,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
-    function handleSelectCategories(e){
+    function handleSelectCategories(e) {
         // console.log(e.target.value)
-         setEditProduct({
-             ...editedProduct,
-             categories: [...editedProduct.categories, e.target.value],
-         })
-     }
+        setEditProduct({
+            ...editedProduct,
+            categories: [...editedProduct.categories, e.target.value],
+        })
+    }
 
-     function handleClickCategory(e){
+    function handleClickCategory(e) {
         e.preventDefault()
-        categoryFound = editedProduct.categories.find(a => a === e.target.value)
+        let categoryFound = editedProduct.categories.find(a => a === e.target.value)
         setEditProduct({
             ...editedProduct,
             categories: categoryFound ? [...editedProduct.categories] : [...editedProduct.categories, e.target.value],
         })
     }
 
-    function handleDeleteCategory(e){  
+    function handleDeleteCategory(e) {
         e.preventDefault();
         setEditProduct({
-           ...editedProduct,
-           categories: editedProduct.categories.filter(category => category !== e.target.name)  
+            ...editedProduct,
+            categories: editedProduct.categories.filter(category => category !== e.target.name)
         });
-     }
+    }
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
         dispatch(editProduct(id, editedProduct))
         alert(`el producto ${product.name} ha sido modificado`)
         setEditProduct({
-            name : '',
-            stock : 0,
-            price : 0,
-            type : '',
-            description : '',
-            thc : 0,
-            cbd : 0,
-            categories : []
-      });
-      navigate(-2)
+            name: '',
+            stock: 0,
+            price: 0,
+            type: '',
+            description: '',
+            thc: 0,
+            cbd: 0,
+            categories: []
+        });
+        navigate(-2)
     }
 
-    
+
 
     useEffect(() => {
         dispatch(getProductById(id))
@@ -124,35 +124,37 @@ export function EditCard() {
 
     return (
         <div>
-            <div className='create'>
-                <div className='form-create'>
-                    <div className='title-edit'>
-                    <button className='btn back' onClick={() => navigate(-1)}>
-                            <span class="material-symbols-outlined">keyboard_backspace</span>
-                    </button>
-                    <h1 className='title-text'>Edit Product</h1>
+            <div className='title-edit'>
 
-                    </div>
+                <button className='btn back' onClick={() => navigate(-1)}>
+                    <span class="material-symbols-outlined">keyboard_backspace</span>
+                </button>
+                <h1 className='title-text'>Edit Product</h1>
+            </div>
+            <div className='create'>
+
+                <div className='form-create'>
+
                     <form onSubmit={handleSubmit} className='create_form'>
-                        
+
                         <label htmlFor='name'>
-                            <span>Name: </span> 
+                            <span>Name: </span>
                             {
                                 <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
                             }
                             <input className='field' type="text" value={editedProduct.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='stock'>
-                            <span>Stock: </span> 
+                            <span>Stock: </span>
                             <input className='field' type="number" value={editedProduct.stock} placeholder='stock' name='stock' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='price'>
-                            <span>Price: </span> 
+                            <span>Price: </span>
                             <input className='field' type="number" value={editedProduct.price} placeholder='50.3' name='price' step='0.01' onChange={handleInputChange} />
                         </label>
                         <label htmlFor='type'>
-                            <span>Type: </span> 
-                            <input className='field' type="text" value={editedProduct.type} placeholder='Oil...' name='type'  onChange={handleInputChange} />
+                            <span>Type: </span>
+                            <input className='field' type="text" value={editedProduct.type} placeholder='Oil...' name='type' onChange={handleInputChange} />
                         </label>
                         <Widget
                             publicKey="269841dc43864e62c49d"
@@ -171,7 +173,7 @@ export function EditCard() {
                         }
                         <textarea className='field' name='description' value={editedProduct.description} type="text" placeholder="Description..." onChange={handleInputChange} />
                         <label htmlFor='thc'>
-                            <span>Thc: </span> 
+                            <span>Thc: </span>
                             <input className='field input-cbd' min="0" max="100" type="number" value={editedProduct.thc} placeholder='thc' name='thc' step='0.01' onChange={handleInputChange} />
                             <span>mg</span>
                         </label>
@@ -190,32 +192,26 @@ export function EditCard() {
                                     ))
                                 }
                             </select>
-                        <input className='field' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories'/>
-                        <button onClick={handleClickCategory}>Ok</button>
+                            <input className='field' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
+                            <button onClick={handleClickCategory}>Ok</button>
                         </label>
                         <button type='submit'>Modify</button>
                     </form>
-
                 </div>
-            <div className='mockup-product'>
-                <div className='img-create'>
-                    {/* {createProd.img !== '' ?
+                <div className='mockup-product'>
+                    <div className='img-create'>
+                        {/* {createProd.img !== '' ?
                     <img src={createProd.img}  atl="alt4"/>
                 : null    
                 } */}
-                    <textarea defaultValue={editedProduct.name} id='name' />
-
-                    <textarea defaultValue={editedProduct.description} id='description' />
-
-                    <h4>${editedProduct.price}</h4>7
-
-
-                </div>
-                <div className="buttons-categories">
-                {editedProduct.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
+                        <textarea defaultValue={editedProduct.name} id='name' />
+                        <textarea defaultValue={editedProduct.description} id='description' />
+                        <h4>${editedProduct.price}</h4>7
+                    </div>
                 </div>
             </div>
-                  
+            <div className="buttons-categories">
+                {editedProduct.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
             </div>
         </div>
     )

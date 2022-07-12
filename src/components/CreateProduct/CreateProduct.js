@@ -112,14 +112,14 @@ const CreateProduct = () => {
 
     return (
         <div>
+            <h1>Create Product</h1>
             <div className='create'>
                 <div className='form-create'>
-                    <h1>Create Product</h1>
                     <form onSubmit={handleSubmit} className='create_form'>
                         <label htmlFor='name'>
                             <span>Name: </span>
                             {
-                                <span  className='error-message'>{error.stateName ? error.messageName : ''}</span>
+                                <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
                             }
                             <input className='field' type="text" value={createProd.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} />
                         </label>

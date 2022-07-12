@@ -29,8 +29,8 @@ export function CardDetails() {
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <span className="material-symbols-outlined">keyboard_backspace</span>
                     </button>
-                  
-                    {userRedux.roll === "admin" || userRedux.roll === "superAdmin"&& <div className='container-buttons_edit_remove'>
+                    {console.log(userRedux.roll)}
+                    {userRedux.roll === "admin"  && <div className='container-buttons_edit_remove'>
                         <NavLink className='button buton-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                         <button className='button '>Remove</button>
                     </div>}
