@@ -55,7 +55,7 @@ const Nav = () => {
                                     </div>
                             }
                             <li className="nav-item carrito">
-                                <Link className="nav-link" to="#"><img src={Carrito} alt="alti1" /></Link>
+                                <Link className="nav-link" to="/cart"><img src={Carrito} alt="alti1" /></Link>
                             </li>
                         </ul>
                     </div>

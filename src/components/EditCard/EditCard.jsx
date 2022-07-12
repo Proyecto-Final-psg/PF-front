@@ -127,7 +127,7 @@ export function EditCard() {
             <div className='title-edit'>
 
                 <button className='btn back' onClick={() => navigate(-1)}>
-                    <span class="material-symbols-outlined">keyboard_backspace</span>
+                    <span className="material-symbols-outlined">keyboard_backspace</span>
                 </button>
                 <h1 className='title-text'>Edit Product</h1>
             </div>

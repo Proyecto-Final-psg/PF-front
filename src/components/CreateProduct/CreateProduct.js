@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
 import './CreateProduct.scss'
 import { Widget } from "@uploadcare/react-widget";
-
+import { useNavigate, } from 'react-router-dom'
 const CreateProduct = () => {
-
+    const navigate = useNavigate()
     const state = useSelector(state => state.categories);
     const dispatch = useDispatch();
     const [newCategory, setNewCategory] = useState('')
@@ -112,7 +112,15 @@ const CreateProduct = () => {
 
     return (
         <div>
-            <h1>Create Product</h1>
+
+            <div className='title-edit'>
+
+                <button className='btn back' onClick={() => navigate(-1)}>
+                    <span class="material-symbols-outlined">keyboard_backspace</span>
+                </button>
+                <h1 className='title-text'>Create Product</h1>
+            </div>
+
             <div className='create'>
                 <div className='form-create'>
                     <form onSubmit={handleSubmit} className='create_form'>
