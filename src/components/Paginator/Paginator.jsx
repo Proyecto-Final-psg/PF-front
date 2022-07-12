@@ -30,15 +30,15 @@ export function Paginator({ postsPerPage, totalPosts, paginate, currentPage }){
            <span className="material-symbols-outlined">arrow_back</span>
         </button>
             {pageNumbers.map( number => (
-                <>
+                <div key={number.toString()}>
             
-                <span className={currentPage === number ? 'active-pag' : 'inactive'}  key={number}>
-                    <button  className={currentPage === number ? 'active-pag' : 'pags inactive'} onClick={() => {paginate(number)}} >
+                <span key={number.toString()} className={currentPage === number ? 'active-pag' : 'inactive'}  >
+                    <button  className={currentPage === number ? 'active-pag' : 'pags inactive'} onClick={() => {paginate(number)}} key={number.toString()} >
                         {number}   
                     </button>
                 </span>        
-        </>))}
-        <button className='paginatorMove' onClick={up}>
+        </div>))}
+        <button className='paginatorMove' onClick={up} key='forward'>
            <span className="material-symbols-outlined">arrow_forward</span>
         </button>
         {/* </ul> */}
