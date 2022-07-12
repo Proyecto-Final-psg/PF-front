@@ -206,7 +206,7 @@ export function EditCard() {
                 } */}
                         <textarea defaultValue={editedProduct.name} id='name' />
                         <textarea defaultValue={editedProduct.description} id='description' />
-                        <h4>${editedProduct.price}</h4>7
+                        <h4>${editedProduct.price}</h4>
                     </div>
                 </div>
             </div>
