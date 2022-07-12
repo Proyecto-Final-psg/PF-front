@@ -119,7 +119,7 @@ const Account = () => {
           </div>
         </div>
       </div>
-      <Footer />
+ 
     </div>
   );
 };
