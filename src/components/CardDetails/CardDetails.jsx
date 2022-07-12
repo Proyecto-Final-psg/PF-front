@@ -6,13 +6,12 @@ import { Review } from '../Review/Review'
 import './CardDetails.scss'
 
 export function CardDetails() {
-
     const { id } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const userRedux = useSelector(state => state.user[0])
-
+    var admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     useEffect(() => {
         // console.log('id', id)
         dispatch(getProductById(id))
@@ -29,8 +28,8 @@ export function CardDetails() {
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <span className="material-symbols-outlined">keyboard_backspace</span>
                     </button>
-                    {console.log(userRedux.roll)}
-                    {userRedux.roll === "admin"  && <div className='container-buttons_edit_remove'>
+{console.log(admin)}
+                    {admin && <div className='container-buttons_edit_remove'>
                         <NavLink className='button buton-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                         <button className='button '>Remove</button>
                     </div>}

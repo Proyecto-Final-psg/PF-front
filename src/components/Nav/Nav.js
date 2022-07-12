@@ -12,11 +12,11 @@ const Nav = () => {
     const { user, isAuthenticated, loginWithRedirect } = useAuth0()
     return (
         <div>
-                 <Profile />
+            <Profile />
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/home">
-                        <img className="navbar-brand-image" src={Logo}  alt="navbar-img"/>
+                        <img className="navbar-brand-image" src={Logo} alt="navbar-img" />
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -40,21 +40,21 @@ const Nav = () => {
                             }
                             {
                                 isAuthenticated ?
-                                <li className="nav-item dropdown">
-                                    <img src={user?.picture} alt={user.name} />
-                                    <a className="nav-link dropdown-toggle" href='#' id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {user.name}
-                                    </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><Link className="dropdown-item" to="/account">Profile</Link></li>
-                                        <li><Logout /></li>
-                                    </ul>
-                                </li>
-                                :
-                                <div className='sign'>
-                                    <button className='btn_in' onClick={() => { loginWithRedirect() }}>Sign in</button>
-                                    <button className='btn_up' onClick={() => { loginWithRedirect({ screen_hint: 'signup' }) }}>Sign up</button>
-                                </div>
+                                    <li className="nav-item dropdown">
+                                        <img src={user?.picture} alt={user.name} />
+                                        <a className="nav-link dropdown-toggle" href='#' id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {user.name}
+                                        </a>
+                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <li><Link className="dropdown-item" to="/account">Profile</Link></li>
+                                            <li><Logout /></li>
+                                        </ul>
+                                    </li>
+                                    :
+                                    <div className='sign'>
+                                        <button className='btn_in' onClick={() => { loginWithRedirect() }}>Sign in</button>
+                                        <button className='btn_up' onClick={() => { loginWithRedirect({ screen_hint: 'signup' }) }}>Sign up</button>
+                                    </div>
                             }
                             <li className="nav-item carrito">
                                 <Link className="nav-link" to="#"><img src={Carrito} alt="alti1" /></Link>
