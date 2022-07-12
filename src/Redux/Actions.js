@@ -1,4 +1,6 @@
-import { API_URL, GET_ALL_PRODUCTS,GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST } from "./Constants"
+
+import { API_URL, GET_ALL_PRODUCTS,GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
+
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -13,6 +15,7 @@ export function getAllProducts() {
             })
     }
 }
+
 export function getProductById(id) {
     return function (dispatch) {
         return fetch(`${API_URL}/products/${id}`)
@@ -53,15 +56,13 @@ export function getAllCategories() {
 }
 
 export function getAllUsers() {
-    return function (dispatch) {
-        return fetch(`${API_URL}/getAllUsers`)
-            .then(res => res.json())
-            .then(data => {
-                dispatch({
-                    type: GET_ALL_USERS,
-                    payload: data
-                })
-            })
+    return async function (dispatch) {
+        const res = await fetch(`${API_URL}/getAllUsers`)
+        const data = await res.json()
+        dispatch({
+            type: GET_ALL_USERS,
+            payload: data
+        })
     }
 }
 
@@ -94,6 +95,39 @@ export function createProduct(product) {
         return fetch(`${API_URL}/products`, {
             method: 'POST',
             body: JSON.stringify(product),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+    }
+}
+
+
+export function editProduct(id, editedProduct) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/products/${id}`, {
+            method: 'PUT', // or 'PUT'
+            body: JSON.stringify(editedProduct), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: EDIT_PRODUCT,
+                    payload: data
+                })
+            })
+    }
+}
+
+
+export function changeRoles(nuevoroll) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/changeRoles`, {
+            method: 'PUT',
+            body: JSON.stringify(nuevoroll),
             headers: {
                 'Content-Type': 'application/json'
             },
