@@ -11,7 +11,7 @@ const Card = ({ name, id, description, img, price, stock }) => {
   const dispatch = useDispatch()
 
   function addItemToCart() {
-    dispatch(addToCart( id,name, img, price,))
+    dispatch(addToCart( id,name, price,))
   }
 
 

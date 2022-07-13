@@ -1,5 +1,5 @@
 
-import { API_URL, GET_ALL_PRODUCTS, GET_ALL_ITEMS, ADD_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
+import { API_URL, GET_ALL_PRODUCTS, GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT } from "./Constants"
 
 
 export function getAllProducts() {
@@ -90,7 +90,7 @@ export const addGuest = (guest) => {
     )
 }
 
-export const addToCart = (id, name, img, price) => {
+export const addToCart = (id, name, price, cant) => {
     return (
         {
             type: ADD_TO_CART,
@@ -98,12 +98,37 @@ export const addToCart = (id, name, img, price) => {
                 id: id,
                 name: name,
                 price: price,
-                img: img,
                 cant: 1
             }
         }
     )
 }
+
+export const deleteToCart = (id) => {
+    return (
+        {
+            type: DELETE_TO_CART,
+            payload: id
+        }
+    )
+}
+
+
+export const updateToCart = (id, name, price, contador) => {
+    return (
+        {
+            type: UPDATE_TO_CART,
+            payload: {
+                id: id,
+                name: name,
+                price: price,
+                cant: contador
+            }
+        }
+    )
+}
+
+
 
 export const getAllItems = () => {
     return (
