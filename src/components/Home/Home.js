@@ -10,6 +10,7 @@ import CreateProduct from "../CreateProduct/CreateProduct";
 import Users from "../Users/Users";
 import Cart from "../Cart/Cart";
 import Footer from "../Footer/Footer";
+import { Metrics } from "../Metrics/Metrics";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
         <Route path='/users' element={<Users />}></Route>
         <Route path='/account' element={<Account />} exact />
         <Route path='/cart' element={<Cart />} exact />
+        <Route path='/metrics' element={<Metrics />} />
       </Routes>
       <Footer />
     </div>
