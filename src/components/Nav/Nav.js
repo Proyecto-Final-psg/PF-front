@@ -3,13 +3,12 @@ import Logo from './logo_navbar.png'
 import Carrito from './carrito.png'
 import { useAuth0 } from '@auth0/auth0-react'
 import './Nav.scss'
-import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile'
 import { useSelector } from 'react-redux'
 
 const Nav = () => {
     const userRedux = useSelector(state => state.user[0])
-    const { user, isAuthenticated, loginWithRedirect } = useAuth0()
+    const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
     var admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     return (
         <div>
@@ -61,7 +60,7 @@ const Nav = () => {
                     </div>
                 </div>
             </nav> */}
-            <nav className="navbar is-light has-shadow" role="navigation" aria-label="main navigation">
+            <nav className="navbar is-light is-fixed-top nav" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand logo_container">
                     <Link className="brand" to="/home">
                         <img src={Logo} />
@@ -103,8 +102,8 @@ const Nav = () => {
                                             Profile
                                         </Link>
                                         <hr className="navbar-divider" />
-                                        <a className="navbar-item">
-                                            <Logout />
+                                        <a className="navbar-item" onClick={() => logout({ returnTo: window.location.origin })}>
+                                            Log out
                                         </a>
                                     </div>
                                 </div>
