@@ -7,7 +7,7 @@ let helpCommands = ""
 
 
 const config = {
-    initialMessages: [createChatBotMessage(`Welcome to Weedical, this are some messages that you can write down below:`),createChatBotMessage("Help - Discounts")],
+    initialMessages: [createChatBotMessage(`Welcome to Weedical!`),createChatBotMessage("Some options that you can ask me => Help - Discounts - About - Contact - Diseases")],
     botName: "Weedbot",
     customComponents: {
         botAvatar:(props) => <BotAvatar {...props} />
