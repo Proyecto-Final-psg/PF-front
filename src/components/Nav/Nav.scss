@@ -1,5 +1,3 @@
-
-
 .collapse {
     position: relative;
 }
@@ -10,6 +8,7 @@
     position: absolute;
     right: 100px;
 }
+
 .dropdown img {
     height: 26px;
     border-radius: 50%;
@@ -30,7 +29,8 @@
     padding-bottom: 20px;
 }
 
-.btn_in, .btn_up {
+.btn_in,
+.btn_up {
     width: 80px;
     height: 40px;
     outline: none;
@@ -50,28 +50,58 @@
     border: none;
     transition: all 0.3s ease-in-out;
 }
+
 .btn_up:hover {
     background-color: #2B5800;
 }
 
 .carrito img {
-position: absolute;
-      right: 50px;
+    position: absolute;
+   /*  right: 50px; */
+    /* bottom: 20px; */
     height: 26px;
-    transition:2s;
+    transition: 2s;
 }
 
-.navbar-brand-image{
+.navbar-brand-image {
     width: 40px;
 }
 
+/////////////////////////////////////////////////////////
+
+.user_dropdown {
+    margin-right: 100px;
+}
+
+.logo_container {
+    height: 100%;
+    padding: 0;
+}
+
+.brand {
+    width: 50px;
+    height: 100%;
+    padding: 0;
+}
+
+.brand img {
+    width: 100%;
+    height: auto;
+    margin-left: 20px;
+}
+
+.avatar img {
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
 @media (max-width: 992px) {
-    .carrito img  {
-     
+    .carrito img {
+
         right: 70px;
         top: 5px;
         height: 26px;
-        transition:2s;
+        transition: 2s;
     }
 
 }
