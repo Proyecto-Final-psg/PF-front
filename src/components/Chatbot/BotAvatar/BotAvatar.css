@@ -1,0 +1,13 @@
+.bot-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%;
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+    /* background-color: red; */
+    background-image: url('../../../assets/weed.jpg');
+    background-position: center;
+    background-size: cover;
+}
