@@ -119,7 +119,7 @@ export function Metrics() {
         <hr />
         <div className="lower-10">
 
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr style={{border:"1px solid black"}}>
                         <th scope="col">#</th>
