@@ -119,29 +119,28 @@ const CreateProduct = () => {
                 </button>
                 <h1 className='title-text'>Create Product</h1>
             </div>
-
             <div className='create'>
                 <div className='form-create'>
                     <form onSubmit={handleSubmit} className='create_form'>
-                        <label htmlFor='name'>
-                            <span>Name: </span>
+                        <div className='input_container'>
+                        <label htmlFor='name'>Name: </label>
                             {
                                 <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
                             }
-                            <input className='field' type="text" value={createProd.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} />
-                        </label>
-                        <label htmlFor='stock'>
-                            <span>Stock: </span>
-                            <input className='field' type="number" value={createProd.stock} placeholder='stock' name='stock' onChange={handleInputChange} />
-                        </label>
-                        <label htmlFor='price'>
-                            <span>Price: </span>
-                            <input className='field' type="number" value={createProd.price} placeholder='50.3' name='price' step='0.01' onChange={handleInputChange} />
-                        </label>
-                        <label htmlFor='type'>
-                            <span>Type: </span>
-                            <input className='field' type="text" value={createProd.type} placeholder='Oil...' name='type' onChange={handleInputChange} />
-                        </label>
+                            <input className='input is-small is-hovered is-success' type="text" value={createProd.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} autoComplete='off'/>
+                        </div>
+                        <div className='input_container'>
+                        <label htmlFor='stock'>Stock: </label>
+                            <input className='input is-small is-hovered is-success' type="number" value={createProd.stock} placeholder='stock' name='stock' onChange={handleInputChange} />
+                        </div>
+                        <div className='input_container'>
+                        <label htmlFor='price'>Price: </label>
+                            <input className='input is-small is-hovered is-success' type="number" value={createProd.price} placeholder='50.3' step='0.01' name='price' onChange={handleInputChange} />
+                        </div>
+                        <div className='input_container'>
+                        <label htmlFor='type'>Type: </label>
+                            <input className='input is-small is-hovered is-success' type="text" value={createProd.type} placeholder='Oil...' name='type' onChange={handleInputChange} autoComplete='off'/>
+                        </div>
                         <Widget
                             publicKey="269841dc43864e62c49d"
                             Clearable={true}
@@ -154,22 +153,21 @@ const CreateProduct = () => {
                                 })
                             }}
                         />
-                        {
-                            <span className='error-message'>{error.stateMessage ? error.messageDescription : ''}</span>
-                        }
-                        <textarea className='field' name='description' value={createProd.description} type="text" placeholder="Description..." onChange={handleInputChange} />
-                        <label htmlFor='thc'>
-                            <span>Thc: </span>
-                            <input className='field input-cbd' min="0" max="100" type="number" value={createProd.thc} placeholder='thc' name='thc' step='0.01' onChange={handleInputChange} />
-                            <span>mg</span>
-                        </label>
-                        <label htmlFor='cbd' >
-                            <span>Cbd: </span>
-                            <input className='field input-cbd' min="0" max="100" type="number" value={createProd.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
-                            <span>mg</span>
-                        </label>
-
-                        <label htmlFor='categories'>
+                        <div className='input_container'>
+                            {
+                                <span className='error-message'>{error.stateMessage ? error.messageDescription : ''}</span>
+                            }
+                            <textarea className='textarea is-small is-hovered is-success' name='description' value={createProd.description} type="text" placeholder="Description..." onChange={handleInputChange} />
+                        </div>
+                        <div className='input_container'>
+                        <label htmlFor='thc'>Thc:</label>
+                            <input className='input is-small is-hovered is-success' min="0" max="100" type="number" value={createProd.thc} placeholder='thc' name='thc' step='0.01' onChange={handleInputChange} />
+                        </div>
+                        <div className='input_container'>
+                            <label htmlFor='cbd' >Cbd:</label>
+                                <input className='input is-small is-hovered is-success' min="0" max="100" type="number" value={createProd.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
+                        </div>
+                        <div className='select is-success'>
                             <select className='field' type='text' name='categories' onChange={handleSelectCategories} >
                                 <option value="" disabled selected>Categories</option>
                                 {
@@ -178,30 +176,33 @@ const CreateProduct = () => {
                                     ))
                                 }
                             </select>
-                            <input className='field' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
-                            <button onClick={handleClickCategory}>Ok</button>
-                        </label>
-                        <button type='submit'>Crear</button>
+                        </div>
+                            <div className='input_container'>
+                                <input className='input is-small is-success' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
+                                <button className='btn_category' onClick={handleClickCategory}>Add</button>
+                            </div>
+                        <button className='btn_create' type='submit'>Create</button>
                     </form>
+                
+                    <div className='mockup-product'>
+                        <div className='img-create'>
+                            <textarea className='img-create_title' defaultValue={createProd.name} id='name' />
+                            {console.log(createProd.img)}
+                            {
+                                createProd.img !== '' ?
+                                    <img src={createProd.img} alt="alt4" />
+                                    : null
+                            }
+                            <textarea defaultValue={createProd.description} id='description' />
+                            <h4>${createProd.price}</h4>
 
-                </div>
-                <div className='mockup-product'>
-                    <div className='img-create'>
-                        <textarea className='img-create_title' defaultValue={createProd.name} id='name' />
-                        {console.log(createProd.img)}
-                        {
-                            createProd.img !== '' ?
-                                <img src={createProd.img} alt="alt4" />
-                                : null
-                        }
-                        <textarea defaultValue={createProd.description} id='description' />
-                        <h4>${createProd.price}</h4>
-
-                    </div>
-                    <div className="buttons-categories">
-                        {createProd.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
+                        </div>
+                        <div className="buttons-categories">
+                            {createProd.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
+                        </div>
                     </div>
                 </div>
+                
 
             </div>
         </div>
