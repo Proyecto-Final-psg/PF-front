@@ -27,6 +27,7 @@ const Profile = () => {
             let nuevo = {
                 email: user.email,
                 name: user.name,
+                img: user.picture,
                 token: user.token
             }
             dispatch(registerUser(nuevo))
