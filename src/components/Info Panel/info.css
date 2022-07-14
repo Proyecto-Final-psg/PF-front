@@ -1,11 +1,13 @@
 .info{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: top;
     align-items: center;
     text-align: center;
-    padding: 50px;
-    height: 200px;
+    padding-top: 30px;
+width: 10%;
+min-width: 190px;
+
     /* background-color: rgb(222, 233, 243); */
 }
 
