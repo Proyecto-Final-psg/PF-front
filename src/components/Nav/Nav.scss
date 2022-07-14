@@ -1,32 +1,32 @@
-.collapse {
-    position: relative;
+
+.nav {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);  
 }
 
-.dropdown {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 100px;
+.user_dropdown {
+    margin-right: 100px;
 }
 
-.dropdown img {
-    height: 26px;
+.logo_container {
+    height: 100%;
+    padding: 0;
+}
+
+.brand {
+    width: 70px;
+    height: 100%;
+    padding: 0;
+}
+
+.brand img {
+    width: 50px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.avatar img {
+    margin-right: 15px;
     border-radius: 50%;
-}
-
-.dropdown-menu {
-    text-align: center;
-}
-
-.sign {
-    width: 250px;
-    height: 40px;
-    position: absolute;
-    right: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
 }
 
 .btn_in,
@@ -42,60 +42,61 @@
 .btn_in {
     border: 1px solid #438a00;
     color: #438a00;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn_up {
     background-color: #438a00;
     color: #fff;
     border: none;
+    margin-left: 15px;
     transition: all 0.3s ease-in-out;
 }
 
 .btn_up:hover {
     background-color: #2B5800;
 }
+.btn_in:hover {
+    color: #fff;
+    background-color: #438a00;
+}
 
-.carrito img {
+.burger {
     position: absolute;
-   /*  right: 50px; */
-    /* bottom: 20px; */
-    height: 26px;
-    transition: 2s;
+    right: 0;
+    margin-left: 100px;
 }
 
-.navbar-brand-image {
-    width: 40px;
+.menu-resp {
+    width: 200px;
+    /* 23 */
+    position: absolute;
+    z-index: 10;
+    background: #fff;
+    /* border: 1px solid #181818; */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    top: 3.5rem;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
 }
 
-///////////////////////////////////////////////////////// 
-.nav {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);  
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.user_dropdown {
-    margin-right: 100px;
+.item {
+    width: 170px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.logo_container {
-    height: 100%;
-    padding: 0;
-}
-
-.brand {
-    width: 50px;
-    height: 100%;
-    padding: 0;
-}
-
-.brand img {
-    width: 100%;
-    height: auto;
-    margin-left: 20px;
-}
-
-.avatar img {
-    margin-right: 15px;
-    border-radius: 50%;
+.is-active {
+    transform: translate(0);
 }
 
 @media (max-width: 992px) {
@@ -106,5 +107,5 @@
         height: 26px;
         transition: 2s;
     }
-
+    
 }
