@@ -3,15 +3,15 @@
 @import '../../scss/mixins.scss';
 
 .card {
-    width: 200px;
-    height: 370px;
-    border-radius: 20px;
+    width: 215px;
+    height: 395px;
+    border-radius: 4px;
     background: #ffffff;
     position: relative;
-    border: 2px solid #c3c6ce;
+    border: 2px solid #c3c6ce65;
     transition: 0.5s ease-out;
     overflow: hidden;
-    margin: 15px;
+    margin: 10px;
     display: flex;
     align-items: center;
     // @include respond-to('medium') {
@@ -31,7 +31,7 @@
 .card-button {
     transform: translate(-50%, 125%);
     width: 60%;
-    border-radius: 1rem;
+    border-radius: 4px;
     border: none;
     background-color: #6dc007;
     color: #fff;
@@ -49,15 +49,15 @@
     width: 60%;
     text-align: center;
     border: none;
-    border-radius: 1rem;
+    border-radius: 4px;
     background-color: #6dc007;
     color: #fff;
     position: absolute;
     left: 50%;
-    bottom: 40px;
+    bottom: 45px;
     opacity: 0;
     transition: 0.3s ease-out;
-    box-shadow: 0px 5px 13px 3px rgba(0,0,0,0.7);
+    box-shadow: 0px 5px 13px 3px rgba(0, 0, 0, 0.219);
 }
 
 .low {
@@ -70,7 +70,7 @@
 
 .text-body {
     position: absolute;
-    top: 370px;
+    top: 395px;
     font-size: small;
     color: rgb(134, 134, 134);
     transition: 1s;
@@ -121,9 +121,9 @@ background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87,87,87,0)
 }
 
 .card:hover .card-button {
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, -19%);
     opacity: 1;
-    box-shadow: 0px 5px 13px 3px rgba(0,0,0,0.7);
+    box-shadow: 0px 5px 13px 3px rgba(0, 0, 0, 0.219);
 }
 
 .card:hover .stock {
@@ -140,7 +140,7 @@ background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87,87,87,0)
     position: absolute;
     width: 100%;
     text-align: center;
-    top: 320px;
+    top: 345px;
     color: #438a00;
     font-weight: 700;
     }

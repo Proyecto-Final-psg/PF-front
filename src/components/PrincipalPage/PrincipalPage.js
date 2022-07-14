@@ -9,7 +9,7 @@ const PrincipalPage = () => {
     return (
         <div>
             <Carousel />
-            <Info />
+          
             <Grid />
 
         </div>
