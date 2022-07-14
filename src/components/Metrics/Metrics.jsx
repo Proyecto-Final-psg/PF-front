@@ -38,22 +38,33 @@ export function Metrics() {
     const stock = document.getElementById('stock')
     const bestSell = document.getElementById('bestSell')
     const userMgm = document.getElementById('userMgm')
+    const userCrud = document.getElementById('userCrud')
 
     if(itemSelected === 'stock'){
       stock.classList.add('is-active')
       bestSell.classList.remove('is-active')
       userMgm.classList.remove('is-active')
+      userCrud.classList.remove('is-active')
     }
     if(itemSelected === 'bestSell'){
       bestSell.classList.add('is-active')
       stock.classList.remove('is-active')
       userMgm.classList.remove('is-active')
+      userCrud.classList.remove('is-active')
     }
     if(itemSelected === 'userMgm'){
       userMgm.classList.add('is-active')
       bestSell.classList.remove('is-active')
       stock.classList.remove('is-active')
+      userCrud.classList.remove('is-active')
     }
+    if(itemSelected === 'userCrud'){
+      userCrud.classList.add('is-active')
+      stock.classList.remove('is-active')
+      bestSell.classList.remove('is-active')
+      userMgm.classList.remove('is-active')
+    }
+
   },[itemSelected])
 
 
@@ -85,11 +96,18 @@ export function Metrics() {
       </NavLink></li>
   </ul>
       <p class="menu-label">
-        Administration
+      User Management
       </p>
       <ul class="menu-list">
         <li onClick={menuSelected}><NavLink id="userMgm" to='user-management'>
-        User Management
+        User Rol
+        <span class="iconMenu material-symbols-outlined">badge</span>
+        </NavLink></li>
+      </ul>
+
+      <ul class="menu-list">
+        <li onClick={menuSelected}><NavLink id="userCrud" to='user-crud'>
+        User CRUD
         <span class="iconMenu material-symbols-outlined">manage_accounts</span>
         </NavLink></li>
       </ul>

@@ -4,14 +4,14 @@
 }
 
 .react-chatbot-kit-chat-inner-container {
-    background: rgb(34,193,195);
-background: linear-gradient(0deg, rgba(34,193,195,0.802025033646271) 0%, rgba(253,187,45,0.7964227927499125) 100%);
+    background: rgb(33,139,68);
+    background: linear-gradient(180deg, rgba(33,139,68,0.8748541652989321) 0%, rgba(255,255,255,0.9196720924698004) 100%);
     border-radius: 20px;
     height: 90%;
 }
 
 .react-chatbot-kit-chat-header {
-    background-color: rgba(4, 154, 19, 0.368);
+    background-color: rgb(4, 154, 19);
     color: white;
     border-radius: 20px 20px 0px 0px;
 }
@@ -20,9 +20,14 @@ background: linear-gradient(0deg, rgba(34,193,195,0.802025033646271) 0%, rgba(25
     border-radius: 20px;
 }
 
-.react-chatbot-kit-chat-input {
+.react-chatbot-kit-chat-input-form{
     border-radius: 0px 0px 0px 20px;
-    border: 2px solid black;
+    background-color: transparent;
+}
+
+.react-chatbot-kit-chat-input {
+    border-radius: 20px 0px 0px 0px;
+    border: 1px solid black;
 }
  
 .chatbot{
