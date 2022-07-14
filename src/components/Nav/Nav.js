@@ -49,13 +49,13 @@ const Nav = () => {
                                     </div>
                                     <div className='item'>
                                         <Link className="navbar-item" to="/users">
-                                            Users role
+                                            User rol
                                         </Link>
                                         <FontAwesomeIcon icon={faUsers} />
                                     </div>
                                     <div className='item'>
                                         <Link className="navbar-item" to="/metrics">
-                                            Metrics
+                                            Admin panel
                                         </Link>
                                         <FontAwesomeIcon icon={faSignal} />
                                     </div>
@@ -99,10 +99,10 @@ const Nav = () => {
                                 </Link>
 
                                 <Link className="navbar-item" to="/users">
-                                    Users role
+                                    User rol
                                 </Link>
                                 <Link className="navbar-item" to="/metrics">
-                                    Metrics
+                                    Admin panel
                                 </Link>
                             </>
                         }

@@ -15,6 +15,9 @@ import config from "../Chatbot/Chatbot/config";
 import MessageParser from "../Chatbot/Chatbot/MessageParser";
 import ActionProvider from "../Chatbot/Chatbot/actionProvider";
 import { useState } from 'react'
+import { StockManagement } from "../Metrics/StockManagement/StockManagement";
+import { MostRequiredProduct } from "../Metrics/MostRequiredProduct/MostRequiredProduct";
+import { UserManagement } from "../Metrics/UserManagement/UserManagement";
 
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
@@ -42,7 +45,12 @@ const Home = () => {
         <Route path='/users' element={<Users />}></Route>
         <Route path='/account' element={<Account />} exact />
         <Route path='/cart' element={<Cart />} exact />
-        <Route path='/metrics' element={<Metrics />} />
+        <Route path='/metrics' element={<Metrics />}>
+          <Route index element={<StockManagement />} />
+          <Route path='stock-management' element={<StockManagement />} />
+          <Route path='most-required-product' element={<MostRequiredProduct />} />
+          <Route path='user-management' element={<UserManagement />} />
+        </Route>
       </Routes>
 
       <div className="bot" id='bot' >

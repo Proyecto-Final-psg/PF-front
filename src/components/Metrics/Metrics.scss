@@ -1,9 +1,32 @@
+.metricas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#stock, #userMgm, #bestSell{
+    display: flex;
+    align-items: center;
+}
+
+
+.menuItem{
+    display: flex;
+    align-items: center;
+}
+
+.iconMenu{
+    padding-left: 10px;
+}
+
 .lower-10{
     display: flex;
     justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    // width: 100%;
     // margin: 20px;
 }
 
@@ -16,8 +39,38 @@
 }
 
 .datas{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    // width: 40%;
+//   height: 96vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+//   background-color: lightgreen;
+}
+
+.datas h1{
+    font-size: 40px;
+}
+
+.no-stock{
+    background-color: red;
+    color: white;
+}
+
+.link{
+    color: white;
+}
+
+.lower-than-10{
+    background-color: #e2c259;
+    color: white;
+}
+
+.lower-than-50{
+    background-color: blue;
+    color: white;
+}
+
+.is-active{
+    background-color: green($color: white);
 }
