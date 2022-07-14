@@ -23,6 +23,7 @@ const Nav = () => {
     var admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     return (
         <div>
+            <Profile/>
             <nav className="navbar is-light is-fixed-top nav" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand logo_container">
                     <Link className="brand" to="/home">
