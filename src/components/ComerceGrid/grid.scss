@@ -4,14 +4,21 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .btn-filter-reset {
+    width: 120px;
+    height: 40px;
+    outline: none;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 4px;
     background-color: #438a00;
-    color: white;
-    border-width: 0;
-    border-radius: 5px;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+
 }
 
 .btn-filter-reset:hover {
@@ -20,41 +27,42 @@
 
 
 .filters {
-    margin-top: 55px;
-    width: 250px;
-    padding: 20px;
+    margin-top: 10px;
+    width: 25%;
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
-
+    min-width: 200px;
 }
 
 .form {
-    width: 230px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     border-style: groove;
     border-width: 1px;
-    border-radius: 20px;
-    padding: 0.8em;
-    border: none;
-    border: 2px solid;
-    border-color: #baea7f;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+    padding: 1.5em;
+
+    border-color: #baea7f8e;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
 }
 
 .cards {
 
-    width: 60%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 50px;
-    padding-top: 10px;
+    padding: 20px;
+    padding-top: 25px;
+    max-width: 750px;
 }
 
 /* From uiverse.io */
@@ -89,8 +97,11 @@
 .filter-list {
     list-style-type: none;
     display: flex;
-    flex-direction: column;
-    padding-left: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    align-items: center;
 }
 
 .btn-filter {
@@ -133,7 +144,7 @@
     background-color: #438a00;
     color: white;
     border-width: 0;
-    border-radius: 5px;
+    border-radius: 1px;
     margin: 3px;
 }
 
@@ -145,7 +156,7 @@
     background-color: #438a00;
     color: white;
     border-width: 0;
-    border-radius: 5px;
+    border-radius: 1px;
     margin: 3px;
     margin-left: 13px;
 }
@@ -156,9 +167,43 @@
 
 
 .grid-input {
-    text-align: center;
+    width: 100%;
+    text-align: left;
     border-color: #baea7f;
-    border-radius: 5px;
-    background-color: #baea7f17;
-    box-shadow: inset  0 3px 3px 0 rgba(0, 0, 0, 0.13);;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: 1s;
+}
+
+.btn_up1 {
+    width: 80px;
+    height: 40px;
+    outline: none;
+    font-size: 12px;
+    font-weight: bolder;
+    border-radius: 4px;
+    background-color: #ffffff94;
+    color: rgb(0, 0, 0);
+    border-color: #baea7f;
+    border-width: 1px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+    box-shadow: none;
+}
+
+.btn_up1:hover {
+    background-color: #7bff0048;
+}
+
+.grid-label {
+    color: #4f4f4fad;
+    margin-bottom: 9px;
+}
+
+@media (max-width: 525px) {
+    .filters {
+        width: 90%;
+
+    }
 }
