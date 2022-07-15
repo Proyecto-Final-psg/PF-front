@@ -13,7 +13,7 @@ const Nav = () => {
     const [nav, setNav] = useState('')
     const userRedux = useSelector(state => state.user[0])
     const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
-console.log(userRedux)
+
     const handleMenu = (e) => {
         e.preventDefault()
         if (nav === '') setNav('is-active')
@@ -50,7 +50,7 @@ console.log(userRedux)
                                     </div>
                                     <div className='item'>
                                         <Link className="navbar-item" to="/users">
-                                            User rol
+                                            User role
                                         </Link>
                                         <FontAwesomeIcon icon={faUsers} />
                                     </div>
@@ -88,9 +88,7 @@ console.log(userRedux)
                 </div>
 
                 <div id="navbarBasicExample" className="navbar-menu">
-                    {
-                        console.log(userRedux)
-                    }
+                   
                     <div className="navbar-start">
                         {
                             admin &&
@@ -100,7 +98,7 @@ console.log(userRedux)
                                 </Link>
 
                                 <Link className="navbar-item" to="/users">
-                                    User rol
+                                    User role
                                 </Link>
                                 <Link className="navbar-item" to="/metrics">
                                     Admin panel
