@@ -79,7 +79,6 @@ export function Metrics() {
     {/* <h1 className="mt-5">Metrics</h1> */}
     <hr />
     <aside class="menu" style={{marginTop:"50px",paddingLeft:"50px"}}>
-
     <p class="menu-label">
     Metrics
   </p>
