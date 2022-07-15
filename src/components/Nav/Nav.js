@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Logo from './logo_navbar.png'
 import Carrito from './carrito.png'
+import noImage from '../.././assets/no_user_image.jpeg'
 import { useAuth0 } from '@auth0/auth0-react'
 import './Nav.scss'
 import Profile from '../Profile/Profile'
@@ -97,9 +98,9 @@ const Nav = () => {
                                     Create product
                                 </Link>
 
-                                <Link className="navbar-item" to="/users">
+                                {/* <Link className="navbar-item" to="/users">
                                     User role
-                                </Link>
+                                </Link> */}
                                 <Link className="navbar-item" to="/metrics">
                                     Admin panel
                                 </Link>
@@ -115,7 +116,8 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <a className="navbar-link avatar">
-                                        <img src={userRedux.user_img} alt='user' />
+                        
+                                        <img src={userRedux.user_img ? userRedux.user_img : noImage} alt='user' />
                                         <p>{userRedux.user_name}</p>
                                     </a>
 
