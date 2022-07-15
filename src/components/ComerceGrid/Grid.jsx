@@ -147,7 +147,7 @@ function Grid() {
                     {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select >
                 <br></br>
-                <input type="submit" value="Search" className='btn_up' />
+                <input type="submit" value="Search" className='btn_search' />
             </form>
 
             <div className='form'>
