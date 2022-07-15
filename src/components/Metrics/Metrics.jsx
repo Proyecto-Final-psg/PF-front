@@ -9,6 +9,7 @@ import './Metrics.scss'
 import { MostRequiredProduct } from "./MostRequiredProduct/MostRequiredProduct";
 import { StockManagement } from "./StockManagement/StockManagement";
 import { useState } from "react";
+import { Start } from "./Start/Start";
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
@@ -30,6 +31,10 @@ export function Metrics() {
 
   const [itemSelected , setItemSelected ] = useState('')
 
+  useEffect(()=>{
+    return setItemSelected('')
+  },[])
+
   useEffect(() => {
     dispatch(getAllProducts())
   }, [])
@@ -39,30 +44,42 @@ export function Metrics() {
     const bestSell = document.getElementById('bestSell')
     const userMgm = document.getElementById('userMgm')
     const userCrud = document.getElementById('userCrud')
+    const topCustomer = document.getElementById('topCustomer')
 
     if(itemSelected === 'stock'){
       stock.classList.add('is-active')
       bestSell.classList.remove('is-active')
       userMgm.classList.remove('is-active')
       userCrud.classList.remove('is-active')
+      topCustomer.classList.remove('is-active')
     }
     if(itemSelected === 'bestSell'){
       bestSell.classList.add('is-active')
       stock.classList.remove('is-active')
       userMgm.classList.remove('is-active')
       userCrud.classList.remove('is-active')
+      topCustomer.classList.remove('is-active')
     }
     if(itemSelected === 'userMgm'){
       userMgm.classList.add('is-active')
       bestSell.classList.remove('is-active')
       stock.classList.remove('is-active')
       userCrud.classList.remove('is-active')
+      topCustomer.classList.remove('is-active')
     }
     if(itemSelected === 'userCrud'){
       userCrud.classList.add('is-active')
       stock.classList.remove('is-active')
       bestSell.classList.remove('is-active')
       userMgm.classList.remove('is-active')
+      topCustomer.classList.remove('is-active')
+    }
+    if(itemSelected === 'topCustomer'){
+      topCustomer.classList.add('is-active')
+      stock.classList.remove('is-active')
+      bestSell.classList.remove('is-active')
+      userMgm.classList.remove('is-active')
+      userCrud.classList.remove('is-active')
     }
 
   },[itemSelected])
@@ -78,26 +95,26 @@ export function Metrics() {
     </div>
     {/* <h1 className="mt-5">Metrics</h1> */}
     <hr />
-    <aside class="menu shadow" style={{marginTop:"50px",paddingLeft:"50px",height:"100%",padding:"20px"}}>
+    <aside className="menu shadow" style={{marginTop:"50px",paddingLeft:"50px",height:"100%",padding:"20px"}}>
 
-    <p class="menu-label">
+    <p className="menu-label">
     Metrics
   </p>
   <ul class="menu-list">
     <li onClick={menuSelected}><NavLink  id="stock" to='stock-management'>
 
         Stock Management 
-        <span class="iconMenu material-symbols-outlined">inventory</span>
+        <span id="stock" className="iconMenu material-symbols-outlined">inventory</span>
 
       </NavLink></li>
     <li onClick={menuSelected}><NavLink id="bestSell" to='most-required-product'>
       Best selling products
-      <span class="iconMenu material-symbols-outlined">trending_up</span>
+      <span id="bestSell" className="iconMenu material-symbols-outlined">trending_up</span>
       </NavLink></li>
 
-      <li onClick={menuSelected}><NavLink id="bestSell" to='top-customers'>
+      <li onClick={menuSelected}><NavLink id="topCustomer" to='top-customers'>
       Top Customers
-      <span class="iconMenu material-symbols-outlined">face</span>
+      <span id="topCustomer" className="iconMenu material-symbols-outlined">face</span>
       </NavLink></li>
   </ul>
       <p class="menu-label">
@@ -106,19 +123,23 @@ export function Metrics() {
       <ul class="menu-list">
         <li onClick={menuSelected}><NavLink id="userMgm" to='user-management'>
         User Rol
-        <span class="iconMenu material-symbols-outlined">badge</span>
+        <span id="userMgm" className="iconMenu material-symbols-outlined">badge</span>
         </NavLink></li>
       </ul>
 
       <ul class="menu-list">
         <li onClick={menuSelected}><NavLink id="userCrud" to='user-crud'>
         User CRUD
-        <span class="iconMenu material-symbols-outlined">manage_accounts</span>
+        <span id="userCrud" className="iconMenu material-symbols-outlined">manage_accounts</span>
         </NavLink></li>
-      </ul>
-     
+      </ul>  
     </aside>
 
-      <Outlet />
+    
+      {itemSelected === '' ?
+        <Start />
+      :
+        <Outlet />
+      }
   </div>
 }

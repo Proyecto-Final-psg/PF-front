@@ -65,7 +65,8 @@ const Home = () => {
                     actionProvider={ActionProvider}
                 />
             </div>
-            <button className='chatbot' onClick={showMeTheBot}>
+            
+            <button className='chatbot chat-button' onClick={showMeTheBot}>
             <span class="material-symbols-outlined">
 smart_toy
 </span>
