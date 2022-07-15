@@ -43,6 +43,7 @@ const Account = () => {
               <div className="cardAcc">
                 <div className="card-image">
                   {usr[0].user_img 
+                  
                   ?
                   <img src={usr[0].user_img} alt='profile pic' />
                   :
