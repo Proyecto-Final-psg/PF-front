@@ -13,6 +13,7 @@ function Grid() {
     const allProducts = useSelector(store => store.products)
     const allCategories = useSelector(store => store.categories)
 
+
     const dispatch = useDispatch()
 
     function compare(a, b) {
@@ -124,8 +125,21 @@ function Grid() {
 
             <form className='form' onSubmit={productsByName}>
                 <h4>FILTERS</h4>
-    
-                <input className="grid-input" type="text" name="name" id="name" placeholder='Enter name product' onChange={fillProdSearch} />
+
+                <input list='products' autoComplete='off' className="grid-input" type="text" name="name" id="name" placeholder='Enter name product' onChange={fillProdSearch} />
+                <datalist id='products'>
+
+                    {
+                        allProducts.map(product => {
+                            return (<option className='form'>{product.name}</option>)
+                        })
+                        ||
+                        allCategories.map(product => {
+                            return (<option>{product.category}</option>)
+                        })
+                    }
+
+                </datalist>
                 <br></br>
                 <label className="grid-label">By category</label>
                 <select className="grid-input" name="category" id="" onChange={handleFilterCategory}>
@@ -135,7 +149,7 @@ function Grid() {
                 <br></br>
                 <input type="submit" value="Search" className='btn_up' />
             </form>
-     
+
             <div className='form'>
                 <span className="grid-label">Order by</span>
                 <ul className="filter-list">

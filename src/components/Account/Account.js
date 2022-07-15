@@ -10,14 +10,14 @@ import Footer from '../Footer/Footer.jsx'
 
 const Account = () => {
   const usr = useSelector((store) => store.user);
-  useEffect(() => {
-    console.log(user);
-  }, [usr]);
+  // useEffect(() => {
+  //   console.log(user);
+  // }, [usr]);
 
   const { user } = useAuth0();
-  useEffect(() => {
-    console.log(user);
-  }, []);
+  // useEffect(() => {
+  //   console.log(user);
+  // }, []);
 
   return (
     <div className="a">
@@ -42,9 +42,10 @@ const Account = () => {
             
               <div className="cardAcc">
                 <div className="card-image">
-                  {user && user.picture 
+                  {usr[0].user_img 
+                  
                   ?
-                  <img src={user.picture} alt='profile pic' />
+                  <img src={usr[0].user_img} alt='profile pic' />
                   :
                   <img src={boy2} alt='profile pic' />
                   }

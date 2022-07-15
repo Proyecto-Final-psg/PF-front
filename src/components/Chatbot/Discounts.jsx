@@ -13,7 +13,7 @@ export function Discounts(props){
         })
         console.log(props)
     },[])
-    return <div style={{color:"white"}}>
+    return <div>
         <h4 style={{fontWeight:"bold"}}>We have 10% disconunt in this products!</h4>
         <ol>
 

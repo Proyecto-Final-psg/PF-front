@@ -19,6 +19,10 @@ import { StockManagement } from "../Metrics/StockManagement/StockManagement";
 import { MostRequiredProduct } from "../Metrics/MostRequiredProduct/MostRequiredProduct";
 import { UserManagement } from "../Metrics/UserManagement/UserManagement";
 import { UserCrud } from "../Metrics/UserCRUD/UserCrud";
+import { TopCustomers } from "../Metrics/TopCustomers/TopCustomers";
+import { Orders } from "../Metrics/Orders/Orders";
+import { OrderDetailed } from "../Metrics/Orders/OrderDetailed/OrderDetailed";
+
 
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
@@ -52,6 +56,10 @@ const Home = () => {
           <Route path='most-required-product' element={<MostRequiredProduct />} />
           <Route path='user-management' element={<UserManagement />} />
           <Route path='user-crud' element={<UserCrud />} />
+          <Route path='top-customers' element={<TopCustomers />} />
+            <Route path='admin-orders' element={<Orders />}>
+              <Route path='order-detailed/:id' element={<OrderDetailed />} />
+            </Route>
         </Route>
       </Routes>
 
@@ -63,7 +71,8 @@ const Home = () => {
                     actionProvider={ActionProvider}
                 />
             </div>
-            <button className='chatbot' onClick={showMeTheBot}>
+            
+            <button className='chatbot chat-button' onClick={showMeTheBot}>
             <span class="material-symbols-outlined">
 smart_toy
 </span>
