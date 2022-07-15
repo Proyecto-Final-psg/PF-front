@@ -11,29 +11,12 @@ export function OrderDetailed(){
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        
-        console.log(id)
-    },[])
-
-    useEffect(()=>{
         dispatch(getUserById(id))
         dispatch(getOrderDetails(id))
     },[id])
 
-    useEffect(()=>{
-       return () => console.log('desmonto') 
-    },[])
-
- 
-
-    useEffect(()=>{
-        console.log(orderDetailed)
-    },[orderDetailed])
-    
-
     return <div className="container datas">
-    
-    
+
     <div className="order-detailed" style={{width:"100%"}}>
     <span style={{fontWeight:"bold"}}>Order: {user.user_name} </span>
     
@@ -45,7 +28,7 @@ export function OrderDetailed(){
           </tr>
         </thead>
         <tbody>
-            {orderDetailed && orderDetailed.map(o =>{
+            {orderDetailed.length > 0 && orderDetailed.map(o =>{
                 return <>
                     
                     {o.arrayItems.map(i => 
