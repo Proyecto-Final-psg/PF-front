@@ -115,13 +115,13 @@ const CreateProduct = () => {
     return (
         <div>
 
-            <div className='title-edit'>
-                <button className='btn back' onClick={() => navigate(-1)}>
-                    <span class="material-symbols-outlined">keyboard_backspace</span>
-                </button>
-                <h1 className='title-text'>Create Product</h1>
-            </div>
             <div className='create'>
+                {/* <div className='title-edit'>
+                    <button className='btn back' onClick={() => navigate(-1)}>
+                        <span class="material-symbols-outlined">keyboard_backspace</span>
+                    </button>
+                    <h1 className='title-text'>Create Product</h1>
+                </div> */}
                 <div className='form-create'>
                     <form onSubmit={handleSubmit} className='create_form'>
                         <div className='input_container'>
@@ -198,7 +198,7 @@ const CreateProduct = () => {
 
                         </div>
                         <div className="buttons-categories">
-                            {createProd.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
+                            {createProd.categories?.map((categ, i) => <button className='btn_category' key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
                         </div>
                     </div>
                 </div>

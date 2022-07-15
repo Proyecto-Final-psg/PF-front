@@ -9,8 +9,21 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    position: relative;
     /* border: 1px solid red; */
 }
+
+.title-edit {
+    height: auto;
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+
 .form-create {
     width: 90%;
     height: auto;
@@ -203,6 +216,7 @@
 }
 
 .mockup-product {
+    height: 500px;
     display: flex;
     flex-direction: column;
 }
