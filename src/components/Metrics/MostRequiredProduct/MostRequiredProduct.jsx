@@ -1,17 +1,23 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllProducts } from "../../../Redux/Actions"
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { getAllOrders, getAllProducts } from "../../../Redux/Actions"
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 import '../Metrics.scss'
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
-  ArcElement,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend
@@ -19,66 +25,49 @@ ChartJS.register(
 
 export function MostRequiredProduct() {
     const products = useSelector(store => store.products)
+    const orderItems = useSelector(store => store.order)
     const dispatch = useDispatch()
    
-  // YEAR CHART
-  const options = {
-    responsive: true,
-    interaction: {
-      mode: 'index' /*as const*/,
-      intersect: false,
-    },
-    stacked: false,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Sells of 2022',
-      },
-    },
-    scales: {
-      y: {
-        type: 'linear' /*as const*/,
-        display: true,
-        position: 'left' /*as const*/,
-      },
-      y1: {
-        type: 'linear' /*as const*/,
-        display: true,
-        position: 'right' /*as const*/,
-        grid: {
-          drawOnChartArea: false,
+     const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top' ,
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Bar Chart',
         },
       },
-    },
-  };
-
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-  const data2 = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: products.map(p => p.stock),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y',
-      },
-      {
-        label: 'Dataset 2',
-        data: products.map(p => p.name),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y1',
-      },
-    ],
-  };
-
+    };
+    
+    const labels = products.map(p => p.name);
+    
+     const data = {
+      labels,
+      datasets: [
+        {
+          label: 'Dataset 1',
+          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        {
+          label: 'Dataset 2',
+          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        },
+      ],
+    };
 
 
   useEffect(() => {
+    dispatch(getAllOrders())
     dispatch(getAllProducts())
   }, [])
+
+  useEffect(()=>{
+    console.log(order)
+  },[order])
 
   return <div className="container datas">
     

@@ -90,14 +90,25 @@ export function Metrics() {
   }
 
   return <div className="metricas">
-    <div className="datas">
+    {/* <div className="container datas">
 
-    </div>
+    </div> */}
     {/* <h1 className="mt-5">Metrics</h1> */}
-    <hr />
-    <aside className="menu shadow" style={{marginTop:"50px",paddingLeft:"50px",height:"100%",padding:"20px"}}>
+    {/* <hr /> */}
+    <aside className="m-5 p-3 menu shadow">
+    <p class="menu-label">
+    Admin
+  </p>
+  <ul class="menu-list">
+    <li onClick={menuSelected}><NavLink  id="orders" to='admin-orders'>
 
-    <p className="menu-label">
+        Orders 
+        <span id="orders" className="iconMenu material-symbols-outlined">receipt_long</span>
+
+      </NavLink></li>
+      </ul>
+    
+    <p class="menu-label">
     Metrics
   </p>
   <ul class="menu-list">
