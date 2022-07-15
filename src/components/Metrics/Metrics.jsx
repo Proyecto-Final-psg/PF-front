@@ -9,7 +9,7 @@ import './Metrics.scss'
 import { MostRequiredProduct } from "./MostRequiredProduct/MostRequiredProduct";
 import { StockManagement } from "./StockManagement/StockManagement";
 import { useState } from "react";
-import { Start } from "./Start/Start";
+
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
@@ -29,7 +29,7 @@ export function Metrics() {
   const dispatch = useDispatch()
 
 
-  const [itemSelected , setItemSelected ] = useState('')
+  const [itemSelected , setItemSelected ] = useState('stock')
 
   useEffect(()=>{
     return setItemSelected('')
@@ -136,10 +136,8 @@ export function Metrics() {
     </aside>
 
     
-      {itemSelected === '' ?
-        <Start />
-      :
+      
         <Outlet />
-      }
+      
   </div>
 }
