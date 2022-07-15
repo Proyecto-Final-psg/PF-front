@@ -140,24 +140,5 @@ export function StockManagement() {
       </div>
     </div>
 
-    {/* <div className="stock-management-view">
-          
-          <div class='container has-text-centered'>
-            <div class='columns is-mobile is-centered'>
-              <div class='column is-8'>
-                <div>
-                  <h2>Stock Information</h2>
-                  <hr />
-                </div>
-
-                
-              </div>
-            </div>
-          </div>
-
-          
-      
-
-        </div> */}
   </div>
 }

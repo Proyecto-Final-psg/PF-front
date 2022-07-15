@@ -1,17 +1,22 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllProducts } from "../../../Redux/Actions"
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import '../Metrics.scss'
-
-// ChartJS.register(ArcElement, Tooltip, Legend);
-ChartJS.register(
-  ArcElement,
+import { getAllOrders, getAllProducts, getOrderItems } from "../../../Redux/Actions"
+import {
+  Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import '../Metrics.scss'
+// ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
   Title,
   Tooltip,
   Legend
@@ -19,66 +24,74 @@ ChartJS.register(
 
 export function MostRequiredProduct() {
     const products = useSelector(store => store.products)
+    const orderItems = useSelector(store => store.orderItems)
     const dispatch = useDispatch()
    
-  // YEAR CHART
-  const options = {
-    responsive: true,
-    interaction: {
-      mode: 'index' /*as const*/,
-      intersect: false,
-    },
-    stacked: false,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Sells of 2022',
-      },
-    },
-    scales: {
-      y: {
-        type: 'linear' /*as const*/,
-        display: true,
-        position: 'left' /*as const*/,
-      },
-      y1: {
-        type: 'linear' /*as const*/,
-        display: true,
-        position: 'right' /*as const*/,
-        grid: {
-          drawOnChartArea: false,
+    useEffect(()=>{
+      dispatch(getOrderItems())
+    },[])
+
+    useEffect(()=>{
+      // console.log('orderItems',orderItems)
+    },[orderItems])
+
+     const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top' ,
+        },
+        title: {
+          display: true,
+
         },
       },
-    },
-  };
+    };
+    
+    const labels = [...new Set(orderItems.map(p => p.product))]
+    
 
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-  const data2 = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: products.map(p => p.stock),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y',
-      },
-      {
-        label: 'Dataset 2',
-        data: products.map(p => p.name),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y1',
-      },
-    ],
-  };
-
+   
+  
+  var holder = {};
+  
+  orderItems.forEach(function(d) {
+    if (holder.hasOwnProperty(d.product)) {
+      holder[d.product] = holder[d.product] + d.quantity;
+    } else {
+      holder[d.product] = d.quantity;
+    }
+  });
+  
+  var obj2 = [];
+  
+  for (var prop in holder) {
+    obj2.push({ product: prop, quantity: holder[prop] });
+  }
+  
+     const data = {
+      labels,
+      datasets: [
+        {
+          label: 'Products sold',
+          data: labels.map((p) => obj2.map(o => {
+                if(o.product == p)
+                  return o.quantity
+              })),
+          backgroundColor: 'green'
+        },
+      ],
+    };
 
 
   useEffect(() => {
+    dispatch(getAllOrders())
     dispatch(getAllProducts())
   }, [])
+
+  // useEffect(()=>{
+  //   console.log(order)
+  // },[order])
 
   return <div className="container datas">
     
@@ -88,7 +101,7 @@ export function MostRequiredProduct() {
     <div className="lower-10" style={{width:"100%"}}>
 
     <div className="sells-year">
-      <Line options={options} data={data2} />
+        <Bar options={options} data={data} />
     </div>
   </div>
   </div>

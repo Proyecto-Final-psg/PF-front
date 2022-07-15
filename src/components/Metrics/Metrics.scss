@@ -5,11 +5,14 @@
     justify-content: center;
 }
 
-#stock, #userMgm, #bestSell{
+#stock, #userMgm, #bestSell, #userCrud, #topCustomer, #orders{
     display: flex;
     align-items: center;
 }
 
+.menu{
+ 
+}
 
 .menuItem{
     display: flex;
