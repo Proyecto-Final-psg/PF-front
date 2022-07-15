@@ -13,42 +13,48 @@
 }
 .form-create {
     width: 90%;
+    height: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid red;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
 }
 
 .create_form {
-    width: 400px;
-    height: 750px;
-    margin: auto;
+    width: 850px;
+    height: 500px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
     border: none;
     box-shadow: -1px 1px 10px 5px rgba(0, 0, 0, 0.3);
     background: #fff;
-    border: 1px solid red;
-    /* background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87, 87, 87, 0) 68%); */
 }
 
 .create_form textarea {
     resize: none;
     height: 70px;
 }
+.create_form textarea::placeholder {
+    color: #202020;
+}
 
 .input_container {
-    width: 300px;
+    width: 250px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    position: relative;
     /* border: 1px solid red; */
 }
 .input_container input {
-    width: 250px;
+    width: 150px;
+}
+.input_container input::placeholder {
+    color: #202020;
 }
 
 .field {
@@ -69,6 +75,7 @@
     background-color: #438a00;
     color: #fff;
     border: none;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
@@ -87,6 +94,7 @@
     background-color: #438a00;
     color: #fff;
     border: none;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 .btn_category:hover {
@@ -94,7 +102,26 @@
 }
 
 .error-message {
+    width: auto;
     height: 10px;
+    font-size: 10px;
+    font-weight: bolder;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    z-index: 10;
+    color: red;
+}
+.error-message_textarea {
+    width: auto;
+    height: 10px;
+    font-size: 10px;
+    font-weight: bolder;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
     color: red;
 }
 

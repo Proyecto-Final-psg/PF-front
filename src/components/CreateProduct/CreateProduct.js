@@ -110,6 +110,8 @@ const CreateProduct = () => {
         });
     }
 
+    let errorSubmit = error.stateName === true || error.stateMessage === true;
+
     return (
         <div>
 
@@ -124,10 +126,8 @@ const CreateProduct = () => {
                     <form onSubmit={handleSubmit} className='create_form'>
                         <div className='input_container'>
                         <label htmlFor='name'>Name: </label>
-                            {
-                                <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
-                            }
-                            <input className='input is-small is-hovered is-success' type="text" value={createProd.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} autoComplete='off'/>
+                            <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
+                            <input className={`input is-small is-hovered ${error.stateName ? 'is-danger' : 'is-success'}`} type="text" value={createProd.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} autoComplete='off'/>
                         </div>
                         <div className='input_container'>
                         <label htmlFor='stock'>Stock: </label>
@@ -141,23 +141,23 @@ const CreateProduct = () => {
                         <label htmlFor='type'>Type: </label>
                             <input className='input is-small is-hovered is-success' type="text" value={createProd.type} placeholder='Oil...' name='type' onChange={handleInputChange} autoComplete='off'/>
                         </div>
-                        <Widget
-                            publicKey="269841dc43864e62c49d"
-                            Clearable={true}
-                            id="file"
-                            name="photos"
-                            onChange={(e) => {
-                                setCreateProd({
-                                    ...createProd,
-                                    img: e.originalUrl
-                                })
-                            }}
-                        />
                         <div className='input_container'>
-                            {
-                                <span className='error-message'>{error.stateMessage ? error.messageDescription : ''}</span>
-                            }
-                            <textarea className='textarea is-small is-hovered is-success' name='description' value={createProd.description} type="text" placeholder="Description..." onChange={handleInputChange} />
+                            <Widget
+                                publicKey="269841dc43864e62c49d"
+                                Clearable={true}
+                                id="file"
+                                name="photos"
+                                onChange={(e) => {
+                                    setCreateProd({
+                                        ...createProd,
+                                        img: e.originalUrl
+                                    })
+                                }}
+                            />
+                        </div>
+                        <div className='input_container'>
+                            <span className='error-message_textarea'>{error.stateMessage ? error.messageDescription : ''}</span>
+                            <textarea className={`textarea is-small is-hovered ${error.stateMessage ? 'is-danger' : 'is-success'}`} name='description' value={createProd.description} type="text" placeholder="Description..." onChange={handleInputChange} />
                         </div>
                         <div className='input_container'>
                         <label htmlFor='thc'>Thc:</label>
@@ -167,7 +167,7 @@ const CreateProduct = () => {
                             <label htmlFor='cbd' >Cbd:</label>
                                 <input className='input is-small is-hovered is-success' min="0" max="100" type="number" value={createProd.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
                         </div>
-                        <div className='select is-success'>
+                        <div className='select is-small is-success'>
                             <select className='field' type='text' name='categories' onChange={handleSelectCategories} >
                                 <option value="" disabled selected>Categories</option>
                                 {
@@ -181,7 +181,7 @@ const CreateProduct = () => {
                                 <input className='input is-small is-success' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
                                 <button className='btn_category' onClick={handleClickCategory}>Add</button>
                             </div>
-                        <button className='btn_create' type='submit'>Create</button>
+                        <button className='btn_create' type='submit' disabled={errorSubmit}>Create</button>
                     </form>
                 
                     <div className='mockup-product'>
