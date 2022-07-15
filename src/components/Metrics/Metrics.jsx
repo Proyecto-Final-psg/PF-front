@@ -78,7 +78,7 @@ export function Metrics() {
     </div>
     {/* <h1 className="mt-5">Metrics</h1> */}
     <hr />
-    <aside class="menu" style={{marginTop:"50px",paddingLeft:"50px"}}>
+    <aside class="menu shadow" style={{marginTop:"50px",paddingLeft:"50px",height:"100%",padding:"20px"}}>
 
     <p class="menu-label">
     Metrics
@@ -93,6 +93,11 @@ export function Metrics() {
     <li onClick={menuSelected}><NavLink id="bestSell" to='most-required-product'>
       Best selling products
       <span class="iconMenu material-symbols-outlined">trending_up</span>
+      </NavLink></li>
+
+      <li onClick={menuSelected}><NavLink id="bestSell" to='top-customers'>
+      Top Customers
+      <span class="iconMenu material-symbols-outlined">face</span>
       </NavLink></li>
   </ul>
       <p class="menu-label">

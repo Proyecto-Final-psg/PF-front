@@ -19,6 +19,7 @@ import { StockManagement } from "../Metrics/StockManagement/StockManagement";
 import { MostRequiredProduct } from "../Metrics/MostRequiredProduct/MostRequiredProduct";
 import { UserManagement } from "../Metrics/UserManagement/UserManagement";
 import { UserCrud } from "../Metrics/UserCRUD/UserCrud";
+import { TopCustomers } from "../Metrics/TopCustomers/TopCustomers";
 
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
@@ -52,6 +53,7 @@ const Home = () => {
           <Route path='most-required-product' element={<MostRequiredProduct />} />
           <Route path='user-management' element={<UserManagement />} />
           <Route path='user-crud' element={<UserCrud />} />
+          <Route path='top-customers' element={<TopCustomers />} />
         </Route>
       </Routes>
 
