@@ -50,7 +50,7 @@ const Nav = () => {
                                     </div>
                                     <div className='item'>
                                         <Link className="navbar-item" to="/users">
-                                            User rol
+                                            User role
                                         </Link>
                                         <FontAwesomeIcon icon={faUsers} />
                                     </div>
@@ -88,9 +88,7 @@ const Nav = () => {
                 </div>
 
                 <div id="navbarBasicExample" className="navbar-menu">
-                    {
-                        console.log(userRedux)
-                    }
+                   
                     <div className="navbar-start">
                         {
                             admin &&
@@ -100,7 +98,7 @@ const Nav = () => {
                                 </Link>
 
                                 <Link className="navbar-item" to="/users">
-                                    User rol
+                                    User role
                                 </Link>
                                 <Link className="navbar-item" to="/metrics">
                                     Admin panel
@@ -117,8 +115,8 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <a className="navbar-link avatar">
-                                        <img src={user.picture} alt='user' />
-                                        <p>{user.name}</p>
+                                        <img src={userRedux.user_img} alt='user' />
+                                        <p>{userRedux.user_name}</p>
                                     </a>
 
                                     <div className="navbar-dropdown">
