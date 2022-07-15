@@ -45,6 +45,7 @@ export function Metrics() {
     const userMgm = document.getElementById('userMgm')
     const userCrud = document.getElementById('userCrud')
     const topCustomer = document.getElementById('topCustomer')
+    const orders = document.getElementById('orders')
 
     if(itemSelected === 'stock'){
       stock.classList.add('is-active')
@@ -52,6 +53,7 @@ export function Metrics() {
       userMgm.classList.remove('is-active')
       userCrud.classList.remove('is-active')
       topCustomer.classList.remove('is-active')
+      orders.classList.remove('is-active')
     }
     if(itemSelected === 'bestSell'){
       bestSell.classList.add('is-active')
@@ -59,6 +61,7 @@ export function Metrics() {
       userMgm.classList.remove('is-active')
       userCrud.classList.remove('is-active')
       topCustomer.classList.remove('is-active')
+      orders.classList.remove('is-active')
     }
     if(itemSelected === 'userMgm'){
       userMgm.classList.add('is-active')
@@ -66,6 +69,7 @@ export function Metrics() {
       stock.classList.remove('is-active')
       userCrud.classList.remove('is-active')
       topCustomer.classList.remove('is-active')
+      orders.classList.remove('is-active')
     }
     if(itemSelected === 'userCrud'){
       userCrud.classList.add('is-active')
@@ -73,9 +77,19 @@ export function Metrics() {
       bestSell.classList.remove('is-active')
       userMgm.classList.remove('is-active')
       topCustomer.classList.remove('is-active')
+      orders.classList.remove('is-active')
     }
     if(itemSelected === 'topCustomer'){
       topCustomer.classList.add('is-active')
+      stock.classList.remove('is-active')
+      bestSell.classList.remove('is-active')
+      userMgm.classList.remove('is-active')
+      userCrud.classList.remove('is-active')
+      orders.classList.remove('is-active')
+    }
+    if(itemSelected === 'orders'){
+      orders.classList.add('is-active')
+      topCustomer.classList.remove('is-active')
       stock.classList.remove('is-active')
       bestSell.classList.remove('is-active')
       userMgm.classList.remove('is-active')

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllOrders, getAllProducts } from "../../../Redux/Actions"
+import { getAllOrders, getAllProducts, getOrderItems } from "../../../Redux/Actions"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import '../Metrics.scss'
-
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
   CategoryScale,
@@ -25,9 +24,17 @@ ChartJS.register(
 
 export function MostRequiredProduct() {
     const products = useSelector(store => store.products)
-    const orderItems = useSelector(store => store.order)
+    const orderItems = useSelector(store => store.orderItems)
     const dispatch = useDispatch()
    
+    useEffect(()=>{
+      dispatch(getOrderItems())
+    },[])
+
+    useEffect(()=>{
+      // console.log('orderItems',orderItems)
+    },[orderItems])
+
      const options = {
       responsive: true,
       plugins: {
@@ -36,25 +43,42 @@ export function MostRequiredProduct() {
         },
         title: {
           display: true,
-          text: 'Chart.js Bar Chart',
+
         },
       },
     };
     
-    const labels = products.map(p => p.name);
+    const labels = [...new Set(orderItems.map(p => p.product))]
     
+
+   
+  
+  var holder = {};
+  
+  orderItems.forEach(function(d) {
+    if (holder.hasOwnProperty(d.product)) {
+      holder[d.product] = holder[d.product] + d.quantity;
+    } else {
+      holder[d.product] = d.quantity;
+    }
+  });
+  
+  var obj2 = [];
+  
+  for (var prop in holder) {
+    obj2.push({ product: prop, quantity: holder[prop] });
+  }
+  
      const data = {
       labels,
       datasets: [
         {
-          label: 'Dataset 1',
-          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        },
-        {
-          label: 'Dataset 2',
-          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          label: 'Products sold',
+          data: labels.map((p) => obj2.map(o => {
+                if(o.product == p)
+                  return o.quantity
+              })),
+          backgroundColor: 'green'
         },
       ],
     };
@@ -65,9 +89,9 @@ export function MostRequiredProduct() {
     dispatch(getAllProducts())
   }, [])
 
-  useEffect(()=>{
-    console.log(order)
-  },[order])
+  // useEffect(()=>{
+  //   console.log(order)
+  // },[order])
 
   return <div className="container datas">
     
@@ -77,7 +101,7 @@ export function MostRequiredProduct() {
     <div className="lower-10" style={{width:"100%"}}>
 
     <div className="sells-year">
-      <Line options={options} data={data2} />
+        <Bar options={options} data={data} />
     </div>
   </div>
   </div>
