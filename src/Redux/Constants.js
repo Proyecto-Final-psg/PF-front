@@ -9,6 +9,8 @@ export const ADD_GUEST = "ADD_GUEST"
 export const UPDATE_TO_CART = "UPDATE_TO_CART"
 export const GET_ALL_ITEMS = "GET_ALL_ITEMS"
 export const EDIT_PRODUCT = "EDIT_PRODUCT"
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
+export const GET_ORDER_DETAILS = "GET_ORDER_DETAILS"
 export const API_URL = 'https://desarrollo-back.herokuapp.com'
 // export const API_URL = 'http://localhost:8081'
 
