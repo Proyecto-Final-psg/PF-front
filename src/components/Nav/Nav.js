@@ -13,7 +13,7 @@ const Nav = () => {
     const [nav, setNav] = useState('')
     const userRedux = useSelector(state => state.user[0])
     const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
-
+console.log(userRedux)
     const handleMenu = (e) => {
         e.preventDefault()
         if (nav === '') setNav('is-active')
@@ -117,8 +117,8 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <a className="navbar-link avatar">
-                                        <img src={user.picture} alt='user' />
-                                        <p>{user.name}</p>
+                                        <img src={userRedux.user_img} alt='user' />
+                                        <p>{userRedux.user_name}</p>
                                     </a>
 
                                     <div className="navbar-dropdown">
