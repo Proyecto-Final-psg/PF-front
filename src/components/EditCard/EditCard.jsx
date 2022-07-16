@@ -3,8 +3,10 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProductById, editProduct } from '../../Redux/Actions'
-import { Widget } from "@uploadcare/react-widget";
-
+import { Validator } from '../CreateProduct/helpers/Validator'
+import Form from '../CreateProduct/Form/Form'
+import Mockup from '../CreateProduct/Mockup/Mockup'
+import ButtonBack from '../CreateProduct/ButtonBack/ButtonBack'
 import './EditCard.scss'
 
 export function EditCard() {
@@ -18,12 +20,11 @@ export function EditCard() {
     const [error, setError] = useState({
         stateName: false,
         stateMessage: false,
+        stateType: false,
         messageName: '',
-        messageDescription: ''
+        messageDescription: '',
+        messageType: ''
     })
-
-    // const [prodName, setProdName] = useState(product.name)
-    // const [prodPrice, setProdPrice] = useState(product.price)
 
     const [editedProduct, setEditProduct] = useState({
         name: product.name,
@@ -38,35 +39,7 @@ export function EditCard() {
     })
 
     const handleInputChange = (e) => {
-        let cond_name = /^[aA-zZ ]{2,40}$/;
-        let cond_description = /^[a-zA-Z\s/^[^&()&.&,]+$/;
-        if (e.target.name === 'name' && cond_name.test(e.target.value) === true) {
-            setError({
-                ...error,
-                stateName: false
-            })
-        }
-        else if (e.target.name === 'name' && cond_name.test(e.target.value) === false) {
-            setError({
-                ...error,
-                stateName: true,
-                messageName: 'Invalid name of product'
-            })
-        }
-        else if (e.target.name === 'description' && cond_description.test(e.target.value) === true) {
-            setError({
-                ...error,
-                stateMessage: false
-            })
-        }
-        else if (e.target.name === 'description' && cond_description.test(e.target.value) === false) {
-            setError({
-                ...error,
-                stateMessage: true,
-                messageDescription: 'No symbols allowed on description'
-            })
-        }
-
+        Validator(error, setError, e)
         setEditProduct({
             ...editedProduct,
             [e.target.name]: e.target.value
@@ -74,7 +47,6 @@ export function EditCard() {
     }
 
     function handleSelectCategories(e) {
-        // console.log(e.target.value)
         setEditProduct({
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
@@ -122,97 +94,34 @@ export function EditCard() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    let errorSubmit = error.stateName === true || error.stateMessage === true || error.stateType === true;
+
     return (
-        <div>
-            <div className='title-edit'>
-
-                <button className='btn back' onClick={() => navigate(-1)}>
-                    <span className="material-symbols-outlined">keyboard_backspace</span>
-                </button>
-                <h1 className='title-text'>Edit Product</h1>
-            </div>
+        <>
             <div className='create'>
-
+                <ButtonBack 
+                    button={'Edit product'}
+                />
                 <div className='form-create'>
-
-                    <form onSubmit={handleSubmit} className='create_form'>
-
-                        <label htmlFor='name'>
-                            <span>Name: </span>
-                            {
-                                <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
-                            }
-                            <input className='field' type="text" value={editedProduct.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} />
-                        </label>
-                        <label htmlFor='stock'>
-                            <span>Stock: </span>
-                            <input className='field' type="number" value={editedProduct.stock} placeholder='stock' name='stock' onChange={handleInputChange} />
-                        </label>
-                        <label htmlFor='price'>
-                            <span>Price: </span>
-                            <input className='field' type="number" value={editedProduct.price} placeholder='50.3' name='price' step='0.01' onChange={handleInputChange} />
-                        </label>
-                        <label htmlFor='type'>
-                            <span>Type: </span>
-                            <input className='field' type="text" value={editedProduct.type} placeholder='Oil...' name='type' onChange={handleInputChange} />
-                        </label>
-                        <Widget
-                            publicKey="269841dc43864e62c49d"
-                            Clearable={true}
-                            id="file"
-                            name="photos"
-                            onChange={(e) => {
-                                setEditProduct({
-                                    ...editedProduct,
-                                    img: e.originalUrl
-                                })
-                            }}
-                        />
-                        {
-                            <span className='error-message'>{error.stateMessage ? error.messageDescription : ''}</span>
-                        }
-                        <textarea className='field' name='description' value={editedProduct.description} type="text" placeholder="Description..." onChange={handleInputChange} />
-                        <label htmlFor='thc'>
-                            <span>Thc: </span>
-                            <input className='field input-cbd' min="0" max="100" type="number" value={editedProduct.thc} placeholder='thc' name='thc' step='0.01' onChange={handleInputChange} />
-                            <span>mg</span>
-                        </label>
-                        <label htmlFor='cbd' >
-                            <span>Cbd: </span>
-                            <input className='field input-cbd' min="0" max="100" type="number" value={editedProduct.cbd} placeholder='cbd' name='cbd' step='0.01' onChange={handleInputChange} />
-                            <span>mg</span>
-                        </label>
-
-                        <label htmlFor='categories'>
-                            <select className='field' type='text' name='categories' onChange={handleSelectCategories} >
-                                <option value="" disabled selected>Categories</option>
-                                {
-                                    categories?.map((c, i) => (
-                                        <option value={c.category} key={i}>{c.category}</option>
-                                    ))
-                                }
-                            </select>
-                            <input className='field' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
-                            <button onClick={handleClickCategory}>Ok</button>
-                        </label>
-                        <button type='submit'>Modify</button>
-                    </form>
-                </div>
-                <div className='mockup-product'>
-                    <div className='img-create'>
-                        {/* {createProd.img !== '' ?
-                    <img src={createProd.img}  atl="alt4"/>
-                : null    
-                } */}
-                        <textarea defaultValue={editedProduct.name} id='name' />
-                        <textarea defaultValue={editedProduct.description} id='description' />
-                        <h4>${editedProduct.price}</h4>
-                    </div>
+                    <Form
+                        handleInputChange={handleInputChange}
+                        onSubmit={handleSubmit}
+                        category={handleSelectCategories}
+                        newCategory={handleClickCategory}
+                        setNewCategory={setNewCategory}
+                        localState={editedProduct}
+                        setLocalState={setEditProduct}
+                        error={error}
+                        errorSubmit={errorSubmit}
+                        state={categories}
+                        button={'Modify'}
+                    />
+                    <Mockup 
+                        localState={editedProduct}
+                        handleDeleteCategory={handleDeleteCategory}
+                    />
                 </div>
             </div>
-            <div className="buttons-categories">
-                {editedProduct.categories?.map((categ, i) => <button key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
-            </div>
-        </div>
+        </>
     )
 }
