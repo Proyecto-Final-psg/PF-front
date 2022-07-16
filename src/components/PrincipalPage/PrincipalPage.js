@@ -8,7 +8,7 @@ const PrincipalPage = () => {
     const userRedux = useSelector(state => state.user)
     return (
         <div>
-            <Carousel />
+            <Carousel classname="carousel" />
           
             <Grid />
 
