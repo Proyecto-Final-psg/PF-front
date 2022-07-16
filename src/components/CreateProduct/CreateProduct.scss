@@ -9,8 +9,22 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    position: relative;
     /* border: 1px solid red; */
 }
+
+.title-edit {
+    width: 170px;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .form-create {
     width: 90%;
     height: auto;
@@ -18,191 +32,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 100px;
     /* border: 1px solid red; */
 }
 
-.create_form {
-    width: 850px;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    border: none;
-    box-shadow: -1px 1px 10px 5px rgba(0, 0, 0, 0.3);
-    background: #fff;
-}
-
-.create_form textarea {
-    resize: none;
-    height: 70px;
-}
-.create_form textarea::placeholder {
-    color: #202020;
-}
-
-.input_container {
-    width: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    /* border: 1px solid red; */
-}
-.input_container input {
-    width: 150px;
-}
-.input_container input::placeholder {
-    color: #202020;
-}
-
-.field {
-    width: 250px;
-    height: 30px;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 2px solid #438a00;
-}
-
-.btn_create {
-    width: 100px;
-    height: 40px;
-    outline: none;
-    font-size: 14px;
-    font-weight: bolder;
-    border-radius: 4px;
-    background-color: #438a00;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.btn_create:hover {
-    background-color: #2B5800;
-}
-
-.btn_category {
-    width: 50px;
-    height: 40px;
-    margin-left: 10px;
-    outline: none;
-    font-size: 14px;
-    font-weight: bolder;
-    border-radius: 4px;
-    background-color: #438a00;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-.btn_category:hover {
-    background-color: #2B5800;
-}
-
-.error-message {
-    width: auto;
-    height: 10px;
-    font-size: 10px;
-    font-weight: bolder;
-    position: absolute;
-    top: 0;
-    left: 100px;
-    z-index: 10;
-    color: red;
-}
-.error-message_textarea {
-    width: auto;
-    height: 10px;
-    font-size: 10px;
-    font-weight: bolder;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    color: red;
-}
-
-.uploadcare--widget__button_type_open {
-    background-color: #438a00;
-    font-size: 14px;
-    font-weight: bolder;
-}
-.uploadcare--widget__button_type_open:hover {
-    background-color: #2B5800;
-    font-size: 14px;
-    font-weight: bolder;
-}
-
-.img-create {
-    // // background-image: url('../../assets/empty.png');
-
-    border-color: #aba5a5;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-    background: rgb(189, 255, 70);
-    background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87, 87, 87, 0) 68%);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 350px;
-    height: 550px;
-    margin-left: 30px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-top: 10px;
-
-}
-
-.img-create img {
-    height: 250px;
-    object-fit: contain;
-    object-position: top center;
-    position: relative;
-    width: 240px;
-}
-
-.img-create #name {
-    text-align: center;
-    height: 115px;
-    background-color: transparent;
-    color: rgb(92, 87, 87);
-    font-weight: bold;
-    font-size: 20px;
-    width: 180px;
-    overflow: hidden;
-    border: none;
-    resize: none;
-}
-
-.img-create h4 {
-    // margin-top: 50px;
-    color: rgb(131, 131, 124);
-    margin-right: 52px;
-    text-align: right;
-}
-
-.img-create #description {
-    height: 47px;
-    width: 200px;
-    background-color: transparent;
-    overflow: hidden;
-    border: none;
-    resize: none;
-    color: grey;
-    margin-top: 20px;
-    font-size: 13px;
-}
-
-.input-cbd {
-    margin-right: 5px;
-}
-
-.mockup-product {
-    display: flex;
-    flex-direction: column;
-}
