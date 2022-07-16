@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import CardItems from '../CartItems/CartItems'
 import { useEffect, useState } from 'react';
 import { addToCart, getAllItems } from '../../Redux/Actions';
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 
@@ -47,19 +48,17 @@ const Cart = () => {
         />
       )}
 
-      {(allCartItems.length == 0) && <button className="cart-purchase">
+      {(allCartItems.length === 0) && <button className="cart-purchase">
         Carrito vacío
       </button>}
 
-      {(allCartItems.length > 1) && <button className="cart-purchase">
+      {(allCartItems.length > 1) && <Link className="cart-purchase" to='/order'>
         Realizar compra por ${(allCartItems.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })}
-      </button>}
+      </Link>}
 
-      {(allCartItems.length == 1) && <button className="cart-purchase">
+      {(allCartItems.length === 1) && <Link className="cart-purchase" to='/order'>
         Realizar compra por ${allCartItems[0].price * allCartItems[0].cant}
-
-
-      </button>}
+      </Link>}
 
     </div>
 
