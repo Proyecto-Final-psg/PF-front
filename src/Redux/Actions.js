@@ -97,6 +97,23 @@ export function registerUser(user) {
             })
     }
 }
+
+export function submitOrder(order) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/addOrder`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(order), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => window.location.href = data)
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+    }
+}
+
 export const addGuest = (guest) => {
     return (
         { type: ADD_GUEST, guest: guest }
