@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faScrewdriverWrench, faUser, faSignal, faUsers, faArrowRightFromBracket, faCannabis, faUserPlus, faChalkboardUser } from '@fortawesome/free-solid-svg-icons';
+import { faScrewdriverWrench, faUser, faSignal, faArrowRightFromBracket, faCannabis, faUserPlus, faChalkboardUser } from '@fortawesome/free-solid-svg-icons';
 import Logo from './logo_navbar.png'
 import Carrito from './carrito.png'
 import noImage from '../.././assets/no_user_image.jpeg'
@@ -49,12 +49,6 @@ const Nav = () => {
                                             Create product
                                         </Link>
                                         <FontAwesomeIcon icon={faScrewdriverWrench} />
-                                    </div>
-                                    <div className='item'>
-                                        <Link className="navbar-item" to="/users">
-                                            User role
-                                        </Link>
-                                        <FontAwesomeIcon icon={faUsers} />
                                     </div>
                                     <div className='item'>
                                         <Link className="navbar-item" to="/metrics">
