@@ -12,7 +12,9 @@ export function Discounts(props){
             setState((state) => ({...state, products: products}))
         })
         console.log(props)
-    },[])
+    },
+     // eslint-disable-next-line 
+    [])
     return <div>
         <h4 style={{fontWeight:"bold"}}>We have 10% disconunt in this products!</h4>
         <ol>

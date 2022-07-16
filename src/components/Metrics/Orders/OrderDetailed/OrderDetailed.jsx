@@ -13,12 +13,16 @@ export function OrderDetailed(){
     useEffect(()=>{
         
         console.log(id)
-    },[])
+    },
+     // eslint-disable-next-line 
+    [])
 
     useEffect(()=>{
         dispatch(getUserById(id))
         dispatch(getOrderDetails(id))
-    },[id])
+    },
+     // eslint-disable-next-line 
+    [id])
 
     useEffect(()=>{
        return () => console.log('desmonto') 
@@ -37,7 +41,7 @@ export function OrderDetailed(){
     <div className="order-detailed" style={{width:"100%"}}>
     <span style={{fontWeight:"bold"}}>Order: {user.user_name} </span>
     
-    <table class="table is-bordered is-narrow shadow is-hoverable" style={{width:"50%"}}>
+    <table className="table is-bordered is-narrow shadow is-hoverable" style={{width:"50%"}}>
         <thead>
           <tr>
             <th><abbr title="ID">Products</abbr></th>
