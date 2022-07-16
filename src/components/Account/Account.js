@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Profile from "../Profile/Profile";
 import "./Account.scss";
 import bag from "../../assets/bag.png";
@@ -7,17 +7,19 @@ import { useAuth0 } from "@auth0/auth0-react";
 import boy1 from "../../assets/boy1.png";
 import boy2 from "../../assets/boy2.png";
 import Footer from '../Footer/Footer.jsx'
+import { getOrderDetails } from "../../Redux/Actions";
 
 const Account = () => {
   const usr = useSelector((store) => store.user);
-  // useEffect(() => {
-  //   console.log(user);
-  // }, [usr]);
+  const history = useSelector(store => store.orderDetails)
+  const {user} = useAuth0()
+  const dispatch = useDispatch()
 
-  const { user } = useAuth0();
-  // useEffect(() => {
-  //   console.log(user);
-  // }, []);
+  useEffect(()=>{
+    dispatch(getOrderDetails(usr[0].user_id))
+    // dispatch(getOrderDetails(1))
+  },[usr])
+
 
   return (
     <div className="a">
@@ -91,29 +93,29 @@ const Account = () => {
               </div>
               <table class="table table-hover">
                 <thead>
+                 
                   <tr>
-                    <th scope="col">#</th>
+                    
                     <th scope="col">Item</th>
                     <th scope="col">Quantity</th>
                     <th scope="col p-5">Date</th>
                     <th scope="col">Total</th>
                   </tr>
+                  
+                  
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Aceite FyE</td>
-                    <td>1</td>
-                    <td>10/07/22</td>
-                    <td>$60</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Santa Calma</td>
-                    <td>1</td>
-                    <td>02/03/21</td>
-                    <td>$45</td>
-                  </tr>
+                    {history[0] && history[0].arrayItems.length>0 ? history[0].arrayItems.map(h => {
+                      return <tr>
+                      <td>{h.name}</td>
+                      <td>{h.quantity}</td>
+                      <td>{h.createdAt}</td>
+                      <td>${h.price}</td>
+                    </tr>
+                    })
+                    :
+                    <p>You haven't purchase a product yet</p>
+                  }   
                 </tbody>
               </table>
             </div>
