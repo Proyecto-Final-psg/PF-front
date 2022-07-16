@@ -3,7 +3,6 @@ import './info.css'
 import Aos from 'aos'
 import AnimatedNumbers from "react-animated-numbers";
 import 'aos/dist/aos.css'
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 function Info() {
@@ -12,9 +11,10 @@ function Info() {
     }, [])
 
     const products = useSelector(store => store.products)
-    const [stock, setStock] = useState(products.length)
-    const [discount, setDiscount] = useState(25)
-
+    const stock = products.length
+    // const [stock, setStock] = useState(products.length) //comente para deployd
+    // const [discount, setDiscount] = useState(25)        //comente para deployd
+    const discount = 25
     return <div className='info'>
         <div className="all-products" data-aos="fade-right">
             <span >We have</span>

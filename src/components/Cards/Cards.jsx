@@ -1,12 +1,8 @@
 
 import Card from "../Card/Card"
-import { useEffect } from "react";
 
 export function Cards({ items }) {
-
-
     return <div className="grid">
-
         {items.length <= 0 && <p>No items finded.</p>}
         {items && items.map(p => <Card
             key={p.id}

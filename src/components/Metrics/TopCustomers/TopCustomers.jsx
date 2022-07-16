@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllOrders, getAllUsers, getOrderDetails, getOrderItems, getUserById } from "../../../Redux/Actions"
-import { API_URL } from "../../../Redux/Constants"
+import { getAllUsers,  getOrderItems,  } from "../../../Redux/Actions"
+// import { API_URL } from "../../../Redux/Constants"
 
 export function TopCustomers(){
 
@@ -14,6 +14,7 @@ export function TopCustomers(){
     dispatch(getOrderItems())
     dispatch(getAllUsers())
     dispatch(getOrderItems())
+       // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   useEffect(()=>{
@@ -26,13 +27,13 @@ export function TopCustomers(){
   },[orderItems])
 
   function getUserName(id){
-    const user = users.find(u => u.user_id == id)
+    const user = users.find(u => u.user_id === id)
     return user.user_name
   }
 
   function getDetailsFrom(id){
     
-    const ordersToSum = orderItems.filter(o => o.order == id)
+    const ordersToSum = orderItems.filter(o => o.order === id)
     const amountOfMoney = ordersToSum.reduce((a, b) => a + (b["price"] || 0), 0);
     console.log('amount $',amountOfMoney)
     return amountOfMoney
