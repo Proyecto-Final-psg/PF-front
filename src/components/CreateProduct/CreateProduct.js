@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
-import './CreateProduct.scss'
 import { useNavigate, } from 'react-router-dom'
-import Form from './Form/Form';
 import { Validator } from './helpers/Validator';
-
+import Form from './Form/Form';
+import Mockup from './Mockup/Mockup';
+import ButtonBack from './ButtonBack/ButtonBack';
+import './CreateProduct.scss'
 
 const CreateProduct = () => {
     const navigate = useNavigate()
@@ -26,12 +27,6 @@ const CreateProduct = () => {
         cbd: '',
         categories: []
     })
-//    console.log(createProd)
-
-/*     const [error, setError] = useState({
-        name: '',
-        message: ''
-    }) */
 
     const [error, setError] = useState({
         stateName: false,
@@ -80,7 +75,7 @@ const CreateProduct = () => {
                 cbd: '',
                 categories: []
             })
-        //  e.target.reset()
+            navigate(-1)
     }
 
     function handleDeleteCategory(e) {
@@ -94,15 +89,11 @@ const CreateProduct = () => {
     let errorSubmit = error.stateName === true || error.stateMessage === true || error.stateType === true;
 
     return (
-        <div>
-
+        <>
             <div className='create'>
-                {/* <div className='title-edit'>
-                    <button className='btn back' onClick={() => navigate(-1)}>
-                        <span class="material-symbols-outlined">keyboard_backspace</span>
-                    </button>
-                    <h1 className='title-text'>Create Product</h1>
-                </div> */}
+                <ButtonBack 
+                    button={'Create product'}
+                />
                 <div className='form-create'>
                     <Form 
                         handleInputChange={handleInputChange}
@@ -110,35 +101,20 @@ const CreateProduct = () => {
                         category={handleSelectCategories}
                         newCategory={handleClickCategory}
                         setNewCategory={setNewCategory}
-                        createProd={createProd}
-                        setCreateProd={setCreateProd}
+                        localState={createProd}
+                        setLocalState={setCreateProd}
                         error={error}
                         errorSubmit={errorSubmit}
                         state={state}
+                        button={'Create'}
                     />
-                
-                    <div className='mockup-product'>
-                        <div className='img-create'>
-                            <textarea className='img-create_title' defaultValue={createProd.name} id='name' />
-                            {console.log(createProd.img)}
-                            {
-                                createProd.img !== '' ?
-                                    <img src={createProd.img} alt="alt4" />
-                                    : null
-                            }
-                            <textarea defaultValue={createProd.description} id='description' />
-                            <h4>${createProd.price}</h4>
-
-                        </div>
-                        <div className="buttons-categories">
-                            {createProd.categories?.map((categ, i) => <button className='btn_category' key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
-                        </div>
-                    </div>
+                    <Mockup 
+                        localState={createProd}
+                        handleDeleteCategory={handleDeleteCategory}
+                    />
                 </div>
-                
-
             </div>
-        </div>
+        </>
     )
 }
 
