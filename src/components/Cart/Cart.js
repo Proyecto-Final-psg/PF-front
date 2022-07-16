@@ -1,24 +1,25 @@
 import "./Cart.scss";
 import { useSelector, useDispatch } from 'react-redux'
 import CardItems from '../CartItems/CartItems'
-import { useEffect, useState } from 'react';
-import { addToCart, getAllItems } from '../../Redux/Actions';
+import { useEffect } from 'react';
+import { getAllItems } from '../../Redux/Actions';
 
 const Cart = () => {
 
-  const allCartItems = useSelector(store => store.cart.sort(function(a, b){
-    if(a.name < b.name) { return -1; }
-    if(a.name > b.name) { return 1; }
+  const allCartItems = useSelector(store => store.cart.sort(function (a, b) {
+    if (a.name < b.name) { return -1; }
+    if (a.name > b.name) { return 1; }
     return 0;
-}))
+  }))
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getAllItems())
-     // if (allCartItems.length > 0) {
+    // if (allCartItems.length > 0) {
     //   setTotal(total.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
     // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allCartItems])
 
   // const [total, setTotal] = useState(allCartItems)
@@ -47,7 +48,7 @@ const Cart = () => {
         />
       )}
 
-      {(allCartItems.length == 0) && <button className="cart-purchase">
+      {(allCartItems.length === 0) && <button className="cart-purchase">
         Carrito vacío
       </button>}
 
@@ -55,13 +56,16 @@ const Cart = () => {
         Realizar compra por ${(allCartItems.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })}
       </button>}
 
-      {(allCartItems.length == 1) && <button className="cart-purchase">
+      {(allCartItems.length === 1) && <button className="cart-purchase">
+      
         Realizar compra por ${allCartItems[0].price * allCartItems[0].cant}
 
-
-      </button>}
+      </button>
+       
+      }
 
     </div>
+
 
   );
 };

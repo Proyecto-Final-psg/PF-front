@@ -1,21 +1,15 @@
 import { NavLink } from "react-router-dom";
 import "./Card.scss";
-import { useEffect } from "react";
 import { addToCart } from "../../Redux/Actions"
 import { useDispatch } from 'react-redux'
 
 
 
 const Card = ({ name, id, description, img, price, stock }) => {
-
   const dispatch = useDispatch()
-
   function addItemToCart() {
     dispatch(addToCart( id,name, price,))
   }
-
-
-
 
   return (
     <div className="card" style={{ backgroundImage: "" }}>

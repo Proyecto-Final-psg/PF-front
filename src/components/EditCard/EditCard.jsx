@@ -16,7 +16,7 @@ export function EditCard() {
     const { id } = useParams()
     const product = useSelector(store => store.product)
     const categories = useSelector(state => state.categories);
-    const [newCategory, setNewCategory] = useState('')
+    // const [newCategory, setNewCategory] = useState('')
     const [error, setError] = useState({
         stateName: false,
         stateMessage: false,
@@ -108,7 +108,7 @@ export function EditCard() {
                         onSubmit={handleSubmit}
                         category={handleSelectCategories}
                         newCategory={handleClickCategory}
-                        setNewCategory={setNewCategory}
+                        // setNewCategory={setNewCategory}
                         localState={editedProduct}
                         setLocalState={setEditProduct}
                         error={error}

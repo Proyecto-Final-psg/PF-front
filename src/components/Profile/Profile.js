@@ -24,13 +24,13 @@ const Profile = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(() => {
-
         if (user && userRedux.user_id) {
             fetch('http://localhost:8081/users/' + userRedux.user_id)
                 .then(response => response.json())
                 .then(data => setRoll(data))
-            if (userRedux.roll != "guest") {
-                if (roll.roll != userRedux.roll) {
+            if (userRedux.roll !== "guest") {
+                if (roll.roll !== userRedux.roll) {
+                   
                     let nuevo = {
                         email: user.email,
                         name: user.name,
@@ -40,8 +40,11 @@ const Profile = () => {
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
                 }
+                  
             }
+             
         }
+   // eslint-disable-next-line react-hooks/exhaustive-deps
     })
     // async function token() {
     //     try {
