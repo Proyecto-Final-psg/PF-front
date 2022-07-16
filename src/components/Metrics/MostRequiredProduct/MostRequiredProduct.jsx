@@ -23,17 +23,22 @@ ChartJS.register(
 );
 
 export function MostRequiredProduct() {
+   // eslint-disable-next-line 
     const products = useSelector(store => store.products)
     const orderItems = useSelector(store => store.orderItems)
     const dispatch = useDispatch()
    
     useEffect(()=>{
       dispatch(getOrderItems())
-    },[])
+    },
+     // eslint-disable-next-line 
+    [])
 
     useEffect(()=>{
       // console.log('orderItems',orderItems)
-    },[orderItems])
+    },
+     // eslint-disable-next-line 
+    [orderItems])
 
      const options = {
       responsive: true,
@@ -74,7 +79,9 @@ export function MostRequiredProduct() {
       datasets: [
         {
           label: 'Products sold',
+           // eslint-disable-next-line 
           data: labels.map((p) => obj2.map(o => {
+             // eslint-disable-next-line 
                 if(o.product == p)
                   return o.quantity
               })),
@@ -87,7 +94,9 @@ export function MostRequiredProduct() {
   useEffect(() => {
     dispatch(getAllOrders())
     dispatch(getAllProducts())
-  }, [])
+  }, 
+   // eslint-disable-next-line 
+  [])
 
   // useEffect(()=>{
   //   console.log(order)

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { getAllProducts } from "../../../Redux/Actions"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
@@ -53,7 +53,7 @@ export function StockManagement() {
 
 
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
+  // eslint-disable-next-line 
   const data2 = {
     labels,
     datasets: [
@@ -78,7 +78,9 @@ export function StockManagement() {
 
   useEffect(() => {
     dispatch(getAllProducts())
-  }, [])
+  },
+    // eslint-disable-next-line 
+    [])
 
 
   return <div className="container datas">
@@ -86,7 +88,7 @@ export function StockManagement() {
     {/* <hr /> */}
 
     <div className="lower-10">
-      <table class="table is-bordered is-narrow shadow">
+      <table className="table is-bordered is-narrow shadow">
         <thead>
           <tr>
             <th><abbr title="ID">ID</abbr></th>

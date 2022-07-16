@@ -3,10 +3,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Outlet } from 'react-router-dom'
 import { getAllProducts } from "../../Redux/Actions"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
+ // eslint-disable-next-line 
 import { Line } from 'react-chartjs-2';
+ // eslint-disable-next-line 
 import { Pie } from 'react-chartjs-2';
 import './Metrics.scss'
+ // eslint-disable-next-line 
 import { MostRequiredProduct } from "./MostRequiredProduct/MostRequiredProduct";
+ // eslint-disable-next-line 
 import { StockManagement } from "./StockManagement/StockManagement";
 import { useState } from "react";
 
@@ -25,6 +29,7 @@ ChartJS.register(
 
 export function Metrics() {
 
+   // eslint-disable-next-line 
   const products = useSelector(store => store.products)
   const dispatch = useDispatch()
 
@@ -33,11 +38,15 @@ export function Metrics() {
 
   useEffect(()=>{
     return setItemSelected('')
-  },[])
+  },
+   // eslint-disable-next-line 
+  [])
 
   useEffect(() => {
     dispatch(getAllProducts())
-  }, [])
+  },
+   // eslint-disable-next-line 
+  [])
 
   useEffect(()=>{
     const stock = document.getElementById('stock')
@@ -110,10 +119,10 @@ export function Metrics() {
     {/* <h1 className="mt-5">Metrics</h1> */}
     {/* <hr /> */}
     <aside className="m-5 p-3 menu shadow">
-    <p class="menu-label">
+    <p className="menu-label">
     Admin
   </p>
-  <ul class="menu-list">
+  <ul className="menu-list">
     <li onClick={menuSelected}><NavLink  id="orders" to='admin-orders'>
 
         Orders 
@@ -122,10 +131,10 @@ export function Metrics() {
       </NavLink></li>
       </ul>
     
-    <p class="menu-label">
+    <p className="menu-label">
     Metrics
   </p>
-  <ul class="menu-list">
+  <ul className="menu-list">
     <li onClick={menuSelected}><NavLink  id="stock" to='stock-management'>
 
         Stock Management 
@@ -142,17 +151,17 @@ export function Metrics() {
       <span id="topCustomer" className="iconMenu material-symbols-outlined">face</span>
       </NavLink></li>
   </ul>
-      <p class="menu-label">
+      <p className="menu-label">
       User Management
       </p>
-      <ul class="menu-list">
+      <ul className="menu-list">
         <li onClick={menuSelected}><NavLink id="userMgm" to='user-management'>
         User Rol
         <span id="userMgm" className="iconMenu material-symbols-outlined">badge</span>
         </NavLink></li>
       </ul>
 
-      <ul class="menu-list">
+      <ul className="menu-list">
         <li onClick={menuSelected}><NavLink id="userCrud" to='user-crud'>
         User Blocker
         <span id="userCrud" className="iconMenu material-symbols-outlined">manage_accounts</span>
