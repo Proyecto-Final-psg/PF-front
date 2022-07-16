@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
-import Logo from './logo_navbar.png'
-import Carrito from './carrito.png'
-import noImage from '../.././assets/no_user_image.jpeg'
 import { useAuth0 } from '@auth0/auth0-react'
-import './Nav.scss'
-import Profile from '../Profile/Profile'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faScrewdriverWrench, faUser, faSignal, faUsers, faArrowRightFromBracket, faCannabis } from '@fortawesome/free-solid-svg-icons';
+import { faScrewdriverWrench, faUser, faSignal, faArrowRightFromBracket, faCannabis, faUserPlus, faChalkboardUser } from '@fortawesome/free-solid-svg-icons';
+import Logo from './logo_navbar.png'
+import Carrito from './carrito.png'
+import noImage from '../.././assets/no_user_image.jpeg'
+import Profile from '../Profile/Profile'
+import './Nav.scss'
 
 const Nav = () => {
     const [nav, setNav] = useState('')
@@ -21,7 +21,8 @@ const Nav = () => {
         else setNav('')
     }
 
-    var admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
+    let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
+
     return (
         <div>
             <Profile />
@@ -50,12 +51,6 @@ const Nav = () => {
                                         <FontAwesomeIcon icon={faScrewdriverWrench} />
                                     </div>
                                     <div className='item'>
-                                        <Link className="navbar-item" to="/users">
-                                            User role
-                                        </Link>
-                                        <FontAwesomeIcon icon={faUsers} />
-                                    </div>
-                                    <div className='item'>
                                         <Link className="navbar-item" to="/metrics">
                                             Admin panel
                                         </Link>
@@ -76,12 +71,30 @@ const Nav = () => {
                                 <FontAwesomeIcon icon={faUser} />
                             </div>
                             <hr className="navbar-divider" />
-                            <div className='item'>
-                                <div className="navbar-item" onClick={() => logout({ returnTo: window.location.origin })}>
-                                    Log out
-                                </div>
-                                <FontAwesomeIcon icon={faArrowRightFromBracket} />
-                            </div>
+                            {
+                                isAuthenticated ?
+                                    <div className='item'>
+                                        <div className="navbar-item" onClick={() => logout({ returnTo: window.location.origin })}>
+                                            Log out
+                                        </div>
+                                        <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                                    </div>
+                                    :
+                                    <>
+                                        <div className='item'>
+                                            <div className="navbar-item in" onClick={() => { loginWithRedirect() }}>
+                                                Sign in
+                                            </div>
+                                            <FontAwesomeIcon icon={faChalkboardUser} />
+                                        </div>
+                                        <div className='item'>
+                                            <div className="navbar-item has-text-white up" onClick={() => { loginWithRedirect({ screen_hint: 'signup' }) }}>
+                                                Sign up
+                                            </div>
+                                            <FontAwesomeIcon icon={faUserPlus} />
+                                        </div>
+                                    </>
+                            }
 
                         </div>
                     </div>
@@ -97,10 +110,6 @@ const Nav = () => {
                                 <Link className="navbar-item" to="/products/create">
                                     Create product
                                 </Link>
-
-                                {/* <Link className="navbar-item" to="/users">
-                                    User role
-                                </Link> */}
                                 <Link className="navbar-item" to="/metrics">
                                     Admin panel
                                 </Link>

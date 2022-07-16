@@ -55,7 +55,7 @@ const Form = ({handleInputChange, onSubmit, newCategory, setNewCategory, categor
                 <div className='select is-small is-success'>
                     <span>*</span>
                     <select className='field' type='text' name='categories' onChange={category} >
-                        <option value="" disabled selected>Categories</option>
+                        {<option value="" >Categories</option>}
                         {
                             state?.map((c, i) => (
                                 <option value={c.category} key={i}>{c.category}</option>
