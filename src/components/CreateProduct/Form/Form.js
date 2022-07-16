@@ -8,24 +8,29 @@ const Form = ({handleInputChange, onSubmit, newCategory, setNewCategory, categor
         <>
             <form onSubmit={onSubmit} className='create_form'>
                 <div className='input_container'>
-                    <span className='error-message'>{error.stateName ? error.messageName : ''}</span>
+                    <span className='error-message'>{errorSubmit === true ? error.name : ''}</span>
                     <label htmlFor='name'><span>*</span>Name: </label>
-                    <input className={`input is-small is-hovered ${error.stateName ? 'is-danger' : 'is-success'}`} type="text" value={localState.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} autoComplete='off' />
+                    <input className={`input is-small is-hovered ${error.name ? 'is-danger' : 'is-success'}`} type="text" value={localState.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} autoComplete='off' />
                 </div>
                 <div className='input_container'>
                     <label htmlFor='stock'>Stock: </label>
                     <input className='input is-small is-hovered is-success' type="number" value={localState.stock} placeholder='stock' name='stock' onChange={handleInputChange} />
                 </div>
                 <div className='input_container'>
+                    <span className='error-message'>{errorSubmit === true ? error.price : ''}</span>
                     <label htmlFor='price'><span>*</span>Price: </label>
-                    <input className='input is-small is-hovered is-success' type="number" value={localState.price} placeholder='0' step='0.01' name='price' onChange={handleInputChange} />
+                    <input className={`input is-small is-hovered ${error.price ? 'is-danger' : 'is-success'}`} type="number" value={localState.price} placeholder='0' step='0.01' name='price' onChange={handleInputChange} />
                 </div>
                 <div className='input_container'>
-                    <span className='error-message'>{error.stateType ? error.messageType : ''}</span>
+                    <span className='error-message'>{errorSubmit === true ? error.type : ''}</span>
                     <label htmlFor='type'><span>*</span>Type: </label>
-                    <input className={`input is-small is-hovered ${error.stateType ? 'is-danger' : 'is-success'}`} type="text" value={localState.type} placeholder='Oil...' name='type' onChange={handleInputChange} autoComplete='off' />
+                    <input className={`input is-small is-hovered ${error.type ? 'is-danger' : 'is-success'}`} type="text" value={localState.type} placeholder='Oil...' name='type' onChange={handleInputChange} autoComplete='off' />
                 </div>
                 <div className='input_container'>
+                    {
+                        localState.img.length === 0 &&
+                        <span className='error-message'>{errorSubmit === true ? error.img : ''}</span>
+                    }
                     <Widget
                         publicKey="269841dc43864e62c49d"
                         Clearable={true}
@@ -41,18 +46,21 @@ const Form = ({handleInputChange, onSubmit, newCategory, setNewCategory, categor
                     />
                 </div>
                 <div className='input_container'>
-                    <span className='error-message_textarea'>{error.stateMessage ? error.messageDescription : ''}</span>
-                    <textarea className={`textarea is-small is-hovered ${error.stateMessage ? 'is-danger' : 'is-success'}`} name='description' value={localState.description} type="text" placeholder="Description..." onChange={handleInputChange} />
+                    <span className='error-message'>{errorSubmit === true ? error.description : ''}</span>
+                    <textarea className={`textarea is-small is-hovered ${error.description ? 'is-danger' : 'is-success'}`} name='description' value={localState.description} type="text" placeholder="Description..." onChange={handleInputChange} />
                 </div>
                 <div className='input_container'>
+                    <span className='error-message'>{errorSubmit === true ? error.thc_cbd : ''}</span>
                     <label htmlFor='thc'><span>*</span>Thc:</label>
-                    <input className='input is-small is-hovered is-success' min="0" max="100" type="number" value={localState.thc} placeholder='0' name='thc' step='0.01' onChange={handleInputChange} />
+                    <input className={`input is-small is-hovered ${error.thc_cbd ? 'is-danger' : 'is-success'}`} min="0" max="100" type="number" value={localState.thc} placeholder='0' name='thc' step='0.01' onChange={handleInputChange} />
                 </div>
                 <div className='input_container'>
+                    <span className='error-message'>{errorSubmit === true ? error.thc_cbd : ''}</span>
                     <label htmlFor='cbd' ><span>*</span>Cbd:</label>
-                    <input className='input is-small is-hovered is-success' min="0" max="100" type="number" value={localState.cbd} placeholder='0' name='cbd' step='0.01' onChange={handleInputChange} />
+                    <input className={`input is-small is-hovered ${error.thc_cbd ? 'is-danger' : 'is-success'}`} min="0" max="100" type="number" value={localState.cbd} placeholder='0' name='cbd' step='0.01' onChange={handleInputChange} />
                 </div>
-                <div className='select is-small is-success'>
+                <div className={`select is-small ${error.categories ? 'is-danger' : 'is-success'}`}>
+                    <span className='error-message_category'>{errorSubmit === true ? error.categories : ''}</span>
                     <span>*</span>
                     <select className='field' type='text' name='categories' onChange={category} >
                         {<option value="" >Categories</option>}
@@ -67,8 +75,15 @@ const Form = ({handleInputChange, onSubmit, newCategory, setNewCategory, categor
                     <input className='input is-small is-success' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
                     <button className='btn_category' onClick={newCategory}>Add</button>
                 </div>
-                {console.log('error',errorSubmit)}
-                <button className='btn_create' type='submit' disabled={errorSubmit}>{button}</button>
+                {console.log(error)}
+                {console.log(Object.keys(error).length)}
+                {/* {console.log(localState.name)} */}
+                {
+                    Object.keys(error).length || localState.name === '' ?
+                    <button>asdasd</button>
+                    :
+                    <button className='btn_create' type='submit' >{button}</button>
+                }
             </form>
         </>
     )
