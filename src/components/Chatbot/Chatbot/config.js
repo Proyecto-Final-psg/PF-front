@@ -3,9 +3,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import { BotAvatar } from "../BotAvatar/BotAvatar";
 import { Discounts } from "../Discounts";
 
-let helpCommands = ""
-
-
+// let helpCommands = ""
 const config = {
     initialMessages: [createChatBotMessage(`Welcome to Weedical!`),createChatBotMessage("Some options that you can ask me => Help - Discounts - About - Contact - Diseases")],
     botName: "Weedbot",

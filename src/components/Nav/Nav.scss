@@ -1,6 +1,9 @@
-
 .nav {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);  
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.click {
+    cursor: pointer;
 }
 
 .user_dropdown {
@@ -56,6 +59,7 @@
 .btn_up:hover {
     background-color: #2B5800;
 }
+
 .btn_in:hover {
     color: #fff;
     background-color: #438a00;
@@ -107,5 +111,5 @@
         height: 26px;
         transition: 2s;
     }
-    
+
 }

@@ -13,13 +13,14 @@ import { getOrderDetails } from "../../Redux/Actions";
 
 const Account = () => {
   const usr = useSelector((store) => store.user);
-  const history = useSelector(store => store.orderDetails)
+  // const history = useSelector(store => store.orderDetails)
   const { user } = useAuth0()
   const dispatch = useDispatch()
-
+  
   useEffect(() => {
     dispatch(getOrderDetails(usr[0].user_id))
     // dispatch(getOrderDetails(1))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])
 
 

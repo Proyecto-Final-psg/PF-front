@@ -1,16 +1,17 @@
 import "./CartItems.scss";
-import { useSelector, useDispatch } from 'react-redux'
+import {  useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { updateToCart, getAllItems, deleteToCart } from '../../Redux/Actions';
 
 const CartItems = ({ name, id, price, cant }) => {
 
-  const allCartItems = useSelector(store => store.cart)
+  // const allCartItems = useSelector(store => store.cart)
   const dispatch = useDispatch()
   const [contador, setContador] = useState(1)
 
   useEffect(() => {
     dispatch(getAllItems())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contador])
 
   const deleteItemToCart = (e) => {

@@ -13,7 +13,7 @@ import { faScrewdriverWrench, faUser, faSignal, faUsers, faArrowRightFromBracket
 const Nav = () => {
     const [nav, setNav] = useState('')
     const userRedux = useSelector(state => state.user[0])
-    const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
     const handleMenu = (e) => {
         e.preventDefault()
@@ -24,18 +24,18 @@ const Nav = () => {
     var admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     return (
         <div>
-            <Profile/>
+            <Profile />
             <nav className="navbar is-light is-fixed-top nav" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand logo_container">
                     <Link className="brand" to="/home">
-                        <img src={Logo} />
+                        <img src={Logo} alt="#" />
                     </Link>
 
-                    <a role="button" className={`navbar-burger ${nav}`} onClick={handleMenu} aria-label="menu" aria-expanded="false">
+                    <div role="button" className={`navbar-burger ${nav}`} onClick={handleMenu} aria-label="menu" aria-expanded="false">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
-                    </a>
+                    </div>
 
 
                     <div className={`menu-resp ${nav}`}>
@@ -77,9 +77,9 @@ const Nav = () => {
                             </div>
                             <hr className="navbar-divider" />
                             <div className='item'>
-                                <a className="navbar-item" onClick={() => logout({ returnTo: window.location.origin })}>
+                                <div className="navbar-item" onClick={() => logout({ returnTo: window.location.origin })}>
                                     Log out
-                                </a>
+                                </div>
                                 <FontAwesomeIcon icon={faArrowRightFromBracket} />
                             </div>
 
@@ -89,7 +89,7 @@ const Nav = () => {
                 </div>
 
                 <div id="navbarBasicExample" className="navbar-menu">
-                   
+
                     <div className="navbar-start">
                         {
                             admin &&
@@ -115,20 +115,20 @@ const Nav = () => {
                         {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
-                                    <a className="navbar-link avatar">
-                        
+                                    <div className="navbar-link avatar">
+
                                         <img src={userRedux.user_img ? userRedux.user_img : noImage} alt='user' />
                                         <p>{userRedux.user_name}</p>
-                                    </a>
+                                    </div>
 
                                     <div className="navbar-dropdown">
                                         <Link className="navbar-item" to="/account">
                                             Profile
                                         </Link>
                                         <hr className="navbar-divider" />
-                                        <a className="navbar-item" onClick={() => logout({ returnTo: window.location.origin })}>
+                                        <div className="navbar-item click" onClick={() => logout({ returnTo: window.location.origin })}>
                                             Log out
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                                 :

@@ -1,5 +1,5 @@
 
-import { GET_ALL_PRODUCTS, GET_ALL_ORDERS, CHANGE_ROLL, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
+import { GET_ALL_PRODUCTS, GET_ALL_ORDERS,  GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
 
 
 const initialState = {
@@ -69,7 +69,7 @@ export const reducer = (state = initialState, action) => {
             }
         case DELETE_TO_CART:
             const filtercart = state.cart.filter((p) => p.id !== action.payload);
-            console.log(filtercart);
+         
             return {
                 ...state,
                 cart: filtercart
@@ -98,16 +98,6 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 orderItems: action.payload
             }
-        case CHANGE_ROLL:
-            return {
-                ...state,
-                user: state.user.map((e) => {
-                    if (e.roll) {
-                        e.roll = action.roll
-                    }
-                })
-            }
-
 
         default:
             return state

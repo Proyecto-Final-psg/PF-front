@@ -7,19 +7,20 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
 
-  const allCartItems = useSelector(store => store.cart.sort(function(a, b){
-    if(a.name < b.name) { return -1; }
-    if(a.name > b.name) { return 1; }
+  const allCartItems = useSelector(store => store.cart.sort(function (a, b) {
+    if (a.name < b.name) { return -1; }
+    if (a.name > b.name) { return 1; }
     return 0;
-}))
+  }))
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getAllItems())
-     // if (allCartItems.length > 0) {
+    // if (allCartItems.length > 0) {
     //   setTotal(total.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
     // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allCartItems])
 
   // const [total, setTotal] = useState(allCartItems)
@@ -61,6 +62,7 @@ const Cart = () => {
       </Link>}
 
     </div>
+
 
   );
 };

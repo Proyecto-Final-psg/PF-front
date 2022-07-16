@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../../../Redux/Actions'
 import User from '../../User/User'
-import Users from '../../Users/Users'
 import '../Metrics.scss'
 
 export function UserManagement(){
