@@ -78,12 +78,14 @@
     text-align: center;
 
     overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 10; /* number of lines to show */
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
+
 .card:hover .text-body {
     position: absolute;
     font-size: small;
@@ -116,8 +118,8 @@
     border-color: #baea7f;
     ;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-    background: rgb(189,255,70);
-background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87,87,87,0) 68%);
+    background: rgb(189, 255, 70);
+    background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87, 87, 87, 0) 68%);
 }
 
 .card:hover .card-button {
@@ -137,12 +139,11 @@ background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87,87,87,0)
     transition: 1s;
 }
 
-.card-price{
+.card-price {
     position: absolute;
     width: 100%;
     text-align: center;
     top: 345px;
     color: #438a00;
     font-weight: 700;
-    }
-
+}
