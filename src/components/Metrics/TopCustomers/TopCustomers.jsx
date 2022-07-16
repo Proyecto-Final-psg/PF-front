@@ -45,12 +45,12 @@ export function TopCustomers(){
 
 
     <div className="lower-10" style={{width:"100%"}}>
-    <table class="table is-bordered is-narrow shadow">
+    <table className="table is-bordered is-narrow shadow">
         <thead>
           <tr>
-            <th><abbr title="ID">Name</abbr></th>
+            <th><abbr title="Top users">Name</abbr></th>
             <th>Orders</th>
-            <th><abbr title="Stock">Totals</abbr></th>
+            <th><abbr title="Totals">Totals</abbr></th>
           </tr>
         </thead>
         <tbody>

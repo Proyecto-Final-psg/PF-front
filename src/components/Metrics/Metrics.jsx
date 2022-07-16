@@ -154,7 +154,7 @@ export function Metrics() {
 
       <ul class="menu-list">
         <li onClick={menuSelected}><NavLink id="userCrud" to='user-crud'>
-        User CRUD
+        User Blocker
         <span id="userCrud" className="iconMenu material-symbols-outlined">manage_accounts</span>
         </NavLink></li>
       </ul>  
