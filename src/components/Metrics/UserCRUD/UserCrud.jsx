@@ -1,29 +1,59 @@
+import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers } from "../../../Redux/Actions"
+import './UserCrud.scss'
 
 export function UserCrud(){
 
   const dispatch = useDispatch()
   const users = useSelector(store => store.users)
+  const [search, setSearch] = useState('')
+  const [results, setResults] = useState(users)
 
   useEffect(()=>{
     dispatch(getAllUsers())
   },[])
 
   useEffect(()=>{
+    console.log(search)
+  },[search])
+
+  useEffect(()=>{
     console.log(users)
   },[users])
+
+  const fillSearchObj = (e) =>{
+    setSearch(e.target.value.toLowerCase())
+  }
+
+  function searchUser(e){
+    e.preventDefault()
+
+    if(results){
+      console.log('res',results)
+      let res = users.filter(u => u.user_email.includes(search))
+      console.log(res)
+      setResults(res)
+      // return results.find(u => {return u.user_email.includes(search)})
+      // users = users.filter(u => u.user_name.includes(search))
+      // setResults(users)
+    }
+  }
 
     return  <div className="container datas">
     
     <h1 className="mt-5">Block Users</h1>
 
 
-    <div className="lower-10" style={{width:"100%"}}>
+    <div className="user-block" style={{width:"100%"}}>
+      <form action="" id="form" onSubmit={searchUser}>
+        <input type="text" className="input" onChange={fillSearchObj} />
+        <input type='submit' className="btn" value="Search" />
+      </form>
 
-    <div className="">
-      <table className="table is-bordered is-narrow shadow">
+    <div className="table-container" >
+      <table className="table is-bordered is-narrow shadow is-scrollable" >
         <thead>
         <tr>
             <th><abbr title="User">User</abbr></th>
@@ -32,7 +62,7 @@ export function UserCrud(){
           </tr>
         </thead>
         <tbody>
-          {users && users.length > 0 && users.map(u => {
+          {results && results.length > 0 && results.map(u => {
             return <tr>
               <th>{u.user_email}</th>
               <td>{u.user_name}</td>

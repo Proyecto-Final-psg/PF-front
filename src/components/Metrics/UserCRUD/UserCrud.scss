@@ -1,0 +1,17 @@
+.table tbody{
+    overflow-y: scroll;
+    width: auto;
+    // position: absolute;
+    height: 50%;
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#form input{
+    width: 30%;
+}
