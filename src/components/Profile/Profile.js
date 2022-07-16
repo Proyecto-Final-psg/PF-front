@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { registerUser } from '../../Redux/Actions'
+import { API_URL } from '../../Redux/Constants'
 // import { faMehRollingEyes } from '@fortawesome/free-regular-svg-icons'
 // import { useSearchParams } from 'react-router-dom'
 
@@ -23,9 +24,10 @@ const Profile = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    const refresRoll = (user, userRedux) => {
+
+    const refresRoll = () => {
         if (user && userRedux.user_id) {
-            fetch('http://localhost:8081/users/' + userRedux.user_id)
+            fetch(`${API_URL}/users/${userRedux.user_id}`)
                 .then(response => response.json())
                 .then(data => setRoll(data))
             if (userRedux.roll !== "guest") {
@@ -42,8 +44,9 @@ const Profile = () => {
             }
         }
     }
+
     useEffect(() => {
-        refresRoll(user, userRedux)
+        refresRoll()
     })
     // async function token() {
     //     try {
