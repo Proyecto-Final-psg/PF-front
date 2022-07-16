@@ -11,6 +11,7 @@ import ButtonBack from './ButtonBack/ButtonBack';
 import './CreateProduct.scss'
 
 const CreateProduct = () => {
+    
     const navigate = useNavigate()
     const state = useSelector(state => state.categories);
     const dispatch = useDispatch();

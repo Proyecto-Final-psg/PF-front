@@ -1,11 +1,14 @@
+ // eslint-disable-next-line 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "../Profile/Profile";
 import "./Account.scss";
 import bag from "../../assets/bag.png";
 import { useAuth0 } from "@auth0/auth0-react";
+ // eslint-disable-next-line 
 import boy1 from "../../assets/boy1.png";
 import boy2 from "../../assets/boy2.png";
+ // eslint-disable-next-line 
 import Footer from '../Footer/Footer.jsx'
 import { getOrderDetails } from "../../Redux/Actions";
 
@@ -53,8 +56,8 @@ const Account = () => {
                   }
                   {/* <img src={boy2} alt=""  /> */}
                 </div>
-                <div class="category"> {usr[0] && usr[0].user_name} </div>
-                <div class="heading">
+                <div className="category"> {usr[0] && usr[0].user_name} </div>
+                <div className="heading">
                   <span>{usr[0] && usr[0].user_email}</span>
                   {user && user.email_verified ? (
                     <>
@@ -77,7 +80,7 @@ const Account = () => {
                       </span>
                     </>
                   )}
-                  <div class="author">
+                  <div className="author">
                     <span>Rol: {usr[0] && usr[0].roll}</span>
                   </div>
                 </div>
@@ -91,7 +94,7 @@ const Account = () => {
                 <h3>History shop</h3>
                 <img src={bag} alt="" />
               </div>
-              <table class="table table-hover">
+              <table className="table table-hover">
                 <thead>
                  
                   <tr>

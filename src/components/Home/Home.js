@@ -27,18 +27,19 @@ import { OrderDetailed } from "../Metrics/Orders/OrderDetailed/OrderDetailed";
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
 
-    function showMeTheBot(){
-        const bot = document.getElementById('bot')
-        {showBot ? setShowBot(false) : setShowBot(true)}
-        if(showBot){
-          // bot.setAttribute('data-aos','fade-right');
-          bot.classList.add('showBot')
-        }
-        else{
-          // bot.setAttribute('data-aos','');
-          bot.classList.remove('showBot')
-        }
+  function showMeTheBot() {
+    const bot = document.getElementById('bot')
+     // eslint-disable-next-line 
+    { showBot ? setShowBot(false) : setShowBot(true) }
+    if (showBot) {
+      // bot.setAttribute('data-aos','fade-right');
+      bot.classList.add('showBot')
     }
+    else {
+      // bot.setAttribute('data-aos','');
+      bot.classList.remove('showBot')
+    }
+  }
   return (
     <div className="cmp-hero">
       <Nav />
@@ -57,28 +58,28 @@ const Home = () => {
           <Route path='user-management' element={<UserManagement />} />
           <Route path='user-crud' element={<UserCrud />} />
           <Route path='top-customers' element={<TopCustomers />} />
-            <Route path='admin-orders' element={<Orders />}>
-              <Route path='order-detailed/:id' element={<OrderDetailed />} />
-            </Route>
+          <Route path='admin-orders' element={<Orders />}>
+            <Route path='order-detailed/:id' element={<OrderDetailed />} />
+          </Route>
         </Route>
       </Routes>
 
       <div className="bot" id='bot' >
 
-                <Bot 
-                    config={config}
-                    messageParser={MessageParser}
-                    actionProvider={ActionProvider}
-                />
-            </div>
-            
-            <button className='chatbot chat-button' onClick={showMeTheBot}>
-            <span class="material-symbols-outlined">
-smart_toy
-</span>
-              Chat
-              </button>
-      
+        <Bot
+          config={config}
+          messageParser={MessageParser}
+          actionProvider={ActionProvider}
+        />
+      </div>
+
+      <button className='chatbot chat-button' onClick={showMeTheBot}>
+        <span className="material-symbols-outlined">
+          smart_toy
+        </span>
+        Chat
+      </button>
+
       <Footer />
     </div>
   );

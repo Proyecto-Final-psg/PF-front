@@ -2,7 +2,7 @@ import './Orders.scss'
 import '../Metrics.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllOrders, getAllUsers, getUserById } from '../../../Redux/Actions'
+import { getAllOrders, getAllUsers} from '../../../Redux/Actions'
 import { NavLink, Outlet } from 'react-router-dom'
 export function Orders(){
     
@@ -15,9 +15,12 @@ export function Orders(){
         dispatch(getAllUsers())
         console.log(orders)
         console.log(users)
-    },[])
+    },
+     // eslint-disable-next-line 
+    [])
 
     function getUser(id){
+       // eslint-disable-next-line 
         const user =  users.find(u => u.user_id == id)
         console.log(user)
         return user.user_name
@@ -29,7 +32,7 @@ export function Orders(){
     {/* <hr /> */}
 
     <div className="order-data">
-      <table class="table is-hoverable is-bordered is-narrow shadow" style={{width:"50%"}}>
+      <table className="table is-hoverable is-bordered is-narrow shadow" style={{width:"50%"}}>
         <thead>
           <tr>
             <th><abbr title="ID">ID</abbr></th>

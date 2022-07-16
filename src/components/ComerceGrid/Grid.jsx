@@ -131,11 +131,11 @@ function Grid() {
 
                     {
                         allProducts.map(product => {
-                            return (<option className='form'>{product.name}</option>)
+                            return (<option key={product.id} className='form'>{product.name}</option>)
                         })
                         ||
                         allCategories.map(product => {
-                            return (<option>{product.category}</option>)
+                            return (<option key={product.name}>{product.category}</option>)
                         })
                     }
 
