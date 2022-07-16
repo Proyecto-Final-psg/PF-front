@@ -1,32 +1,31 @@
- // eslint-disable-next-line 
+// eslint-disable-next-line 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "../Profile/Profile";
 import "./Account.scss";
 import bag from "../../assets/bag.png";
 import { useAuth0 } from "@auth0/auth0-react";
- // eslint-disable-next-line 
+// eslint-disable-next-line 
 import boy1 from "../../assets/boy1.png";
 import boy2 from "../../assets/boy2.png";
- // eslint-disable-next-line 
+// eslint-disable-next-line 
 import Footer from '../Footer/Footer.jsx'
 import { getOrderDetails } from "../../Redux/Actions";
 
 const Account = () => {
   const usr = useSelector((store) => store.user);
   const history = useSelector(store => store.orderDetails)
-  const {user} = useAuth0()
+  const { user } = useAuth0()
   const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getOrderDetails(usr[0].user_id))
     // dispatch(getOrderDetails(1))
-  },[usr])
+  }, [usr])
 
 
   return (
     <div className="a">
-      <Profile />
       <div className="container usrContainer">
         <div className="row inf">
           <div className="account">
@@ -44,15 +43,15 @@ const Account = () => {
           <hr />
           <div className="col-sm-4">
             <div className="user-profile">
-            
+
               <div className="cardAcc">
                 <div className="card-image">
-                  {usr[0].user_img 
-                  
-                  ?
-                  <img src={usr[0].user_img} alt='profile pic' />
-                  :
-                  <img src={boy2} alt='profile pic' />
+                  {usr[0].user_img
+
+                    ?
+                    <img src={usr[0].user_img} alt='profile pic' />
+                    :
+                    <img src={boy2} alt='profile pic' />
                   }
                   {/* <img src={boy2} alt=""  /> */}
                 </div>
@@ -96,29 +95,29 @@ const Account = () => {
               </div>
               <table className="table table-hover">
                 <thead>
-                 
+
                   <tr>
-                    
+
                     <th scope="col">Item</th>
                     <th scope="col">Quantity</th>
                     <th scope="col p-5">Date</th>
                     <th scope="col">Total</th>
                   </tr>
-                  
-                  
+
+
                 </thead>
                 <tbody>
-                    {history[0] && history[0].arrayItems.length>0 ? history[0].arrayItems.map(h => {
-                      return <tr>
+                  {/* {history[0] && history[0].arrayItems.length > 0 ? history[0].arrayItems.map((h, i) => {
+                    return <tr key={i}>
                       <td>{h.name}</td>
                       <td>{h.quantity}</td>
                       <td>{h.createdAt}</td>
                       <td>${h.price}</td>
                     </tr>
-                    })
+                  })
                     :
-                    <p>You haven't purchase a product yet</p>
-                  }   
+                    "You haven't purchase a product yet"
+                  } */}
                 </tbody>
               </table>
             </div>

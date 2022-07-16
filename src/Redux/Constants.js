@@ -13,6 +13,7 @@ export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 export const GET_ORDER_DETAILS = "GET_ORDER_DETAILS"
 export const GET_USER_ORDER = 'GET_USER_ORDER'
 export const GET_ORDER_ITEMS = 'GET_ORDER_ITEMS'
+export const CHANGE_ROLL = "CHANGE_ROLL"
 export const API_URL = 'https://desarrollo-back.herokuapp.com'
 // export const API_URL = 'http://localhost:8081'
 

@@ -1,5 +1,5 @@
 
-import { API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
+import { API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
 
 
 export function getAllProducts() {
@@ -100,6 +100,11 @@ export function registerUser(user) {
 export const addGuest = (guest) => {
     return (
         { type: ADD_GUEST, guest: guest }
+    )
+}
+export const changeRoll = (roll) => {
+    return (
+        { type: CHANGE_ROLL, roll: roll }
     )
 }
 

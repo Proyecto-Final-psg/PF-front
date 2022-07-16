@@ -1,18 +1,18 @@
 
-import { GET_ALL_PRODUCTS, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
+import { GET_ALL_PRODUCTS, GET_ALL_ORDERS, CHANGE_ROLL, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
 
 
 const initialState = {
-    user: {},
+    user: [],
     products: [],
     product: {},
     categories: [],
     users: [],
     cart: [],
-    order : [],
-    orderDetails : [],
-    orderItems:[],
-    user_order:{}
+    order: [],
+    orderDetails: [],
+    orderItems: [],
+    user_order: {}
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -77,12 +77,12 @@ export const reducer = (state = initialState, action) => {
         case UPDATE_TO_CART:
             const cartfilter2 = state.cart.filter((p) => p.id !== action.payload.id);
             return {
-                    ...state,
-                    cart: cartfilter2.concat(action.payload)
+                ...state,
+                cart: cartfilter2.concat(action.payload)
             }
 
         case GET_USER_ORDER:
-            return{
+            return {
                 ...state,
                 user_order: action.payload
             }
@@ -92,11 +92,20 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-        
+
         case GET_ORDER_ITEMS:
-            return{
+            return {
                 ...state,
                 orderItems: action.payload
+            }
+        case CHANGE_ROLL:
+            return {
+                ...state,
+                user: state.user.map((e) => {
+                    if (e.roll) {
+                        e.roll = action.roll
+                    }
+                })
             }
 
 

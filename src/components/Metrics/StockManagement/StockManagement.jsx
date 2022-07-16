@@ -74,8 +74,6 @@ export function StockManagement() {
     ],
   };
 
-
-
   useEffect(() => {
     dispatch(getAllProducts())
   },
@@ -98,8 +96,8 @@ export function StockManagement() {
           </tr>
         </thead>
         <tbody>
-          {noStock && noStock.map(p => {
-            return <tr className='no-stock'>
+          {noStock && noStock.map((p, i) => {
+            return <tr key={i} className='no-stock'>
               <th style={{ color: "white" }}>{p.id}</th>
               <td>{p.name}</td>
               <td>{p.stock}</td>
@@ -109,16 +107,16 @@ export function StockManagement() {
             </tr>
           })}
 
-          {lowerThan10 && lowerThan10.map(p => {
-            return <tr className='lower-than-10'>
+          {lowerThan10 && lowerThan10.map((p, i) => {
+            return <tr key={i} className='lower-than-10'>
               <th style={{ color: "white" }}>{p.id}</th>
               <td>{p.name}</td>
               <td>{p.stock}</td>
               <td><NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink></td>
             </tr>
           })}
-          {lowerThan50 && lowerThan50.map(p => {
-            return <tr className='lower-than-50'>
+          {lowerThan50 && lowerThan50.map((p, i) => {
+            return <tr key={i}  className='lower-than-50'>
               <th style={{ color: "white" }}>{p.id}</th>
               <td>{p.name}</td>
               <td>{p.stock}</td>
