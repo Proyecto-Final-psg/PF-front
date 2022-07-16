@@ -5,9 +5,10 @@ import Carousel from '../Carousel/Carousel'
 
 const PrincipalPage = () => {
     // const userRedux = useSelector(state => state.user)
-   
+
     return (
         <div>
+        
             <Carousel classname="carousel" />
             <Grid />
         </div>

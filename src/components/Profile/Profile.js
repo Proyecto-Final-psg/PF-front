@@ -25,7 +25,7 @@ const Profile = () => {
     }, [])
     useEffect(() => {
 
-        if (user&&userRedux.user_id) {
+        if (user && userRedux.user_id) {
             fetch('http://localhost:8081/users/' + userRedux.user_id)
                 .then(response => response.json())
                 .then(data => setRoll(data))
