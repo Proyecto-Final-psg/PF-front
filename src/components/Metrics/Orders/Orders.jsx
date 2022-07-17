@@ -2,19 +2,22 @@ import './Orders.scss'
 import '../Metrics.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllOrders, getAllUsers} from '../../../Redux/Actions'
+import { getAllOrders, getAllUsers, getItemsOfOrder} from '../../../Redux/Actions'
 import { NavLink, Outlet } from 'react-router-dom'
+import { useState } from 'react'
+
 export function Orders(){
     
     const dispatch = useDispatch()
     const orders = useSelector(store => store.order)
     const users = useSelector(store => store.users)
-
+    
     useEffect(()=>{
         dispatch(getAllOrders())
         dispatch(getAllUsers())
-        console.log(orders)
-        console.log(users)
+        // console.log(orders)
+        // console.log(users)
+        // console.log('DIRNAME',__dirname)
     },
      // eslint-disable-next-line 
     [])
@@ -22,9 +25,11 @@ export function Orders(){
     function getUser(id){
        // eslint-disable-next-line 
         const user =  users.find(u => u.user_id == id)
-        console.log(user)
+        // console.log(user)
         return user.user_name
     }
+
+   
     
 
     return <div className="container datas">
@@ -32,7 +37,7 @@ export function Orders(){
     {/* <hr /> */}
 
     <div className="order-data">
-      <table className="table is-hoverable is-bordered is-narrow shadow" style={{width:"50%"}}>
+      <table className="table is-hoverable is-bordered is-narrow shadow scrolldown" style={{width:"50%"}}>
         <thead>
           <tr>
             <th><abbr title="ID">ID</abbr></th>
@@ -44,20 +49,17 @@ export function Orders(){
         <tbody>
         {orders.length>0 && orders.map(o => {
             return <tr>
-                    <th>{o.id}</th>
+                    <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
                     <td>{o.status}</td>
-                    <td><NavLink to={`order-detailed/${o.userUserId}`}>{getUser(o.userUserId)}</NavLink> </td>
+                    <td>{getUser(o.userUserId)}</td>
                     <td>{o.createdAt}</td>
                 </tr>
             
         })}
         </tbody>
       </table>
-
-      <div className="">
-       <Outlet />
-      </div>
     </div>
+    {/* <Outlet /> */}
 
   </div>
 }

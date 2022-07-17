@@ -1,3 +1,19 @@
+table.scrolldown tbody, table.scrolldown thead {
+    display: block;
+} 
+
+table.scrolldown tbody {
+      
+    /* Set the height of table body */
+    height: 300px; 
+      
+    /* Set vertical scroll */
+    overflow-y: auto;
+      
+    /* Hide the horizontal scroll */
+    overflow-x: hidden; 
+}
+
 .order-detailed{
     display: flex;
     flex-direction: column;
