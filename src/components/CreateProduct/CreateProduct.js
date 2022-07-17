@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,8 @@ const CreateProduct = () => {
     const dispatch = useDispatch();
     const [newCategory, setNewCategory] = useState('')
 
+    
+    
     const [createProd, setCreateProd] = useState({
         name: '',
         stock: '',
@@ -28,28 +30,28 @@ const CreateProduct = () => {
         cbd: '',
         categories: []
     })
-
-    const [error, setError] = useState({
-        stateName: false,
-        stateMessage: false,
-        stateType: false,
-        messageName: '',
-        messageDescription: '',
-        messageType: '',
-    })
+    
+    const [error, setError] = useState({})
 
     const handleInputChange = (e) => {
-        Validator(error, setError, e)
         setCreateProd({
             ...createProd,
             [e.target.name]: e.target.value,
         })
+        setError(Validator({
+            ...createProd,
+            [e.target.name]: e.target.value,
+        }))
     }
     function handleSelectCategories(e) {
         setCreateProd({
             ...createProd,
             categories: [...createProd.categories, e.target.value],
         })
+        setError(Validator({
+            ...createProd,
+            categories: [...createProd.categories, e.target.value],
+        }))
     }
 
     function handleClickCategory(e) {
@@ -87,7 +89,7 @@ const CreateProduct = () => {
         });
     }
 
-    let errorSubmit = error.stateName === true || error.stateMessage === true || error.stateType === true;
+    const errorSubmit = Object.keys(error).length > 0 ? true : false;
 
     return (
         <>
