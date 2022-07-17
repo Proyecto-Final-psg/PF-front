@@ -13,6 +13,7 @@ import './Nav.scss'
 const Nav = () => {
     const [nav, setNav] = useState('')
     const userRedux = useSelector(state => state.user[0])
+    const productscart = useSelector(state => state.cart)
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
     const handleMenu = (e) => {
@@ -150,12 +151,16 @@ const Nav = () => {
                                             <strong className='has-text-white'>Sign up</strong>
                                         </button>
                                     </div>
+
                                 </div>
+
                         }
 
-                        <Link className="navbar-item carrito" to="/cart"><img src={Carrito} alt="cart" /></Link>
-
                     </div>
+
+                </div>
+                <div className="carrito-container" >
+                    <Link className="navbar-item carrito" to="/cart"><img src={Carrito} alt="cart" />  {(productscart.length > 0) && <div className="navbar-item-carrito_count">{productscart.length}</div>}</Link>
                 </div>
             </nav>
         </div>

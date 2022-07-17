@@ -187,8 +187,6 @@ function Grid() {
         </div>
 
         <div className="cards">
-
-
             <Cards items={currentPosts} />
             {/* 
             {allProducts && allProducts.map((p, i) => 
