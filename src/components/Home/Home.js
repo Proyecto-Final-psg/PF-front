@@ -60,9 +60,8 @@ const Home = () => {
           <Route path='user-management' element={<UserManagement />} />
           <Route path='user-crud' element={<UserCrud />} />
           <Route path='top-customers' element={<TopCustomers />} />
-          <Route path='admin-orders' element={<Orders />}>
-            <Route path='order-detailed/:id' element={<OrderDetailed />} />
-          </Route>
+          <Route path='admin-orders' element={<Orders />} />
+          <Route path='order-detailed/:id' element={<OrderDetailed />} />
         </Route>
       </Routes>
 

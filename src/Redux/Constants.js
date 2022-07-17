@@ -15,6 +15,7 @@ export const GET_USER_ORDER = 'GET_USER_ORDER'
 export const GET_ORDER_ITEMS = 'GET_ORDER_ITEMS'
 export const CHANGE_ROLL = "CHANGE_ROLL"
 export const GET_AUTH0_USERS = 'GET_AUTH0_USERS'
+export const GET_ITEMS_OF_ORDER = 'GET_ITEMS_OF_ORDER'
 export const API_URL = 'https://desarrollo-back.herokuapp.com'
 // export const API_URL = 'http://localhost:8081'
 
