@@ -1,186 +1,110 @@
-.profile{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding:20px;
-    
+
+.account {
+  width: 100%;
+  height: 85vh;
+  margin-top: 40px;
+  border: 1px red;
 }
 
-.user-profile{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    // width:30%;
-    margin:10px;
+.account_container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+ /*  border: 1px solid red; */
 }
 
-.user-history img{
-    width: 50px;
-   
+.user_container {
+  width: 350px;
+  height: 100%;
+ /*  border: 1px solid red; */
 }
 
-.user-history{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start ;
-    flex-wrap: nowrap;
-    // width:60%;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.447);
+.user_card {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  /* border: 1px solid red; */
+  /* background: rgb(209, 207, 207); */
 }
 
-.user-history-title{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
+.user_image {
+  width: 50%;
+  height: auto;
+  margin: auto;
+  margin-top: 40px;
 }
 
-.user-profile-data{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    width:400px;
-    // height: 200px;
-    border: 1px solid black;
-    // padding:20px;
-    text-align: center;
-    border-radius: 20px;
+.user_image img {
+  border-radius: 50%;
 }
 
-.user-profile-pic img{
-    width: 100%;
+.user_description {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.user-profile-info{
-    background-color: azure;
-    width: 100%;
+.user_description h1 {
+  font-size: 32px;
 }
 
-.account{
-    display: flex;
-    align-items: center;
+.user_options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid red; */
 }
 
-.account img{
-    width: 50px;
-    height: 37px;
+.nav-menu {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin-top: 40px;
 }
 
-
-.a{
-  background: rgb(87,87,87);
-  background: linear-gradient(0deg, rgba(87,87,87,0) 80%, rgba(180,235,82,0.6591678907891281) 100%);
+.nav-item {
+  width: 100%;
+  height: 40px;
+  color: #323232;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+.nav-item-active {
+  width: 100%;
+  height: 40px;
+  background: #485FC7;
+  line-height: 40px;
+  text-align: center;
+  color: #323232;
+  margin-bottom: 20px;
+}
 
+.nav-item .link {
+  color: #323232
+}
+.nav-item-active .link {
+  color: #fff
+}
+.nav-item .link:hover {
+  color: #323232;
+}
+.nav-item-active .link:hover {
+  color: #fff;
+}
 
-
-/* From uiverse.io by @alexmaracinaru */
-.cardAcc {
-    width: 250px;
-    height: 354px;
-    background: white;
-    padding: .4em;
-    border-radius: 6px;
-    text-align: center;
-    border-radius: 30px;
-    
-    box-shadow: -5px 10px 25px 5px #416620;
-    margin-bottom: 20px;
-  }
-
-  .cardAcc:hover{
-    box-shadow: -5px 10px 25px 5px #000000;
-    transition: 0.5s;
-  }
-  
-  .card-image {
-    background-color: rgb(236, 236, 236);
-    width: 100%;
-    height: 60%;
-    border-radius: 6px 6px 0 0;
-    overflow: hidden;
-    // background-image: url('../../assets/boy1.png');
-    // background-size: cover;
-    border-radius: 30px;
-  }
-
-  .card-image:hover {
-    // background-color: rgb(67, 67, 67);
-    width: 100%;
-    height: 60%;
-    border-radius: 6px 6px 0 0;
-    overflow: hidden;
-    background-image: url('../../assets/boy2.png');
-    background-size: cover;
-    transition: 0.5s;
-    border-radius: 30px;
-  }
-
-  .card-image img{
-    width: 100%;
-  }
-  
-  .card-image:hover {
-    transform: scale(0.98);
-  }
-  
-  .category {
-    text-transform: uppercase;
-    font-size: 1em;
-    font-weight: 600;
-    color: rgb(28, 121, 42);
-    padding: 10px 7px 0;
-  }
-  
-  .category:hover {
-    
-  }
-  
-  .heading {
-    font-weight: 600;
-    color: rgb(88, 87, 87);
-    padding: 7px;
-    font-size: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .heading:hover {
-    // cursor: pointer;
-  }
-  
-  .author {
-    color: gray;
-    font-weight: 400;
-    font-size: 11px;
-    padding-top: 20px;
-  }
-  
-  .name {
-    font-weight: 600;
-  }
-  
-  .name:hover {
-    // cursor: pointer;
-  }
-
-  
-  .inf{
-    align-items: center;
-  }
-
-  .table{
-    padding: 20px;
-  }
-
-  
+.content {
+  width: 70%;
+  height: 100%;
+}

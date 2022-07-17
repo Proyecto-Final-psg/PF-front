@@ -1,5 +1,5 @@
 
-import { API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
+import { API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,GET_USER_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS } from "./Constants"
 
 
 export function getAllProducts() {
@@ -137,6 +137,19 @@ export const addToCart = (id, name, price, cant) => {
             }
         }
     )
+}
+
+export function getUserCart(id){
+    return function(dispatch){
+        return fetch(`${API_URL}/cart/${id}`)
+        .then(data => data.json())
+        .then(res => {
+            dispatch({
+                type: GET_USER_CART,
+                payload: res
+            })
+        })
+    }
 }
 
 export const deleteToCart = (id) => {

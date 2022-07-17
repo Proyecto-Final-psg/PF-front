@@ -4,6 +4,7 @@ export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const REGISTER_USER = "REGISTER_USER"
 export const ADD_TO_CART = "ADD_TO_CART"
+export const GET_USER_CART = "GET_USER_CART"
 export const DELETE_TO_CART = "DELETE_TO_CART"
 export const ADD_GUEST = "ADD_GUEST"
 export const UPDATE_TO_CART = "UPDATE_TO_CART"

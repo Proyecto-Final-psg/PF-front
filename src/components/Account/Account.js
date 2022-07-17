@@ -1,5 +1,5 @@
 // eslint-disable-next-line 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Account.scss";
 import bag from "../../assets/bag.png";
@@ -10,119 +10,61 @@ import boy2 from "../../assets/boy2.png";
 // eslint-disable-next-line 
 import Footer from '../Footer/Footer.jsx'
 import { getOrderDetails } from "../../Redux/Actions";
+import Image from '../../assets/no_user_image.jpeg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 
 const Account = () => {
+
+  const [active, setActive] = useState('history-shops')
+
   const usr = useSelector((store) => store.user);
+  console.log(usr)
   // const history = useSelector(store => store.orderDetails)
   const { user } = useAuth0()
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     dispatch(getOrderDetails(usr[0].user_id))
     // dispatch(getOrderDetails(1))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])
 
 
   return (
-    <div className="a">
-      <div className="container usrContainer">
-        <div className="row inf">
-          <div className="account">
-            <h2 className="m-2">Account</h2>
-            {/* <img src={boy2} alt="" /> */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
-            </svg>
-          </div>
-          <hr />
-          <div className="col-sm-4">
-            <div className="user-profile">
+    <div className="account">
+      <div className="account_container">
+        <div className="user_container">
 
-              <div className="cardAcc">
-                <div className="card-image">
-                  {usr[0].user_img
-
-                    ?
-                    <img src={usr[0].user_img} alt='profile pic' />
-                    :
-                    <img src={boy2} alt='profile pic' />
-                  }
-                  {/* <img src={boy2} alt=""  /> */}
-                </div>
-                <div className="category"> {usr[0] && usr[0].user_name} </div>
-                <div className="heading">
-                  <span>{usr[0] && usr[0].user_email}</span>
-                  {user && user.email_verified ? (
-                    <>
-                      <span>Account Verified</span>
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ color: "green" }}
-                      >
-                        verified
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Account Not Verified</span>
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ color: "red" }}
-                      >
-                        warning
-                      </span>
-                    </>
-                  )}
-                  <div className="author">
-                    <span>Rol: {usr[0] && usr[0].roll}</span>
-                  </div>
-                </div>
-              </div>
+          <div className="user_card">
+            <div className="user_image">
+              <img src={usr[0].user_img} />
+            </div>
+            <div className="user_description">
+              <h1>{usr[0].user_name}</h1>
+              <p><FontAwesomeIcon icon={faEnvelope} />  {usr[0].user_email}</p>
+              <p><FontAwesomeIcon icon={faUser} />  {usr[0].roll}</p>
             </div>
           </div>
 
-          <div className="col-sm-8 mb-5">
-            <div className="user-history">
-              <div className="user-history-title">
-                <h3>History shop</h3>
-                <img src={bag} alt="" />
-              </div>
-              <table className="table table-hover">
-                <thead>
-
-                  <tr>
-
-                    <th scope="col">Item</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col p-5">Date</th>
-                    <th scope="col">Total</th>
-                  </tr>
-
-
-                </thead>
-                <tbody>
-                  {/* {history[0] && history[0].arrayItems.length > 0 ? history[0].arrayItems.map((h, i) => {
-                    return <tr key={i}>
-                      <td>{h.name}</td>
-                      <td>{h.quantity}</td>
-                      <td>{h.createdAt}</td>
-                      <td>${h.price}</td>
-                    </tr>
-                  })
-                    :
-                    "You haven't purchase a product yet"
-                  } */}
-                </tbody>
-              </table>
-            </div>
+          <div className="user_options">
+            <ul className='nav-menu'>
+              <li className={active === 'history-shops' ? 'nav-item-active' : 'nav-item'}>
+                <Link className="link" to="history-shops"  onClick={() => setActive('history-shops')} ><FontAwesomeIcon icon={faUser} />  history</Link>
+              </li>
+              <li className={active === 'favourites' ? 'nav-item-active' : 'nav-item'}>
+                <Link className="link" to="favourites"  onClick={() => setActive('favourites')} ><FontAwesomeIcon icon={faUser} />  favourites</Link>
+              </li>
+            </ul>
           </div>
         </div>
+
+        <div className="content">
+            <Outlet />
+        </div>
+
       </div>
     </div>
   );
