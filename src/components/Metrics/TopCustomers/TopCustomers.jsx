@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers,  getOrderItems, getTopCustomers,  } from "../../../Redux/Actions"
 // import { API_URL } from "../../../Redux/Constants"
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers(){
 
   const dispatch = useDispatch()
@@ -58,8 +58,10 @@ obj2.sort(function (a, b) {
         </thead>
         <tbody>
           {obj2 && obj2.map(o => {
-            return <tr>
-              <td>{o.username}</td>
+            
+            return <tr key={o.id}>
+              
+              <td key={o.id}>{o.username}</td>
               {/* <td>{o.order_id}</td> */}
               <td>{o.total}</td>
             </tr>
