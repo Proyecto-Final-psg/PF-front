@@ -1,8 +1,66 @@
-.table tbody{
-    overflow-y: scroll;
-    width: auto;
-    // position: absolute;
-    height: 50%;
+
+/* To display the block as level element */
+table.scrolldown tbody, table.scrolldown thead {
+    display: block;
+} 
+
+table.scrolldown tbody {
+      
+    /* Set the height of table body */
+    height: 300px; 
+      
+    /* Set vertical scroll */
+    overflow-y: auto;
+      
+    /* Hide the horizontal scroll */
+    overflow-x: hidden; 
+}
+  
+tbody { 
+    // border-top: 2px solid black;
+}
+
+#lockGif{
+    width: 100%;
+}
+
+.space-modal{
+    display: flex;
+    justify-content: center;
+}
+
+.modala{
+   width: 100px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: nowrap;
+}
+
+.modala img{
+    // width: 100%;
+}
+
+tbody td, thead th {
+    width : 200px;
+    // border-right: 2px solid black;
+}
+td {
+    text-align:center;
+}
+
+.table img {
+    cursor: pointer;
+}
+
+#img{
+    display: flex;
+    justify-content: center;
+}
+
+.red{
+    background-color: rgb(216, 72, 72);
 }
 
 #form{
@@ -10,8 +68,18 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding: 20px;
+}
+
+#form input{
+    margin: 5px;
 }
 
 #form input{
     width: 30%;
+}
+
+.table img{
+    width: 40px;
+    border-radius: 100%;
 }
