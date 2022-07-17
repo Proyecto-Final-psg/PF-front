@@ -1,43 +1,45 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllUsers,  getOrderItems,  } from "../../../Redux/Actions"
+import { getAllUsers,  getOrderItems, getTopCustomers,  } from "../../../Redux/Actions"
 // import { API_URL } from "../../../Redux/Constants"
 
 export function TopCustomers(){
 
   const dispatch = useDispatch()
-  const orders = useSelector(store => store.order)
-  const users = useSelector(store => store.users)
-  const orderItems = useSelector(store => store.orderItems)
+
+  const topCustomers = useSelector(store => store.topCustomers)
 
   useEffect(()=>{
-    dispatch(getOrderItems())
-    dispatch(getAllUsers())
-    dispatch(getOrderItems())
+    dispatch(getTopCustomers())
        // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  useEffect(()=>{
-    
-    console.log(orders)
-  },[orders])
+  var holder = {};
 
-  useEffect(()=>{
-    console.log(orderItems)
-  },[orderItems])
-
-  function getUserName(id){
-    const user = users.find(u => u.user_id === id)
-    return user.user_name
+  topCustomers.forEach(function(d) {
+  if (holder.hasOwnProperty(d.username)) {
+    holder[d.username] = holder[d.username] + d.total;
+  } else {
+    holder[d.username] = d.total;
   }
+});
 
-  function getDetailsFrom(id){
-    
-    const ordersToSum = orderItems.filter(o => o.order === id)
-    const amountOfMoney = ordersToSum.reduce((a, b) => a + (b["price"] || 0), 0);
-    console.log('amount $',amountOfMoney)
-    return amountOfMoney
+var obj2 = [];
+
+for (var prop in holder) {
+  obj2.push({ username: prop, total: holder[prop] });
+}
+
+obj2.sort(function (a, b) {
+  if (a.total < b.total) {
+    return 1;
   }
+  if (a.total > b.total) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
+});
 
 
     return <div className="container datas">
@@ -50,16 +52,16 @@ export function TopCustomers(){
         <thead>
           <tr>
             <th><abbr title="Top users">Name</abbr></th>
-            <th>Orders</th>
+            {/* <th>Orders</th> */}
             <th><abbr title="Totals">Totals</abbr></th>
           </tr>
         </thead>
         <tbody>
-          {orders && orders.map(o => {
+          {obj2 && obj2.map(o => {
             return <tr>
-              <td>{getUserName(o.userUserId)}</td>
-              <td>{o.id}</td>
-              <td>${getDetailsFrom(o.id)}</td>
+              <td>{o.username}</td>
+              {/* <td>{o.order_id}</td> */}
+              <td>{o.total}</td>
             </tr>
           })}
           </tbody>

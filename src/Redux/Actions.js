@@ -1,5 +1,5 @@
 
-import { API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, GET_ITEMS_OF_ORDER } from "./Constants"
+import { GET_BEST_CUSTOMERS, API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, GET_ITEMS_OF_ORDER } from "./Constants"
 
 
 export function getAllProducts() {
@@ -369,7 +369,18 @@ export function  getAuth0Users(){
     }
 }
 
-
+export function getTopCustomers(){
+    return function(dispatch){
+        return fetch(`${API_URL}/getTotalByUserByOrder`)
+        .then(data => data.json())
+        .then(res => {
+            dispatch({
+                type: GET_BEST_CUSTOMERS,
+                payload: res
+            })
+        })
+    }
+}
 
 ////////////////////////Ejemplos/////////////////////////////////////
 // export const AgregarMovie = (movieNew) => {
