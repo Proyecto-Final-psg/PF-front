@@ -47,16 +47,16 @@ export function OrderDetailed() {
             <table className="table is-hoverable is-bordered is-narrow shadow ">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Status</th>
-                        <th>User</th>
-                        <th colSpan='3'>Products</th>
+                        <th><abbr title="ID">ID</abbr></th>
+                        <th><abbr title="Status">Status</abbr></th>
+                        <th><abbr title="User name">User</abbr></th>
+                        <th colSpan='3'><abbr title="Products">Products</abbr></th>
                     </tr>
                     <tr>
                         <td colSpan='3'></td>
-                        <td>Product</td>
-                        <td>Quantity</td>
-                        <td>Price</td>
+                        <td><abbr title="Product name">Name</abbr></td>
+                        <td><abbr title="Product quantity">Quantity</abbr></td>
+                        <td><abbr title="Product price">Price</abbr></td>
                     </tr>
                 </thead>
                 <tbody>

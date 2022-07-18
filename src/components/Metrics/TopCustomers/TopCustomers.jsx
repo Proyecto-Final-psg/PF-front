@@ -8,11 +8,17 @@ export function TopCustomers(){
   const dispatch = useDispatch()
 
   const topCustomers = useSelector(store => store.topCustomers)
-
+  const users = useSelector(store => store.users)
+  let num = 0;
   useEffect(()=>{
     dispatch(getTopCustomers())
+    dispatch(getAllUsers())
        // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
+
+  useEffect(()=>{
+    console.log(users);
+  },[users])
 
   var holder = {};
 
@@ -41,6 +47,17 @@ obj2.sort(function (a, b) {
   return 0;
 });
 
+obj2 = obj2.slice(0,3)
+
+
+
+function matchIdWithUser(id){
+  let user = users.find(u => u.user_id == id)
+  return user.user_name
+}
+
+
+
 
     return <div className="container datas">
     
@@ -61,9 +78,14 @@ obj2.sort(function (a, b) {
             
             return <tr key={o.id}>
               
-              <td key={o.id}>{o.username}</td>
+              <td  key={o.id}>
+                <div className="position">
+                <div id={`num${num+1}`}>{num= num+1}</div>
+                {matchIdWithUser(o.username)}
+                </div>
+                </td>
               {/* <td>{o.order_id}</td> */}
-              <td>{o.total}</td>
+              <td style={{fontWeight:"bold"}}>${o.total}</td>
             </tr>
           })}
           </tbody>
