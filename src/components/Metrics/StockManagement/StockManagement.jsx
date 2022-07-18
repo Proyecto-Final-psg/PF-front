@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 import { getAllProducts } from "../../../Redux/Actions"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import '../Metrics.scss'
+// import '../Metrics.scss'
+import './StockManagement.scss'
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
@@ -35,9 +36,9 @@ export function StockManagement() {
         label: [noStock.length, lowerThan10.length, lowerThan50.length],
         data: [noStock.length, lowerThan10.length, lowerThan50.length],
         backgroundColor: [
-          'red',
+          'rgb(255, 109, 109)',
           '#FFF3CD',
-          'blue'
+          'rgb(108, 177, 255)'
 
         ],
         borderColor: [
@@ -85,12 +86,12 @@ export function StockManagement() {
     <h1 className="mt-5">Stock Management</h1>
     {/* <hr /> */}
 
-    <div className="lower-10">
+    <div className="stock-mgm">
       <table className="table is-bordered is-narrow shadow">
         <thead>
           <tr>
-            <th><abbr title="ID">ID</abbr></th>
-            <th>Product</th>
+            {/* <th><abbr title="ID">ID</abbr></th> */}
+            <th><abbr title="Product name">Product</abbr></th>
             <th><abbr title="Stock">Stock</abbr></th>
             <th><abbr title="Action">Action</abbr></th>
           </tr>
@@ -98,7 +99,7 @@ export function StockManagement() {
         <tbody>
           {noStock && noStock.map((p, i) => {
             return <tr key={i} className='no-stock'>
-              <th style={{ color: "white" }}>{p.id}</th>
+              {/* <th style={{ color: "white" }}>{p.id}</th> */}
               <td>{p.name}</td>
               <td>{p.stock}</td>
               <td>
@@ -109,15 +110,15 @@ export function StockManagement() {
 
           {lowerThan10 && lowerThan10.map((p, i) => {
             return <tr key={i} className='lower-than-10'>
-              <th style={{ color: "white" }}>{p.id}</th>
+              {/* <th style={{ color: "white" }}>{p.id}</th> */}
               <td>{p.name}</td>
               <td>{p.stock}</td>
-              <td><NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink></td>
+              <td><NavLink className='link' style={{color:"black"}} to={`/products/edit/${p.id}`}>Edit</NavLink></td>
             </tr>
           })}
           {lowerThan50 && lowerThan50.map((p, i) => {
             return <tr key={i}  className='lower-than-50'>
-              <th style={{ color: "white" }}>{p.id}</th>
+              {/* <th style={{ color: "white" }}>{p.id}</th> */}
               <td>{p.name}</td>
               <td>{p.stock}</td>
               <td><NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink></td>

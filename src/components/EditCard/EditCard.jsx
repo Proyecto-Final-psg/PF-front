@@ -94,6 +94,10 @@ export function EditCard() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(()=>{
+        return () => {setEditProduct(null)}
+    },[])
+
     let errorSubmit = error.stateName === true || error.stateMessage === true || error.stateType === true;
 
     return (

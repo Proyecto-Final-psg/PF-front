@@ -40,10 +40,10 @@ export function Orders(){
       <table className="table is-hoverable is-bordered is-narrow shadow scrolldown" style={{width:"50%"}}>
         <thead>
           <tr>
-            <th><abbr title="ID">ID</abbr></th>
-            <th>Status</th>
-            <th><abbr title="Stock">User</abbr></th>
-            <th><abbr title="Action">Date</abbr></th>
+            <th><abbr title="ID of the order">ID</abbr></th>
+            <th><abbr title="Status of the order">Status</abbr></th>
+            <th><abbr title="User name">User</abbr></th>
+            <th><abbr title="Date of Order">Date</abbr></th>
           </tr>
         </thead>
         <tbody>
