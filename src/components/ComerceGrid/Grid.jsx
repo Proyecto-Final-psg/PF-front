@@ -6,6 +6,7 @@ import { Paginator } from '../Paginator/Paginator';
 import { useState } from 'react';
 import { Cards } from '../Cards/Cards';
 import Info from '../Info Panel/Info';
+import Testimony from '../Testimony/Testimony';
 
 
 
@@ -187,7 +188,7 @@ function Grid() {
         </div>
 
         <div className="cards">
-        <Paginator postsPerPage={itemsPerPage} totalPosts={allProducts.length} paginate={paginate} currentPage={currentPage} />
+            <Paginator postsPerPage={itemsPerPage} totalPosts={allProducts.length} paginate={paginate} currentPage={currentPage} />
 
             <Cards items={currentPosts} />
             {/* 
@@ -203,11 +204,12 @@ function Grid() {
              />)} */}
             <Paginator postsPerPage={itemsPerPage} totalPosts={allProducts.length} paginate={paginate} currentPage={currentPage} />
 
-
+  
         </div>
 
+       
         <Info />
-
+        <Testimony/>
     </div>
 }
 export default Grid
