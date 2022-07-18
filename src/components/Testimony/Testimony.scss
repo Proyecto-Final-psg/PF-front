@@ -1,14 +1,14 @@
 .testimony {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+
     width: 100vw;
     background-color: #2B5800;
-    padding-top: 25px;
+    padding-top: 0px;
     padding-bottom: 25px;
     margin-bottom: -10px;
-    
+    overflow-x: auto;
+
 }
 
 .video-container {
@@ -16,7 +16,8 @@
     flex-direction: column;
     background-color: #2B5800;
     max-width: 470px;
-    margin: 0;
+    min-width: 470px;
+    margin: 0px 24px;
 }
 
 .video-html {
@@ -39,11 +40,10 @@
 }
 
 .video-brand {
-    position: absolute;
-    width: 8%;
-    margin-top: 55px;
-    margin-left: 15px;
-    transition: 1s;
+    position: relative;
+    width: 100px;
+    top: 75px;
+    left: 5px;
 }
 
 .testimony-h1 {
@@ -52,23 +52,18 @@
     text-align: center;
     font-size: 35px;
     font-weight: 800;
-    color:  #2B5800;
+    color: #2B5800;
     transition: 1s;
 }
 
 @media (max-width: 525px) {
-    
-.video-brand {
-    position: absolute;
-    width: 30%;
-    margin-top: 10%;
-    margin-left: 0.5%;
-    transition: 1s;
-}
-.video-container {
-   margin-bottom: 25px;
-   width: 100vw;
-   max-width: none;
-   transition: 1s;
-}
+
+
+    .video-container {
+        margin-bottom: 25px;
+        min-width:  90vw;;
+        width: 90vw;
+
+        transition: 1s;
+    }
 }
