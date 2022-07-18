@@ -60,7 +60,7 @@ export function Orders() {
 
     console.log('MANDANDO A', userToSend)
 
-
+    e.target.name.value = userToSend.user_name;
     e.target.mailTo.value = userToSend.user_email;
 
     emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
