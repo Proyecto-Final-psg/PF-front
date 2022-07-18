@@ -17,8 +17,8 @@ const HistoryShops = () => {
     dispatch(getUserCart(usr[0].user_id)) */
     dispatch(getAllOrders())
     dispatch(getAllUsers())
-    console.log(orders)
-    console.log(users)
+    console.log('ordenes',orders)
+    //console.log(users)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

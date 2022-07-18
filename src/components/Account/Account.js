@@ -21,13 +21,14 @@ const Account = () => {
   const [active, setActive] = useState('history-shops')
 
   const usr = useSelector((store) => store.user);
-  console.log(usr)
+  //console.log('order detail',usr)
   // const history = useSelector(store => store.orderDetails)
   const { user } = useAuth0()
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getOrderDetails(usr[0].user_id))
+    console.log('order detail',usr[0])
     // dispatch(getOrderDetails(1))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])
