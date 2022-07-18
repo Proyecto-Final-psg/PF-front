@@ -1,15 +1,42 @@
 
 .create_form {
-    width: 850px;
-    height: 500px;
+    width: 60vw;
+    height: 75vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    align-content: space-around;
     justify-content: space-evenly;
     border: none;
     box-shadow: -1px 1px 10px 5px rgba(0, 0, 0, 0.3);
     background: #fff;
+}
+
+.thc-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input-mg-thc{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.left-container-create, .right-container-create {
+     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    width: 35%;
+    justify-content: space-evenly;
+}
+
+.new-category{
+    display: flex;
+    flex-direction: row;
 }
 
 .create_form textarea {
@@ -21,16 +48,14 @@
 }
 
 .input_container {
-    width: 250px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    /* border: 1px solid red; */
+    flex-direction: column;
+    align-items: center;
 }
-.input_container input {
-    width: 150px;
-}
+// .input_container input {
+//     width: 150px;
+// }
 .input_container input::placeholder {
     color: #202020;
 }
@@ -43,7 +68,7 @@
     border: 2px solid #438a00;
 }
 
-.btn_create {
+.btn_create, .btn_not_create {
     width: 100px;
     height: 40px;
     outline: none;
@@ -55,6 +80,18 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    
+}
+
+.title-create-product{
+    position: absolute;
+    top: 10%
+}
+
+.buttons-submit-categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .btn_create:hover {
@@ -142,4 +179,8 @@
     background-color: #2B5800;
     font-size: 14px;
     font-weight: bolder;
+}
+
+.btn_not_create{
+    background-color: #d1d1d0;
 }

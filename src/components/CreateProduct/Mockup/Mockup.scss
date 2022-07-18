@@ -1,10 +1,10 @@
 .img-create {
     // // background-image: url('../../assets/empty.png');
 
-    border-color: #aba5a5;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-    background: rgb(189, 255, 70);
-    background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87, 87, 87, 0) 68%);
+    background-color: rgba(233, 234, 232, 0.785);
+    // background-image: linear-gradient(to bottom, #ccebae, #c4ec9d, #bbed8c, #b2ed7b, #a9ee68);
+    // background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87, 87, 87, 0) 68%);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -12,8 +12,9 @@
     height: 550px;
     margin-left: 30px;
     border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     text-align: center;
     margin-top: 10px;
@@ -43,21 +44,19 @@
 
 .img-create h4 {
     // margin-top: 50px;
-    color: rgb(131, 131, 124);
-    margin-right: 52px;
-    text-align: right;
+    color: rgb(67, 65, 65);
+    font-size: 30px;
+    position: absolute;
+    right: 8%;
+    top: 21%
 }
 
 .img-create #description {
     height: 47px;
     width: 200px;
-    background-color: transparent;
-    overflow: hidden;
-    border: none;
-    resize: none;
-    color: grey;
+    color: rgb(96, 95, 95);
     margin-top: 20px;
-    font-size: 13px;
+    font-size: 20px;
 }
 
 .input-cbd {
@@ -68,4 +67,9 @@
     height: 500px;
     display: flex;
     flex-direction: column;
+}
+
+.img-create_title{
+    font-size: 35px;
+    padding-top: 10%;
 }

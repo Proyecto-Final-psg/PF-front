@@ -14,7 +14,7 @@ const ButtonBack = ({button}) => {
                 <button className='btn back' onClick={() => navigate(-1)}>
                     <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
-                <p className='title-text'>{button}</p>
+                <h2 className='"title is-2"'>{`${button}`} Product</h2>
             </div>
         </>
     )
