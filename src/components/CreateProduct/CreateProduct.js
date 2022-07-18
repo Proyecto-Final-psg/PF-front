@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
-import { useNavigate, } from 'react-router-dom'
+
 import { Validator } from './helpers/Validator';
 import Form from './Form/Form';
 import Mockup from './Mockup/Mockup';
@@ -12,7 +12,7 @@ import './CreateProduct.scss'
 
 const CreateProduct = () => {
     
-    const navigate = useNavigate()
+    
     const state = useSelector(state => state.categories);
     const dispatch = useDispatch();
     const [newCategory, setNewCategory] = useState('')
@@ -64,7 +64,6 @@ const CreateProduct = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('submit')
         dispatch(createProduct(createProd))
         setCreateProd(
             {
@@ -78,7 +77,7 @@ const CreateProduct = () => {
                 cbd: '',
                 categories: []
             })
-            navigate(-1)
+            
     }
 
     function handleDeleteCategory(e) {
@@ -94,9 +93,7 @@ const CreateProduct = () => {
     return (
         <>
             <div className='create'>
-                <ButtonBack 
-                    button={'Create product'}
-                />
+                <ButtonBack button={'Create'}/>
                 <div className='form-create'>
                     <Form 
                         handleInputChange={handleInputChange}
@@ -110,6 +107,7 @@ const CreateProduct = () => {
                         errorSubmit={errorSubmit}
                         state={state}
                         button={'Create'}
+                        handleDeleteCategory={handleDeleteCategory}
                     />
                     <Mockup 
                         localState={createProd}
