@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllOrders, getAllProducts, getOrderItems } from "../../../Redux/Actions"
+import '../Metrics.scss'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,8 +12,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import '../Metrics.scss'
-// ChartJS.register(ArcElement, Tooltip, Legend);
+
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,12 +23,14 @@ ChartJS.register(
   Legend
 );
 
+ 
+
 export function MostRequiredProduct() {
    // eslint-disable-next-line 
     const products = useSelector(store => store.products)
     const orderItems = useSelector(store => store.orderItems)
     const dispatch = useDispatch()
-   
+    let names = [...new Set(orderItems.map(i => i.product))]
     useEffect(()=>{
       dispatch(getOrderItems())
     },
@@ -35,61 +38,50 @@ export function MostRequiredProduct() {
     [])
 
     useEffect(()=>{
-      // console.log('orderItems',orderItems)
+      console.log('orderItems',orderItems)
+      console.log(names)
     },
      // eslint-disable-next-line 
     [orderItems])
 
-     const options = {
+    const result = orderItems.reduce((acc, curr) => {
+      const index = acc.findIndex(item => item.product === curr.product)
+      index > -1 ? acc[index].quantity += curr.quantity : acc.push({
+        product: curr.product,
+        quantity: curr.quantity
+      })
+      return acc
+    }, [])
+
+    result.sort((b,a) => a.quantity - b.quantity); // b - a for reverse sort
+
+
+    const options = {
       responsive: true,
       plugins: {
         legend: {
-          position: 'top' ,
+          position: 'top',
         },
         title: {
           display: true,
-
+          
         },
       },
     };
     
-    const labels = [...new Set(orderItems.map(p => p.product))]
+    const labels = result.map(i => i.product);
     
-
-   
-  
-  var holder = {};
-  
-  orderItems.forEach(function(d) {
-    if (holder.hasOwnProperty(d.product)) {
-      holder[d.product] = holder[d.product] + d.quantity;
-    } else {
-      holder[d.product] = d.quantity;
-    }
-  });
-  
-  var obj2 = [];
-  
-  for (var prop in holder) {
-    obj2.push({ product: prop, quantity: holder[prop] });
-  }
-  
      const data = {
       labels,
       datasets: [
         {
-          label: 'Products sold',
-           // eslint-disable-next-line 
-          data: labels.map((p) => obj2.map(o => {
-             // eslint-disable-next-line 
-                if(o.product == p)
-                  return o.quantity
-              })),
-          backgroundColor: 'green'
-        },
+          label: 'Sold',
+          data: result.map(i => i.quantity),
+          backgroundColor: 'green',
+        }
       ],
     };
-
+   
 
   useEffect(() => {
     dispatch(getAllOrders())
@@ -105,12 +97,12 @@ export function MostRequiredProduct() {
   return <div className="container datas">
     
     <h1 className="mt-5">Best selling products</h1>
-    <hr />
+
 
     <div className="lower-10" style={{width:"100%"}}>
 
     <div className="sells-year">
-        <Bar options={options} data={data} />
+    <Bar options={options} data={data} />
     </div>
   </div>
   </div>

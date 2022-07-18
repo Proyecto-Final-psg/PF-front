@@ -25,6 +25,7 @@ import { OrderDetailed } from "../Metrics/Orders/OrderDetailed/OrderDetailed";
 import Order from "../Order/Order";
 import HistoryShops from "../Account/HistoryShops/HistoryShops";
 import Favourites from "../Account/Favourites/Favourites";
+import { About } from "../About/About";
 
 
 const Home = () => {
@@ -51,6 +52,7 @@ const Home = () => {
         <Route path='/products/:id' element={<CardDetails />} />
         <Route path='/products/edit/:id' element={<EditCard />} />
         <Route path='/products/create' element={<CreateProduct />} />
+        <Route path='/about' element={<About />} />
         <Route path='/users' element={<Users />}></Route>
         <Route path='/cart' element={<Cart />} exact />
         <Route path='/order' element={<Order />} exact />
@@ -66,9 +68,8 @@ const Home = () => {
           <Route path='user-management' element={<UserManagement />} />
           <Route path='user-crud' element={<UserCrud />} />
           <Route path='top-customers' element={<TopCustomers />} />
-          <Route path='admin-orders' element={<Orders />}>
-            <Route path='order-detailed/:id' element={<OrderDetailed />} />
-          </Route>
+          <Route path='admin-orders' element={<Orders />} />
+          <Route path='order-detailed/:id' element={<OrderDetailed />} />
         </Route>
       </Routes>
 

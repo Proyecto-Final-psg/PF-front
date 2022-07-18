@@ -11,7 +11,7 @@
 }
 
 .menu{
- 
+ height: 100%;
 }
 
 .menuItem{
@@ -29,7 +29,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    // width: 100%;
+    width: min-content;
     // margin: 20px;
 }
 
@@ -38,7 +38,11 @@
 }
 
 .sells-year{
-    width: 50%;
+    // min-width: 400px;
+    // max-width: 700px;
+    width: 80%;
+    // margin: 40px;
+
 }
 
 .datas{

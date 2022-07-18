@@ -116,7 +116,7 @@ const Nav = () => {
                                 </Link>
                             </>
                         }
-                        <Link className="navbar-item" to="#">
+                        <Link className="navbar-item" to="/about">
                             About
                         </Link>
                     </div>
