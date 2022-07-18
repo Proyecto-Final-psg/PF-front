@@ -1,35 +1,31 @@
 // eslint-disable-next-line 
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import "./Account.scss";
-import bag from "../../assets/bag.png";
 import { useAuth0 } from "@auth0/auth0-react";
-// eslint-disable-next-line 
-import boy1 from "../../assets/boy1.png";
-import boy2 from "../../assets/boy2.png";
-// eslint-disable-next-line 
-import Footer from '../Footer/Footer.jsx'
 import { getOrderDetails } from "../../Redux/Actions";
-import Image from '../../assets/no_user_image.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom'
-import { NavLink, Outlet } from 'react-router-dom'
+//import bag from "../../assets/bag.png";
+// eslint-disable-next-line 
+/* import boy1 from "../../assets/boy1.png";
+import boy2 from "../../assets/boy2.png"; */
+// eslint-disable-next-line 
+//import Image from '../../assets/no_user_image.jpeg'
+import "./Account.scss";
 
 const Account = () => {
 
   const [active, setActive] = useState('history-shops')
 
   const usr = useSelector((store) => store.user);
-  //console.log('order detail',usr)
-  // const history = useSelector(store => store.orderDetails)
+
   const { user } = useAuth0()
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getOrderDetails(usr[0].user_id))
-    console.log('order detail',usr[0])
-    // dispatch(getOrderDetails(1))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])
 
