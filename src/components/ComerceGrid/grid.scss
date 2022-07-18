@@ -44,7 +44,6 @@
     border-style: groove;
     border-width: 1px;
     padding: 1.5em;
-
     border-color: #baea7f8e;
     border-top: none;
     border-left: none;
@@ -61,7 +60,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    padding-top: 25px;
+    padding-top: 15px;
     max-width: 750px;
 }
 
@@ -204,7 +203,9 @@
 @media (max-width: 525px) {
     .filters {
         width: 90%;
-
+    }
+    .cards{
+         width: 100%;
     }
 }
 
