@@ -37,13 +37,13 @@ export function Orders() {
     // eslint-disable-next-line 
     [])
 
-  // function getUser(id) {
-  //   console.log('Busco por id',id)
-  //   // eslint-disable-next-line 
-  //   const user = users.find(u => u.user_id == id)
-  //   // console.log(user)
-  //   return user.user_name
-  // }
+  function getUser(id) {
+    console.log('Busco por id',id)
+    // eslint-disable-next-line 
+    const user = users.find(u => u.user_id == id)
+    // console.log(user)
+    return user.user_name
+  }
 
   function dispatchOrder(userID) {
     const emailToDispatch = users.find(u => u.user_id === userID)
@@ -96,7 +96,7 @@ export function Orders() {
                 return <tr>
                   <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
                   <td>{o.status}</td>
-                  <td>{o.userUserId}</td>
+                  <td>{getUser(o.userUserId)}</td>
                   {/* <td>test</td> */}
                   <td>{o.createdAt}</td>
                   <td>
