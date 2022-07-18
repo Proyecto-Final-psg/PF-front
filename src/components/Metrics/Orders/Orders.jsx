@@ -13,17 +13,6 @@ export function Orders() {
 
   const dispatch = useDispatch()
   const orders = useSelector(store => store.order)
-  // const orders = [{
-  //   id:123,
-  //   user_name: 'Juanito',
-  //   address: 'test 1234',
-  //   status: "Ok",
-  //   urlPago: 'asdalsdklas',
-  //   createdAt: "10/07/1990",
-  //   email: 'juanocataldo@gmail.com',
-  //   referenciaId: 1,
-  //   userUserId: 1
-  // }]
 
   const users = useSelector(store => store.users)
   const user = useSelector(store => store.user_order)
@@ -31,8 +20,6 @@ export function Orders() {
     dispatch(getAllOrders())
     dispatch(getAllUsers())
     console.log('ORDENES', orders)
-    // console.log(users)
-    // console.log('DIRNAME',__dirname)
   },
     // eslint-disable-next-line 
     [])
@@ -41,7 +28,6 @@ export function Orders() {
     console.log('Busco por id',id)
     // eslint-disable-next-line 
     const user = users.find(u => u.user_id == id)
-    // console.log(user)
     return user.user_name
   }
 
@@ -72,8 +58,6 @@ export function Orders() {
 
   };
 
-
-
   return <div className="container datas">
     <h1 className="mt-5">Order List</h1>
 
@@ -81,7 +65,7 @@ export function Orders() {
     <div className="lower-10">
       {orders.length > 0 ?
         <div className='table-container'>
-          <table className="table shadow scrolldown" style={{ width: "50%" }}>
+          <table className="table shadow scrolldown" >
             <thead>
               <tr>
                 <th><abbr title="ID of the order">ID</abbr></th>
@@ -97,17 +81,13 @@ export function Orders() {
                   <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
                   <td>{o.status}</td>
                   <td>{getUser(o.userUserId)}</td>
-                  {/* <td>test</td> */}
                   <td>{o.createdAt}</td>
                   <td>
                     <form onSubmit={sendEmail}>
                       <input type="text" name="name" value={o.userUserId} style={{ display: "none" }} />
                       <input type="text" name="order" value={o.id} style={{ display: "none" }} />
                       <input type="text" name="mailTo" value='' style={{ display: "none" }} />
-                      {/* <input type="name" name="name" value={o.user_name} style={{ display: "none" }} />
-                      <input type="order" name="order" value={o.id} style={{ display: "none" }}  />
-                      <input type="email" name="mailTo" value={o.email} style={{ display: "none" }} /> */}
-                      <button className='btn' type='submit' disabled={o.status !== 'Pending' ? '' : 'disabled'} onClick={() => dispatchOrder(o.userUserId)}>
+                      <button className='btn' type='submit' disabled={o.status.toLowerCase().includes('progress') ? 'disabled' : ''} onClick={() => dispatchOrder(o.userUserId)}>
                         <span className="material-symbols-outlined">local_shipping</span>
                       </button>
                     </form>
@@ -124,10 +104,7 @@ export function Orders() {
           <p>No purchase orders were generated</p>
           <img src={noOrder} alt="" />
         </div>
-
       }
     </div>
-    {/* <Outlet /> */}
-
   </div>
 }
