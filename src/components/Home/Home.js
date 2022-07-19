@@ -23,6 +23,8 @@ import { TopCustomers } from "../Metrics/TopCustomers/TopCustomers";
 import { Orders } from "../Metrics/Orders/Orders";
 import { OrderDetailed } from "../Metrics/Orders/OrderDetailed/OrderDetailed";
 import Order from "../Order/Order";
+import HistoryShops from "../Account/HistoryShops/HistoryShops";
+import Favourites from "../Account/Favourites/Favourites";
 import { About } from "../About/About";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -73,9 +75,13 @@ const Home = () => {
         <Route path='/products/create' element={<CreateProduct />} />
         <Route path='/about' element={<About />} />
         <Route path='/users' element={<Users />}></Route>
-        <Route path='/account' element={<Account />} exact />
         <Route path='/cart' element={<Cart />} exact />
         <Route path='/order' element={<Order />} exact />
+        <Route path='/account' element={<Account />} >
+          <Route index element={<HistoryShops />} />
+          <Route path='history-shops' element={<HistoryShops />} />
+          <Route path='favourites' element={<Favourites />} />
+        </Route>
         <Route path='/metrics' element={<Metrics />}>
           <Route index element={<StockManagement />} />
           <Route path='stock-management' element={<StockManagement />} />
