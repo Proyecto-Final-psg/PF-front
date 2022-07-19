@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../../../Redux/Actions'
 import User from '../../User/User'
 import '../Metrics.scss'
-
+import swal from 'sweetalert'
 export function UserManagement(){
 
     const usersprueba = useSelector(store => store.users)
