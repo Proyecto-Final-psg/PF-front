@@ -17,9 +17,9 @@ export function CardDetails() {
     useEffect(() => {
         dispatch(getProductById(id))
         dispatch(getReviews(id))
-        // setTimeout(() => {
-        //     setLoading(!loading)
-        // }, 400)
+        setTimeout(() => {
+            setLoading(!loading)
+        }, 500)
         return () => {
 
         };
@@ -30,7 +30,7 @@ export function CardDetails() {
         <div className='cmp-CardDetails-container'>
             {loading &&
                 <div className='cmp-CardDetails-loading-container'>
-                    < img className='cmp-CardDetails-loading' src={LoadingImg} alt="my-gif" />
+                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
                 </div>}
 
             {!loading && <div className="detail">

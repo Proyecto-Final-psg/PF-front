@@ -7,8 +7,20 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.cmp-CardDetails-loading-container {
+    display: flex;
+    justify-content: center;
+    height: 700px;
+    align-items: center;
+}
+
 .cmp-CardDetails-container {
-    min-height: 78vh;
+    min-height: 80vh;
+}
+
+.cmp-CardDetails-loading-img {
+    height: 500px;
 }
 
 .image {
