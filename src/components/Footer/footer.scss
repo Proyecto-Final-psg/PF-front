@@ -2,11 +2,11 @@
     height: 50px;
     background-color: rgb(29, 29, 29);
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-content: center;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     color: rgb(0, 0, 0);  
     border: 1px solid rgba(112, 112, 112, 0.349)
 

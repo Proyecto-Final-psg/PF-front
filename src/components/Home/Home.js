@@ -26,10 +26,31 @@ import Order from "../Order/Order";
 import HistoryShops from "../Account/HistoryShops/HistoryShops";
 import Favourites from "../Account/Favourites/Favourites";
 import { About } from "../About/About";
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers, getUserById } from "../../Redux/Actions";
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
+  const dispatch = useDispatch()
+  const users = useSelector(store => store.users)
+  const {user} = useAuth0()
+
+  useEffect(()=>{
+    dispatch(getAllUsers())
+  },[])
+
+  useEffect(()=>{
+    // console.log('auth user',user)
+    let logged = users.find(u => u.user_email == user.email)
+    console.log('Usuario logeado', logged)
+    if(logged.block){
+      console.log('ESTAS BLOQUEADO PA')
+    }else{
+      console.log('TODO OK PA')
+    }
+  },[user])
 
   function showMeTheBot() {
     const bot = document.getElementById('bot')

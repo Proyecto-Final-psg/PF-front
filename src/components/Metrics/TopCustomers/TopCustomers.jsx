@@ -22,13 +22,15 @@ export function TopCustomers(){
 
   var holder = {};
 
-  topCustomers.forEach(function(d) {
-  if (holder.hasOwnProperty(d.username)) {
-    holder[d.username] = holder[d.username] + d.total;
-  } else {
-    holder[d.username] = d.total;
+  if(topCustomers.length > 0){
+    topCustomers.forEach(function(d) {
+    if (holder.hasOwnProperty(d.username)) {
+      holder[d.username] = holder[d.username] + d.total;
+    } else {
+      holder[d.username] = d.total;
+    }
+  });
   }
-});
 
 var obj2 = [];
 
