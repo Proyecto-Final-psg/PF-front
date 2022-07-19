@@ -1,4 +1,4 @@
-.star {
+.star_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,6 +9,6 @@ input[type='radio'] {
     display: none;
 }
 
-.starr {
+.star {
     cursor: pointer;
 }

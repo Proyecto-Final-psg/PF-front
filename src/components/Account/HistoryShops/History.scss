@@ -12,6 +12,42 @@
     width: 80%;
 } */
 
+.history {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+}
+
+.cards_container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .field::placeholder {
     color: #323232;
+}
+
+.section {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+   /*  border: 1px solid red; */
+}
+
+.testimonial {
+    width:100%;
+    height: 400px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    border: 1px solid red;
 }
