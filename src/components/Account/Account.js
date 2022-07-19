@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
 import { getOrderDetails } from "../../Redux/Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';

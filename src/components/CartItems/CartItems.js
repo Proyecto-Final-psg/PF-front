@@ -1,15 +1,9 @@
 import "./CartItems.scss";
 import { useDispatch } from 'react-redux'
-import { useEffect, useState } from 'react';
-import { updateToCart, getAllItems, deleteToCart } from '../../Redux/Actions';
-
+import { updateToCart,  deleteToCart } from '../../Redux/Actions';
 const CartItems = ({ name, id, price, cant }) => {
-
   // const allCartItems = useSelector(store => store.cart)
   const dispatch = useDispatch()
-
-
-
   const deleteItemToCart = (e) => {
     dispatch(deleteToCart(id))
   }
