@@ -19,13 +19,13 @@ export function Orders() {
   useEffect(() => {
     dispatch(getAllOrders())
     dispatch(getAllUsers())
-    console.log('ORDENES', orders)
+    // console.log('ORDENES', orders)
   },
     // eslint-disable-next-line 
     [])
 
   function getUser(id) {
-    console.log('Busco por id',id)
+    // console.log('Busco por id',id)
     // eslint-disable-next-line 
     const user = users.find(u => u.user_id == id)
     return user.user_name
@@ -87,7 +87,7 @@ export function Orders() {
                       <input type="text" name="name" value={o.userUserId} style={{ display: "none" }} />
                       <input type="text" name="order" value={o.id} style={{ display: "none" }} />
                       <input type="text" name="mailTo" value='' style={{ display: "none" }} />
-                      <button className='btn' type='submit' disabled={o.status.toLowerCase().includes('progress') ? 'disabled' : ''} onClick={() => dispatchOrder(o.userUserId)}>
+                      <button className='btn' type='submit' disabled={o.status.toLowerCase().includes('complete') ? '' : 'disabled'} onClick={() => dispatchOrder(o.userUserId)}>
                         <span className="material-symbols-outlined">local_shipping</span>
                       </button>
                     </form>

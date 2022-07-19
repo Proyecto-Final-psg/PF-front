@@ -52,7 +52,7 @@ const HistoryShops = () => {
 
   return (
     <div className='history'>
-      <h1>Historial de compras</h1>
+      <h1>Your purchases</h1>
     <div className='cards_container'>
         {
           history?.length > 0 &&
@@ -69,6 +69,8 @@ const HistoryShops = () => {
               setModal={setModal}
               localState={review}
               setLocalState={setReview}
+              widthProp="150px"
+              heightProp="auto"
             />
           ))
         } 
