@@ -40,7 +40,7 @@ const Account = () => {
               <img src={usr[0].user_img} />
             </div>
             <div className="user_description">
-              <h1>{usr[0].user_name}</h1>
+              <h1 style={{textAlign:"center"}}>{usr[0].user_name}</h1>
               <p><FontAwesomeIcon icon={faEnvelope} />  {usr[0].user_email}</p>
               <p><FontAwesomeIcon icon={faUser} />  {usr[0].roll}</p>
             </div>
@@ -49,10 +49,10 @@ const Account = () => {
           <div className="user_options">
             <ul className='nav-menu'>
               <li className={active === 'history-shops' ? 'nav-item-active' : 'nav-item'}>
-                <Link className="link" to="history-shops"  onClick={() => setActive('history-shops')} ><FontAwesomeIcon icon={faUser} />  history</Link>
+                <Link className="link" to="history-shops"  onClick={() => setActive('history-shops')} ><FontAwesomeIcon icon={faUser} />  Purchases</Link>
               </li>
               <li className={active === 'favourites' ? 'nav-item-active' : 'nav-item'}>
-                <Link className="link" to="favourites"  onClick={() => setActive('favourites')} ><FontAwesomeIcon icon={faUser} />  favourites</Link>
+                <Link className="link" to="favourites"  onClick={() => setActive('favourites')} ><FontAwesomeIcon icon={faUser} />  Favorites</Link>
               </li>
             </ul>
           </div>

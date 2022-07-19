@@ -4,6 +4,15 @@ table.scrolldown tbody, table.scrolldown thead {
     display: block;
 } 
 
+.loading-block{
+    position: absolute;    
+    z-index: 9999;
+}
+
+.loading-block img{
+    width: 300px;    
+}
+
 table.scrolldown tbody {
       
     /* Set the height of table body */

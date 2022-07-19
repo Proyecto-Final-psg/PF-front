@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 
 
 
-const Card = ({ name, id, description, img, price, stock, review, setModal, setLocalState, localState }) => {
+const Card = ({ name, id, description, img, price, stock, review, setModal, setLocalState, localState, widthProp, heightProp }) => {
   const dispatch = useDispatch()
   function addItemToCart() {
     dispatch(addToCart( id,name, price,))
@@ -20,7 +20,7 @@ const Card = ({ name, id, description, img, price, stock, review, setModal, setL
   }
 
   return (
-    <div className="card" style={{ backgroundImage: "" }}>
+    <div className="card" style={{ width: widthProp, height: heightProp }}>
       <NavLink to={`/products/${id}`}>
 
         <div className="card-details">

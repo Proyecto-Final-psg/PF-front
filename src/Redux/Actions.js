@@ -360,6 +360,14 @@ export function filterByCategory(category) {
     }
 }
 
+export function updateOrderStatus(id, status){
+    return fetch(`http://localhost:8081/update-order?id=${id}&status=${status}`,{
+        method:"PUT"
+    })
+    .then(data => data.json())
+    .then(res => console.log(res))
+}
+
 
 // export function  getAuth0Users(){
 //     return function(dispatch){
