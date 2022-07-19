@@ -52,7 +52,7 @@ obj2 = obj2.slice(0,10)
 
 
 function matchIdWithUser(id){
-    let user = users.find(u => u.user_id == id)
+    let user = users.find(u => parseInt(u.user_id) === parseInt(id))
     return user.user_name;
 
 }

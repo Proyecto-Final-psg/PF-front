@@ -40,7 +40,7 @@ export function OrderDetailed() {
     }, [orderDetailed, prodName])
 
     function getProdName(prodId) {
-        let prod = products.find(p => p.id == prodId)
+        let prod = products.find(p => parseInt(p.id) === parseInt(prodId))
         return prod.name
     }
 
@@ -83,7 +83,7 @@ export function OrderDetailed() {
 
     function matchIdWithUser(id){
         if(id){
-            let user = users.find(u => u.user_id == id)
+            let user = users.find(u => parseInt(u.user_id) === parseInt(id))
             // console.log(user)
             return user.user_name;
 
