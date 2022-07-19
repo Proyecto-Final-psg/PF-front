@@ -49,7 +49,7 @@ obj2.sort(function (a, b) {
   return 0;
 });
 
-obj2 = obj2.slice(0,3)
+obj2 = obj2.slice(0,10)
 
 
 
@@ -83,7 +83,7 @@ function matchIdWithUser(id){
               <td  key={o.id}>
                 <div className="position">
                 <div id={`num${num+1}`}>{num= num+1}</div>
-                {matchIdWithUser(o.username)}
+                -{matchIdWithUser(o.username)}
                 </div>
                 </td>
               {/* <td>{o.order_id}</td> */}

@@ -3,17 +3,18 @@ import '../Metrics.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getAllOrders, getAllUsers, getItemsOfOrder, getUserById } from '../../../Redux/Actions'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import noOrder from '../../../assets/noorder.png'
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import swal from 'sweetalert'
 
 export function Orders() {
 
   const dispatch = useDispatch()
   const orders = useSelector(store => store.order)
-
+  const navigate = useNavigate()
   const users = useSelector(store => store.users)
   const user = useSelector(store => store.user_order)
   useEffect(() => {
@@ -52,6 +53,15 @@ export function Orders() {
     emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
       .then((result) => {
         console.log(result.text);
+        swal({
+          title:"Email has been sent",
+          text: "The client should receive the email with the notification soon",
+          icon:"success",
+          button:"Ok"
+      })
+      .then(ok => {
+          // navigate(-1)
+      })
       }, (error) => {
         console.log(error.text);
       });

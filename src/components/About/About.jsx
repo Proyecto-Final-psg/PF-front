@@ -1,5 +1,6 @@
 import './About.scss'
 import video from '../../assets/weedical.mp4'
+
 export function About() {
     return <div>
         <div className="about">

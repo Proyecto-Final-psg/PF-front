@@ -8,6 +8,8 @@ import Modal from 'react-modal'
 import './OrderDetailed.scss'
 import { API_URL, ModalStyle, ModalStyleOrders } from "../../../../Redux/Constants"
 import Loading from "../../../Loading/Loading"
+import swal from 'sweetalert'
+
 
 export function OrderDetailed() {
 
@@ -51,7 +53,7 @@ export function OrderDetailed() {
     }
 
     function modOrderStatus(id){
-        setModal(true)
+        setModal(true)       
     }
 
     function changeOrderStatus() {
@@ -66,7 +68,15 @@ export function OrderDetailed() {
         console.log(res);
         setModal(false)
         setLoading(false)
-        navigate(-1)
+        swal({
+            title:"Order status changed",
+            text: "You'll see the changes in Orders",
+            icon:"success",
+            button:"Ok"
+        })
+        .then(ok => {
+            navigate(-1)
+        })        
     }
     )
     }
@@ -83,7 +93,7 @@ export function OrderDetailed() {
 
 
         <div className="space-modal">
-
+            
             <Modal
                 isOpen={modal}
                 style={ModalStyleOrders}
