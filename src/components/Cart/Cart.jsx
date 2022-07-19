@@ -2,9 +2,7 @@ import "./Cart.scss";
 import { useSelector } from 'react-redux'
 import CardItems from '../CartItems/CartItems'
 
-
 import { Link } from "react-router-dom";
-
 const Cart = () => {
   const allCartItems = useSelector(store => store.cart)
 
