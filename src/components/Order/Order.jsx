@@ -33,7 +33,7 @@ function Order() {
             })
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [addressOrder])
+     },[addressOrder])
 
     const subtotal = (cart.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
 
