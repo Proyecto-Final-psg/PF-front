@@ -38,12 +38,17 @@ export function EditCard() {
         categories: product.categories
     })
 
+    console.log(editedProduct)
     const handleInputChange = (e) => {
-        Validator(error, setError, e)
+       
         setEditProduct({
             ...editedProduct,
             [e.target.name]: e.target.value
         })
+        setError(Validator({
+            ...editedProduct,
+            [e.target.name]: e.target.value,
+        }))
     }
 
     function handleSelectCategories(e) {
@@ -51,6 +56,10 @@ export function EditCard() {
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
         })
+        setError(Validator({
+            ...editedProduct,
+            categories: [...editedProduct.categories, e.target.value],
+        }))
     }
 
     function handleClickCategory(e) {
@@ -63,6 +72,7 @@ export function EditCard() {
     }
 
     function handleDeleteCategory(e) {
+        console.log(e.target.value)
         e.preventDefault();
         setEditProduct({
             ...editedProduct,
@@ -73,7 +83,6 @@ export function EditCard() {
     function handleSubmit(e) {
         e.preventDefault()
         dispatch(editProduct(id, editedProduct))
-        alert(`el producto ${product.name} ha sido modificado`)
         setEditProduct({
             name: '',
             stock: 0,
@@ -115,6 +124,7 @@ export function EditCard() {
                         // setNewCategory={setNewCategory}
                         localState={editedProduct}
                         setLocalState={setEditProduct}
+                        handleDeleteCategory={handleDeleteCategory}
                         error={error}
                         errorSubmit={errorSubmit}
                         state={categories}
