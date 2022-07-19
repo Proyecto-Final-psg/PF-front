@@ -14,14 +14,13 @@ const CartItems = ({ name, id, price, cant }) => {
     dispatch(deleteToCart(id))
   }
   const updateCart = (event) => {
+
     if (event.target.name === "suma") {
       let contador = cant + 1
-      console.log(contador)
       dispatch(updateToCart(id, name, price, contador))
     }
     if (event.target.name === "resta") {
       let contador = cant - 1
-      console.log(contador)
       dispatch(updateToCart(id, name, price, contador))
     }
   }
@@ -30,8 +29,7 @@ const CartItems = ({ name, id, price, cant }) => {
     <div className="cart-items">
       <button onClick={updateCart} name="resta" className="sum">-</button>
       <label>{cant}</label>
-      <button onClick={updateCart} name="suma"  className="sum">+</button>
-   
+      <button onClick={updateCart} name="suma" className="sum">+</button>
       {/* <input className="cart-cant" type="number" onChange={updateCart} value={cant} ></input> */}
       <span className="cart-span">{name}</span>
       <div className="cart-span">${price}</div>
