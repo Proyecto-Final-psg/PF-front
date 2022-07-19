@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getProductById, getReviews } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import './CardDetails.scss'
-
+import LoadingImg from '../../assets/Loading.gif'
 export function CardDetails() {
     const { id } = useParams()
     const dispatch = useDispatch()
@@ -13,15 +13,27 @@ export function CardDetails() {
     const reviews = useSelector(store => store.reviews)
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
-   
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         dispatch(getProductById(id))
         dispatch(getReviews(id))
+        // setTimeout(() => {
+        //     setLoading(!loading)
+        // }, 400)
+        return () => {
+
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <div>
-            <div className="detail">
+        <div className='cmp-CardDetails-container'>
+            {loading &&
+                <div className='cmp-CardDetails-loading-container'>
+                    < img className='cmp-CardDetails-loading' src={LoadingImg} alt="my-gif" />
+                </div>}
+
+            {!loading && <div className="detail">
                 <div className="image">
                     <img src={product.img} alt="Product pic" />
                 </div>
@@ -59,17 +71,17 @@ export function CardDetails() {
                 <div className="reviews">
                     <hr />
                     {reviews && reviews.map(review => {
-                        return(
-                            <Review 
-                               name={review.name} 
-                               score={review.score} 
-                               review={review.review}
-                               key={review.id}
-                               />
+                        return (
+                            <Review
+                                name={review.name}
+                                score={review.score}
+                                review={review.review}
+                                key={review.id}
+                            />
                         )
                     })}
                 </div>
-            </div>
+            </div>}
 
         </div>
     )
