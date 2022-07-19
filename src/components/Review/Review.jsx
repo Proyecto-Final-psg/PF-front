@@ -1,27 +1,24 @@
 import './Review.scss'
+import { FaStar } from 'react-icons/fa'
 
 export function Review({name, score, review}) {
-console.log(name, score, review)
-score = parseInt(score)
-const stars = Array.from(String(score), Number)
 
-console.log(stars)
+score = parseInt(score)
 
     return (
-    <div className="review">
+    <div className="review-detail">
         <div className="review-header">
-            <h5>User</h5>
+            <span><b>{name}</b></span>
             <div className="stars">
-               
-                <span className="material-symbols-outlined">star</span>
-                <span className="material-symbols-outlined">star</span>
-                <span className="material-symbols-outlined">star</span>
-                <span className="material-symbols-outlined">grade</span>
-                <span className="material-symbols-outlined">grade</span>
+               {score && [...Array(score)].map((star, i) => {
+                return(
+                    <FaStar className='star-detail' key={i}/>
+                )
+               })}
             </div>
 
         </div>
-        <p>hola</p>
+        <p>{review}</p>
 
     </div>
     )

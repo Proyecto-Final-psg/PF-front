@@ -15,12 +15,10 @@ export function CardDetails() {
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
    
     useEffect(() => {
-        // console.log('id', id)
         dispatch(getProductById(id))
         dispatch(getReviews(id))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-        console.log(reviews)
+
     return (
         <div>
             <div className="detail">
@@ -60,10 +58,16 @@ export function CardDetails() {
                 <h5 className='mt-5'>Reviews</h5>
                 <div className="reviews">
                     <hr />
-                    {/* <Review />
-                    <Review /> */}
-                    <Review name="anonimo" score="5" review="muy bueno"/>
-                    {/* {reviews && revies.map} */}
+                    {reviews && reviews.map(review => {
+                        return(
+                            <Review 
+                               name={review.name} 
+                               score={review.score} 
+                               review={review.review}
+                               key={review.id}
+                               />
+                        )
+                    })}
                 </div>
             </div>
 
