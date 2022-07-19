@@ -83,14 +83,13 @@ export function OrderDetailed() {
             )
     }
 
-    function matchIdWithUser(id){
+    function matchIdWithUser(id) {
         if(id){
-            let user = users.find(u => parseInt(u.user_id) === parseInt(id))
-            // console.log(user)
-            return user.user_name;
-
+          let user = users.find(u => parseInt(u.user_id) === parseInt(id))
+          console.log(user)
+          return user.user_name;
         }
-    }
+      }
 
     return <div className="container datas">
         <h1 className="mt-5">Order Detailed n°{id}</h1>
