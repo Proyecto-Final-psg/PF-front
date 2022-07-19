@@ -22,12 +22,14 @@ export function Orders() {
 
   function getUser(id) {
     // eslint-disable-next-line 
-    const user = users.find(u => u.user_id == id)
-    return user.user_name
+    if(id){
+      const user = users.find(u => u.user_id == id)
+      return user.user_name
+    }
   }
 
   function dispatchOrder(userID) {
-    const emailToDispatch = users.find(u => u.user_id === userID)
+    const emailToDispatch = users.find(u => u.user_id == userID)
     console.log(emailToDispatch.user_email)
 
   }
@@ -37,7 +39,7 @@ export function Orders() {
     e.preventDefault();
     console.log(e.target)
     console.log(e.target.name.value)
-    let userToSend = users.find(u => u.user_id === e.target.name.value)
+    let userToSend = users.find(u => u.user_id == e.target.name.value)
 
     console.log('MANDANDO A', userToSend)
 

@@ -16,6 +16,7 @@ export function OrderDetailed() {
     const orderDetailed = useSelector(store => store.itemsOfOrderId)
     const prodName = useSelector(store => store.product)
     const products = useSelector(store => store.products)
+    const users = useSelector(store => store.users)
     const [order, setOrder] = useState({})
     // const [itemName, setItemName] = useState('')
     const [modal, setModal] = useState(false)
@@ -39,7 +40,7 @@ export function OrderDetailed() {
     }, [orderDetailed, prodName])
 
     function getProdName(prodId) {
-        let prod = products.find(p => p.id === prodId)
+        let prod = products.find(p => p.id == prodId)
         return prod.name
     }
 
@@ -78,6 +79,15 @@ export function OrderDetailed() {
                     })
             }
             )
+    }
+
+    function matchIdWithUser(id){
+        if(id){
+            let user = users.find(u => u.user_id == id)
+            console.log(user)
+            return user.user_name;
+
+        }
     }
 
     return <div className="container datas">
@@ -137,12 +147,12 @@ export function OrderDetailed() {
                             <td>
                                 {order.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
                             </td>
-                            <td>{order.userUserId}</td>
+                            <td>{matchIdWithUser(order.userUserId)}</td>
                             <td colSpan='3'>
                                 {order.order_items && order.order_items.length > 0 && order.order_items.map(i => {
                                     return <>
                                         <tr >
-                                            <td>{getProdName(id)}</td>
+                                            <td>{getProdName(i.id)}</td>
                                             <td>{i.quantity}</td>
                                             <td>${i.price}</td>
                                         </tr>
