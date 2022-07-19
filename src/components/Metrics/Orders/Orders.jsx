@@ -2,8 +2,8 @@ import './Orders.scss'
 import '../Metrics.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllOrders, getAllUsers} from '../../../Redux/Actions'
-import { NavLink} from 'react-router-dom'
+import { getAllOrders, getAllUsers } from '../../../Redux/Actions'
+import { NavLink } from 'react-router-dom'
 
 import noOrder from '../../../assets/noorder.png'
 import emailjs from '@emailjs/browser';
@@ -22,23 +22,23 @@ export function Orders() {
 
   function getUser(id) {
     // eslint-disable-next-line 
-    if(id){
+    if (id) {
       const user = users.find(u => parseInt(u.user_id) === parseInt(id))
       return user.user_name
     }
   }
 
   function dispatchOrder(userID) {
-    const emailToDispatch = users.find(u => parseInt(u.user_id) === parseInt(userID))
-    console.log(emailToDispatch.user_email)
+    // const emailToDispatch = users.find(u => parseInt(u.user_id) === parseInt(userID))
+    // console.log(emailToDispatch.user_email)
 
   }
 
   const sendEmail = (e) => {
 
     e.preventDefault();
-    console.log(e.target)
-    console.log(e.target.name.value)
+    // console.log(e.target)
+    // console.log(e.target.name.value)
     let userToSend = users.find(u => parseInt(u.user_id) === parseInt(e.target.name.value))
 
     console.log('MANDANDO A', userToSend)
@@ -48,16 +48,16 @@ export function Orders() {
 
     emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
       .then((result) => {
-        console.log(result.text);
+        // console.log(result.text);
         swal({
-          title:"Email has been sent",
+          title: "Email has been sent",
           text: "The client should receive the email with the notification soon",
-          icon:"success",
-          button:"Ok"
-      })
-      .then(ok => {
-          // navigate(-1)
-      })
+          icon: "success",
+          button: "Ok"
+        })
+          .then(ok => {
+            // navigate(-1)
+          })
       }, (error) => {
         console.log(error.text);
       });

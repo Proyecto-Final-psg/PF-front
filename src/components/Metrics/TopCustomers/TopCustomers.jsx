@@ -15,7 +15,7 @@ export function TopCustomers() {
   }, [])
 
   useEffect(() => {
-    console.log(users);
+    // console.log(users);
   }, [users])
 
   var holder = {};
@@ -49,12 +49,9 @@ export function TopCustomers() {
 
   obj2 = obj2.slice(0, 10)
 
-
-
   function matchIdWithUser(id) {
     let user = users.find(u => parseInt(u.user_id) === parseInt(id))
-    return user.user_name;
-
+    return user.username;
   }
 
 
@@ -81,7 +78,7 @@ export function TopCustomers() {
               <td >
                 <div className="position">
                   <div id={`num${num + 1}`}>{num = num + 1}</div>
-                  -{o.username&&matchIdWithUser(o.username)}
+                  {o.username && matchIdWithUser(o.username)}
                 </div>
               </td>
               <td style={{ fontWeight: "bold" }}>${o.total}</td>
