@@ -40,8 +40,10 @@ export function OrderDetailed() {
     }, [orderDetailed, prodName])
 
     function getProdName(prodId) {
-        let prod = products.find(p => parseInt(p.id) === parseInt(prodId))
-        return prod.name
+        if(prodId){
+            let prod = products.find(p => parseInt(p.id) === parseInt(prodId))
+            return prod.name
+        }
     }
 
     useEffect(() => {
