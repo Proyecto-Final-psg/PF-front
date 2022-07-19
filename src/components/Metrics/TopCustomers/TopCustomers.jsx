@@ -78,15 +78,13 @@ function matchIdWithUser(id){
         <tbody>
           {obj2 && obj2.map(o => {
             
-            return <tr key={o.id}>
-              
-              <td  key={o.id}>
+            return <tr >
+              <td >
                 <div className="position">
                 <div id={`num${num+1}`}>{num= num+1}</div>
                 -{matchIdWithUser(o.username)}
                 </div>
                 </td>
-              {/* <td>{o.order_id}</td> */}
               <td style={{fontWeight:"bold"}}>${o.total}</td>
             </tr>
           })}

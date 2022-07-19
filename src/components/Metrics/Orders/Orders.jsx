@@ -87,16 +87,16 @@ export function Orders() {
             </thead>
             <tbody>
               {orders.length > 0 && orders.map(o => {
-                return <tr>
+                return <tr key={o.id}>
                   <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
                   <td>{o.status}</td>
                   <td>{getUser(o.userUserId)}</td>
                   <td>{o.createdAt}</td>
                   <td>
                     <form onSubmit={sendEmail}>
-                      <input type="text" name="name" value={o.userUserId} style={{ display: "none" }} />
-                      <input type="text" name="order" value={o.id} style={{ display: "none" }} />
-                      <input type="text" name="mailTo" value='' style={{ display: "none" }} />
+                      <input type="text" name="name" readOnly value={o.userUserId} style={{ display: "none" }} />
+                      <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
+                      <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
                       <button className='btn' type='submit' disabled={o.status.toLowerCase().includes('complete') ? '' : 'disabled'} onClick={() => dispatchOrder(o.userUserId)}>
                         <span className="material-symbols-outlined">local_shipping</span>
                       </button>
