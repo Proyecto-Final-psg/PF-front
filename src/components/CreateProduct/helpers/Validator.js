@@ -1,7 +1,7 @@
 
 
 export const Validator = (input) => {
-    console.log(input)
+    
     let cond_name =  /^[aA-zZ 0-9 _]*$/
     let cond_description = /^[a-zA-Z 0-9\s/^[^&()&.&,]+$/;
 

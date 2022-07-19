@@ -68,7 +68,7 @@ const Form = ({handleInputChange, onSubmit, newCategory, setNewCategory, categor
                             })
                         }}
                     />
-                     { localState.img.length === 0 && <p className="help">{error.img}</p> }
+                     {/* { localState.img.length === 0 && <p className="help">{error.img}</p> } */}
                 </div>
                 <div className={error.categories? 'select is-danger' : 'select is-success'}>
                     <span>*</span>
