@@ -43,14 +43,14 @@ const Home = () => {
 
 
   // useEffect(()=>{
-  //   // console.log('auth user',user)
-  //   // let logged = users.find(u => u.user_email == user.email)
-  //   // console.log('Usuario logeado', logged)
-  //   // if(logged.block){
-  //   //   console.log('ESTAS BLOQUEADO PA')
-  //   // }else{
-  //   //   console.log('TODO OK PA')
-  //   // }
+  //   console.log('auth user',user)
+  //   let logged = users.find(u => u.user_email == user.email)
+  //   console.log('Usuario logeado', logged)
+  //   if(logged.block){
+  //     console.log('ESTAS BLOQUEADO PA')
+  //   }else{
+  //     console.log('TODO OK PA')
+  //   }
   // },[user])
 
 
