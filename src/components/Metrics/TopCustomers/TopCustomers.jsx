@@ -52,8 +52,9 @@ obj2 = obj2.slice(0,10)
 
 
 function matchIdWithUser(id){
-  let user = users.find(u => u.user_id === id)
-  return user.user_name
+    let user = users.find(u => u.user_id == id)
+    return user.user_name;
+
 }
 
 
@@ -76,7 +77,7 @@ function matchIdWithUser(id){
         <tbody>
           {obj2 && obj2.map(o => {
             
-            return <tr >
+            return <tr key={o.username}>
               <td >
                 <div className="position">
                 <div id={`num${num+1}`}>{num= num+1}</div>

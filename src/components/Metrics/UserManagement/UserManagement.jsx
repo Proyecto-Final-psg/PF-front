@@ -22,7 +22,7 @@ export function UserManagement(){
       <table className="table scrolldown shadow p-5">
         <tbody>
           {usersprueba && usersprueba.map(user =>
-          <tr>
+          <tr key={user.user_email}>
             <td>
                 <User
                   key={user.user_email}

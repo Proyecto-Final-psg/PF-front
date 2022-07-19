@@ -16,6 +16,7 @@ export function OrderDetailed() {
     const orderDetailed = useSelector(store => store.itemsOfOrderId)
     const prodName = useSelector(store => store.product)
     const products = useSelector(store => store.products)
+    const users = useSelector(store => store.users)
     const [order, setOrder] = useState({})
     // const [itemName, setItemName] = useState('')
     const [modal, setModal] = useState(false)
@@ -39,7 +40,7 @@ export function OrderDetailed() {
     }, [orderDetailed, prodName])
 
     function getProdName(prodId) {
-        let prod = products.find(p => p.id === prodId)
+        let prod = products.find(p => p.id == prodId)
         return prod.name
     }
 
@@ -80,6 +81,15 @@ export function OrderDetailed() {
             )
     }
 
+    function matchIdWithUser(id){
+        if(id){
+            let user = users.find(u => u.user_id == id)
+            // console.log(user)
+            return user.user_name;
+
+        }
+    }
+
     return <div className="container datas">
         <h1 className="mt-5">Order Detailed n°{id}</h1>
         {/* <button onClick={() => navigate(-1)}>Back</button> */}
@@ -96,12 +106,13 @@ export function OrderDetailed() {
             <Modal
                 isOpen={modal}
                 style={ModalStyleOrders}
+                ariaHideApp={false}
             >
                 <div className="modala">
                     {/* <form> */}
                     <h2 >Select the new order status</h2>
                     <select style={{ margin: "20px" }} name="" id="" onChange={orderStatusState}>
-                        <option value="completed" selected disabled='disabled'>Select</option>
+                        <option value="completed" defaultValue disabled='disabled'>Select</option>
                         <option value="completed">Completed</option>
                         <option value="in-progress">In Progress</option>
                         <option value="canceled">Canceled</option>
@@ -118,10 +129,13 @@ export function OrderDetailed() {
             <table className="table is-hoverable is-bordered is-narrow shadow ">
                 <thead>
                     <tr>
-                        <th><abbr title="ID">ID</abbr></th>
-                        <th><abbr title="Status">Status</abbr></th>
-                        <th><abbr title="User name">User</abbr></th>
-                        <th colSpan='3'><abbr title="Products">Products</abbr></th>
+                        <td><abbr title="ID">ID</abbr></td>
+                        <td><abbr title="Status">Status</abbr></td>
+                        <td><abbr title="User name">User</abbr></td>
+                        <td colSpan='3'>
+                            <abbr title="Products">Products</abbr>
+                         
+                            </td>
                     </tr>
                     <tr>
                         <td colSpan='3'></td>
@@ -132,21 +146,20 @@ export function OrderDetailed() {
                 </thead>
                 <tbody>
                     {order &&
-                        <tr>
+                        <tr key={order.id}>
                             <td>{order.id}</td>
                             <td>
                                 {order.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
                             </td>
-                            <td>{order.userUserId}</td>
+                            <td>{matchIdWithUser(order.userUserId)}</td>
                             <td colSpan='3'>
                                 {order.order_items && order.order_items.length > 0 && order.order_items.map(i => {
-                                    return <>
-                                        <tr >
-                                            <td>{getProdName(id)}</td>
-                                            <td>{i.quantity}</td>
-                                            <td>${i.price}</td>
-                                        </tr>
-                                    </>
+                                    return <div key={i.id}>
+                                            <span style={{fontWeight:"bold"}}>{getProdName(i.id)} </span>
+                                            <span>{i.quantity} </span>
+                                            <span>${i.price}</span>
+                                        </div>
+                                   
                                 })}
                             </td>
 
