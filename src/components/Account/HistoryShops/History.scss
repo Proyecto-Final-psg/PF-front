@@ -1,0 +1,17 @@
+/* .container {
+    width: 350px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #fff;
+    border: 1px solid red;
+} */
+/* 
+.input, .textarea {
+    width: 80%;
+} */
+
+.field::placeholder {
+    color: #323232;
+}

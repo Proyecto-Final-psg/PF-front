@@ -1,30 +1,93 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { addReview } from '../../../Redux/Actions';
 import Card from '../../Card/Card';
+import './History.scss'
 
 const HistoryShops = () => {
 
-  const users = useSelector(store => store.users)
-  const history = useSelector(store => store.orderDetails[0].arrayItems)
-  console.log(history)
+  const history = useSelector(store => store.orderDetails[0]?.arrayItems)
+  //console.log(history)
+
+  const dispatch = useDispatch()
+
+  const [modal, setModal] = useState(false)
+  const [review, setReview] = useState({
+    product_id: '',
+    name: '',
+    score: '',
+    review: ''
+  })
+
+  const handleInputChange = (e) => {
+    setReview({
+      ...review,
+      [e.target.name]: e.target.value
+    })
+  }
+  console.log(review)
+  const handleReview = (e) => {
+    e.preventDefault()
+    dispatch(addReview(review))
+    setReview({
+      product_id: '',
+      name: '',
+      score: '',
+      review: ''
+    })
+  }
+
+  const handleCancel = (e) => {
+    e.preventDefault()
+    setReview({
+      product_id: '',
+      name: '',
+      score: '',
+      review: ''
+    })
+    setModal(false)
+  }
 
   return (
     <div>
       <h1>Historial de compras</h1>
 
       {
-        history.length > 0 &&
-        history.map( c => (
-          <Card 
+        history?.length > 0 &&
+        history?.map(c => (
+          <Card
             key={c.id}
+            id={c.id}
             name={c.name}
             description={c.description}
             img={c.img}
             price={c.price}
             stock={c.stock}
+            review={true}
+            setModal={setModal}
+            localState={review}
+            setLocalState={setReview}
           />
-        ) )
+        ))
       }
+
+      <div className={`modal ${modal && 'is-active'}`}>
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Leave your review</p>
+            <button className="delete" aria-label="close" onClick={() => setModal(false)}></button>
+          </header>
+          <section className="modal-card-body">
+            <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off'/>
+            <textarea className="textarea field" placeholder="Your review" value={review.review} name='review' onChange={handleInputChange} />
+          </section>
+          <footer className="modal-card-foot">
+            <button className="button is-success" onClick={handleReview}>Done</button>
+            <button className="button" onClick={handleCancel}>Cancel</button>
+          </footer>
+        </div>
+      </div>
 
     </div>
   )

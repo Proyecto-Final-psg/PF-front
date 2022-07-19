@@ -18,6 +18,7 @@ export const CHANGE_ROLL = "CHANGE_ROLL"
 export const GET_AUTH0_USERS = 'GET_AUTH0_USERS'
 export const GET_ITEMS_OF_ORDER = 'GET_ITEMS_OF_ORDER'
 export const GET_BEST_CUSTOMERS = 'GET_BEST_CUSTOMERS'
+export const ADD_REVIEW = 'ADD_REVIEW'
 export const API_URL = 'https://desarrollo-back.herokuapp.com'
 // export const API_URL = 'http://localhost:8081'
 
