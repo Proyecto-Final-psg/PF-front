@@ -14,21 +14,14 @@ import boy2 from "../../assets/boy2.png"; */
 // eslint-disable-next-line 
 //import Image from '../../assets/no_user_image.jpeg'
 import "./Account.scss";
-
 const Account = () => {
-
   const [active, setActive] = useState('history-shops')
-
   const usr = useSelector((store) => store.user);
-
-  const { user } = useAuth0()
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(getOrderDetails(usr[0].user_id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])
-
 
   return (
     <div className="account">
@@ -37,7 +30,7 @@ const Account = () => {
 
           <div className="user_card">
             <div className="user_image">
-              <img src={usr[0].user_img} />
+              <img src={usr[0].user_img} alt="usr" />
             </div>
             <div className="user_description">
               <h1 style={{textAlign:"center"}}>{usr[0].user_name}</h1>

@@ -3,10 +3,7 @@ import { useState } from 'react';
 import './Order.scss'
 import { submitOrder } from '../../Redux/Actions'
 import { useEffect } from 'react';
-
 function Order (){
-
-
     const cart = useSelector((store) => store.cart);
    // const mercadoPagoURL = useSelector((store) => store.mercadoPago);
     //console.log(cart)
@@ -25,7 +22,6 @@ function Order (){
         arrayItems:[]
     })
     
-      
      useEffect(() => {
      setOrder({
             ...order,
@@ -43,9 +39,7 @@ function Order (){
     //console.log(addressOrder)
     function handleSubmitOrder(e){
         e.preventDefault();
-        
         dispatch(submitOrder(order))
-        
     }
 
     function handleInputOrder(e){
@@ -68,7 +62,7 @@ function Order (){
         <div className="order-container">
             
             <div className="form-container">
-                
+            
                 <form className='form-vertical'>
                 <p><b>Getting your order</b></p> 
                 <br/>

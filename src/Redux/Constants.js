@@ -24,60 +24,60 @@ export const API_URL = 'https://desarrollo-back.herokuapp.com'
 // export const API_URL = 'http://localhost:8081'
 
 export const ModalStyle = {
-    overlay: {
-      position: 'fixed',
-      top: "50px",
-      backgroundColor: 'rgba(0, 0, 0, 0.587)'
-    },
-    content: {
-      // backgroundColor:'rgba(0, 0, 0, 0.587)',
-      position: 'absolute',
-      display:"flex",
-      justifyContent:"center",
-      alignItems:"center",
-      flexWrap:"warp",
-      width:"auto",
-      flexDirection:"column",
-      fontSize:"50px",
-      top: '40px',
-      left: '40px',
-      right: '40px',
-      bottom: '40px',
-      // border: '1px solid #ccc',
-      background: "rgb(253,253,253)",
-background: "linear-gradient(0deg, rgba(253,253,253,1) 63%, rgba(0,0,0,0) 100%)",
-      overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '20px',
-      outline: 'none',
-      padding: '20px',
+  overlay: {
+    position: 'fixed',
+    top: "50px",
+    backgroundColor: 'rgba(0, 0, 0, 0.587)'
+  },
+  content: {
+    // backgroundColor:'rgba(0, 0, 0, 0.587)',
+    position: 'absolute',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "warp",
+    width: "auto",
+    flexDirection: "column",
+    fontSize: "50px",
+    top: '40px',
+    left: '40px',
+    right: '40px',
+    bottom: '40px',
+    // border: '1px solid #ccc',
+    // background: "rgb(253,253,253)",
+    background: "linear-gradient(0deg, rgba(253,253,253,1) 63%, rgba(0,0,0,0) 100%)",
+    overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '20px',
+    outline: 'none',
+    padding: '20px',
 
-    }
   }
+}
 
-  export const ModalStyleOrders = {
-    overlay: {
-      position: 'fixed',
-      top: "50px",
-      backgroundColor: 'rgba(0, 0, 0, 0.587)'
-    },
-    content: {
-      // backgroundColor:'rgba(0, 0, 0, 0.587)',
-      position: 'absolute',
-      display:"flex",
-      justifyContent:"center",
-      alignItems:"center",
-      width:"auto",
-      flexDirection:"column",
-      fontSize:"20px",
-      
-      // border: '1px solid #ccc',
-      background: "rgb(253,253,253)",
-      // overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '20px',
-      outline: 'none',
-      padding: '20px 0px 20px 0px',
+export const ModalStyleOrders = {
+  overlay: {
+    position: 'fixed',
+    top: "50px",
+    backgroundColor: 'rgba(0, 0, 0, 0.587)'
+  },
+  content: {
+    // backgroundColor:'rgba(0, 0, 0, 0.587)',
+    position: 'absolute',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "auto",
+    flexDirection: "column",
+    fontSize: "20px",
 
-    }
+    // border: '1px solid #ccc',
+    background: "rgb(253,253,253)",
+    // overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '20px',
+    outline: 'none',
+    padding: '20px 0px 20px 0px',
+
   }
+}

@@ -17,11 +17,11 @@ export function CardDetails() {
     useEffect(() => {
         dispatch(getProductById(id))
         dispatch(getReviews(id))
-        setTimeout(() => {
-            setLoading(!loading)
-        }, 500)
+        // setTimeout(() => {
+        //     setLoading(!loading)
+        // }, 600)
         return () => {
-
+            setLoading(true)
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
