@@ -2,25 +2,24 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { getAllProducts, getItemsOfOrder, getOrderDetails, getProductById, getUserById, updateOrderStatus } from "../../../../Redux/Actions"
+import { getAllProducts, getItemsOfOrder } from "../../../../Redux/Actions"
 import ButtonBack from "../../../CreateProduct/ButtonBack/ButtonBack"
 import Modal from 'react-modal'
 import './OrderDetailed.scss'
-import { API_URL, ModalStyle, ModalStyleOrders } from "../../../../Redux/Constants"
+import { API_URL, ModalStyleOrders } from "../../../../Redux/Constants"
 import Loading from "../../../Loading/Loading"
 import swal from 'sweetalert'
 
 
 export function OrderDetailed() {
-
     const { id } = useParams()
     const orderDetailed = useSelector(store => store.itemsOfOrderId)
     const prodName = useSelector(store => store.product)
     const products = useSelector(store => store.products)
     const [order, setOrder] = useState({})
-    const [itemName, setItemName] = useState('')
+    // const [itemName, setItemName] = useState('')
     const [modal, setModal] = useState(false)
-    const[ orderStatus, setOrderStatus] = useState('')
+    const [orderStatus, setOrderStatus] = useState('')
     const [loading, setLoading] = useState(false)
 
     const dispatch = useDispatch()
@@ -35,74 +34,74 @@ export function OrderDetailed() {
 
     useEffect(() => {
         setOrder(orderDetailed)
-        setItemName(prodName.name)
+        // setItemName(prodName.name)
         //    console.log(orderDetailed)
     }, [orderDetailed, prodName])
 
     function getProdName(prodId) {
-        let prod = products.find(p => p.id == prodId)
+        let prod = products.find(p => p.id === prodId)
         return prod.name
     }
 
     useEffect(() => {
-        setItemName(prodName.name)
+        // setItemName(prodName.name)
     }, [prodName])
 
-    function orderStatusState(e){
+    function orderStatusState(e) {
         setOrderStatus(e.target.value)
     }
 
-    function modOrderStatus(id){
-        setModal(true)       
+    function modOrderStatus(id) {
+        setModal(true)
     }
 
     function changeOrderStatus() {
         setLoading(true)
-        console.log('Actualizar orden con ',orderStatus);
+        console.log('Actualizar orden con ', orderStatus);
         // updateOrderStatus(id,orderStatus)
-        fetch(`${API_URL}/update-order?id=${id}&status=${orderStatus}`,{
-        method:"PUT"
-    })
-    .then(data => data.json())
-    .then(res => {
-        console.log(res);
-        setModal(false)
-        setLoading(false)
-        swal({
-            title:"Order status changed",
-            text: "You'll see the changes in Orders",
-            icon:"success",
-            button:"Ok"
+        fetch(`${API_URL}/update-order?id=${id}&status=${orderStatus}`, {
+            method: "PUT"
         })
-        .then(ok => {
-            navigate(-1)
-        })        
-    }
-    )
+            .then(data => data.json())
+            .then(res => {
+                console.log(res);
+                setModal(false)
+                setLoading(false)
+                swal({
+                    title: "Order status changed",
+                    text: "You'll see the changes in Orders",
+                    icon: "success",
+                    button: "Ok"
+                })
+                    .then(ok => {
+                        navigate(-1)
+                    })
+            }
+            )
     }
 
     return <div className="container datas">
         <h1 className="mt-5">Order Detailed n°{id}</h1>
         {/* <button onClick={() => navigate(-1)}>Back</button> */}
-                {loading &&
+        {loading &&
             <div className="loading-block">
-            <Loading />
+                <Loading />
             </div>
-            }
+        }
         <ButtonBack button={''} />
 
 
         <div className="space-modal">
-            
+
             <Modal
                 isOpen={modal}
                 style={ModalStyleOrders}
-                >
+            >
                 <div className="modala">
                     {/* <form> */}
                     <h2 >Select the new order status</h2>
-                    <select style={{margin:"20px"}} name="" id="" onChange={orderStatusState}>
-                    <option value="completed" selected disabled='disabled'>Select</option>
+                    <select style={{ margin: "20px" }} name="" id="" onChange={orderStatusState}>
+                        <option value="completed" selected disabled='disabled'>Select</option>
                         <option value="completed">Completed</option>
                         <option value="in-progress">In Progress</option>
                         <option value="canceled">Canceled</option>

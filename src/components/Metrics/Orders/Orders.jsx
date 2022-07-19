@@ -2,31 +2,25 @@ import './Orders.scss'
 import '../Metrics.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllOrders, getAllUsers, getItemsOfOrder, getUserById } from '../../../Redux/Actions'
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { getAllOrders, getAllUsers} from '../../../Redux/Actions'
+import { NavLink} from 'react-router-dom'
+
 import noOrder from '../../../assets/noorder.png'
-import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import swal from 'sweetalert'
 
 export function Orders() {
-
   const dispatch = useDispatch()
   const orders = useSelector(store => store.order)
-  const navigate = useNavigate()
   const users = useSelector(store => store.users)
-  const user = useSelector(store => store.user_order)
   useEffect(() => {
     dispatch(getAllOrders())
     dispatch(getAllUsers())
-    // console.log('ORDENES', orders)
   },
     // eslint-disable-next-line 
     [])
 
   function getUser(id) {
-    // console.log('Busco por id',id)
     // eslint-disable-next-line 
     const user = users.find(u => u.user_id == id)
     return user.user_name
@@ -43,7 +37,7 @@ export function Orders() {
     e.preventDefault();
     console.log(e.target)
     console.log(e.target.name.value)
-    let userToSend = users.find(u => u.user_id == e.target.name.value)
+    let userToSend = users.find(u => u.user_id === e.target.name.value)
 
     console.log('MANDANDO A', userToSend)
 

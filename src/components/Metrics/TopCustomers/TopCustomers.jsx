@@ -1,12 +1,10 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllUsers,  getOrderItems, getTopCustomers,  } from "../../../Redux/Actions"
+import { getAllUsers,  getTopCustomers,  } from "../../../Redux/Actions"
 // import { API_URL } from "../../../Redux/Constants"
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers(){
-
   const dispatch = useDispatch()
-
   const topCustomers = useSelector(store => store.topCustomers)
   const users = useSelector(store => store.users)
   let num = 0;
@@ -54,7 +52,7 @@ obj2 = obj2.slice(0,10)
 
 
 function matchIdWithUser(id){
-  let user = users.find(u => u.user_id == id)
+  let user = users.find(u => u.user_id === id)
   return user.user_name
 }
 

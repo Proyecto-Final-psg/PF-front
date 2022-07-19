@@ -1,34 +1,12 @@
 import "./Cart.scss";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import CardItems from '../CartItems/CartItems'
-import { useEffect, useState } from 'react';
-import { addToCart, getAllItems } from '../../Redux/Actions';
+
+
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-
   const allCartItems = useSelector(store => store.cart)
-  //   .sort(function (a, b) {
-  //   if (a.name < b.name) { return -1; }
-  //   if (a.name > b.name) { return 1; }
-  //   return 0;
-  // }))
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-
-    // if (allCartItems.length > 0) {
-    //   setTotal(total.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allCartItems])
-
-  // const [total, setTotal] = useState(allCartItems)
-
-
-
-
 
   return (
     <div className="cart">
