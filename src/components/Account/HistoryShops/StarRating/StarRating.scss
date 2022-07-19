@@ -1,0 +1,14 @@
+.star_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+}
