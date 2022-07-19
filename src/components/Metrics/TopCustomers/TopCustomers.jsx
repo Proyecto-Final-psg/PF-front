@@ -77,7 +77,7 @@ function matchIdWithUser(id){
         <tbody>
           {obj2 && obj2.map(o => {
             
-            return <tr >
+            return <tr key={o.username}>
               <td >
                 <div className="position">
                 <div id={`num${num+1}`}>{num= num+1}</div>
