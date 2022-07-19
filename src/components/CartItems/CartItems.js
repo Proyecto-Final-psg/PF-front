@@ -1,5 +1,5 @@
 import "./CartItems.scss";
-import {  useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { updateToCart, getAllItems, deleteToCart } from '../../Redux/Actions';
 
@@ -7,25 +7,30 @@ const CartItems = ({ name, id, price, cant }) => {
 
   // const allCartItems = useSelector(store => store.cart)
   const dispatch = useDispatch()
-  const [contador, setContador] = useState(1)
 
-  useEffect(() => {
-    dispatch(getAllItems())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contador])
+
 
   const deleteItemToCart = (e) => {
     dispatch(deleteToCart(id))
   }
   const updateCart = (event) => {
-    setContador(event.target.value);
 
-    dispatch(updateToCart(id, name, price, contador))
+    if (event.target.name === "suma") {
+      let contador = cant + 1
+      dispatch(updateToCart(id, name, price, contador))
+    }
+    if (event.target.name === "resta") {
+      let contador = cant - 1
+      dispatch(updateToCart(id, name, price, contador))
+    }
   }
 
   return (
     <div className="cart-items">
-      <input className="cart-cant" type="number" onChange={updateCart} value={cant} ></input>
+      <button onClick={updateCart} name="resta" className="sum">-</button>
+      <label>{cant}</label>
+      <button onClick={updateCart} name="suma" className="sum">+</button>
+      {/* <input className="cart-cant" type="number" onChange={updateCart} value={cant} ></input> */}
       <span className="cart-span">{name}</span>
       <div className="cart-span">${price}</div>
       <button onClick={deleteItemToCart} className="item-delete">BORRAR</button>

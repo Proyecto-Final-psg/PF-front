@@ -16,20 +16,29 @@ export function UserManagement(){
 
     return <div className="container datas">
     
-    <h1 className="mt-5">User Management</h1>
-    
+    <h1 className="mt-5">User Roles</h1>
+    {/* <span >In this section, you can change the user roles. For example, if you set to the 'User 1' the admin rol, that user will have access to the Admin Panel and Create Product.</span> */}
 
     <div className="lower-10" style={{width:"100%"}}>
 
-    <div className="">
-    {usersprueba && usersprueba.map(user =>
-          <User
-            key={user.user_email}
-            name={user.user_name}
-            roll={user.roll}
-            user_id={user.user_id}
-          />
-        )}
+    <div className="table-container">
+      <table className="table scrolldown shadow p-5">
+        <tbody>
+          {usersprueba && usersprueba.map(user =>
+          <tr>
+            <td>
+                <User
+                  key={user.user_email}
+                  name={user.user_name}
+                  roll={user.roll}
+                  user_id={user.user_id}
+                />
+
+            </td>
+            </tr>
+            )}
+        </tbody>
+      </table>
     </div>
   </div>
   </div>

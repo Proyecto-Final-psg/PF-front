@@ -5,6 +5,8 @@
     max-width: 800px;
     margin:auto;
     margin-top:50px;
+   
+    min-height: 75vh;
 }
 
 .cart-purchase{
@@ -18,6 +20,11 @@
     color: #fff;
     border: none;
     transition: all 0.3s ease-in-out;
+    text-align: center;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cart-purchase:hover{

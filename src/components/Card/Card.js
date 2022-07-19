@@ -5,14 +5,22 @@ import { useDispatch } from 'react-redux'
 
 
 
-const Card = ({ name, id, description, img, price, stock }) => {
+const Card = ({ name, id, description, img, price, stock, review, setModal, setLocalState, localState, widthProp, heightProp }) => {
   const dispatch = useDispatch()
   function addItemToCart() {
     dispatch(addToCart( id,name, price,))
   }
 
+  const handleReviewId = (id) => {
+    setLocalState({
+      ...localState,
+      product_id: id
+    })
+    setModal(true)
+  }
+
   return (
-    <div className="card" style={{ backgroundImage: "" }}>
+    <div className="card" style={{ width: widthProp, height: heightProp }}>
       <NavLink to={`/products/${id}`}>
 
         <div className="card-details">
@@ -21,18 +29,25 @@ const Card = ({ name, id, description, img, price, stock }) => {
             <img className="card-img" src={img} alt={description} />
           </div>
           <p className="text-body">{description}</p>
-          <h2 className="card-price" > ${price}</h2>
+          {
+            !review &&
+            <h2 className="card-price" > ${price}</h2>
+          }
         </div>
 
       </NavLink>
-
-      <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' : (stock < 10 ? 'Low stock' : 'Stock')}</div>
-
       {
-        stock > 0 &&
+        !review &&
+        <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' : (stock < 10 ? 'Low stock' : 'Stock')}</div>
+      }
+      {
+        stock > 0 && !review ?
         <button onClick={addItemToCart} className="card-button" key={id}>
           <span className="material-symbols-outlined">add_shopping_cart</span>
         </button>
+        :
+        review &&
+        <button className="card-button review" onClick={() => handleReviewId(id)}>Leave review</button>
       }
 
     </div>

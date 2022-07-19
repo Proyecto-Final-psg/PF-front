@@ -1,5 +1,5 @@
 
-import { GET_BEST_CUSTOMERS, GET_REVIEWS,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, GET_ITEMS_OF_ORDER } from "./Constants"
+import { ADD_REVIEW, GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, GET_ITEMS_OF_ORDER } from "./Constants"
 
 
 export function getAllProducts() {
@@ -150,6 +150,19 @@ export const addToCart = (id, name, price, cant) => {
             }
         }
     )
+}
+
+export function getUserCart(id){
+    return function(dispatch){
+        return fetch(`${API_URL}/cart/${id}`)
+        .then(data => data.json())
+        .then(res => {
+            dispatch({
+                type: GET_USER_CART,
+                payload: res
+            })
+        })
+    }
 }
 
 export const deleteToCart = (id) => {
@@ -361,6 +374,14 @@ export function filterByCategory(category) {
     }
 }
 
+export function updateOrderStatus(id, status){
+    return fetch(`http://localhost:8081/update-order?id=${id}&status=${status}`,{
+        method:"PUT"
+    })
+    .then(data => data.json())
+    .then(res => console.log(res))
+}
+
 
 // export function  getAuth0Users(){
 //     return function(dispatch){
@@ -391,6 +412,18 @@ export function getTopCustomers(){
                 type: GET_BEST_CUSTOMERS,
                 payload: res
             })
+        })
+    }
+}
+
+export function addReview(review) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/reviews`, {
+            method: 'POST',
+            body: JSON.stringify(review),
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
     }
 }

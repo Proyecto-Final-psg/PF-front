@@ -12,7 +12,7 @@ const initialState = {
     order: [],
     orderDetails: [],
     orderItems: [],
-    itemsOfOrderId:[],
+    itemsOfOrderId: [],
     user_order: {},
     topCustomers:[],
     auth0Users:[],
@@ -69,20 +69,35 @@ export const reducer = (state = initialState, action) => {
             const cartfound = state.cart.find((p) => p.id === action.payload.id);
             return {
                 ...state,
-                cart: !cartfound ? [...state.cart, action.payload] : [...state.cart]
+                cart: !cartfound ? [...state.cart, action.payload].sort(function (a, b) {
+                    if (a.name < b.name) { return -1; }
+                    if (a.name > b.name) { return 1; }
+                    return 0;
+                }) : [...state.cart]
             }
         case DELETE_TO_CART:
             const filtercart = state.cart.filter((p) => p.id !== action.payload);
-         
+
             return {
                 ...state,
                 cart: filtercart
             }
         case UPDATE_TO_CART:
             const cartfilter2 = state.cart.filter((p) => p.id !== action.payload.id);
+            // const cartfilter2 = state.cart.map((p) => {
+            //     if (p.id == action.payload.id) {
+            //         p.cant = action.payload.cant
+            //     } return p
+            // }
+            // )
             return {
                 ...state,
-                cart: cartfilter2.concat(action.payload)
+                cart: (cartfilter2.concat(action.payload)).sort(function (a, b) {
+                    if (a.name < b.name) { return -1; }
+                    if (a.name > b.name) { return 1; }
+                    return 0;
+                })
+
             }
 
         case GET_USER_ORDER:
@@ -112,12 +127,12 @@ export const reducer = (state = initialState, action) => {
                 auth0Users: action.payload
             }
         case GET_ITEMS_OF_ORDER:
-            return{
+            return {
                 ...state,
                 itemsOfOrderId: action.payload
             }
         case GET_BEST_CUSTOMERS:
-            return{
+            return {
                 ...state,
                 topCustomers: action.payload
             }
