@@ -21,11 +21,11 @@ export const Validator = (input) => {
 
     if ( cond_name.test(input.type) === false) error.type = 'No symbols or numbers allowed'
     
-    if (input.img.length == 0) error.img = 'Image is required'
+    if (parseInt(input.img.length) === 0) error.img = 'Image is required'
 
-    if (input.price.length == 0 ) error.price = 'Price need to be more than $0'
+    if (parseInt(input.price.length) === 0 ) error.price = 'Price need to be more than $0'
 
-    if (input.categories.length == 0 ) error.categories = 'At least one category is required'
+    if (parseInt(input.categories.length) === 0 ) error.categories = 'At least one category is required'
 
 
     return error

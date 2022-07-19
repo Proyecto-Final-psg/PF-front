@@ -72,8 +72,8 @@ const Form = ({handleInputChange, onSubmit, newCategory, setNewCategory, categor
                 </div>
                 <div className={error.categories? 'select is-danger' : 'select is-success'}>
                     <span>*</span>
-                    <select className='field'  required type='text' name='categories' onChange={category} >
-                        {<option value="" selected disabled >Categories</option>}
+                    <select className='field' defaultValue={'1'} required type='text' name='categories' onChange={category} >
+                        {<option value="1"  disabled >Categories</option>}
                         {
                             state?.map((c, i) => (
                                 <option value={c.category} key={i}>{c.category}</option>
