@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductById } from '../../Redux/Actions'
+import { getProductById, getReviews } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import './CardDetails.scss'
 
@@ -10,14 +10,17 @@ export function CardDetails() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
+    const reviews = useSelector(store => store.reviews)
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
+   
     useEffect(() => {
         // console.log('id', id)
         dispatch(getProductById(id))
+        dispatch(getReviews(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
+        console.log(reviews)
     return (
         <div>
             <div className="detail">
@@ -57,9 +60,9 @@ export function CardDetails() {
                 <h5 className='mt-5'>Reviews</h5>
                 <div className="reviews">
                     <hr />
-                    <Review />
-                    <Review />
-                    <Review />
+                    {/* <Review />
+                    <Review /> */}
+                    <Review name="anonimo" score="5" review="muy bueno"/>
                     {/* {reviews && revies.map} */}
                 </div>
             </div>

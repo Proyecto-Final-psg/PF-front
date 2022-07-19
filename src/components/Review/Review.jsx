@@ -1,10 +1,18 @@
 import './Review.scss'
 
-export function Review() {
-    return <div className="review">
+export function Review({name, score, review}) {
+console.log(name, score, review)
+score = parseInt(score)
+const stars = Array.from(String(score), Number)
+
+console.log(stars)
+
+    return (
+    <div className="review">
         <div className="review-header">
             <h5>User</h5>
             <div className="stars">
+               
                 <span className="material-symbols-outlined">star</span>
                 <span className="material-symbols-outlined">star</span>
                 <span className="material-symbols-outlined">star</span>
@@ -13,7 +21,8 @@ export function Review() {
             </div>
 
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt repellendus ducimus doloribus distinctio nisi? Ut incidunt sequi expedita deserunt tempore consequuntur est natus, magnam harum illo sapiente molestias assumenda perferendis!</p>
+        <p>hola</p>
 
     </div>
+    )
 }

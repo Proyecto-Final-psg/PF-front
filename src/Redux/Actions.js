@@ -1,5 +1,5 @@
 
-import { GET_BEST_CUSTOMERS, API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, GET_ITEMS_OF_ORDER } from "./Constants"
+import { GET_BEST_CUSTOMERS, GET_REVIEWS,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, GET_ITEMS_OF_ORDER } from "./Constants"
 
 
 export function getAllProducts() {
@@ -123,6 +123,19 @@ export const changeRoll = (roll) => {
     return (
         { type: CHANGE_ROLL, roll: roll }
     )
+}
+
+export const getReviews = (product_id) => {
+    return function (dispatch) {
+        return fetch(`${API_URL}/reviews/${product_id}`)
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_REVIEWS,
+                    payload: data
+                })
+            })
+    }
 }
 
 export const addToCart = (id, name, price, cant) => {

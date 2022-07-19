@@ -1,5 +1,5 @@
 
-import { GET_BEST_CUSTOMERS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS,  GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS } from "./Constants"
+import { GET_BEST_CUSTOMERS, GET_REVIEWS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS,  GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS } from "./Constants"
 
 
 const initialState = {
@@ -15,7 +15,8 @@ const initialState = {
     itemsOfOrderId:[],
     user_order: {},
     topCustomers:[],
-    auth0Users:[]
+    auth0Users:[],
+    reviews:[],
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -90,7 +91,11 @@ export const reducer = (state = initialState, action) => {
                 user_order: action.payload
             }
 
-
+        case GET_REVIEWS: 
+            return{
+                ...state,
+                reviews: action.payload
+            }
         case GET_ALL_ITEMS:
             return {
                 ...state,
