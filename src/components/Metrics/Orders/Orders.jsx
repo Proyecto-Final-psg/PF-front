@@ -12,32 +12,21 @@ import swal from 'sweetalert'
 export function Orders() {
   const dispatch = useDispatch()
   const orders = useSelector(store => store.order)
-  const users = useSelector(store => store.users)
+  
   useEffect(() => {
     dispatch(getAllOrders())
-    dispatch(getAllUsers())
+   
   },
   // eslint-disable-next-line 
   [])
   
-  function getUser(id) {
-    // eslint-disable-next-line 
-    if (id) {
-      const user = users.find(u => parseInt(u.user_id) === parseInt(id))
-      return user.user_name
-    }
-  }
+
 
   useEffect(()=>{
     console.log('ORDERS',orders);
   },[orders])
 
 
-  function dispatchOrder(userID) {
-    // const emailToDispatch = users.find(u => parseInt(u.user_id) === parseInt(userID))
-    // console.log(emailToDispatch.user_email)
-
-  }
 
   // const sendEmail = (e) => {
 
@@ -91,7 +80,7 @@ export function Orders() {
                 return <tr key={o.id}>
                   <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
                   <td>{o.status}</td>
-                  <td>{o.user.user_name}</td>
+                  <td>{o.user ? o.user.user_name : 'N/A'}</td>
                   <td>{o.createdAt}</td>
                   
                   {/* <td>
