@@ -95,8 +95,8 @@ export function UserCrud() {
       </Modal>
       </div> */}
       <form action="" id="form" onSubmit={searchUser}>
-        <input type="text" className="input" onChange={fillSearchObj} />
-        <input type='submit' className="btn btn-success" value="Search" />
+        <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock'/>
+        <input type='submit' className="btn btn-success" value="Search" style={{width:"auto"}} />
       </form>
 
       <div className="table-container" >

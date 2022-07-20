@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { getAllProducts, getItemsOfOrder } from "../../../../Redux/Actions"
+import { getAllProducts, getItemsOfOrder, getOrderDetails } from "../../../../Redux/Actions"
 import ButtonBack from "../../../CreateProduct/ButtonBack/ButtonBack"
 import Modal from 'react-modal'
 import './OrderDetailed.scss'
@@ -13,7 +13,7 @@ import swal from 'sweetalert'
 
 export function OrderDetailed() {
     const { id } = useParams()
-    const orderDetailed = useSelector(store => store.itemsOfOrderId)
+    const orderDetailed = useSelector(store => store.orderDetails)
     const prodName = useSelector(store => store.product)
     const products = useSelector(store => store.products)
     const users = useSelector(store => store.users)
@@ -26,7 +26,8 @@ export function OrderDetailed() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
-        dispatch(getItemsOfOrder(id))
+        // dispatch(getItemsOfOrder(id))
+        dispatch(getOrderDetails(id))
         dispatch(getAllProducts())
         // eslint-disable-next-line 
     }, [])
@@ -36,25 +37,22 @@ export function OrderDetailed() {
     useEffect(() => {
         setOrder(orderDetailed)
         // setItemName(prodName.name)
-        //    console.log(orderDetailed)
+           console.log(orderDetailed)
     }, [orderDetailed, prodName])
 
     function getProdName(prodId) {
         if(prodId){
             let prod = products.find(p => parseInt(p.id) === parseInt(prodId))
-            return prod.name
+            if(prod)
+                return prod.name
         }
     }
-
-    useEffect(() => {
-        // setItemName(prodName.name)
-    }, [prodName])
 
     function orderStatusState(e) {
         setOrderStatus(e.target.value)
     }
 
-    function modOrderStatus(id) {
+    function modOrderStatus() {
         setModal(true)
     }
 
@@ -92,7 +90,7 @@ export function OrderDetailed() {
       }
 
     return <div className="container datas">
-        <h1 className="mt-5">Order Detailed n°{id}</h1>
+        <h1 className="mt-5">Order Detailed</h1>
         {/* <button onClick={() => navigate(-1)}>Back</button> */}
         {loading &&
             <div className="loading-block">
@@ -118,7 +116,8 @@ export function OrderDetailed() {
                         <option value="in-progress">In Progress</option>
                         <option value="canceled">Canceled</option>
                     </select>
-                    <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success">OK</button>
+                    <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success">Ok</button>
+                    <button  onClick={() => setModal(false)} className="btn btn-basic">Cancel</button>
                     {/* </form> */}
 
                 </div>
@@ -146,25 +145,28 @@ export function OrderDetailed() {
                     </tr>
                 </thead>
                 <tbody>
-                    {order &&
-                        <tr key={order.id}>
-                            <td>{order.id}</td>
-                            <td>
-                                {order.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
-                            </td>
-                            <td>{matchIdWithUser(order.userUserId)}</td>
-                            <td colSpan='3'>
-                                {order.order_items && order.order_items.length > 0 && order.order_items.map(i => {
-                                    return <div key={i.id}>
-                                            <span style={{fontWeight:"bold"}}>{getProdName(i.id)} </span>
-                                            <span>{i.quantity} </span>
-                                            <span>${i.price}</span>
-                                        </div>
-                                   
-                                })}
-                            </td>
+                    {order  && order.map(o => {
+                        
+                        return <tr key={o.order_id}>
+                        <td>{o.order_id}</td>
+                        <td>
+                            {o.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
+                        </td>
+                        <td>{o.user_name}</td>
+                        <td colSpan='3'>
+                            {o.arrayItems && o.arrayItems.length > 0 && o.arrayItems.map(i => {
+                                return <div key={i.id}>
+                                        <span style={{fontWeight:"bold"}}>{i.name} </span>
+                                        <span>{i.quantity} </span>
+                                        <span>${i.price}</span>
+                                    </div>
+                               
+                            })}
+                        </td>
 
-                        </tr>
+                    </tr>
+                    })
+                        
                     }
                 </tbody>
             </table>
