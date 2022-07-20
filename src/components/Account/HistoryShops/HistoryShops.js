@@ -9,7 +9,9 @@ import { validate } from './Validate';
 const HistoryShops = () => {
 
   const history = useSelector(store => store.orderDetails[0]?.arrayItems)
+  const reviews = useSelector(store => store.reviews)
   //console.log(history)
+  console.log(reviews)
 
   const dispatch = useDispatch()
 
@@ -32,7 +34,7 @@ const HistoryShops = () => {
       [e.target.name]: e.target.value,
   }))
   }
-  console.log(review)
+  //console.log(review)
   const handleReview = (e) => {
     e.preventDefault()
     dispatch(addReview(review))
@@ -90,7 +92,9 @@ const HistoryShops = () => {
             <button className="delete" aria-label="close" onClick={() => setModal(false)}></button>
           </header>
           <section className="modal-card-body">
+            <p className='warning'>{error.name}</p>
             <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
+            <p className='warning'>{error.review}</p>
             <textarea className="textarea field" placeholder="Your review" value={review.review} name='review' onChange={handleInputChange} />
             <StarRating localState={review} setLocalState={setReview} />
           </section>

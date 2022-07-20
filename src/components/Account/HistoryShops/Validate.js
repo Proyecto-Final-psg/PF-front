@@ -2,7 +2,7 @@
 export const validate = (input) => {
     
     let cond_name =  /^[aA-zZ 0-9 _]*$/
-    let cond_review = /^[a-zA-Z 0-9\s/^[^&()&.&,]+$/;
+    let cond_review = /^[a-zA-Z 0-9\u00C0-\u00FF &@&!&¡&?&¿&()&=&+&/&:&;&_&,&.&%&-]*$/;
 
     let error = {}
 
@@ -15,7 +15,7 @@ export const validate = (input) => {
     if(!input.review){
         error.review = 'Description is required'
     }else if (cond_review.test(input.review) === false) {
-        error.review = 'Only text, numbers and "()" are allowed'
+        error.review = 'Some special characters are not allowed'
     }
 
 
