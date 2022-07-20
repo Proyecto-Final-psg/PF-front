@@ -228,7 +228,7 @@ export function getOrdersByOrderId(id){
 
 export function getAllOrders() {
     return function (dispatch) {
-        return fetch(`http://localhost:8081/getAllOrders`)
+        return fetch(`${API_URL}/getAllOrders`)
             .then(res => res.json())
             .then(data => {
                 dispatch({
