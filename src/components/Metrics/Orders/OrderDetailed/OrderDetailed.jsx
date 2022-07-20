@@ -146,7 +146,7 @@ export function OrderDetailed() {
                     </tr>
                 </thead>
                 <tbody>
-                    {orderDetailed  && <tr key={orderDetailed.orden.id}>
+                    {orderDetailed && orderDetailed.orden  && <tr key={orderDetailed.orden.id}>
                         <td style={{fontWeight:"bold"}}>{orderDetailed.orden.id}</td>
                         <td>
                             {orderDetailed.orden.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
