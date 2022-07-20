@@ -2,18 +2,19 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { getAllProducts, getItemsOfOrder } from "../../../../Redux/Actions"
+import { getAllProducts, getItemsOfOrder, getOrderDetails, getOrdersByOrderId } from "../../../../Redux/Actions"
 import ButtonBack from "../../../CreateProduct/ButtonBack/ButtonBack"
 import Modal from 'react-modal'
 import './OrderDetailed.scss'
+
 import { API_URL, ModalStyleOrders } from "../../../../Redux/Constants"
 import Loading from "../../../Loading/Loading"
 import swal from 'sweetalert'
-
+import LoadingImg from '../../../../assets/Loading.gif'
 
 export function OrderDetailed() {
     const { id } = useParams()
-    const orderDetailed = useSelector(store => store.itemsOfOrderId)
+    const orderDetailed = useSelector(store => store.order_detailed)
     const prodName = useSelector(store => store.product)
     const products = useSelector(store => store.products)
     const users = useSelector(store => store.users)
@@ -26,8 +27,8 @@ export function OrderDetailed() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
-        dispatch(getItemsOfOrder(id))
-        dispatch(getAllProducts())
+        // dispatch(getItemsOfOrder(id))
+        dispatch(getOrdersByOrderId(id))
         // eslint-disable-next-line 
     }, [])
 
@@ -36,25 +37,22 @@ export function OrderDetailed() {
     useEffect(() => {
         setOrder(orderDetailed)
         // setItemName(prodName.name)
-        //    console.log(orderDetailed)
+           console.log(orderDetailed)
     }, [orderDetailed, prodName])
 
     function getProdName(prodId) {
         if(prodId){
             let prod = products.find(p => parseInt(p.id) === parseInt(prodId))
-            return prod.name
+            if(prod)
+                return prod.name
         }
     }
-
-    useEffect(() => {
-        // setItemName(prodName.name)
-    }, [prodName])
 
     function orderStatusState(e) {
         setOrderStatus(e.target.value)
     }
 
-    function modOrderStatus(id) {
+    function modOrderStatus() {
         setModal(true)
     }
 
@@ -77,7 +75,8 @@ export function OrderDetailed() {
                     button: "Ok"
                 })
                     .then(ok => {
-                        navigate(-1)
+                        dispatch(getOrdersByOrderId(id))
+                        // navigate(-1)
                     })
             }
             )
@@ -92,13 +91,13 @@ export function OrderDetailed() {
       }
 
     return <div className="container datas">
-        <h1 className="mt-5">Order Detailed n°{id}</h1>
+        <h1 className="mt-5">Order Detailed</h1>
         {/* <button onClick={() => navigate(-1)}>Back</button> */}
         {loading &&
-            <div className="loading-block">
-                <Loading />
-            </div>
-        }
+                <div className='loadingGif'>
+                    <h3>Loading</h3>
+                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+                </div>}
         <ButtonBack button={''} />
 
 
@@ -113,12 +112,13 @@ export function OrderDetailed() {
                     {/* <form> */}
                     <h2 >Select the new order status</h2>
                     <select style={{ margin: "20px" }} name="" id="" onChange={orderStatusState}>
-                        <option value="completed" defaultValue disabled='disabled'>Select</option>
+                        <option value="completed" selected disabled='disabled'>Select</option>
                         <option value="completed">Completed</option>
                         <option value="in-progress">In Progress</option>
                         <option value="canceled">Canceled</option>
                     </select>
-                    <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success">OK</button>
+                    <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success">Ok</button>
+                    <button  onClick={() => setModal(false)} className="btn btn-basic">Cancel</button>
                     {/* </form> */}
 
                 </div>
@@ -142,29 +142,31 @@ export function OrderDetailed() {
                         <td colSpan='3'></td>
                         <td><abbr title="Product name">Name</abbr></td>
                         <td><abbr title="Product quantity">Quantity</abbr></td>
-                        <td><abbr title="Product price">Price</abbr></td>
+                        {/* <td><abbr title="Product price">Price</abbr></td> */}
                     </tr>
                 </thead>
                 <tbody>
-                    {order &&
-                        <tr key={order.id}>
-                            <td>{order.id}</td>
-                            <td>
-                                {order.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
-                            </td>
-                            <td>{matchIdWithUser(order.userUserId)}</td>
-                            <td colSpan='3'>
-                                {order.order_items && order.order_items.length > 0 && order.order_items.map(i => {
-                                    return <div key={i.id}>
-                                            <span style={{fontWeight:"bold"}}>{getProdName(i.id)} </span>
-                                            <span>{i.quantity} </span>
-                                            <span>${i.price}</span>
-                                        </div>
-                                   
-                                })}
-                            </td>
+                    {orderDetailed  && <tr key={orderDetailed.orden.id}>
+                        <td style={{fontWeight:"bold"}}>{orderDetailed.orden.id}</td>
+                        <td>
+                            {orderDetailed.orden.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
+                        </td>
+                        <td>{orderDetailed.orden.user ? orderDetailed.orden.user.user_name : 'N/A'}</td>
+                        <td colSpan='3'>
+                            {orderDetailed.productos && orderDetailed.productos.length > 0 && orderDetailed.productos.map(i => {
+                                return <div key={i.name}>
+                                    <img src={i.img} alt="" id='detail-prod-pic' />
+                                        <span style={{fontWeight:"bold"}}>{i.name} </span>
+                                        <span>[{i.quantity}u.] </span>
+                                        {/* <span>${i.priceOfSale}</span> */}
+                                    </div>
+                               
+                            })}
+                        </td>
 
-                        </tr>
+                    </tr>
+                  
+                        
                     }
                 </tbody>
             </table>

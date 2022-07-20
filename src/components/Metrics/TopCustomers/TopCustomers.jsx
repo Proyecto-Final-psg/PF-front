@@ -1,6 +1,9 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers, getTopCustomers, } from "../../../Redux/Actions"
+import emailjs from '@emailjs/browser';
+import swal from 'sweetalert'
+import './TopCustomers.scss'
 // import { API_URL } from "../../../Redux/Constants"
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
@@ -49,13 +52,52 @@ export function TopCustomers() {
 
   obj2 = obj2.slice(0, 10)
 
+  console.log('obj',obj2);
+
   function matchIdWithUser(id) {
     let user = users.find(u => parseInt(u.user_id) === parseInt(id))
-    return user.username;
+    console.log(user);
+    if(user)
+      return user.user_name;
   }
 
 
+  const sendEmail = (e) => {
 
+    e.preventDefault();
+    // console.log(e.target)
+    console.log(e.target.name.value)
+    let userToSend = users.find(u => parseInt(u.user_id) === parseInt(e.target.name.value))
+    // let userToSend = users.find(u => parseInt(u.id) === parseInt(e.target.name.value))
+
+    // console.log('MANDANDO A', user)
+
+    e.target.name.value = userToSend.user_name;
+    e.target.mailTo.value = userToSend.user_email;
+
+    emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
+      .then((result) => {
+        // console.log(result.text);
+        swal({
+          title: "Email has been sent",
+          text: "The client should receive the email with the notification soon",
+          icon: "success",
+          button: "Ok"
+        })
+          .then(ok => {
+            // navigate(-1)
+          })
+      }, (error) => {
+        console.log(error.text);
+      });
+
+  };
+
+  function dispatchOrder(userID) {
+    // const emailToDispatch = users.find(u => parseInt(u.user_id) === parseInt(userID))
+    // console.log(emailToDispatch.user_email)
+
+  }
 
   return <div className="container datas">
 
@@ -69,6 +111,7 @@ export function TopCustomers() {
             <th><abbr title="Top users">Name</abbr></th>
             {/* <th>Orders</th> */}
             <th><abbr title="Totals">Totals</abbr></th>
+            <th><abbr title="Send Discounts">Send discount coupon</abbr></th>
           </tr>
         </thead>
         <tbody>
@@ -78,10 +121,23 @@ export function TopCustomers() {
               <td >
                 <div className="position">
                   <div id={`num${num + 1}`}>{num = num + 1}</div>
-                  {o.username && matchIdWithUser(o.username)}
+                  -{o.username && matchIdWithUser(o.username)}
                 </div>
               </td>
-              <td style={{ fontWeight: "bold" }}>${o.total}</td>
+                <td style={{ fontWeight: "bold" }}>${o.total}</td>
+              
+                <td>
+                <form onSubmit={sendEmail} id='order-form' >
+                      <input name="discount" style={{display:`${num < 4 && o.username !='null' ? '' : 'none'}`}} type="number" placeholder="15%" />
+                      <button className="btn btn-sm" style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>Send</button>
+                      <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
+                      <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
+                      <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
+                      {/* <button className='btn' type='submit' disabled={o.status.toLowerCase().includes('complete') ? '' : 'disabled'} onClick={() => dispatchOrder(o.userUserId)}>
+                        <span className="material-symbols-outlined">local_shipping</span>
+                      </button> */}
+                    </form>
+                    </td>
             </tr>
           })}
         </tbody>
