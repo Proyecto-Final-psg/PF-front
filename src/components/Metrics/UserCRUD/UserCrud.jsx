@@ -5,7 +5,7 @@ import { getAllUsers } from "../../../Redux/Actions"
 import lock from '../../../assets/lock.png'
 import './UserCrud.scss'
 import { API_URL } from "../../../Redux/Constants"
-import Loading from "../../Loading/Loading"
+import LoadingImg from '../../../assets/Loading.gif'
 import swal from 'sweetalert'
 
 export function UserCrud() {
@@ -74,10 +74,10 @@ export function UserCrud() {
     <h1 className="mt-5">Block Users</h1>
 
     {loading &&
-      <div className="loading-block">
-        <Loading />
-      </div>
-    }
+                <div className='loadingGif'>
+                    <h3>Loading</h3>
+                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+                </div>}
 
     <div className="user-block" style={{ width: "100%" }}>
       {/* <div className="space-modal">
@@ -95,8 +95,8 @@ export function UserCrud() {
       </Modal>
       </div> */}
       <form action="" id="form" onSubmit={searchUser}>
-        <input type="text" className="input" onChange={fillSearchObj} />
-        <input type='submit' className="btn btn-success" value="Search" />
+        <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock'/>
+        <input type='submit' className="btn btn-success" value="Search" style={{width:"auto"}} />
       </form>
 
       <div className="table-container" >

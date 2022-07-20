@@ -71,19 +71,19 @@ function Order() {
                         <label className="label-order">Personal data</label>
                         <div className="control control-order">
                             <div className='input-order'>
-                                <input className="input" type="text" />
+                                <input className="input" type="text" required="required"  autoComplete="on" />
                                 <p className="help">First Name</p>
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" />
+                                <input className="input" type="text" required="required"  autoComplete="on"/>
                                 <p className="help">Last Name</p>
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" />
+                                <input className="input" type="text" required="required" />
                                 <p className="help">DNI</p>
                             </div>
                             <div >
-                                <input className="input" type="text" />
+                                <input className="input" type="text" required="required" />
                                 <p className="help">Phone</p>
                             </div>
                         </div>
@@ -133,7 +133,7 @@ function Order() {
                     <p className="label-order">Total: ${subtotal + (subtotal * (10 / 100))}</p>
                 </div>
 
-                <button className='button-submit-order' onClick={handleSubmitOrder}>Submit</button>
+                <button type='submit' className='button-submit-order' onClick={handleSubmitOrder}>Submit</button>
             </div>
 
         </div>

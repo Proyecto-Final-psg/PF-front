@@ -21,6 +21,7 @@ export const GET_BEST_CUSTOMERS = 'GET_BEST_CUSTOMERS'
 export const GET_REVIEWS = 'GET_REVIEWS'
 export const GET_USER_REVIEWS = 'GET_USER_REVIEWS'
 export const ADD_REVIEW = 'ADD_REVIEW'
+export const GET_ORDER_BY_ORDERID = 'GET_ORDER_BY_ORDERID'
 export const API_URL = 'https://desarrollo-back.herokuapp.com'
 // export const API_URL = 'http://localhost:8081'
 

@@ -38,7 +38,6 @@ export function EditCard() {
         categories: product.categories
     })
 
-    console.log(editedProduct)
     const handleInputChange = (e) => {
        
         setEditProduct({
@@ -72,7 +71,6 @@ export function EditCard() {
     }
 
     function handleDeleteCategory(e) {
-        console.log(e.target.value)
         e.preventDefault();
         setEditProduct({
             ...editedProduct,
