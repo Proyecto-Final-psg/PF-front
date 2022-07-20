@@ -4,6 +4,7 @@ import { addReview } from '../../../Redux/Actions';
 import Card from '../../Card/Card';
 import './History.scss'
 import StarRating from './StarRating/StarRating';
+import { validate } from './Validate';
 
 const HistoryShops = () => {
 
@@ -19,12 +20,17 @@ const HistoryShops = () => {
     score: '',
     review: ''
   })
+  const [error, setError] = useState({})
 
   const handleInputChange = (e) => {
     setReview({
       ...review,
       [e.target.name]: e.target.value
     })
+    setError(validate({
+      ...review,
+      [e.target.name]: e.target.value,
+  }))
   }
   console.log(review)
   const handleReview = (e) => {
@@ -53,28 +59,28 @@ const HistoryShops = () => {
   return (
     <div className='history'>
       <h1>Your purchases</h1>
-    <div className='cards_container'>
-        {
-          history?.length > 0 &&
-          history?.map(c => (
-            <Card
-              key={c.id}
-              id={c.id}
-              name={c.name}
-              description={c.description}
-              img={c.img}
-              price={c.price}
-              stock={c.stock}
-              review={true}
-              setModal={setModal}
-              localState={review}
-              setLocalState={setReview}
-              widthProp="150px"
-              heightProp="auto"
-            />
-          ))
-        } 
-    </div>
+      <div className='cards_container'>
+          {
+            history?.length > 0 &&
+            history?.map(c => (
+                <Card
+                  key={c.id}
+                  id={c.id}
+                  name={c.name}
+                  description={c.description}
+                  img={c.img}
+                  price={c.price}
+                  stock={c.stock}
+                  review={true}
+                  setModal={setModal}
+                  localState={review}
+                  setLocalState={setReview}
+                  widthProp="150px"
+                  heightProp="auto"
+                />
+            ))
+          }
+      </div>
 
       <div className={`modal ${modal && 'is-active'}`}>
         <div className="modal-background" onClick={handleCancel}></div>
@@ -84,12 +90,17 @@ const HistoryShops = () => {
             <button className="delete" aria-label="close" onClick={() => setModal(false)}></button>
           </header>
           <section className="modal-card-body">
-            <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off'/>
+            <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
             <textarea className="textarea field" placeholder="Your review" value={review.review} name='review' onChange={handleInputChange} />
-          <StarRating localState={review} setLocalState={setReview} />
+            <StarRating localState={review} setLocalState={setReview} />
           </section>
           <footer className="modal-card-foot">
-            <button className="button is-success" onClick={handleReview}>Done</button>
+            {
+              Object.keys(error).length || review.name.length === 0 ?
+              <button className="button is-light" disabled={true}>Done</button>
+              :
+              <button className="button is-success" onClick={handleReview}>Done</button>
+            }
             <button className="button" onClick={handleCancel}>Cancel</button>
           </footer>
         </div>
