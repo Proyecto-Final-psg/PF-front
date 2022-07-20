@@ -53,9 +53,8 @@
     flex-direction: column;
     align-items: center;
 }
-// .input_container input {
-//     width: 150px;
-// }
+
+
 .input_container input::placeholder {
     color: #202020;
 }
@@ -183,4 +182,11 @@
 
 .btn_not_create{
     background-color: #d1d1d0;
+}
+
+
+@media screen and (max-width: 980px) {
+    .create_form{
+        width: 100vw;
+    }
 }

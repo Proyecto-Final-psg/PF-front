@@ -1,15 +1,8 @@
 .img-create {
-    // // background-image: url('../../assets/empty.png');
-
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
     background-color: rgba(233, 234, 232, 0.785);
-    // background-image: linear-gradient(to bottom, #ccebae, #c4ec9d, #bbed8c, #b2ed7b, #a9ee68);
-    // background: linear-gradient(0deg, rgba(190, 255, 70, 0.212) 0%, rgba(87, 87, 87, 0) 68%);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
     width: 350px;
-    height: 550px;
+    height: 650px;
     margin-left: 30px;
     border-radius: 10px;
    display: flex;
@@ -17,8 +10,6 @@
    align-items: center;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     text-align: center;
-    margin-top: 10px;
-
 }
 
 .img-create img {
@@ -29,47 +20,52 @@
     width: 240px;
 }
 
-.img-create #name {
-    text-align: center;
-    height: 115px;
-    background-color: transparent;
-    color: rgb(92, 87, 87);
-    font-weight: bold;
-    font-size: 20px;
-    width: 180px;
-    overflow: hidden;
-    border: none;
-    resize: none;
-}
+
 
 .img-create h4 {
-    // margin-top: 50px;
-    color: rgb(67, 65, 65);
+    color: #438a00;
     font-size: 30px;
-    position: absolute;
-    right: 8%;
-    top: 21%
+   padding-bottom: 13px;
 }
 
-.img-create #description {
-    height: 47px;
-    width: 200px;
+.description-mockup {
+    padding: 20px 3px 5px 3px;
+    margin: 0px 5px 3px 5px;
     color: rgb(96, 95, 95);
-    margin-top: 20px;
-    font-size: 20px;
+    font-size: 15px;
+    width: fit-content;
 }
 
-.input-cbd {
-    margin-right: 5px;
+.p-mockup{
+    width: 300px;
 }
 
 .mockup-product {
-    height: 500px;
+    height: 548px;
     display: flex;
     flex-direction: column;
 }
 
 .img-create_title{
     font-size: 35px;
-    padding-top: 10%;
+    padding-top: 7%;
+}
+
+.img-mockup-container{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.img-mockup{
+    height: 100%;
+}
+
+@media screen and (max-width: 980px) {
+    .img-create{
+        visibility: hidden;
+        position: absolute;
+    }
 }

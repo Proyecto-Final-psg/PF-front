@@ -7,18 +7,20 @@ const Mockup = ({localState, handleDeleteCategory}) => {
             <div className='mockup-product'>
                 <div className='img-create'>
                    <p className='img-create_title'>{localState.name}</p>
-                    {
-                        localState.img !== '' ?
-                            <img src={localState.img} alt="alt4" />
-                            : null
-                    }
-                    <p id='description'>{localState.description}</p>
+                   <div className='img-mockup-container'>
+                        {
+                            localState.img !== '' ?
+                                <img className='img-mockup' src={localState.img} alt="alt4" />
+                                : null
+                        }
+                   </div>
+                    <div className='description-mockup'>
+                        <p className='p-mockup'>{localState.description}</p> 
+                    </div>
+                   
                    {localState.price && <h4>${localState.price}</h4>} 
 
                 </div>
-                {/* <div className="buttons-categories">
-                    {localState.categories?.map((categ, i) => <button className='btn_category' key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
-                </div> */}
             </div>
         </>
     )

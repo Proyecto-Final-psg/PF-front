@@ -3,23 +3,20 @@
 export const Validator = (input) => {
     
     let cond_name =  /^[aA-zZ 0-9 _]*$/
-    let cond_description = /^[a-zA-Z 0-9\s/^[^&()&.&,]+$/;
+    //let cond_name = /^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]*$/
+    // let cond_description = /^[a-zA-Z 0-9\s/^[^&()&.&,]+$/;
+    //let cond_description = /^[aA-zZ\u00C0-\u024F\u1E00-\u1EFF 0-9 _]*$/
 
     let error = {}
 
     if (!input.name) {
         error.name = 'Name is required'
-    } else if (cond_name.test(input.name) === false) {
-        error.name = 'No symbols are allowed'
-    }
+    } 
     
     if(!input.description){
         error.description = 'Description is required'
-    }else if (cond_description.test(input.description) === false) {
-        error.description = 'Only text, numbers and "()" are allowed'
     }
-
-    if ( cond_name.test(input.type) === false) error.type = 'No symbols or numbers allowed'
+    if ( cond_name.test(input.type) === false) error.type = 'No symbols allowed'
     
     if (parseInt(input.img.length) === 0) error.img = 'Image is required'
 
