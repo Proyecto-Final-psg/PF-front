@@ -13,7 +13,7 @@ const CartItems = ({ name, id, price, cant }) => {
       let contador = cant + 1
       dispatch(updateToCart(id, name, price, contador))
     }
-    if (event.target.name === "resta") {
+    if (event.target.name === "resta" && (cant > 1)) {
       let contador = cant - 1
       dispatch(updateToCart(id, name, price, contador))
     }
