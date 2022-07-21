@@ -1,13 +1,54 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
-.cmp-purchases-img {
-    @include respond-to('medium') {
-        object-fit: cover;
-        object-position: top center;
-        cursor: pointer;
-    }
+.cmp-purchases-status {
+    margin-right: 10px;
+    box-shadow: 2px 2px 2px rgba(226, 216, 216, 0.648);
+    position: absolute;
+    right: 3px;
+    display: flex;
+    flex-direction: column;
+}
 
+.span {
+    margin-bottom: 10px;
+}
+
+.cmp-purchases-img-puntos {
+    width: 100px;
+}
+
+.cmp-purchases-img-despachado {
+    position: absolute;
+    width: 25px;
+    top: 67px;
+    margin-left: 60px;
+}
+
+.cmp-purchases-img-mensaje {
+    position: absolute;
+    width: 31px;
+    top: 3px;
+    margin-left: 1px;
+    cursor: pointer;
+}
+
+.cmp-purchases-img {
+    object-fit: cover;
+    object-position: top center;
+    width: 37px;
+
+    @include respond-to('medium') {}
+
+}
+
+
+
+.container-card-inside {
+    width: 60%;
+    height: 50%;
+    border-radius: 7px;
+    text-align: center;
 }
 
 .cmp-purchases-container {
@@ -19,26 +60,31 @@
 }
 
 .media-left {
-    @include respond-to('medium') {
+    right: 160px;
+    width: 70px;
+    height: 70px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(209, 205, 205);
+    margin-right: 1rem;
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-around;
+    margin-left: 10px;
+    box-shadow: 5px 5px 5px rgba(226, 216, 216, 0.648);
+    border-radius: 7px;
 
-        right: 160px;
-        width: 70px;
-        height: 70px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: black;
-
-    }
+    @include respond-to('medium') {}
 }
 
 .container-card {
-    @include respond-to('medium') {
-        width: 750px;
-        height: 100px;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-    }
+    width: 750px;
+    height: 100px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    @include respond-to('medium') {}
 
 
 }
