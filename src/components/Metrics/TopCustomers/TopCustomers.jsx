@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers, getTopCustomers, } from "../../../Redux/Actions"
 import emailjs from '@emailjs/browser';
 import swal from 'sweetalert'
-import './TopCustomers.scss'
+// import './TopCustomers.scss'
 // import { API_URL } from "../../../Redux/Constants"
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
@@ -129,7 +129,9 @@ export function TopCustomers() {
                 <td>
                 <form onSubmit={sendEmail} id='order-form' >
                       <input name="discount" style={{display:`${num < 4 && o.username !='null' ? '' : 'none'}`}} type="number" placeholder="15%" />
-                      <button className="btn btn-sm" style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>Send</button>
+                      <button className="btn btn-sm" style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>
+                        <span class="material-symbols-outlined">sell</span>
+                      </button>
                       <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
                       <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
                       <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />

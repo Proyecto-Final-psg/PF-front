@@ -19,44 +19,11 @@ export function Orders() {
   },
   // eslint-disable-next-line 
   [])
-  
-
 
   useEffect(()=>{
     console.log('ORDERS',orders);
   },[orders])
 
-
-
-  // const sendEmail = (e) => {
-
-  //   e.preventDefault();
-  //   // console.log(e.target)
-  //   // console.log(e.target.name.value)
-  //   let userToSend = users.find(u => parseInt(u.user_id) === parseInt(e.target.name.value))
-
-  //   console.log('MANDANDO A', userToSend)
-
-  //   e.target.name.value = userToSend.user_name;
-  //   e.target.mailTo.value = userToSend.user_email;
-
-  //   emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
-  //     .then((result) => {
-  //       // console.log(result.text);
-  //       swal({
-  //         title: "Email has been sent",
-  //         text: "The client should receive the email with the notification soon",
-  //         icon: "success",
-  //         button: "Ok"
-  //       })
-  //         .then(ok => {
-  //           // navigate(-1)
-  //         })
-  //     }, (error) => {
-  //       console.log(error.text);
-  //     });
-
-  // };
 
   return <div className="container datas">
     <h1 className="mt-5">Order List</h1>
@@ -72,7 +39,6 @@ export function Orders() {
                 <th><abbr title="Status of the order">Status</abbr></th>
                 <th><abbr title="User name">User</abbr></th>
                 <th><abbr title="Date of Order">Date</abbr></th>
-                {/* <th><abbr title="Order action">Dispatch order</abbr></th> */}
               </tr>
             </thead>
             <tbody>
@@ -82,17 +48,6 @@ export function Orders() {
                   <td>{o.status}</td>
                   <td>{o.user ? o.user.user_name : 'N/A'}</td>
                   <td>{o.createdAt}</td>
-                  
-                  {/* <td>
-                    <form onSubmit={sendEmail}>
-                      <input type="text" name="name" readOnly value={o.userUserId} style={{ display: "none" }} />
-                      <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                      <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
-                      <button className='btn' type='submit' disabled={o.status.toLowerCase().includes('complete') ? '' : 'disabled'} onClick={() => dispatchOrder(o.userUserId)}>
-                        <span className="material-symbols-outlined">local_shipping</span>
-                      </button>
-                    </form>
-                  </td> */}
                 </tr>
 
               })}
