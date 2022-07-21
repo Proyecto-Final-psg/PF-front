@@ -61,10 +61,18 @@ margin-top: 20px;
     color: #fff;
 }
 
+.no-submit{
+    background-color: #c2c5c3;
+}
+
+
+
 .button-submit-order:hover{
     background-color: #216345;
 }
-
+.no-submit:hover{
+    background-color:#c2c5c3 ;
+}
 .items-order{
     padding-top: 1%;
     padding-bottom: 1%;
