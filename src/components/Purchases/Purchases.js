@@ -23,7 +23,7 @@ const Purchases = ({ data }) => {
                 })}
                 <div>
                     <img className='cmp-purchases-img-puntos' src="https://miro.medium.com/max/600/1*jAd0U5wLSjHXe1xL7TH67w.png" />
-                    <img className='cmp-purchases-img-puntos' src={imgEnvio} />
+                    <img className='cmp-purchases-img-puntos camion' src={imgEnvio} />
                 </div>
 
 
