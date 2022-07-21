@@ -1,25 +1,23 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers, getTopCustomers, } from "../../../Redux/Actions"
 import emailjs from '@emailjs/browser';
 import swal from 'sweetalert'
-import './TopCustomers.scss'
+import LoadingImg from '../../../assets/Loading.gif'
+// import './TopCustomers.scss'
 // import { API_URL } from "../../../Redux/Constants"
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
   const dispatch = useDispatch()
   const topCustomers = useSelector(store => store.topCustomers)
   const users = useSelector(store => store.users)
+  const [loading, setLoading] = useState(false)
   let num = 0;
   useEffect(() => {
     dispatch(getTopCustomers())
     dispatch(getAllUsers())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  useEffect(() => {
-    // console.log(users);
-  }, [users])
 
   var holder = {};
 
@@ -46,7 +44,7 @@ export function TopCustomers() {
     if (a.total > b.total) {
       return -1;
     }
-    // a must be equal to b
+ 
     return 0;
   });
 
@@ -63,7 +61,7 @@ export function TopCustomers() {
 
 
   const sendEmail = (e) => {
-
+    setLoading(true)
     e.preventDefault();
     // console.log(e.target)
     console.log(e.target.name.value)
@@ -78,6 +76,7 @@ export function TopCustomers() {
     emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
       .then((result) => {
         // console.log(result.text);
+        setLoading(false)
         swal({
           title: "Email has been sent",
           text: "The client should receive the email with the notification soon",
@@ -102,7 +101,11 @@ export function TopCustomers() {
   return <div className="container datas">
 
     <h1 className="mt-5">Top Customers</h1>
-
+    {loading &&
+                <div className='loadingGif'>
+                    <h3>Loading</h3>
+                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+                </div>}
 
     <div className="lower-10" style={{ width: "100%" }}>
       <table className="table is-bordered is-narrow shadow">
@@ -129,7 +132,9 @@ export function TopCustomers() {
                 <td>
                 <form onSubmit={sendEmail} id='order-form' >
                       <input name="discount" style={{display:`${num < 4 && o.username !='null' ? '' : 'none'}`}} type="number" placeholder="15%" />
-                      <button className="btn btn-sm" style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>Send</button>
+                      <button className="btn btn-sm" style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>
+                        <span class="material-symbols-outlined">sell</span>
+                      </button>
                       <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
                       <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
                       <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
