@@ -1,24 +1,28 @@
-
 .account {
-  width: 100%;
-  height: 85vh;
+  width: 75%;
   margin-top: 40px;
   border: 1px red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .account_container {
-  width: 80%;
+
   height: 100%;
   margin: auto;
   display: flex;
   flex-direction: row;
- /*  border: 1px solid red; */
+
+  /*  border: 1px solid red; */
 }
 
 .user_container {
   width: 350px;
   height: 100%;
- /*  border: 1px solid red; */
+  /*  border: 1px solid red; */
+
 }
 
 .user_card {
@@ -97,12 +101,15 @@
 .nav-item .link {
   color: #323232
 }
+
 .nav-item-active .link {
   color: #fff
 }
+
 .nav-item .link:hover {
   color: #323232;
 }
+
 .nav-item-active .link:hover {
   color: #fff;
 }
@@ -112,6 +119,6 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
-  align-items:flex-start;
+  align-items: flex-start;
   max-height: 100vh;
 }

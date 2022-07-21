@@ -1,0 +1,44 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
+.cmp-purchases-img {
+    @include respond-to('medium') {
+        object-fit: cover;
+        object-position: top center;
+        cursor: pointer;
+    }
+
+}
+
+.cmp-purchases-container {
+    width: 350px;
+
+    @include respond-to('medium') {
+        width: 750px;
+    }
+}
+
+.media-left {
+    @include respond-to('medium') {
+
+        right: 160px;
+        width: 70px;
+        height: 70px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+
+    }
+}
+
+.container-card {
+    @include respond-to('medium') {
+        width: 750px;
+        height: 100px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+
+
+}
