@@ -6,140 +6,49 @@
     flex-wrap: wrap;
     margin-top: 50px;
     min-height: 73vh;
+    
+
+}
+
+
+
+.about-video{
+  background: rgb(68,143,63);
+background: linear-gradient(180deg, rgba(68,143,63,0) 0%, rgba(26,59,22,1) 100%);
 }
 
 .about h1{
     font-size: 50px;
 }
 
+.team{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(88,128,87);
+background: linear-gradient(180deg, rgba(255, 255, 255, 0.572) 0%, rgba(0,0,0,1) 100%);
+}
+
+.team span{
+  width: 80%;
+  text-align: center;
+}
+
+.devs{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: hidden;
+}
 
 
-/* From uiverse.io by @mrhyddenn */
-.containerq {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card_boxq {
-    width: 200px;
-    height: 250px;
-    margin: 20px;
-    border-radius: 20px;
-    background: linear-gradient(170deg, rgba(58, 56, 56, 0.623) 0%, rgb(31, 31, 31) 100%);
-    position: relative;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.55);
-    cursor: pointer;
-    transition: all .3s;
-  }
-  
-  .card_boxq:hover {
-    transform: scale(0.9);
-  }
-  
-  .card_boxq span {
-    position: absolute;
-    overflow: hidden;
-    width: 150px;
-    height: 150px;
-    top: -10px;
-    left: -10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card_boxq span::before {
-    content: 'Frontend Dev';
-    position: absolute;
-    width: 150%;
-    height: 40px;
-    background-image: linear-gradient(45deg, #ff6547 0%, #ffb144  51%, #ff7053  100%);
-    transform: rotate(-45deg) translateY(-20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.23);
-  }
-  
-  .card_boxq span::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    bottom: 0;
-    left: 0;
-    height: 10px;
-    z-index: -1;
-    box-shadow: 140px -140px #cc3f47;
-    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-  }
-
-
-  .card_boxb {
-    width: 200px;
-    height: 250px;
-    margin: 20px;
-    border-radius: 20px;
-    background: linear-gradient(170deg, rgba(58, 56, 56, 0.623) 0%, rgb(31, 31, 31) 100%);
-    position: relative;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.55);
-    cursor: pointer;
-    transition: all .3s;
-  }
-  
-  .card_boxb:hover {
-    transform: scale(0.9);
-  }
-  
-  .card_boxb span {
-    position: absolute;
-    overflow: hidden;
-    width: 150px;
-    height: 150px;
-    top: -10px;
-    left: -10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card_boxb span::before {
-    content: 'Backend Dev';
-    position: absolute;
-    width: 150%;
-    height: 40px;
-    background-image: linear-gradient(45deg, #ff6547 0%, #ffb144  51%, #ff7053  100%);
-    transform: rotate(-45deg) translateY(-20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.23);
-  }
-  
-  .card_boxb span::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    bottom: 0;
-    left: 0;
-    height: 10px;
-    z-index: -1;
-    box-shadow: 140px -140px #cc3f47;
-    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-  }
-
-  .team{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 80%;
-  }
+.rowAbout{
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

@@ -3,14 +3,24 @@
 export const Validator = (input) => {
     
     let cond_name =  /^[aA-zZ 0-9 _]*$/
-    //let cond_name = /^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]*$/
-    // let cond_description = /^[a-zA-Z 0-9\s/^[^&()&.&,]+$/;
-    //let cond_description = /^[aA-zZ\u00C0-\u024F\u1E00-\u1EFF 0-9 _]*$/
+    let cond_email = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
 
     let error = {}
 
     if (!input.name) {
         error.name = 'Name is required'
+    } 
+
+    if(!input.address) error.address = 'Address is required'
+    if(!input.city) error.city = 'City is required'
+    if(!input.state) error.state = 'State is required'
+    if(!input.zipCode) error.zipCode = 'Zip Code is required'
+
+    if (input.email === ''){
+        error.email = 'Email is required'
+    } 
+    if(cond_email.test(input.email) === false){
+        error.email = 'Must be a valid email'
     } 
     
     if(!input.description){
@@ -18,13 +28,12 @@ export const Validator = (input) => {
     }
     if ( cond_name.test(input.type) === false) error.type = 'No symbols allowed'
     
-    if (parseInt(input.img.length) === 0) error.img = 'Image is required'
+    if (input.img && parseInt(input.img.length) === 0) error.img = 'Image is required'
 
-    if (parseInt(input.price.length) === 0 ) error.price = 'Price need to be more than $0'
+    if (input.price && parseInt(input.price.length) === 0 ) error.price = 'Price need to be more than $0'
 
-    if (parseInt(input.categories.length) === 0 ) error.categories = 'At least one category is required'
-
-
+    if (input.categories && parseInt(input.categories.length) === 0 ) error.categories = 'At least one category is required'
+    
     return error
 
 }
