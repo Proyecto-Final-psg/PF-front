@@ -139,10 +139,12 @@ export const getReviews = (product_id) => {
 }
 
 export const getUserReviews = (id) => {
+    //console.log('manda',id)
     return function (dispatch) {
         return fetch(`${API_URL}/reviewsUser/${id}`)
             .then(res => res.json())
             .then(data => {
+                //console.log('data',data)
                 dispatch({
                     type: GET_USER_REVIEWS,
                     payload: data

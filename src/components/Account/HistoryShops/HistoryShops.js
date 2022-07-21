@@ -10,8 +10,10 @@ const HistoryShops = () => {
 
   const history = useSelector(store => store.orderDetails[0]?.arrayItems)
   const reviews = useSelector(store => store.reviews)
+  const userReviews = useSelector(store => store.userReviews);
+  //console.log(userReviews)
   //console.log(history)
-  console.log(reviews)
+  //console.log(reviews)
 
   const dispatch = useDispatch()
 
@@ -96,7 +98,7 @@ const HistoryShops = () => {
             <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
             <p className='warning'>{error.review}</p>
             <textarea className="textarea field" placeholder="Your review" value={review.review} name='review' onChange={handleInputChange} />
-            <StarRating localState={review} setLocalState={setReview} />
+            <StarRating localState={review} setLocalState={setReview} modal={modal}/>
           </section>
           <footer className="modal-card-foot">
             {
