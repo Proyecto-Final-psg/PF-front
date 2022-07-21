@@ -118,7 +118,7 @@ export function TopCustomers() {
         </thead>
         <tbody>   
           {
-          obj2 && obj2.lenght>0 ? obj2.map(o => {
+          obj2 &&  obj2.map(o => {
             num=num+1
             return <tr key={o.username}>
               <td >
@@ -161,15 +161,7 @@ export function TopCustomers() {
               </td>
             </tr>
           })
-        :
-          <td colSpan='3' >
-        <div id="no-purchases">
-            <span class="material-symbols-outlined">info</span>
-            <p p className="text-center">
-              No purchases were made
-              </p>
-        </div>
-          </td>
+       
         }
         </tbody>
       </table>
