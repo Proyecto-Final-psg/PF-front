@@ -25,255 +25,116 @@
 
 
 }
-
-
-$font : 'Sofia', sans-serif;
-$font-size:16px;
-$blue : #8ee46d;
-$blue2 : #e3ebf1;
-$black: #000;
-$grey : #ffffff;
-$grey2 : #000000;
-$grey3 : #e8e7e7;
-$grey4 : #fdfdfd;
-$bluegrey : #ffffff;
-$orange: #ec992c;
-
-@mixin radius($val) {
-  -webkit-border-radius: $val;
-  -moz-border-radius: $val;
-  border-radius: $val;
+.image-card{
+  position: relative;
+  height: 200px;
+  width: 140px;
+  overflow: hidden;
+  border-radius: 3px;
+  transition: all .4s;
 }
-
-@mixin cardsOpen() {
- 
-    &::before {
-      background: rgba(20, 102, 27, 0.6);
-    }
-    .book-container {
-      .content {
-        opacity: 1;
-
-        transform: translateY(0px);
-      }
-    }
-
-    .informations-container {      
-      transform: translateY(0px);
-      .more-information {
-        opacity: 1;
-      }
-    }
+.image-card:hover{
+  box-shadow: 1px 1px 6px 1px rgba(0,0,0,.3);
 }
-
-
-.ul{
-    display: flex;
-    list-style: none;
-    padding: 0;
-    flex-direction: row;
-    justify-content: space-around;
-  
-  .booking-card{
-    position: relative;
-    width: 200px;
-    display: flex;
-    flex: 0 0 300px;
-    flex-direction: column;
-    
-    
-    margin: 20px;
-    margin-bottom: 30px;
-    @include radius(10px);
-    
-    overflow: hidden;
-    
-    background-position: center center;
-    background-size: cover;
-    
-    text-align: center;
-    color: $blue;
-    
-    transition: .3s;
-    
-    &::before{
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      
-      background: rgba(10,72,112, 0);
-      
-      transition: .3s;
-    }
-    
-    .book-container {
-      height: 200px;
-      .content {
-        position: relative;
-        opacity: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        width: 100%;
-        
-        transform: translateY(-200px);
-        
-        transition: .3s;
-        
-        .btn {      
-          border: 3px solid white;
-          padding: 10px 15px;
-          margin: 10px;
-          background: none;
-          
-          text-transform: uppercase;
-          font-weight: bold;
-          font-size: 1.3em;
-          color: white;
-          
-          cursor: pointer;
-          
-          transition: .3s;
-          
-          &:hover {
-            background: white;
-            
-            border: 0px solid white;
-            
-            color: $blue;
-          }
-        }
-      }
-    }
-
-    .btn img{
-        width: 40px;
-    }
-    
-    .informations-container{      
-      flex: 1 0 auto;
-      text-align: center;
-      padding: 20px;
-      
-      background: $grey2;
-      
-      transform: translateY(106px);
-      
-      transition: .3s;
-      
-      .title {
-        position: relative;
-        color: white;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.2em;
-        
-        &::after{
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          
-          height: 3px;
-          width: 50px;
-          
-          margin: auto;
-          
-          background: $blue;
-        }
-      }
-      
-      .price {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        margin-top: 10px;
-        
-        .icon {
-          margin-right: 10px;
-        }
-      }
-      
-      .more-information {
-        opacity: 0;
-        
-        transition: .3s;
-        .info-and-date-container {
-          display: flex;
-
-          .box {
-            flex: 1 0;
-
-            padding: 15px;
-            // margin-top: 20px;
-            @include radius(10px);
-
-            background: rgb(48, 112, 104);
-
-            font-weight: bold;
-            font-size: 0.9em;
-
-            .icon {
-              margin-bottom: 5px;
-            }
-
-            &.info{
-              color: $orange;
-
-              margin-right: 10px;
-            }
-          }
-        }
-        .disclaimer {
-          margin-top: 20px;
-
-          font-size: 0.8em;
-          color: $grey;
-        }
-      }
-    }
-    
-    &:hover {
-      @include cardsOpen();
-      z-index: 99999;
-    }
-  }
+.image-card:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 180%;
+  height: 100%;
+  width: 75%;
+  background: rgba(255,255,255,.1);
+  z-index: 1;
+  transform: skew(45deg);
+  opacity: .7;
+  pointer-events: none;
+  transition: .5s;
 }
-
-@media (max-width: 768px) {
-  ul {
-    .booking-card{
-      @include cardsOpen();
-    }
-  }
+.image-card:hover:before{
+  left: -180%;
 }
-
-.credits{
-  display: table;
-  background: $blue;
-  color: white;
-  line-height: 25px;
+.image-card img{
+  width: 250px;
+  height: auto;
   
-  margin: 10px auto;
-  padding: 20px;
-  
-  @include radius(10px);
-  
-  text-align: center;
-  
-  a{
-    color: $blue2;
-  }
+  filter: grayscale(100%);
+  transition: 2s;
 }
-
-h1{
-  margin: 10px 20px;
+.image-card:hover img{
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+.image-card h2{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #467e51;
+  padding: 10px 0;
+  color: #f9d6d2;
+  font-family: verdana;
+  border: 1px solid #358140;
+  user-select: none;
+  transform: perspective(500px) rotateY(-90deg);
+  transform-origin: right;
+  transition: all .5s;
+}
+.image-card:hover h2{
+  transform: perspective(500px) rotateY(0deg);
+}
+.image-card ul{
+  position: absolute;
+  list-style: none;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,0);
+}
+.image-card ul li{
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  background: #333;
+  cursor: pointer;
+  transition: all .5s;
+  transform: perspective(800px) rotateY(90deg);
+  transform-origin: left;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.image-card:hover ul li{
+  transform: perspective(800px) rotateY(0deg);
+}
+.image-card:hover ul li:nth-child(1){
+  transition-delay: .2s;
+}
+.image-card:hover ul li:nth-child(2){
+  transition-delay: .6s;
+}
+.image-card:hover ul li:nth-child(3){
+  transition-delay: .8s;
+}
+.image-card:hover ul li:nth-child(4){
+  transition-delay: 1s;
+}
+.image-card ul li i{
+  font-size: 20px;
+  color: rgb(59, 114, 68);
+  background: rgba(255,255,255,0);
+}
+ul li span{
+  position: absolute;
+  left: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  background: #333;
+  color: tomato;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding: 0 10px;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: all .5s;
+}
+ul li:hover span{
+  left: 30px;
+  opacity: 1;
+  pointer-events: auto;
 }
