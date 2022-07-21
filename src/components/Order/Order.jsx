@@ -149,7 +149,7 @@ function Order() {
 
                     <p className="label-order">Total: ${subtotal + (subtotal * (10 / 100))}</p>
                 </div>
-                {order.email === '' || Object.keys(error).length ? <button type='submit' className='button-submit-order no-submit' disabled>Submit</button>
+                {order.email === '' || Object.keys(error).length > 0 ? <button type='submit' className='button-submit-order no-submit' disabled>Submit</button>
                 :
                 <button type='submit' className='button-submit-order' onClick={handleSubmitOrder}>Submit</button>
                 }
