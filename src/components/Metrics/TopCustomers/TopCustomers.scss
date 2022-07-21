@@ -6,7 +6,7 @@
 .discoun-button {
     font-family: inherit;
     font-size: 15px;
-    background: royalblue;
+    background: rgb(78, 158, 105);
     color: white;
     padding: 5px ;
     
@@ -16,7 +16,8 @@
     border-radius: 0px;
     overflow: hidden;
     transition: all 0.2s;
-    
+    margin-left: 10px;
+    border-radius: 5px;
    }
    
    .discoun-button #sp {
@@ -60,4 +61,7 @@
    .order-form{
     display: flex;
     width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
    }

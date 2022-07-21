@@ -49,7 +49,7 @@ export function Orders() {
   }
 
   return <div className="container datas">
-    <h1 className="mt-5">Order List</h1>
+    <h1 className="mt-5 custom-title">Order List</h1>
 
       <span>Filter orders by status</span>
     <form onSubmit={filterOrdersByStatus} className='filter-orders'>

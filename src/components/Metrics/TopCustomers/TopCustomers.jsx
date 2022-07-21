@@ -5,7 +5,9 @@ import emailjs from '@emailjs/browser';
 import swal from 'sweetalert'
 import LoadingImg from '../../../assets/Loading.gif'
 import './TopCustomers.scss'
-
+import placeOne from '../../../assets/1place.png'
+import placeTwo from '../../../assets/2place.png'
+import placeThree from '../../../assets/3place.png'
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
@@ -45,18 +47,18 @@ export function TopCustomers() {
     if (a.total > b.total) {
       return -1;
     }
- 
+
     return 0;
   });
 
   obj2 = obj2.slice(0, 10)
 
-  console.log('obj',obj2);
+  console.log('obj', obj2);
 
   function matchIdWithUser(id) {
     let user = users.find(u => parseInt(u.user_id) === parseInt(id))
     console.log(user);
-    if(user)
+    if (user)
       return user.user_name;
   }
 
@@ -91,61 +93,67 @@ export function TopCustomers() {
 
   };
 
-  function dispatchOrder(userID) {
-    // const emailToDispatch = users.find(u => parseInt(u.user_id) === parseInt(userID))
-    // console.log(emailToDispatch.user_email)
-
-  }
 
   return <div className="container datas">
 
-    <h1 className="mt-5">Top Customers</h1>
+    <h1 className="mt-5 custom-title">Top Customers</h1>
     {loading &&
-                <div className='loadingGif'>
-                    <h3>Loading</h3>
-                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
-                </div>}
+      <div className='loadingGif'>
+        <h3>Loading</h3>
+        < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+      </div>}
 
     <div className="lower-10" style={{ width: "100%" }}>
       <table className="table is-bordered is-narrow shadow">
         <thead>
           <tr>
             <th><abbr title="Top users">Name</abbr></th>
-            {/* <th>Orders</th> */}
             <th><abbr title="Totals">Totals</abbr></th>
             <th><abbr title="Send Discounts">Send discount coupon</abbr></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody>        
           {obj2 && obj2.map(o => {
-
+            num=num+1
             return <tr key={o.username}>
               <td >
                 <div className="position">
-                  <div id={`num${num + 1}`}>{num = num + 1}</div>
-                  -{o.username && matchIdWithUser(o.username)}
+                  {num === 1 ? <img src={placeOne} alt="1st place" />
+                    :
+                    num === 2 ? <img src={placeTwo} alt="2st place" />
+                    :
+                    num === 3 ? <img src={placeThree} alt="3st place" />
+                    :
+                    null
+                   }
+                  {o.username && matchIdWithUser(o.username)}
                 </div>
               </td>
-                <td style={{ fontWeight: "bold" }}>${o.total}</td>
-              
-                <td>
-                  <div className="order-form">
-                    <form onSubmit={sendEmail}>
-                          <input name="discount" style={{display:`${num < 4 && o.username !='null' ? '' : 'none'}`}} type="number" placeholder="15%" id="input-disc" />
-                          <button className="discoun-button"  style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>
+              <td style={{ fontWeight: "bold" }}>${o.total}</td>
+
+              <td>
+                <div >
+                  <form onSubmit={sendEmail} className="order-form">
+                    <div>
+                      <input name="discount" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
+                    </div>
+                    <div>
+                      <button className="discoun-button" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }}>
                         <div class="svg-wrapper-1">
-                          <div class="svg-wrapper">    
+                          <div class="svg-wrapper">
                             <span id="icon" class="material-symbols-outlined">sell</span>
                           </div>
                         </div>
                         <span id="sp">Send</span>
-                      </button>                      
-                          <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
-                          <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                          <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />                      
-                        </form>
-                  </div>
-                    </td>
+                      </button>
+
+                    </div>
+                    <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
+                    <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
+                    <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
+                  </form>
+                </div>
+              </td>
             </tr>
           })}
         </tbody>

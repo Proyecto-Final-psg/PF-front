@@ -74,7 +74,7 @@ export function UserCrud() {
 
   return <div className="container datas">
 
-    <h1 className="mt-5">Block Users</h1>
+    <h1 className="mt-5 custom-title">Block Users</h1>
 
     {loading &&
                 <div className='loadingGif'>
