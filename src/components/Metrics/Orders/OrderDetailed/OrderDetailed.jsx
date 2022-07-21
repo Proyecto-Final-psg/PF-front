@@ -114,7 +114,7 @@ export function OrderDetailed() {
                     <select style={{ margin: "20px" }} name="" id="" onChange={orderStatusState}>
                         <option value="completed" selected disabled='disabled'>Select</option>
                         <option value="completed">Completed</option>
-                        <option value="in-progress">In Progress</option>
+                        <option value="inprogress">In Progress</option>
                         <option value="canceled">Canceled</option>
                     </select>
                     <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success">Ok</button>

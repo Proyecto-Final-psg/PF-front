@@ -1,7 +1,12 @@
 #input-disc{
     width: 94px;
 }
-
+#no-purchases{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 /* From uiverse.io by @adamgiebl */
 .discoun-button {
     font-family: inherit;

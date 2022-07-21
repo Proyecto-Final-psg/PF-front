@@ -22,6 +22,10 @@ export function TopCustomers() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(()=>{
+    console.log(topCustomers)
+  },[topCustomers])
+
   var holder = {};
 
   if (topCustomers.length > 0) {
@@ -112,8 +116,9 @@ export function TopCustomers() {
             <th><abbr title="Send Discounts">Send discount coupon</abbr></th>
           </tr>
         </thead>
-        <tbody>        
-          {obj2 && obj2.map(o => {
+        <tbody>   
+          {
+          obj2 &&  obj2.map(o => {
             num=num+1
             return <tr key={o.username}>
               <td >
@@ -155,7 +160,9 @@ export function TopCustomers() {
                 </div>
               </td>
             </tr>
-          })}
+          })
+       
+        }
         </tbody>
       </table>
     </div>
