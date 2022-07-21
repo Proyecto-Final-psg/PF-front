@@ -13,3 +13,15 @@
     align-items: center;
     justify-content: center;
 }
+
+.filter-orders{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 80%;
+}
+
+.filter-orders select{
+    margin:5px;
+    width: inherit;
+}
