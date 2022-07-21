@@ -17,7 +17,7 @@ export function About() {
                 </video>
             </div>
             <hr />
-            <div className="team" style={{width:"100%"}}>
+            <div className="team" style={{width:"100%", padding:"50px"}}>
             <h1 className='m-5'>Development Team</h1>
             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa necessitatibus dolore nostrum reprehenderit aperiam eveniet, modi cumque voluptates vero. Adipisci nisi dignissimos alias unde. Laboriosam voluptates reiciendis repellendus voluptatum adipisci!</span>
               <div className="devs">
