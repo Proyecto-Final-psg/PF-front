@@ -3,12 +3,13 @@ import { useState } from 'react';
 import './Order.scss'
 import { submitOrder } from '../../Redux/Actions'
 import { useEffect } from 'react';
+import { Validator } from '../CreateProduct/helpers/Validator';
+
 function Order() {
     const cart = useSelector((store) => store.cart);
-    // const mercadoPagoURL = useSelector((store) => store.mercadoPago);
-    //console.log(cart)
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch()
+
     const [addressOrder, setAddressOrder] = useState({
         address: '',
         city: '',
@@ -16,11 +17,16 @@ function Order() {
         zipCode: ''
     })
 
+    const [error, setError] = useState({})
+
     const [order, setOrder] = useState({
         user_id: user[0].user_id,
+        email: '',
         address: '',
         arrayItems: []
     })
+
+  
 
     useEffect(() => {
         setOrder({
@@ -37,26 +43,37 @@ function Order() {
 
     const subtotal = (cart.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
 
-    //console.log(addressOrder)
     function handleSubmitOrder(e) {
         e.preventDefault();
         dispatch(submitOrder(order))
     }
 
     function handleInputOrder(e) {
+        if(e.target.name === 'email'){
+            setOrder({
+           ...order,
+               email: e.target.value
+             })
+             setError(Validator({
+                ...addressOrder,
+                email: e.target.value}))
+       }else{
+          setError(Validator({
+        ...addressOrder,
+        email: order.email}))
+       }
+     
+    }
+
+    function handleInputAddress(e) {
         setAddressOrder({
             ...addressOrder,
             [e.target.name]: e.target.value
         })
-        // setOrder({
-        //     ...order,
-        //     address: `address: ${addressOrder.address}, city: ${addressOrder.city}, state: ${addressOrder.state}, zip: ${addressOrder.zipCode}`,
-        //     arrayItems: cart.map(item => {
-        //         return(
-        //             {product_id: item.id, quantity: item.cant, price: item.price}
-        //         )
-        //     })
-        // })
+        setError(Validator({
+            ...addressOrder,
+            [e.target.name]: e.target.value,
+            email: order.email}))
     }
 
     return (
@@ -71,19 +88,19 @@ function Order() {
                         <label className="label-order">Personal data</label>
                         <div className="control control-order">
                             <div className='input-order'>
-                                <input className="input" type="text" required="required"  autoComplete="on" />
-                                <p className="help">First Name</p>
+                                <input className="input" type="text"  onChange={handleInputOrder} autoComplete="on" />
+                                <p className="help">First and last name</p>
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" required="required"  autoComplete="on"/>
-                                <p className="help">Last Name</p>
+                                <input className="input" type="text" name='email' onChange={handleInputOrder} required  autoComplete="on"/>
+                                <p className="help">{error.email ? <span style={{color: 'red'}}>{error.email}</span> : 'Email'}</p> 
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" required="required" />
+                                <input className="input" type="text" onChange={handleInputOrder} />
                                 <p className="help">DNI</p>
                             </div>
                             <div >
-                                <input className="input" type="text" required="required" />
+                                <input className="input" type="text" onChange={handleInputOrder} />
                                 <p className="help">Phone</p>
                             </div>
                         </div>
@@ -92,21 +109,21 @@ function Order() {
                     <div className="field-order">
                         <label className="label-order laber-order-address">Address</label>
                         <div className="control control-address">
-                            <input className="input input-address" type="text" name='address' onChange={handleInputOrder} />
-                            <p className="help">Street & number</p>
+                            <input className="input input-address" type="text" name='address' onChange={handleInputAddress} />
+                            <p className="help">{error.address ? <span style={{color: 'red'}}>{error.address}</span> : 'Street & number'}</p>
                         </div>
                         <div className="constrol control-order">
                             <div className='input-order'>
-                                <input className="input" type="text" name='city' onChange={handleInputOrder} />
-                                <p className="help">City</p>
+                                <input className="input" type="text" name='city' onChange={handleInputAddress} />
+                                <p className="help">{error.city ? <span style={{color: 'red'}}>{error.city}</span> : 'City'}</p>
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" name='state' onChange={handleInputOrder} />
-                                <p className="help">State</p>
+                                <input className="input" type="text" name='state' onChange={handleInputAddress} />
+                                <p className="help">{error.state ? <span style={{color: 'red'}}>{error.state}</span> : 'State'}</p>
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" name='zipCode' onChange={handleInputOrder} />
-                                <p className="help">Zip code</p>
+                                <input className="input" type="text" name='zipCode' onChange={handleInputAddress} />
+                                <p className="help">{error.zipCode ? <span style={{color: 'red'}}>{error.zipCode}</span> : 'Zip code'}</p>
                             </div>
 
                         </div>
@@ -132,8 +149,11 @@ function Order() {
 
                     <p className="label-order">Total: ${subtotal + (subtotal * (10 / 100))}</p>
                 </div>
-
+                {order.email === '' || Object.keys(error).length ? <button type='submit' className='button-submit-order no-submit' disabled>Submit</button>
+                :
                 <button type='submit' className='button-submit-order' onClick={handleSubmitOrder}>Submit</button>
+                }
+                
             </div>
 
         </div>
