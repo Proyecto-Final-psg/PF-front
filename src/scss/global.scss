@@ -3,6 +3,14 @@
 @import './utils.scss';
 @import './animations.scss';
 
+body::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+}
+body::-webkit-scrollbar-thumb{
+    background: #438A00;
+    border-radius: 5px;
+}
 
 body {
     margin: 0;
