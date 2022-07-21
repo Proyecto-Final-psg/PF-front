@@ -96,13 +96,6 @@ const Form = ({handleInputChange, onSubmit, newCategory, setNewCategory, categor
                         :
                         <button className='btn_create' type='submit' >{button}</button>
                     }
-                    {/*   localState.img === '' || localState.categories.length === 0?
-                        <button className='btn_not_create' disabled>{button}</button>
-                        :
-                        Object.keys(error).length || localState.name === '' ?
-                        <button className='btn_not_create'>{button}</button>
-                        :
-                        <button className='btn_create' type='submit' >{button}</button> */}
                     
                 </div>
                     
