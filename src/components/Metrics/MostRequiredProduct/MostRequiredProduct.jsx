@@ -96,7 +96,7 @@ export function MostRequiredProduct() {
 
   return <div className="container datas">
     
-    <h1 className="mt-5">Best selling products</h1>
+    <h1 className="mt-5 custom-title">Best selling products</h1>
 
 
     <div className="lower-10" style={{width:"100%"}}>

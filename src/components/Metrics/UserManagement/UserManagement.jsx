@@ -13,7 +13,7 @@ export function UserManagement(){
 
     return <div className="container datas">
     
-    <h1 className="mt-5">User Roles</h1>
+    <h1 className="mt-5 custom-title">User Roles</h1>
     {/* <span >In this section, you can change the user roles. For example, if you set to the 'User 1' the admin rol, that user will have access to the Admin Panel and Create Product.</span> */}
 
     <div className="lower-10" style={{width:"100%"}}>

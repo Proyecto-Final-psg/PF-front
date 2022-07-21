@@ -1,9 +1,67 @@
-#orders-form{
-    // width: 60px;
+#input-disc{
+    width: 94px;
 }
 
-#order-form{
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-}
+/* From uiverse.io by @adamgiebl */
+.discoun-button {
+    font-family: inherit;
+    font-size: 15px;
+    background: rgb(78, 158, 105);
+    color: white;
+    padding: 5px ;
+    
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 0px;
+    overflow: hidden;
+    transition: all 0.2s;
+    margin-left: 10px;
+    border-radius: 5px;
+   }
+   
+   .discoun-button #sp {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+   }
+   
+   .discoun-button #icon {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+   }
+   
+   .discoun-button:hover .icon-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+   }
+   
+   .discoun-button:hover #icon {
+    transform: translateX(0.8em) rotate(45deg) scale(1.1);
+   }
+   
+   .discoun-button:hover #sp {
+    transform: translateX(5em);
+   }
+   
+   .discoun-button:active {
+    transform: scale(0.95);
+   }
+   
+   @keyframes fly-1 {
+    from {
+     transform: translateY(0.1em);
+    }
+   
+    to {
+     transform: translateY(-0.1em);
+    }
+   }
+   
+   .order-form{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+   }

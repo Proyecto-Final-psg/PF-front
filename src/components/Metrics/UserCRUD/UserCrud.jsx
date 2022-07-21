@@ -13,7 +13,6 @@ export function UserCrud() {
   const users = useSelector(store => store.users)
   const [search, setSearch] = useState('')
   const [blockUsers, setBlockUsers] = useState(users)
-  const [statusBlock, setStatusBlock] = useState('')
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     dispatch(getAllUsers())
@@ -36,35 +35,46 @@ export function UserCrud() {
   }
 
   function blockUser(userId, status) {
-    setLoading(true)
-    fetch(`${API_URL}/users/${userId}`, {
-      method: "PUT"
-    })
-      .then(data => data.json())
-      .then(res => {
-        console.log('el status', status)
-        if (status === false)
-          setStatusBlock('locked')
-        else
-          setStatusBlock('unlocked')
+    // setLoading(true)
 
-        console.log('sstatus', statusBlock);
-        setLoading(false)
-        dispatch(getAllUsers())
+    
+    swal({
+      title: `Are you sure you want to ${status} the user?`,
+      text: "Doing this, the user will be unable to login to Weedical",
+      icon: "info",
+      buttons: [
+        'No, cancel it!',
+        'Yes, I am sure!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
         swal({
-          title: `The user is now ${statusBlock}`,
-          text: "The client should receive the email with the notification soon",
-          icon: "success",
-          button: "Ok"
-        })
-      })
+          title: `The user were ${status}ed`,
+          icon: 'success'
+        }).then(function() {
+          fetch(`${API_URL}/users/${userId}`, {
+            method: "PUT"
+          })
+            .then(data => data.json())
+            .then(res => {
+              setLoading(false)
+              dispatch(getAllUsers())
+            })
+        });
+      } else {
+        swal("Cancelled", "No changes were made", "error");
+      }
+    })
+
+    
   }
 
 
 
   return <div className="container datas">
 
-    <h1 className="mt-5">Block Users</h1>
+    <h1 className="mt-5 custom-title">Block Users</h1>
 
     {loading &&
                 <div className='loadingGif'>
@@ -94,9 +104,9 @@ export function UserCrud() {
                 <td id="img" key={u.id}>
                   {u.block
                     ?
-                    <img onClick={() => blockUser(u.user_id, u.block)} src={lock} alt="lock_icon" />
+                    <img onClick={() => blockUser(u.user_id, 'unlock')} src={lock} alt="lock_icon" />
                     :
-                    <button className="btn btn-danger" onClick={() => blockUser(u.user_id, u.block)}>Block</button>
+                    <button className="btn btn-danger" onClick={() => blockUser(u.user_id, 'lock')}>Block</button>
                   }
                 </td>
               </tr>

@@ -49,7 +49,7 @@ export function Orders() {
   }
 
   return <div className="container datas">
-    <h1 className="mt-5">Order List</h1>
+    <h1 className="mt-5 custom-title">Order List</h1>
 
       <span>Filter orders by status</span>
     <form onSubmit={filterOrdersByStatus} className='filter-orders'>
@@ -70,8 +70,8 @@ export function Orders() {
             <thead>
               <tr>
                 <th><abbr title="ID of the order">ID</abbr></th>
-                <th><abbr title="Status of the order">Status</abbr></th>
                 <th><abbr title="User name">User</abbr></th>
+                <th><abbr title="Status of the order">Status</abbr></th>
                 <th><abbr title="Date of Order">Date</abbr></th>
               </tr>
             </thead>
@@ -79,8 +79,8 @@ export function Orders() {
               {orderList.length > 0 && orderList.map(o => {
                 return <tr key={o.id} style={{width:"100%"}}>
                   <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
-                  <td>{o.status}</td>
                   <td>{o.user ? o.user.user_name : 'N/A'}</td>
+                  <td>{o.status}</td>
                   <td>{formatDate(o.createdAt)}</td>
                 </tr>
 

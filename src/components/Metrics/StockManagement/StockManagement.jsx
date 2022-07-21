@@ -83,7 +83,7 @@ export function StockManagement() {
 
 
   return <div className="container datas">
-    <h1 className="mt-5">Stock Management</h1>
+    <h1 className="mt-5 custom-title">Stock Management</h1>
     {/* <hr /> */}
 
     <div className="stock-mgm">
