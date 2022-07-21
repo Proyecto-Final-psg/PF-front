@@ -5,7 +5,7 @@ const MercadoPago = () => {
         var data = {
             "user_id": "4",
             "address": "av la plata",
-            "status": "in-progress",
+            "status": "inprogress",
             "arrayItems": [
                 { "product_id": 19, "quantity": 2, "price": 150 },
                 { "product_id": 4, "quantity": 1, "price": 1500 },

@@ -57,7 +57,7 @@ export function Orders() {
         <option value="" disabled selected>Status</option>
         <option value="" >All</option>
         <option value="completed" >Complete</option>
-        <option value="in-progress" >In Progress</option>
+        <option value="inprogress">In Progress</option>
         <option value="canceled" >Canceled</option>
       </select>
       <input type='submit' className='btn btn-success' value='Filter' />
