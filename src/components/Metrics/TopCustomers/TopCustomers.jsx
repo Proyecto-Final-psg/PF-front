@@ -4,8 +4,9 @@ import { getAllUsers, getTopCustomers, } from "../../../Redux/Actions"
 import emailjs from '@emailjs/browser';
 import swal from 'sweetalert'
 import LoadingImg from '../../../assets/Loading.gif'
-// import './TopCustomers.scss'
-// import { API_URL } from "../../../Redux/Constants"
+import './TopCustomers.scss'
+
+
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
   const dispatch = useDispatch()
@@ -62,13 +63,11 @@ export function TopCustomers() {
 
   const sendEmail = (e) => {
     setLoading(true)
+
     e.preventDefault();
-    // console.log(e.target)
     console.log(e.target.name.value)
     let userToSend = users.find(u => parseInt(u.user_id) === parseInt(e.target.name.value))
-    // let userToSend = users.find(u => parseInt(u.id) === parseInt(e.target.name.value))
 
-    // console.log('MANDANDO A', user)
 
     e.target.name.value = userToSend.user_name;
     e.target.mailTo.value = userToSend.user_email;
@@ -130,18 +129,22 @@ export function TopCustomers() {
                 <td style={{ fontWeight: "bold" }}>${o.total}</td>
               
                 <td>
-                <form onSubmit={sendEmail} id='order-form' >
-                      <input name="discount" style={{display:`${num < 4 && o.username !='null' ? '' : 'none'}`}} type="number" placeholder="15%" />
-                      <button className="btn btn-sm" style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>
-                        <span class="material-symbols-outlined">sell</span>
-                      </button>
-                      <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
-                      <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                      <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
-                      {/* <button className='btn' type='submit' disabled={o.status.toLowerCase().includes('complete') ? '' : 'disabled'} onClick={() => dispatchOrder(o.userUserId)}>
-                        <span className="material-symbols-outlined">local_shipping</span>
-                      </button> */}
-                    </form>
+                  <div className="order-form">
+                    <form onSubmit={sendEmail}>
+                          <input name="discount" style={{display:`${num < 4 && o.username !='null' ? '' : 'none'}`}} type="number" placeholder="15%" id="input-disc" />
+                          <button className="discoun-button"  style={{display:`${num<4 && o.username !='null' ? '' : 'none'}`}}>
+                        <div class="svg-wrapper-1">
+                          <div class="svg-wrapper">    
+                            <span id="icon" class="material-symbols-outlined">sell</span>
+                          </div>
+                        </div>
+                        <span id="sp">Send</span>
+                      </button>                      
+                          <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
+                          <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
+                          <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />                      
+                        </form>
+                  </div>
                     </td>
             </tr>
           })}

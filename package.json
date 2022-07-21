@@ -20,6 +20,7 @@
     "bulma": "^0.9.4",
     "chart.js": "^3.8.0",
     "emailjs": "^4.0.0",
+    "party-js": "^2.2.0",
     "react": "^17.0.2",
     "react-animated-numbers": "^0.13.0",
     "react-chartjs-2": "^4.3.1",
@@ -38,6 +39,7 @@
     "sweetalert": "^2.1.2",
     "swiper": "^8.3.1",
     "tagcloud": "^1.1.0-1",
+    "toastify-js": "^1.12.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
