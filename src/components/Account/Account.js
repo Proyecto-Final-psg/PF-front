@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderDetails } from "../../Redux/Actions";
+import { getOrderDetails, getUserReviews } from "../../Redux/Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 //import bag from "../../assets/bag.png";
@@ -16,9 +16,12 @@ import "./Account.scss";
 const Account = () => {
   const [active, setActive] = useState('history-shops')
   const usr = useSelector((store) => store.user);
+
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(getOrderDetails(usr[0].user_id))
+    dispatch(getUserReviews(usr[0].user_id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])
 

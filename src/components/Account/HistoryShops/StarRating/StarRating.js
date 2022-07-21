@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 import './StarRating.scss'
 
-const StarRating = ({localState, setLocalState}) => {
+const StarRating = ({localState, setLocalState, modal}) => {
 
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
 
   const handleClick = (ratingValue) => {
+    
     setRating(ratingValue)
     setLocalState({
       ...localState,
