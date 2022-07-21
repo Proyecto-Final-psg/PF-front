@@ -79,7 +79,7 @@ export function Orders() {
               {orderList.length > 0 && orderList.map(o => {
                 return <tr key={o.id} style={{width:"100%"}}>
                   <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
-                  <td>{o.user ? o.user.user_name : 'N/A'}</td>
+                  <td>{o.user_email && o.user_email !=="" ? o.user_email : 'N/A'}</td>
                   <td>{o.status}</td>
                   <td>{formatDate(o.createdAt)}</td>
                 </tr>

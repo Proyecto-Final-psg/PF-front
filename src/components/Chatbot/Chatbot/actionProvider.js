@@ -6,17 +6,17 @@ class ActionProvider {
     } 
 
     helloWorldHandler = () =>{
-        const message = this.createChatBotMessage("Hi! Tell me what can I do for you?.")
+        const message = this.createChatBotMessage("Greetings👋! Is there anything I can help you with?")
         this.setChatbotMessage(message)
     }
 
     byeHandler = () => {
-        const message = this.createChatBotMessage("Oh you're leaving? Have a nice day!")
+        const message = this.createChatBotMessage("I see you're leaving. Enjoy your day!")
         this.setChatbotMessage(message)
     }
 
     insultHandler = () => {
-        const insults = ["Are you upset or mad? Please get one of our products and chill ...", "Please calm down, we are calmed down over here", "I'm only a robot, you get it ... right?"]
+        const insults = ["How are you feeling? Are you upset or angry? Get a product from us and chill", "Relax, we're calmed down here😥", "I'm only a robot, you get it ... right?😐"]
         const message = this.createChatBotMessage(insults[Math.floor(Math.random()*insults.length)])
         this.setChatbotMessage(message)
     }
@@ -26,14 +26,14 @@ class ActionProvider {
     }
 
     discountsHandler = () =>{
-        this.message = this.createChatBotMessage('The discounts of the month =>',{
+        this.message = this.createChatBotMessage('Discounts of the month 🔥',{
             widget : "products"
         })
         this.setChatbotMessage(this.message)
     }
 
     thanksHandler = () => {
-        this.message = this.createChatBotMessage('No problem! Let me know if you need something else :)')
+        this.message = this.createChatBotMessage('No problem 🤙! If there is anything else I can help you with, let me know 😉')
         this.setChatbotMessage(this.message)
     }
 
@@ -85,7 +85,7 @@ class ActionProvider {
     }
 
     paymentHandler = () => {
-        this.message = this.createChatBotMessage(`We accept Visa and MasterCard as payment options!`)
+        this.message = this.createChatBotMessage(`We accept Visa and MasterCard as payment options 💳!`)
         this.setChatbotMessage(this.message)
     }
  }

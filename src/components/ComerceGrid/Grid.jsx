@@ -8,15 +8,10 @@ import { Cards } from '../Cards/Cards';
 import Info from '../Info Panel/Info';
 import Testimony from '../Testimony/Testimony';
 
-
-
 function Grid() {
     const allProducts = useSelector(store => store.products)
     const allCategories = useSelector(store => store.categories)
-
-
     const dispatch = useDispatch()
-
     function compare(a, b) {
         if (a.last_nom < b.last_nom) {
             return -1;
