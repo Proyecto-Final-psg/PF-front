@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getAllOrders, getAllUsers } from '../../../Redux/Actions'
 import { NavLink } from 'react-router-dom'
-
+import { format } from 'date-fns';
 import noOrder from '../../../assets/noorder.png'
-import emailjs from '@emailjs/browser';
-import swal from 'sweetalert'
+
 
 export function Orders() {
   const dispatch = useDispatch()
@@ -29,8 +28,8 @@ export function Orders() {
 
   function formatDate(timestamp) {
     const d = new Date(timestamp);
-    const date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
-    // console.log(date);
+    const date = format(d, 'yyyy/MM/dd kk:mm:ss')
+    // const date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
     return date;
   }
   function statusToFilter(e){
