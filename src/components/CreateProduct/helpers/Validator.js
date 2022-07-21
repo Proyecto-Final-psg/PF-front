@@ -7,14 +7,14 @@ export const Validator = (input) => {
 
     let error = {}
 
-    if (!input.name) {
+    if (input.name === '') {
         error.name = 'Name is required'
     } 
 
-    if(!input.address) error.address = 'Address is required'
-    if(!input.city) error.city = 'City is required'
-    if(!input.state) error.state = 'State is required'
-    if(!input.zipCode) error.zipCode = 'Zip Code is required'
+    if(input.address === '') error.address = 'Address is required'
+    if(input.city === '') error.city = 'City is required'
+    if(input.state === '') error.state = 'State is required'
+    if(input.zipCode === '') error.zipCode = 'Zip Code is required'
 
     if (input.email === ''){
         error.email = 'Email is required'
@@ -23,7 +23,7 @@ export const Validator = (input) => {
         error.email = 'Must be a valid email'
     } 
     
-    if(!input.description){
+    if(input.description === ''){
         error.description = 'Description is required'
     }
     if ( cond_name.test(input.type) === false) error.type = 'No symbols allowed'
@@ -34,6 +34,8 @@ export const Validator = (input) => {
 
     if (input.categories && parseInt(input.categories.length) === 0 ) error.categories = 'At least one category is required'
     
+    
+
     return error
 
 }
