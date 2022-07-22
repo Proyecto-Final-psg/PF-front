@@ -30,13 +30,11 @@ export function UserCrud() {
   function searchUser(e) {
     e.preventDefault()
     let res = users.filter(u => u.user_email.includes(search))
-
     setBlockUsers(res)
   }
 
   function blockUser(userId, status) {
     // setLoading(true)
-
 
     swal({
       title: `Are you sure you want to ${status} the user?`,
