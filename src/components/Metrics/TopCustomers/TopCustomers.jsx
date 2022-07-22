@@ -23,17 +23,37 @@ export function TopCustomers() {
   }, [])
 
   useEffect(()=>{
-    console.log(topCustomers)
+    // console.log(topCustomers)
   },[topCustomers])
 
   var holder = {};
+  let resumen = []
 
-  if (topCustomers.length > 0) {
-    topCustomers.forEach(function (d) {
-      if (holder.hasOwnProperty(d.username)) {
-        holder[d.username] = holder[d.username] + d.total;
+  
+    topCustomers.forEach(o => {
+      if(o.user){
+        let c = {
+          user : o.user.user_email,
+          spent: o.total
+        }
+        resumen.push(c)
+      }
+      else{
+        let c = {
+          user : o.username,
+          spent: o.total
+        }
+        resumen.push(c)
+      }
+        
+    })
+
+  if (resumen.length > 0) {
+    resumen.forEach(function (d) {
+      if (holder.hasOwnProperty(d.user)) {
+        holder[d.user] = holder[d.user] + d.spent;
       } else {
-        holder[d.username] = d.total;
+        holder[d.user] = d.spent;
       }
     });
   }
@@ -57,7 +77,8 @@ export function TopCustomers() {
 
   obj2 = obj2.slice(0, 10)
 
-  console.log('obj', obj2);
+
+  
 
   const sendEmail = (e) => {
     setLoading(true)
