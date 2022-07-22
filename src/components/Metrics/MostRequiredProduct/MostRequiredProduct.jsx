@@ -38,8 +38,8 @@ export function MostRequiredProduct() {
     [])
 
     useEffect(()=>{
-      console.log('orderItems',orderItems)
-      console.log(names)
+      // console.log('orderItems',orderItems)
+      // console.log(names)
     },
      // eslint-disable-next-line 
     [orderItems])
