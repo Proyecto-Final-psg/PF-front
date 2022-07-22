@@ -1,0 +1,49 @@
+.cmp-ordendetail-container {
+    width: 100wh;
+    min-height: 77vh;
+}
+
+.cmp-order-compra-detil-container-imgs {
+    position: relative;
+    top: 200px;
+    left: 200px;
+    display: flex;
+}
+
+.cmp-ordendetail-container-img {
+    object-fit: cover;
+    object-position: top center;
+    width: 90px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        margin-top: 5px;
+    }
+}
+
+.cmp-ordendetail-container-img-logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right: 22px;
+    bottom: 25px;
+    box-shadow: 5px 5px 5px 5px rgba(173, 164, 164, 0.572);
+}
+
+.cmp-ordendetail-container-img-premio {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 3px;
+    top: 3px
+}
+
+.span-status {
+    position: absolute;
+    top: 90px;
+    left: 40px;
+}

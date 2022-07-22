@@ -7,7 +7,6 @@ import { getOrderDetails, getUserReviews } from "../../Redux/Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Purchases from "../Purchases/Purchases";
-
 //import bag from "../../assets/bag.png";
 // eslint-disable-next-line 
 /* import boy1 from "../../assets/boy1.png";
@@ -60,7 +59,7 @@ const Account = () => {
 
       </div>
 
-      <div>
+      <div className="cmp-account-container-purchases">
         {orders.map((e, i) => {
           return (
             <Purchases key={i} user={usr} data={e} />

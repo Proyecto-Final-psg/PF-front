@@ -29,6 +29,7 @@ import { About } from "../About/About";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllUsers } from "../../Redux/Actions";
+import OrdenCompraDetail from "../OrdenCompraDetail/OrdenCompraDetail";
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
   const dispatch = useDispatch()
@@ -63,6 +64,7 @@ const Home = () => {
         <Route path='/users' element={<Users />}></Route>
         <Route path='/cart' element={<Cart />} exact />
         <Route path='/order' element={<Order />} exact />
+        <Route path='/orden-compra-detalle/:id' element={<OrdenCompraDetail />} />
         <Route path='/account' element={<Account />} >
           <Route index element={<HistoryShops />} />
           <Route path='history-shops' element={<HistoryShops />} />
@@ -77,6 +79,7 @@ const Home = () => {
           <Route path='top-customers' element={<TopCustomers />} />
           <Route path='admin-orders' element={<Orders />} />
           <Route path='order-detailed/:id' element={<OrderDetailed />} />
+      
         </Route>
       </Routes>
 

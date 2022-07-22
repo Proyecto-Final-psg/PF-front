@@ -8,6 +8,7 @@
     right: 3px;
     display: flex;
     flex-direction: column;
+    width: 90px;
 }
 
 .span {
@@ -17,14 +18,23 @@
 .cmp-purchases-img-puntos {
     width: 100px;
 }
-.camion{
+
+.camion {
     width: 80px;
 }
+
+.entregado {
+    width: 80px;
+    margin-left: 50px;
+
+}
+
 .cmp-purchases-img-despachado {
     position: absolute;
     width: 25px;
     top: 67px;
     margin-left: 60px;
+
 }
 
 .cmp-purchases-img-mensaje {
@@ -39,12 +49,8 @@
     object-fit: cover;
     object-position: top center;
     width: 37px;
-
-    @include respond-to('medium') {}
-
+  
 }
-
-
 
 .container-card-inside {
     width: 60%;
@@ -55,7 +61,6 @@
 
 .cmp-purchases-container {
     width: 350px;
-
     @include respond-to('medium') {
         width: 750px;
     }
@@ -75,8 +80,6 @@
     margin-left: 10px;
     box-shadow: 5px 5px 5px rgba(226, 216, 216, 0.648);
     border-radius: 7px;
-
-    @include respond-to('medium') {}
 }
 
 .container-card {
@@ -85,8 +88,19 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
+    cursor: pointer;
+}
 
-    @include respond-to('medium') {}
+.container-imagenes-pequeñas {
+    display: none;
+    @include respond-to('medium') {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+}
 
-
+.container-imagenPrincipal {
+    position: absolute;
+    right: 170px;
 }
