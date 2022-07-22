@@ -14,7 +14,7 @@ const Nav = () => {
     const [nav, setNav] = useState('')
     const userRedux = useSelector(state => state.user[0])
     const productscart = useSelector(state => state.cart)
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
+    const {user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
     const handleMenu = (e) => {
         e.preventDefault()
@@ -23,7 +23,8 @@ const Nav = () => {
     }
 
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
-
+console.log(isAuthenticated)
+console.log(user)
     return (
         <div>
             <Profile />

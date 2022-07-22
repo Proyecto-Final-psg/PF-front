@@ -1,6 +1,13 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
+.cmp-CardDetails-loading-container-profile {
+  display: flex;
+  justify-content: center;
+  height: 720px;
+  align-items: center;
+}
+
 .account {
   margin-top: 40px;
   border: 1px red;
