@@ -23,17 +23,37 @@ export function TopCustomers() {
   }, [])
 
   useEffect(()=>{
-    console.log(topCustomers)
+    // console.log(topCustomers)
   },[topCustomers])
 
   var holder = {};
+  let resumen = []
 
-  if (topCustomers.length > 0) {
-    topCustomers.forEach(function (d) {
-      if (holder.hasOwnProperty(d.username)) {
-        holder[d.username] = holder[d.username] + d.total;
+  
+    topCustomers.forEach(o => {
+      if(o.user){
+        let c = {
+          user : o.user.user_email,
+          spent: o.total
+        }
+        resumen.push(c)
+      }
+      else{
+        let c = {
+          user : o.username,
+          spent: o.total
+        }
+        resumen.push(c)
+      }
+        
+    })
+
+  if (resumen.length > 0) {
+    resumen.forEach(function (d) {
+      if (holder.hasOwnProperty(d.user)) {
+        holder[d.user] = holder[d.user] + d.spent;
       } else {
-        holder[d.username] = d.total;
+        holder[d.user] = d.spent;
       }
     });
   }
@@ -57,26 +77,13 @@ export function TopCustomers() {
 
   obj2 = obj2.slice(0, 10)
 
-  console.log('obj', obj2);
 
-  function matchIdWithUser(id) {
-    let user = users.find(u => parseInt(u.user_id) === parseInt(id))
-    console.log(user);
-    if (user)
-      return user.user_name;
-  }
-
+  
 
   const sendEmail = (e) => {
     setLoading(true)
 
     e.preventDefault();
-    console.log(e.target.name.value)
-    let userToSend = users.find(u => parseInt(u.user_id) === parseInt(e.target.name.value))
-
-
-    e.target.name.value = userToSend.user_name;
-    e.target.mailTo.value = userToSend.user_email;
 
     emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
       .then((result) => {
@@ -131,7 +138,7 @@ export function TopCustomers() {
                     :
                     null
                    }
-                  {o.username && matchIdWithUser(o.username)}
+                  {o.username}
                 </div>
               </td>
               <td style={{ fontWeight: "bold" }}>${o.total}</td>
@@ -155,7 +162,7 @@ export function TopCustomers() {
                     </div>
                     <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
                     <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                    <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
+                    <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
                   </form>
                 </div>
               </td>

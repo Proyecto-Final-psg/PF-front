@@ -433,7 +433,7 @@ export function updateOrderStatus(id, status){
 
 export function getTopCustomers(){
     return function(dispatch){
-        return fetch(`${API_URL}/getTotalByUserByOrder`)
+        return fetch(`http://localhost:8081/getTotalByUserByOrder`)
         .then(data => data.json())
         .then(res => {
             dispatch({
