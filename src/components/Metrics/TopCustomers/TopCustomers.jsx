@@ -59,14 +59,6 @@ export function TopCustomers() {
 
   console.log('obj', obj2);
 
-  function matchIdWithUser(id) {
-    let user = users.find(u => parseInt(u.user_id) === parseInt(id))
-    console.log(user);
-    if (user)
-      return user.user_name;
-  }
-
-
   const sendEmail = (e) => {
     setLoading(true)
 
@@ -131,7 +123,7 @@ export function TopCustomers() {
                     :
                     null
                    }
-                  {o.username && matchIdWithUser(o.username)}
+                  {o.username}
                 </div>
               </td>
               <td style={{ fontWeight: "bold" }}>${o.total}</td>
