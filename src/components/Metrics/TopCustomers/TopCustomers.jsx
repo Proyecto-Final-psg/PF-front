@@ -84,12 +84,6 @@ export function TopCustomers() {
     setLoading(true)
 
     e.preventDefault();
-    console.log(e.target.name.value)
-    let userToSend = users.find(u => parseInt(u.user_id) === parseInt(e.target.name.value))
-
-
-    e.target.name.value = userToSend.user_name;
-    e.target.mailTo.value = userToSend.user_email;
 
     emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
       .then((result) => {
@@ -168,7 +162,7 @@ export function TopCustomers() {
                     </div>
                     <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
                     <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                    <input type="text" name="mailTo" readOnly value='' style={{ display: "none" }} />
+                    <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
                   </form>
                 </div>
               </td>
