@@ -112,7 +112,7 @@ export function OrderDetailed() {
                     {/* <form> */}
                     <h2 >Select the new order status</h2>
                     <select style={{ margin: "20px" }} name="" id="" onChange={orderStatusState}>
-                        <option value="completed" selected disabled='disabled'>Select</option>
+                        <option value="" selected disabled='disabled'>Select</option>
                         <option value="completed">Completed</option>
                         <option value="inprogress">In Progress</option>
                         <option value="canceled">Canceled</option>
