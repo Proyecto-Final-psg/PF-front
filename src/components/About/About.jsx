@@ -5,7 +5,8 @@ import juan from '../../assets/devs/juano.jpeg'
 import gian from '../../assets/devs/gian.jpeg'
 import martin from '../../assets/devs/martin.jpeg'
 import flor from '../../assets/devs/flor.jpeg'
-
+import rodrigo from '../../assets/devs/rodrigo.jpeg'
+import rami from '../../assets/devs/rami.jpeg'
 export function About() {
     return <div>
         <div className="about">
@@ -25,8 +26,8 @@ export function About() {
                 <DevCard img={gian} name='Gianfranco Gobbi'/>
                 <DevCard img={martin} name='Martin Barreiro'/>
                 <DevCard img={flor} name='Florencia Taburelli'/>                
-                <DevCard img={flor} name='Ramiro Grisales'/>
-                <DevCard img={flor} name='Rodrigo Perez'/>
+                <DevCard img={rodrigo} name='Rodrigo Perez'/>
+                <DevCard img={rami} name='Ramiro Grisales'/>
             </div>  
             </div>
         </div>
