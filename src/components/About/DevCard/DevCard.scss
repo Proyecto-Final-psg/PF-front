@@ -77,10 +77,12 @@
   transform: perspective(500px) rotateY(-90deg);
   transform-origin: right;
   transition: all .5s;
+  font-size: 12px;
 }
 .image-card:hover h2{
   transform: perspective(500px) rotateY(0deg);
 }
+
 .image-card ul{
   position: absolute;
   list-style: none;
@@ -119,7 +121,7 @@
   color: rgb(59, 114, 68);
   background: rgba(255,255,255,0);
 }
-ul li span{
+.ul .li span{
   position: absolute;
   left: 10px;
   font-size: 14px;
@@ -127,14 +129,25 @@ ul li span{
   background: #333;
   color: tomato;
   border-bottom: 1px solid rgba(0,0,0,.1);
-  padding: 0 10px;
+  // padding: 0 -40px;
   opacity: 0;
   z-index: -1;
   pointer-events: none;
   transition: all .5s;
 }
-ul li:hover span{
-  left: 30px;
+.ul .li:hover span{
+  left: 40px;
   opacity: 1;
   pointer-events: auto;
+}
+
+.ul .li img{
+  width: 80% ;
+}
+
+.ul .li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
