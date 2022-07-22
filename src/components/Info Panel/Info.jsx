@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 function Info() {
     useEffect(() => {
-        Aos.init({ duration: 2000 })
+        Aos.init({ duration: 2000,once: true, })
     }, [])
 
     const products = useSelector(store => store.products)
