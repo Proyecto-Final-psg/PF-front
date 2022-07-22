@@ -16,6 +16,7 @@ export function CardDetails() {
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     const [loading, setLoading] = useState(true)
     useEffect(() => {
+
         dispatch(getProductById(id))
         dispatch(getReviews(id))
         setTimeout(() => {

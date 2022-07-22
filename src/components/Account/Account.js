@@ -25,10 +25,10 @@ const Account = () => {
     dispatch(getUserReviews(usr[0].user_id))
     dispatch(getOrderDetails(usr[0].user_id))
     setTimeout(() => {
-      setLoading(!loading)
+      setLoading(false)
     }, 600)
     return () => {
-      setLoading(true)
+
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])

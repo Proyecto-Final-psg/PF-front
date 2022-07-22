@@ -1,12 +1,12 @@
 import './OrdenCompraDetail.scss'
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import logo from './logo.png'
 import premio from './premios.png'
 const OrdenCompraDetail = () => {
     const { id } = useParams()
     const orders = useSelector((store) => store.orderDetails);
-    const order = orders.filter(e => e.order_id == id)[0]
+    const order = orders.filter(e => e.order_id === parseInt(id))[0]
     const navigate = useNavigate()
     return (
         <div className='cmp-ordendetail-container'>
@@ -33,10 +33,10 @@ const OrdenCompraDetail = () => {
                 {order.arrayItems.map((e, i) => {
                     return (
                         <div key={i} className="card">
-                            <img className='cmp-ordendetail-container-img-premio' src={premio} />
+                            <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
                             <div className="card-image">
                                 <figure className="cmp-ordendetail-container-img">
-                                    <img src={e.img} alt="Placeholder image" />
+                                    <img src={e.img} alt="Placeholder" />
                                 </figure>
                             </div>
 
@@ -57,7 +57,7 @@ const OrdenCompraDetail = () => {
                                     <span className="tag is-success">
                                         {` $ ${e.price * e.quantity}`}
                                     </span>
-                                    <img className='cmp-ordendetail-container-img-logo' src={logo} />
+                                    <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" />
                                 </div>
                             </div>
                         </div>
@@ -68,5 +68,3 @@ const OrdenCompraDetail = () => {
     )
 }
 export default OrdenCompraDetail
-
-// { name, id, description, img, price, stock, review, setModal, setLocalState, localState, widthProp, heightProp }
