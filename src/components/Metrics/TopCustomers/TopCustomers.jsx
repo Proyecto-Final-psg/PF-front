@@ -148,9 +148,9 @@ export function TopCustomers() {
                     <form onSubmit={sendEmail} className="order-form">
                       <div>
                         <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
-  
+
                       </div>
-                   
+
                       <div>
                         <button className="discoun-button" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }}>
                           <div className="svg-wrapper-1">
