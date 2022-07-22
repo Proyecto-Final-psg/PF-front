@@ -38,13 +38,13 @@ const Profile = () => {
                         img: user.picture,
                         token: user.token
                     }
+                    
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
                 }
             }
         }
     }
-
     useEffect(() => {
         refresRoll()
     })

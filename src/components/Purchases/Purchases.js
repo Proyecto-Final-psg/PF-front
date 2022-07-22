@@ -4,7 +4,7 @@ import despacahdo from './despachado.png';
 import mensaje from './mensaje.png';
 import entregado from './entregado.png'
 import { NavLink } from "react-router-dom";
-
+import canceled from './canceled.png'
 const Purchases = ({ data }) => {
     let total = 0
     const sumaTotal = () => {
@@ -36,15 +36,21 @@ const Purchases = ({ data }) => {
                             <img className='cmp-purchases-img-puntos camion' src={imgEnvio1} />
                         </div>
                     }
-                    {data.status === "done" &&
+                    {data.status === "completed" &&
                         <div className='container-imagenPrincipal'>
                             <img className='cmp-purchases-img-puntos camion entregado' src={entregado} />
                         </div>
                     }
+                     {data.status === "canceled" &&
+                        <div className='container-imagenPrincipal'>
+                            <img className='cmp-purchases-img-puntos camion entregado' src={canceled} />
+                        </div>
+                    }
 
                     <div className='cmp-purchases-status'>
-                        {data.status === "done" && <span className="tag is-success">Success</span>}
+                        {data.status === "completed" && <span className="tag is-success">Success</span>}
                         {data.status === "inprogress" && <span className="tag is-warning">{data.status}</span>}
+                        {data.status === "canceled" && <span className="tag is-danger">Canceled</span>}
                         <span className="tag is-success is-light">{`Total:  $  ${sumaTotal()}`}</span>
                     </div>
 

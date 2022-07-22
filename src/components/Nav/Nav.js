@@ -32,7 +32,6 @@ const Nav = () => {
                     <Link className="brand" to="/home">
                         <img src={Logo} alt="#" />
                     </Link>
-
                     <div role="button" className={`navbar-burger ${nav}`} onClick={handleMenu} aria-label="menu" aria-expanded="false">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

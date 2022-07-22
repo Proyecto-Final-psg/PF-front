@@ -26,7 +26,7 @@ function Order() {
         arrayItems: []
     })
 
-  
+
 
     useEffect(() => {
         setOrder({
@@ -39,7 +39,7 @@ function Order() {
             })
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-     },[addressOrder])
+    }, [addressOrder])
 
     const subtotal = (cart.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
 
@@ -49,20 +49,22 @@ function Order() {
     }
 
     function handleInputOrder(e) {
-        if(e.target.name === 'email'){
+        if (e.target.name === 'email') {
             setOrder({
-           ...order,
-               email: e.target.value
-             })
-             setError(Validator({
+                ...order,
+                email: e.target.value
+            })
+            setError(Validator({
                 ...addressOrder,
-                email: e.target.value}))
-       }else{
-          setError(Validator({
-        ...addressOrder,
-        email: order.email}))
-       }
-     
+                email: e.target.value
+            }))
+        } else {
+            setError(Validator({
+                ...addressOrder,
+                email: order.email
+            }))
+        }
+
     }
 
     function handleInputAddress(e) {
@@ -73,7 +75,8 @@ function Order() {
         setError(Validator({
             ...addressOrder,
             [e.target.name]: e.target.value,
-            email: order.email}))
+            email: order.email
+        }))
     }
 
     return (
@@ -88,12 +91,12 @@ function Order() {
                         <label className="label-order">Personal data</label>
                         <div className="control control-order">
                             <div className='input-order'>
-                                <input className="input" type="text"  onChange={handleInputOrder} autoComplete="on" />
+                                <input className="input" type="text" onChange={handleInputOrder} autoComplete="on" />
                                 <p className="help">First and last name</p>
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" name='email' onChange={handleInputOrder} required  autoComplete="on"/>
-                                <p className="help">{error.email ? <span style={{color: 'red'}}>{error.email}</span> : 'Email'}</p> 
+                                <input className="input" type="text" name='email' onChange={handleInputOrder} required autoComplete="on" />
+                                <p className="help">{error.email ? <span style={{ color: 'red' }}>{error.email}</span> : 'Email'}</p>
                             </div>
                             <div className='input-order'>
                                 <input className="input" type="text" onChange={handleInputOrder} />
@@ -110,20 +113,20 @@ function Order() {
                         <label className="label-order laber-order-address">Address</label>
                         <div className="control control-address">
                             <input className="input input-address" type="text" name='address' onChange={handleInputAddress} />
-                            <p className="help">{error.address ? <span style={{color: 'red'}}>{error.address}</span> : 'Street & number'}</p>
+                            <p className="help">{error.address ? <span style={{ color: 'red' }}>{error.address}</span> : 'Street & number'}</p>
                         </div>
                         <div className="constrol control-order">
                             <div className='input-order'>
                                 <input className="input" type="text" name='city' onChange={handleInputAddress} />
-                                <p className="help">{error.city ? <span style={{color: 'red'}}>{error.city}</span> : 'City'}</p>
+                                <p className="help">{error.city ? <span style={{ color: 'red' }}>{error.city}</span> : 'City'}</p>
                             </div>
                             <div className='input-order'>
                                 <input className="input" type="text" name='state' onChange={handleInputAddress} />
-                                <p className="help">{error.state ? <span style={{color: 'red'}}>{error.state}</span> : 'State'}</p>
+                                <p className="help">{error.state ? <span style={{ color: 'red' }}>{error.state}</span> : 'State'}</p>
                             </div>
                             <div className='input-order'>
                                 <input className="input" type="text" name='zipCode' onChange={handleInputAddress} />
-                                <p className="help">{error.zipCode ? <span style={{color: 'red'}}>{error.zipCode}</span> : 'Zip code'}</p>
+                                <p className="help">{error.zipCode ? <span style={{ color: 'red' }}>{error.zipCode}</span> : 'Zip code'}</p>
                             </div>
 
                         </div>
@@ -150,10 +153,10 @@ function Order() {
                     <p className="label-order">Total: ${subtotal + (subtotal * (10 / 100))}</p>
                 </div>
                 {order.email === '' || Object.keys(error).length > 0 ? <button type='submit' className='button-submit-order no-submit' disabled>Submit</button>
-                :
-                <button type='submit' className='button-submit-order' onClick={handleSubmitOrder}>Submit</button>
+                    :
+                    <button type='submit' className='button-submit-order' onClick={handleSubmitOrder}>Submit</button>
                 }
-                
+
             </div>
 
         </div>

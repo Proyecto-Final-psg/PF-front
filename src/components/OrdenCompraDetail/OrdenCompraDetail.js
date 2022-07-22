@@ -7,16 +7,18 @@ const OrdenCompraDetail = () => {
     const { id } = useParams()
     const orders = useSelector((store) => store.orderDetails);
     const order = orders.filter(e => e.order_id == id)[0]
-
-    console.log(order)
     return (
         <div className='cmp-ordendetail-container'>
 
-            {order.status === "done" && <span className="tag is-primary is-large span-status">
+            {order.status === "completed" && <span className="tag is-primary is-large span-status">
                 Succes
             </span>}
             {order.status === "inprogress" && <span className="tag is-warning is-large span-status">
                 {order.status}
+            </span>}
+
+            {order.status === "canceled" && <span className="tag is-danger is-large span-status">
+                Canceled
             </span>}
 
             <div className='cmp-order-compra-detil-container-imgs'>
