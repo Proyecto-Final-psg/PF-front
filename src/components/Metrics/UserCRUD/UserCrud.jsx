@@ -30,14 +30,14 @@ export function UserCrud() {
   function searchUser(e) {
     e.preventDefault()
     let res = users.filter(u => u.user_email.includes(search))
-    console.log(res)
+
     setBlockUsers(res)
   }
 
   function blockUser(userId, status) {
     // setLoading(true)
 
-    
+
     swal({
       title: `Are you sure you want to ${status} the user?`,
       text: "Doing this, the user will be unable to login to Weedical",
@@ -47,12 +47,12 @@ export function UserCrud() {
         'Yes, I am sure!'
       ],
       dangerMode: true,
-    }).then(function(isConfirm) {
+    }).then(function (isConfirm) {
       if (isConfirm) {
         swal({
           title: `The user were ${status}ed`,
           icon: 'success'
-        }).then(function() {
+        }).then(function () {
           fetch(`${API_URL}/users/${userId}`, {
             method: "PUT"
           })
@@ -67,7 +67,7 @@ export function UserCrud() {
       }
     })
 
-    
+
   }
 
 
@@ -77,16 +77,16 @@ export function UserCrud() {
     <h1 className="mt-5 custom-title">Block Users</h1>
 
     {loading &&
-                <div className='loadingGif'>
-                    <h3>Loading</h3>
-                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
-                </div>}
+      <div className='loadingGif'>
+        <h3>Loading</h3>
+        < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+      </div>}
 
     <div className="user-block" style={{ width: "100%" }}>
-   
+
       <form action="" id="form" onSubmit={searchUser}>
-        <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock'/>
-        <input type='submit' className="btn btn-success" value="Search" style={{width:"auto"}} />
+        <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock' />
+        <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} />
       </form>
 
       <div className="table-container" >
