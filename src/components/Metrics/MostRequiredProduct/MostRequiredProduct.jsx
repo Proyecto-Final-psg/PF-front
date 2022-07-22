@@ -30,7 +30,6 @@ export function MostRequiredProduct() {
     const products = useSelector(store => store.products)
     const orderItems = useSelector(store => store.orderItems)
     const dispatch = useDispatch()
-    let names = [...new Set(orderItems.map(i => i.product))]
     useEffect(()=>{
       dispatch(getOrderItems())
     },
