@@ -5,14 +5,6 @@ import { getProductById, getReviews, addToCart } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import './CardDetails.scss'
 import LoadingImg from '../../assets/Loading.gif'
-// import Swiper from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
 
 export function CardDetails() {
     const { id } = useParams()
@@ -23,22 +15,15 @@ export function CardDetails() {
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     const [loading, setLoading] = useState(true)
-
-    useEffect(()=>{
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    },[])
-
     useEffect(() => {
-        setLoading(true)
         dispatch(getProductById(id))
         dispatch(getReviews(id))
-        setLoading(false)
-        // setTimeout(() => {
-        //     setLoading(!loading)
-        // }, 600)
-        // return () => {
-        //     setLoading(true)
-        // };
+        setTimeout(() => {
+            setLoading(!loading)
+        }, 600)
+        return () => {
+            setLoading(true)
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const addCart = () => {
@@ -46,23 +31,14 @@ export function CardDetails() {
     }
     return (
         <div className='cmp-CardDetails-container'>
-
             {loading &&
                 <div className='cmp-CardDetails-loading-container'>
-                    {/* < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" /> */}
+                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
                 </div>}
 
             {!loading && <div className="detail">
                 <div className="image">
-                    <Swiper className='mySwiper'
-                        modules={[Navigation, Pagination, Scrollbar, A11y]}
-                        navigation
-                        pagination={{ clickable: true }}
-                        scrollbar={{ draggable: true }}>
-                            <SwiperSlide><img src={product.img} alt="Product pic" /></SwiperSlide>
-                            <SwiperSlide><img src={product.img} alt="Product pic" /></SwiperSlide>
-                    </Swiper>
-                  
+                    <img src={product.img} alt="Product pic" />
                 </div>
                 <div className="description">
                     <button className='btn back' onClick={() => navigate(-1)}>
