@@ -12,10 +12,12 @@ const OrdenCompraDetail = () => {
     return (
         <div className='cmp-ordendetail-container'>
 
-            <span className="tag is-warning is-large span-status">
+            {order.status === "done" && <span className="tag is-primary is-large span-status">
+                Succes
+            </span>}
+            {order.status === "inprogress" && <span className="tag is-warning is-large span-status">
                 {order.status}
-            </span>
-
+            </span>}
 
             <div className='cmp-order-compra-detil-container-imgs'>
                 {order.arrayItems.map((e, i) => {
@@ -52,6 +54,13 @@ const OrdenCompraDetail = () => {
                         </div>
                     )
                 })}
+                {/* 
+                <div>
+                    <h2>Addres:</h2>
+                    <p>{order.address}</p>
+
+                </div> */}
+
             </div >
 
         </div >

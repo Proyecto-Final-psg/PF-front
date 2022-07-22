@@ -19,7 +19,7 @@ export function UserManagement(){
     <div className="lower-10" style={{width:"100%"}}>
 
     <div className="table-container">
-      <table className="table scrolldown shadow p-5">
+      <table className="table scrolldown shadow p-5 ancho">
         <tbody>
           {usersprueba && usersprueba.map(user =>
           <tr key={user.user_email}>

@@ -1,22 +1,22 @@
-.custom-title{
+.custom-title {
     font-weight: bold;
     font-size: 30px;
-    text-decoration-line:underline;
+    text-decoration-line: underline;
     text-decoration-color: rgba(0, 128, 0, 0.301);
 }
 
-table thead tr{
-    background: rgb(68,143,63);
-background: linear-gradient(0deg, rgba(68,143,63,1) 0%, rgba(26,59,22,1) 100%);
+table thead tr {
+    background: rgb(68, 143, 63);
+    background: linear-gradient(0deg, rgba(68, 143, 63, 1) 0%, rgba(26, 59, 22, 1) 100%);
     color: white;
     width: auto;
 }
 
-table thead tr abbr{
+table thead tr abbr {
     color: white;
 }
 
-.metricas{
+.metricas {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -24,25 +24,35 @@ table thead tr abbr{
     min-height: 80vh;
 }
 
-#stock, #userMgm, #bestSell, #userCrud, #topCustomer, #orders{
+#stock,
+#userMgm,
+#bestSell,
+#userCrud,
+#topCustomer,
+#orders {
     display: flex;
     align-items: center;
 }
 
-.menu{
- height: 100%;
+.menu {
+    height: 100%;
 }
 
-.menuItem{
+.menuItem {
     display: flex;
     align-items: center;
 }
 
-.iconMenu{
+.iconMenu {
     padding-left: 10px;
 }
 
-.lower-10{
+.ancho {
+    width: 500px;
+
+}
+
+.lower-10 {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -52,11 +62,11 @@ table thead tr abbr{
     // margin: 20px;
 }
 
-.circular-chart{
+.circular-chart {
     width: 300px;
 }
 
-.sells-year{
+.sells-year {
     // min-width: 400px;
     // max-width: 700px;
     width: 80%;
@@ -64,25 +74,25 @@ table thead tr abbr{
 
 }
 
-.datas{
+.datas {
     // width: 40%;
-//   height: 96vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  padding-bottom: 50px;
-//   background-color: lightgreen;
+    //   height: 96vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 50px;
+    //   background-color: lightgreen;
 }
 
-.datas h1{
+.datas h1 {
     font-size: 40px;
 }
 
-.link{
+.link {
     color: white;
 }
 
-.is-active{
+.is-active {
     background-color: green($color: white);
 }
