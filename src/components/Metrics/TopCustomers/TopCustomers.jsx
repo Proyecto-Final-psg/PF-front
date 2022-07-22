@@ -158,7 +158,6 @@ export function TopCustomers() {
                           </div>
                           <span id="sp">Send</span>
                         </button>
-
                       </div>
                       <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
                       <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />

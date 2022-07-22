@@ -48,8 +48,16 @@
     top: 3px
 }
 
-.span-status {
-    position: absolute;
+
+.cmp-orden-compra-back {
+    display: flex;
+    position: relative;
     top: 90px;
     left: 40px;
+}
+
+.btn-back {
+    background-color: rgb(155, 164, 171);
+    height: 39px;
+    margin-right: 5px;
 }
