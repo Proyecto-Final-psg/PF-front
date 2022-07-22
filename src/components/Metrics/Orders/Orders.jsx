@@ -23,7 +23,7 @@ export function Orders() {
 
   useEffect(() => {
     setOrderList(orders)
-    console.log('ORDERS', orders);
+    // console.log('ORDERS', orders);
   }, [orders])
 
   function formatDate(timestamp) {
