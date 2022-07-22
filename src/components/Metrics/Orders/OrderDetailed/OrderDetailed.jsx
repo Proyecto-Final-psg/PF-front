@@ -1,14 +1,13 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom"
+import {  useParams } from "react-router-dom"
 import { getOrdersByOrderId } from "../../../../Redux/Actions"
 import ButtonBack from "../../../CreateProduct/ButtonBack/ButtonBack"
 import Modal from 'react-modal'
 import './OrderDetailed.scss'
 
 import { API_URL, ModalStyleOrders } from "../../../../Redux/Constants"
-import Loading from "../../../Loading/Loading"
 import swal from 'sweetalert'
 import LoadingImg from '../../../../assets/Loading.gif'
 
@@ -16,18 +15,11 @@ export function OrderDetailed() {
     const { id } = useParams()
     const orderDetailed = useSelector(store => store.order_detailed)
     const prodName = useSelector(store => store.product)
-    const products = useSelector(store => store.products)
-    const users = useSelector(store => store.users)
-    const [order, setOrder] = useState({})
-    // const [itemName, setItemName] = useState('')
     const [modal, setModal] = useState(false)
     const [orderStatus, setOrderStatus] = useState('')
     const [loading, setLoading] = useState(false)
-
     const dispatch = useDispatch()
-
     useEffect(() => {
-        // dispatch(getItemsOfOrder(id))
         dispatch(getOrdersByOrderId(id))
         // eslint-disable-next-line 
     }, [])
@@ -35,7 +27,7 @@ export function OrderDetailed() {
 
 
     useEffect(() => {
-        setOrder(orderDetailed)
+     
         // setItemName(prodName.name)
         console.log(orderDetailed)
     }, [orderDetailed, prodName])
