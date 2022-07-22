@@ -118,7 +118,8 @@ export function Metrics() {
     </div> */}
     {/* <h1 className="mt-5">Metrics</h1> */}
     {/* <hr /> */}
-    <aside className="m-5 p-3 menu shadow">
+    
+    <div className="m-5 p-3 menu shadow">
     <p className="menu-label">
     Admin
   </p>
@@ -167,7 +168,7 @@ export function Metrics() {
         <span id="userCrud" className="iconMenu material-symbols-outlined">manage_accounts</span>
         </NavLink></li>
       </ul>  
-    </aside>
+    </div>
 
     
       
