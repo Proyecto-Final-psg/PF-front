@@ -53,7 +53,7 @@ export function Orders() {
       <span>Filter orders by status</span>
     <form onSubmit={filterOrdersByStatus} className='filter-orders'>
       <select name="" id="" onChange={statusToFilter} value={statusFilter}>
-        <option value="" disabled selected>Status</option>
+        <option value="" disabled >Status</option>
         <option value="" >All</option>
         <option value="completed" >Complete</option>
         <option value="inprogress">In Progress</option>
