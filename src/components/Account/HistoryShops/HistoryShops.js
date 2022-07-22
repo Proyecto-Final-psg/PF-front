@@ -9,16 +9,17 @@ import { validate } from './Validate';
 const HistoryShops = () => {
 
   const history = useSelector(store => store.orderDetails[0]?.arrayItems)
-  const reviews = useSelector(store => store.reviews)
+  //const reviews = useSelector(store => store.reviews)
   const userReviews = useSelector(store => store.userReviews);
-  //console.log(userReviews)
+  const usr = useSelector((store) => store.user);
+  console.log('userReviews',userReviews)
   //console.log(history)
-  //console.log(reviews)
-
+  //console.log('reviews',reviews)
   const dispatch = useDispatch()
 
   const [modal, setModal] = useState(false)
   const [review, setReview] = useState({
+    user_id:usr[0].user_id,
     product_id: '',
     name: '',
     score: '',
