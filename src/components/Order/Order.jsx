@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
 import './Order.scss'
-import { submitOrder } from '../../Redux/Actions'
+import { submitOrder,cleanCart } from '../../Redux/Actions'
 import { useEffect } from 'react';
 import { Validator } from '../CreateProduct/helpers/Validator';
 
@@ -46,6 +46,7 @@ function Order() {
     function handleSubmitOrder(e) {
         e.preventDefault();
         dispatch(submitOrder(order))
+        dispatch(cleanCart())
     }
 
     function handleInputOrder(e) {
