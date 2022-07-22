@@ -13,7 +13,7 @@ import placeThree from '../../../assets/3place.png'
 export function TopCustomers() {
   const dispatch = useDispatch()
   const topCustomers = useSelector(store => store.topCustomers)
-  const users = useSelector(store => store.users)
+  // const users = useSelector(store => store.users)
   const [loading, setLoading] = useState(false)
   let num = 0;
   useEffect(() => {
@@ -147,10 +147,12 @@ export function TopCustomers() {
                   <div >
                     <form onSubmit={sendEmail} className="order-form">
                       <div>
-                        <input name="discount" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
+                        <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
+  
                       </div>
+                   
                       <div>
-                        <button className="discoun-button" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }}>
+                        <button className="discoun-button" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }}>
                           <div className="svg-wrapper-1">
                             <div className="svg-wrapper">
                               <span id="icon" className="material-symbols-outlined">sell</span>
