@@ -24,7 +24,7 @@ const OrdenCompraDetail = () => {
             <div className='cmp-order-compra-detil-container-imgs'>
                 {order.arrayItems.map((e, i) => {
                     return (
-                        <div className="card">
+                        <div key={i} className="card">
                             <img className='cmp-ordendetail-container-img-premio' src={premio} />
                             <div className="card-image">
                                 <figure className="cmp-ordendetail-container-img">
@@ -51,20 +51,11 @@ const OrdenCompraDetail = () => {
                                     </span>
                                     <img className='cmp-ordendetail-container-img-logo' src={logo} />
                                 </div>
-
                             </div>
                         </div>
                     )
                 })}
-                {/* 
-                <div>
-                    <h2>Addres:</h2>
-                    <p>{order.address}</p>
-
-                </div> */}
-
             </div >
-
         </div >
     )
 }

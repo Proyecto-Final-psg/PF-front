@@ -22,31 +22,31 @@ export function TopCustomers() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     // console.log(topCustomers)
-  },[topCustomers])
+  }, [topCustomers])
 
   var holder = {};
   let resumen = []
 
-  
-    topCustomers.forEach(o => {
-      if(o.user){
-        let c = {
-          user : o.user.user_email,
-          spent: o.total
-        }
-        resumen.push(c)
+
+  topCustomers.forEach(o => {
+    if (o.user) {
+      let c = {
+        user: o.user.user_email,
+        spent: o.total
       }
-      else{
-        let c = {
-          user : o.username,
-          spent: o.total
-        }
-        resumen.push(c)
+      resumen.push(c)
+    }
+    else {
+      let c = {
+        user: o.username,
+        spent: o.total
       }
-        
-    })
+      resumen.push(c)
+    }
+
+  })
 
   if (resumen.length > 0) {
     resumen.forEach(function (d) {
@@ -78,7 +78,7 @@ export function TopCustomers() {
   obj2 = obj2.slice(0, 10)
 
 
-  
+
 
   const sendEmail = (e) => {
     setLoading(true)
@@ -123,53 +123,53 @@ export function TopCustomers() {
             <th><abbr title="Send Discounts">Send discount coupon</abbr></th>
           </tr>
         </thead>
-        <tbody>   
+        <tbody>
           {
-          obj2 &&  obj2.map(o => {
-            num=num+1
-            return <tr key={o.username}>
-              <td >
-                <div className="position">
-                  {num === 1 ? <img src={placeOne} alt="1st place" />
-                    :
-                    num === 2 ? <img src={placeTwo} alt="2st place" />
-                    :
-                    num === 3 ? <img src={placeThree} alt="3st place" />
-                    :
-                    null
-                   }
-                  {o.username}
-                </div>
-              </td>
-              <td style={{ fontWeight: "bold" }}>${o.total}</td>
+            obj2 && obj2.map(o => {
+              num = num + 1
+              return <tr key={o.username}>
+                <td >
+                  <div className="position">
+                    {num === 1 ? <img src={placeOne} alt="1st place" />
+                      :
+                      num === 2 ? <img src={placeTwo} alt="2st place" />
+                        :
+                        num === 3 ? <img src={placeThree} alt="3st place" />
+                          :
+                          null
+                    }
+                    {o.username}
+                  </div>
+                </td>
+                <td style={{ fontWeight: "bold" }}>${o.total}</td>
 
-              <td>
-                <div >
-                  <form onSubmit={sendEmail} className="order-form">
-                    <div>
-                      <input name="discount" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
-                    </div>
-                    <div>
-                      <button className="discoun-button" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }}>
-                        <div class="svg-wrapper-1">
-                          <div class="svg-wrapper">
-                            <span id="icon" class="material-symbols-outlined">sell</span>
+                <td>
+                  <div >
+                    <form onSubmit={sendEmail} className="order-form">
+                      <div>
+                        <input name="discount" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
+                      </div>
+                      <div>
+                        <button className="discoun-button" style={{ display: `${num < 4 && o.username != 'null' ? '' : 'none'}` }}>
+                          <div className="svg-wrapper-1">
+                            <div className="svg-wrapper">
+                              <span id="icon" className="material-symbols-outlined">sell</span>
+                            </div>
                           </div>
-                        </div>
-                        <span id="sp">Send</span>
-                      </button>
+                          <span id="sp">Send</span>
+                        </button>
 
-                    </div>
-                    <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
-                    <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                    <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
-                  </form>
-                </div>
-              </td>
-            </tr>
-          })
-       
-        }
+                      </div>
+                      <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
+                      <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
+                      <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            })
+
+          }
         </tbody>
       </table>
     </div>
