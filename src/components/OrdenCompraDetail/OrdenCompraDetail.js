@@ -34,47 +34,47 @@ const OrdenCompraDetail = () => {
             </div>
 
 
+            <div className='over-cmp'>
+                <div className='cmp-order-compra-detil-container-imgs'>
+                    {order.arrayItems.map((e, i) => {
+                        total += e.price * e.quantity
+                        return (
+                            <div key={i} className="card card-contenedor">
+                                <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
+                                <div className="card-image">
+                                    <figure className="cmp-ordendetail-container-img">
+                                        <img src={e.img} alt="Placeholder" />
+                                    </figure>
+                                </div>
 
-            <div className='cmp-order-compra-detil-container-imgs'>
-                {order.arrayItems.map((e, i) => {
-                    total += e.price * e.quantity
-                    return (
-                        <div key={i} className="card card-contenedor">
+                                <div className="card-content">
 
-                            <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
-                            <div className="card-image">
-                                <figure className="cmp-ordendetail-container-img">
-                                    <img src={e.img} alt="Placeholder" />
-                                </figure>
-                            </div>
-
-                            <div className="card-content">
-
-                                <div className="media">
-                                    <div className="media-content">
-                                        <p className="title is-4">{e.name}</p>
-                                        <p className="subtitle is-6">{`Quantity:  ${e.quantity}`}</p>
+                                    <div className="media">
+                                        <div className="media-content">
+                                            <p className="title is-4">{e.name}</p>
+                                            <p className="subtitle is-6">{`Quantity:  ${e.quantity}`}</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="content">
-                                    <span className="tag is-link ">
-                                        {`Thc:  ${e.thc}`}
-                                    </span>
-                                    <span className="tag is-warning ">
-                                        {`Cbs:  ${e.cbd}`}
-                                    </span>
-                                    <span className="tag is-success">
-                                        {` $ ${e.price * e.quantity}`}
-                                    </span>
-                                    <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" />
-                                </div>
+                                    <div className="content">
+                                        <span className="tag is-link ">
+                                            {`Thc:  ${e.thc}`}
+                                        </span>
+                                        <span className="tag is-warning ">
+                                            {`Cbs:  ${e.cbd}`}
+                                        </span>
+                                        <span className="tag is-success">
+                                            {` $ ${e.price * e.quantity}`}
+                                        </span>
+                                        <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" />
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
-            </div >
+                        )
+                    })}
+                </div >
+            </div>
             {order.status === "inprogress" &&
                 < div className='cmp-detalle-button-pay'>
                     <span onClick={continueToPay} className="tag is-success is-large">{`Continue To Pay  $ ${total}`}</span>
