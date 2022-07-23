@@ -21,7 +21,7 @@ export function UserCrud() {
 
   useEffect(() => {
     setBlockUsers(users)
-    console.log(users)
+    // console.log(users)
   }, [users])
 
   const fillSearchObj = (e) => {

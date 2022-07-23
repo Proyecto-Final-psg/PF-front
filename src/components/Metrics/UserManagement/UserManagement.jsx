@@ -5,16 +5,22 @@ import normalUser from '../../../assets/user.png'
 import admin from '../../../assets/admin.png'
 import '../Metrics.scss'
 import swal from 'sweetalert'
+import { useState } from 'react'
 
 
 export function UserManagement() {
   const usersprueba = useSelector(store => store.users)
+  const [userRol, setUserRol] = useState(usersprueba)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllUsers())
-    console.log(usersprueba)
+    // console.log(usersprueba)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(()=>{
+    setUserRol(usersprueba)
+  },[usersprueba])
 
   function changeRol(user, id, rol){
 
@@ -36,8 +42,9 @@ export function UserManagement() {
           title: `Rol changed`,
           icon: 'success'
         }).then(function () {
-          dispatch(changeRoles({ user_id: id, roll: rol} ))
-        });
+          dispatch(changeRoles({ user_id: id, roll: rol }))
+          dispatch(getAllUsers())
+        })
       } else {
         swal("Cancelled", "No changes were made", "error");
       }
@@ -62,7 +69,7 @@ export function UserManagement() {
             </tr>
           </thead>
           <tbody>
-              {usersprueba && usersprueba.map(user =>
+              {userRol && userRol.map(user =>
                 <tr key={user.user_email}>
                   <td>
                    {user.user_name ? user.user_name : 'N/A'}
@@ -72,8 +79,7 @@ export function UserManagement() {
                   </td>
                   <td>
                     <abbr title={`Rol: ${user.roll}`}>
-
-                    <img src={user.roll === 'admin' ? admin : normalUser } alt="" onClick={() =>changeRol(user.user_name, user.user_id, user.roll)}/>
+                      <img src={user.roll === 'admin' ? admin : normalUser } alt="" onClick={() =>changeRol(user.user_name, user.user_id, user.roll)}/>
                     </abbr>
                   </td>
                 </tr>
