@@ -76,7 +76,7 @@ export function MostRequiredProduct() {
   };
 
   const labels = topSells.map(i => i.product);
-  console.log('labels',labels)
+  // console.log('labels',labels)
   const data = {
     labels,
     datasets: [
@@ -102,7 +102,7 @@ export function MostRequiredProduct() {
   }
 
   useEffect(()=>{
-     console.log('cambió a',filterView)
+    //  console.log('cambió a',filterView)
     //  if(!filterView) setTopSells(result.slice(0,10))
 
     if(filterView !== 'all')
