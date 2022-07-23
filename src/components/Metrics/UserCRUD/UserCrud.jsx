@@ -86,31 +86,32 @@ export function UserCrud() {
         <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock' />
         <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} />
       </form>
-
-      <div className="table-container" >
-        <table className="table scrolldown shadow" >
-          <thead>
-            <tr>
-            </tr>
-          </thead>
-          <tbody>
-            {blockUsers && blockUsers.map(u => {
-              return <tr key={u.user_id} className={u.blocked ? 'red' : ''}>
-                <td style={{ backgroundImage: `url(${u.picture})`, backgroundSize: "cover", backgroundPosition: "center", width: "100px" }}></td>
-                <td style={{ width: "auto" }} key={u.id}>{u.user_name}</td>
-                <th key={u.id}>{u.user_email}</th>
-                <td id="img" key={u.id}>
-                  {u.block
-                    ?
-                    <img onClick={() => blockUser(u.user_id, 'unlock')} src={lock} alt="lock_icon" />
-                    :
-                    <button className="btn btn-danger" onClick={() => blockUser(u.user_id, 'lock')}>Block</button>
-                  }
-                </td>
+      <div className="tabla-conteiner">
+        <div className="table-container" >
+          <table className="table scrolldown shadow" >
+            <thead>
+              <tr>
               </tr>
-            })}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {blockUsers && blockUsers.map(u => {
+                return <tr key={u.user_id} className={u.blocked ? 'red' : ''}>
+                  <td style={{ backgroundImage: `url(${u.picture})`, backgroundSize: "cover", backgroundPosition: "center", width: "100px" }}></td>
+                  <td style={{ width: "auto" }} key={u.id}>{u.user_name}</td>
+                  <th key={u.id}>{u.user_email}</th>
+                  <td id="img" key={u.id}>
+                    {u.block
+                      ?
+                      <img onClick={() => blockUser(u.user_id, 'unlock')} src={lock} alt="lock_icon" />
+                      :
+                      <button className="btn btn-danger" onClick={() => blockUser(u.user_id, 'lock')}>Block</button>
+                    }
+                  </td>
+                </tr>
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
