@@ -108,12 +108,13 @@ export function TopCustomers() {
   return <div className="container datas">
 
     <h1 className="mt-5 custom-title">Top Customers</h1>
+    <span>Send discounts to your top three customers</span>
     {loading &&
       <div className='loadingGif'>
         <h3>Loading</h3>
         < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
       </div>}
-    <div className="tabla-conteiner">
+    <div>
       <div className="lower-10" style={{ width: "100%" }}>
         <table className="table is-bordered is-narrow shadow">
           <thead>
