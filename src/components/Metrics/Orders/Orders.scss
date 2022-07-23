@@ -25,3 +25,11 @@
     margin:5px;
     width: inherit;
 }
+
+
+@media (max-width: 525px) {
+    .tabla-conteiner{
+        overflow-x:auto;
+        width: 100vw;
+    }
+}

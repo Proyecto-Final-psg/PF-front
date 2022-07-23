@@ -64,7 +64,7 @@ export function Orders() {
 
     <div className="lower-10" style={{width:"100%"}}>
       {orderList.length > 0 ?
-        <div className=''>
+        <div className='tabla-conteiner'>
           <table className="table is-bordered shadow scrolldown" >
             <thead>
               <tr>
