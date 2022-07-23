@@ -29,7 +29,7 @@ const Purchases = ({ data }) => {
                             }
 
 
-                            return <div></div>
+                            return <div key={i}></div>
 
 
                         })}

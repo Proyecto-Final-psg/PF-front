@@ -9,7 +9,7 @@
 .cmp-order-compra-detil-container-imgs {
     margin-top: 120px;
     display: flex;
-    height: 830px;
+   
     flex-direction: column;
     margin-left: 15px;
 
@@ -39,7 +39,8 @@
 }
 
 .card-contenedor {
-    height: 300px;
+    min-height: 200px;
+    height: 191px;
 
     @include respond-to('medium') {
 
@@ -73,7 +74,7 @@
     position: absolute;
     box-shadow: 5px 5px 5px 5px rgba(173, 164, 164, 0.572);
     border-radius: 7px;
-    top: 104px;
+    top: 100px;
 
     @include respond-to('medium') {
         right: 22px;
@@ -87,6 +88,7 @@
     display: flex;
     justify-content: space-around;
     cursor: pointer;
+
     @include respond-to('medium') {
         position: absolute;
         left: 132px;
