@@ -5,6 +5,13 @@ import { getProductById, getReviews, addToCart } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import './CardDetails.scss'
 import LoadingImg from '../../assets/Loading.gif'
+// import Swiper from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 export function CardDetails() {
     const { id } = useParams()
@@ -38,9 +45,23 @@ export function CardDetails() {
                 </div>}
 
             {!loading && <div className="detail">
-                <div className="image">
-                    <img src={product.img} alt="Product pic" />
+
+            <div className="image">
+                    <Swiper className='mySwiper'
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        navigation
+                        pagination={{ clickable: true }}
+                        scrollbar={{ draggable: true }}>
+                            <SwiperSlide><img src={product.img} alt="Product pic" /></SwiperSlide>
+                            <SwiperSlide><img src={product.img} alt="Product pic" /></SwiperSlide>
+                    </Swiper>
+                  
                 </div>
+
+                {/* <div className="image">
+                    <img src={product.img} alt="Product pic" />
+                </div> */}
+                
                 <div className="description">
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <span className="material-symbols-outlined">keyboard_backspace</span>
