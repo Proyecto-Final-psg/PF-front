@@ -7,11 +7,16 @@ import martin from '../../assets/devs/martin.jpeg'
 import flor from '../../assets/devs/flor.jpeg'
 import rodrigo from '../../assets/devs/rodrigo.jpeg'
 import rami from '../../assets/devs/rami.jpeg'
+import logo from '../../assets/logo2.png'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 
 export function About() {
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, [])
 
     useEffect(() => {
         Aos.init({ 
@@ -22,7 +27,9 @@ export function About() {
 
     return <div>
         <div className="about">
-                <h1 className='custom-title'>About Weedical</h1>
+        <h1 className="mt-5 custom-title">About us</h1>
+                {/* <h1 className='custom-title'>About Weedical</h1> */}
+                {/* <img src={logo} alt="" id='logo' /> */}
             <div className="about-video">
                 <hr />
                 <video width="600" height="400" controls>
