@@ -37,7 +37,7 @@ const OrdenCompraDetail = () => {
 
             <div className='cmp-order-compra-detil-container-imgs'>
                 {order.arrayItems.map((e, i) => {
-                    total += e.price
+                    total += e.price * e.quantity
                     return (
                         <div key={i} className="card card-contenedor">
 
