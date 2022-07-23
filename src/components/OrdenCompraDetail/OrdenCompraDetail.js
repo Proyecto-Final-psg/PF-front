@@ -7,7 +7,13 @@ const OrdenCompraDetail = () => {
     const { id } = useParams()
     const orders = useSelector((store) => store.orderDetails);
     const order = orders.filter(e => e.order_id === parseInt(id))[0]
+    var total = 0
     const navigate = useNavigate()
+    // console.log(order)
+    const continueToPay = () => {
+        window.location.href = order.urlPago
+    }
+
     return (
         <div className='cmp-ordendetail-container'>
             <div className='cmp-orden-compra-back'>
@@ -31,8 +37,10 @@ const OrdenCompraDetail = () => {
 
             <div className='cmp-order-compra-detil-container-imgs'>
                 {order.arrayItems.map((e, i) => {
+                    total += e.price
                     return (
-                        <div key={i} className="card">
+                        <div key={i} className="card card-contenedor">
+
                             <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
                             <div className="card-image">
                                 <figure className="cmp-ordendetail-container-img">
@@ -41,12 +49,14 @@ const OrdenCompraDetail = () => {
                             </div>
 
                             <div className="card-content">
+
                                 <div className="media">
                                     <div className="media-content">
                                         <p className="title is-4">{e.name}</p>
                                         <p className="subtitle is-6">{`Quantity:  ${e.quantity}`}</p>
                                     </div>
                                 </div>
+
                                 <div className="content">
                                     <span className="tag is-link ">
                                         {`Thc:  ${e.thc}`}
@@ -59,11 +69,18 @@ const OrdenCompraDetail = () => {
                                     </span>
                                     <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" />
                                 </div>
+
                             </div>
                         </div>
                     )
                 })}
             </div >
+            {order.status === "inprogress" &&
+                < div className='cmp-detalle-button-pay'>
+                    <span onClick={continueToPay} className="tag is-success is-large">{`Continue To Pay  $ ${total}`}</span>
+                </div>
+            }
+
         </div >
     )
 }

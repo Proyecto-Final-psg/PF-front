@@ -1,23 +1,50 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
 .cmp-ordendetail-container {
-    width: 100wh;
+    width: 90%;
     min-height: 77vh;
 }
 
 .cmp-order-compra-detil-container-imgs {
-    position: relative;
-    top: 200px;
-    left: 200px;
+    margin-top: 120px;
     display: flex;
+    height: 830px;
+    flex-direction: column;
+    margin-left: 15px;
+
+    @include respond-to('medium') {
+        position: absolute;
+        height: 100px;
+        display: flex;
+        left: 200px;
+        flex-direction: row;
+    }
 }
 
 .cmp-ordendetail-container-img {
     object-fit: cover;
     object-position: top center;
     width: 90px;
+
 }
 
 .media-content {
-    height: 78px;
+    display: none;
+
+    @include respond-to('medium') {
+        display: block;
+        height: 78px;
+    }
+}
+
+.card-contenedor {
+    height: 300px;
+
+    @include respond-to('medium') {
+
+        height: 400px;
+    }
 }
 
 .content {
@@ -27,6 +54,16 @@
     span {
         margin-top: 5px;
         width: 60px;
+        margin-right: 100px;
+
+    }
+}
+
+@media (max-width: 700px) {
+    .content {
+        position: absolute;
+        top: 6px;
+        left: 276px;
     }
 }
 
@@ -34,10 +71,27 @@
     width: 60px;
     height: 60px;
     position: absolute;
-    right: 22px;
-    bottom: 25px;
     box-shadow: 5px 5px 5px 5px rgba(173, 164, 164, 0.572);
     border-radius: 7px;
+    top: 104px;
+
+    @include respond-to('medium') {
+        right: 22px;
+        top: 309px;
+    }
+}
+
+.cmp-detalle-button-pay {
+    margin-top: 30px;
+    width: 410px;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    @include respond-to('medium') {
+        position: absolute;
+        left: 132px;
+        bottom: 212px
+    }
 }
 
 .cmp-ordendetail-container-img-premio {
@@ -54,6 +108,7 @@
     top: 90px;
     left: 40px;
 }
+
 .btn-back {
     background-color: rgb(155, 164, 171);
     height: 39px;
