@@ -1,4 +1,3 @@
-
 .create_form {
     width: 60vw;
     height: 75vh;
@@ -9,32 +8,31 @@
     align-content: space-around;
     justify-content: space-evenly;
     border: none;
-    box-shadow: -1px 1px 10px 5px rgba(0, 0, 0, 0.3);
-    background: #fff;
+    box-shadow: -1px 1px 10px 5px rgba(0, 0, 0, 0.123);
+    background: #f5f3f3;
 }
 
-.thc-container{
+.thc-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.input-mg-thc{
+.input-mg-thc {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
 }
 
-.left-container-create, .right-container-create {
-     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    height: 100%;
-    width: 35%;
-    justify-content: space-evenly;
+.left-container-create,
+.right-container-create {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    width: 90%
 }
 
-.new-category{
+.new-category {
     display: flex;
     flex-direction: row;
 }
@@ -43,6 +41,7 @@
     resize: none;
     height: 70px;
 }
+
 .create_form textarea::placeholder {
     color: #202020;
 }
@@ -51,7 +50,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
 
@@ -60,15 +59,16 @@
 }
 
 .field {
-    width: 250px;
+    width: 100%;
     height: 30px;
     font-size: 14px;
     border-radius: 8px;
     border: 2px solid #438a00;
 }
 
-.btn_create, .btn_not_create {
-    width: 100px;
+.btn_create,
+.btn_not_create {
+    width: 100%;
     height: 40px;
     outline: none;
     font-size: 14px;
@@ -78,16 +78,17 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    
+    animation: pulsec 1s infinite;
 }
 
-.title-create-product{
+
+
+.title-create-product {
     position: absolute;
     top: 10%
 }
 
-.buttons-submit-categories{
+.buttons-submit-categories {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -111,6 +112,7 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
+
 .btn_category:hover {
     background-color: #2B5800;
 }
@@ -127,6 +129,7 @@
     z-index: 10;
     color: red;
 }
+
 .error-message_textarea {
     width: auto;
     height: 10px;
@@ -174,6 +177,7 @@
     font-size: 14px;
     font-weight: bolder;
 }
+
 .uploadcare--widget__button_type_open:hover {
     background-color: #2B5800;
     font-size: 14px;
@@ -185,8 +189,39 @@
 } */
 
 
-@media screen and (max-width: 980px) {
-    .create_form{
+@keyframes pulsec {
+    0% {
+        background-color: #438a00;
+    }
+
+    50% {
+        background-color: #295500;
+        ;
+    }
+
+    100% {
+        background-color: #438a00;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .create_form {
         width: 100vw;
+    }
+
+    .left-container-create,
+    .right-container-create {
+          grid-template-columns: 1fr ;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .create_form{
+        height: auto;
+        margin-top: 30px;
+      
+    }
+    .create{
+        width:100vw;
     }
 }
