@@ -27,7 +27,7 @@ export function CardDetails() {
         dispatch(getProductById(id))
         dispatch(getReviews(id))
         setTimeout(() => {
-            setLoading(!loading)
+            setLoading(false)
         }, 600)
         return () => {
             setLoading(true)
@@ -37,14 +37,23 @@ export function CardDetails() {
     const addCart = () => {
         dispatch(addToCart(product.id, product.name, product.price,))
     }
+
+    if(!product.id || loading){
+        return(
+            <div className='cmp-CardDetails-loading-container'>
+                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+              </div>
+        )
+    }
+
     return (
         <div className='cmp-CardDetails-container'>
-            {loading &&
+            {/* {loading &&
                 <div className='cmp-CardDetails-loading-container'>
                     < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
-                </div>}
+                </div>} */}
 
-            {!loading && <div className="detail">
+             <div className="detail">
 
                 <div className="image">
                     <Swiper className='mySwiper'
@@ -70,20 +79,23 @@ export function CardDetails() {
                         <span className="material-symbols-outlined">keyboard_backspace</span>
                     </button>
 
-                    {admin && <div className='container-buttons_edit_remove'>
+                    {admin && 
+                    <div className='container-buttons_edit_remove'>
                         <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                         <button className='button-delete'>Remove</button>
                     </div>}
 <br></br>
-                    <h1>{product.name}</h1>
-                    <hr />
+                    <p className='name-product-detail'>{product.name}</p>
+                    <p className='name-product-detail'>$ {product.price}</p>
+                    <hr className='hr-product-detail'/>
                     {product && product.description ? <h5>{product.description}</h5> : <p>No description added</p>}
 
                     <div className={`stock-detail ${product.stock === 0 ? 'none' : (product.stock < 10 ? 'low' : '')}`}>{product.stock === 0 ? 'No stock' : (product.stock < 10 ? 'Low stock' : 'Stock')}</div>
+                    { product.stock === 0 && <div>let me know </div>}
 
                     {
                         product.stock > 0 &&
-                        <button onClick={addCart} className='button'>
+                        <button onClick={addCart} className='button button-add-cart-detail'>
                             <div className="svg-wrapper-1">
                                 <div className="svg-wrapper">
                                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd"><path d="M13.5 18c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm-3.5 1.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm14-16.5l-.743 2h-1.929l-3.473 12h-13.239l-4.616-11h2.169l3.776 9h10.428l3.432-12h4.195zm-12 4h3v2h-3v3h-2v-3h-3v-2h3v-3h2v3z" /></svg>
@@ -111,7 +123,7 @@ export function CardDetails() {
                     })}
                 </div>
 
-            </div>}
+            </div>
 
         </div>
     )
