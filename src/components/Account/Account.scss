@@ -123,11 +123,14 @@
 }
 
 .nav-item .link {
+  border: none;
+  background: transparent;
   color: #323232;
-
 }
 
 .nav-item-active .link {
+  border: none;
+  background: transparent;
   color: #fff
 }
 
@@ -147,12 +150,10 @@
 
 
 .account-content {
-  width: 800px;
-  min-width: 800px;
+  width: 80%;
   height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   max-height: 100vh;
-  /* border: 1px solid red; */
 }

@@ -83,8 +83,6 @@ const CreateProduct = () => {
         });
     }
 
-    const errorSubmit = Object.keys(error).length > 0 ? true : false;
-
     return (
         <>
             <div className='create'>
@@ -99,7 +97,6 @@ const CreateProduct = () => {
                         localState={createProd}
                         setLocalState={setCreateProd}
                         error={error}
-                        errorSubmit={errorSubmit}
                         state={state}
                         button={'Create'}
                         handleDeleteCategory={handleDeleteCategory}
