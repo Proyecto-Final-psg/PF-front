@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
-import { validator } from './helpers/validator';
+import { validator } from './helpers/Validator';
 import Form from './Form/Form';
 import Mockup from './Mockup/Mockup';
 import ButtonBack from './ButtonBack/ButtonBack';

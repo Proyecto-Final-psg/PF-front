@@ -1,5 +1,4 @@
 
-
 export const validator = (input) => {
 
     let cond_name = /^[aA-zZ 0-9 _]*$/

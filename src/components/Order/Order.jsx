@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
 import './Order.scss'
-import { submitOrder,cleanCart } from '../../Redux/Actions'
+import { submitOrder, cleanCart } from '../../Redux/Actions'
 import { useEffect } from 'react';
-import { validator } from '../CreateProduct/helpers/validator';
+import { validator } from '../CreateProduct/helpers/Validator';
 
 function Order() {
     const cart = useSelector((store) => store.cart);
