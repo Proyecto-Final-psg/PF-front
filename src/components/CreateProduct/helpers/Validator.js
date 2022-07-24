@@ -44,8 +44,6 @@ export const validator = (input) => {
 
     if (input.categories && parseInt(input.categories.length) === 0) error.categories = 'At least one category is required'
 
-
-
+    
     return error
-
 }
