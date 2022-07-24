@@ -50,7 +50,7 @@ export function OrderDetailed() {
 
     function changeOrderStatus() {
         setLoading(true)
-        console.log('Actualizar orden con ', orderStatus);
+        console.log(orderStatus);
         // updateOrderStatus(id,orderStatus)
         fetch(`${API_URL}/update-order?id=${id}&status=${orderStatus}`, {
             method: "PUT"
