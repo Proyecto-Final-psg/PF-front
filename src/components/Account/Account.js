@@ -1,7 +1,5 @@
 // eslint-disable-next-line 
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
-import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, getUserReviews } from "../../Redux/Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,7 +16,7 @@ import "./Account.scss";
 const Account = () => {
   const [active, setActive] = useState('history-shops')
   const usr = useSelector((store) => store.user);
-  //const orders = useSelector((store) => store.orderDetails);
+  const orders = useSelector((store) => store.orderDetails);
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -61,27 +59,30 @@ const Account = () => {
               <div className="user_options">
                 <ul className='nav-menu'>
                   <li className={active === 'history-shops' ? 'nav-item-active' : 'nav-item'}>
-                    <Link className="link" to="history-shops" onClick={() => setActive('history-shops')} ><FontAwesomeIcon icon={faUser} />  Purchases</Link>
+                    <button className="link" onClick={() => setActive('history-shops')} ><FontAwesomeIcon icon={faUser} />  Purchases</button>
                   </li>
                   <li className={active === 'favourites' ? 'nav-item-active' : 'nav-item'}>
-                    <Link className="link" to="favourites" onClick={() => setActive('favourites')} ><FontAwesomeIcon icon={faUser} />  Favorites</Link>
+                    <button className="link" onClick={() => setActive('favourites')} ><FontAwesomeIcon icon={faUser} />  Favorites</button>
                   </li>
                 </ul>
               </div>
             </div>
-            <div className="account-content">
-              <Outlet />
-            </div>
-
           </div>
 
-          {/* <div className="cmp-account-container-purchases">
-            {orders.map((e, i) => {
-              return (
-                <Purchases key={i} user={usr} data={e} />
-              )
-            })}
-          </div> */}
+          {
+            active === 'favourites' ?
+              <div className="cmp-account-container-purchases">
+                <h1>Favourites</h1>
+              </div>
+              :
+              <div className="cmp-account-container-purchases">
+                {orders.map((e, i) => {
+                  return (
+                    <Purchases key={i} user={usr} data={e} />
+                  )
+                })}
+              </div>
+          }
 
         </div>
       }

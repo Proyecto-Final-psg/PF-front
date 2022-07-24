@@ -2,7 +2,7 @@ import React from 'react'
 import { Widget } from "@uploadcare/react-widget";
 import './Form.scss'
 
-const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, category, localState, setLocalState, state, error, errorSubmit, button, handleDeleteCategory }) => {
+const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, category, localState, setLocalState, state, error, button, handleDeleteCategory }) => {
 
     return (
         <div className='form-create-container'>
