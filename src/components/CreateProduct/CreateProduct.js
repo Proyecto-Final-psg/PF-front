@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
-
 import { Validator } from './helpers/Validator';
 import Form from './Form/Form';
 import Mockup from './Mockup/Mockup';
@@ -12,13 +11,9 @@ import './CreateProduct.scss'
 
 const CreateProduct = () => {
     
-    
     const state = useSelector(state => state.categories);
     const dispatch = useDispatch();
     const [newCategory, setNewCategory] = useState('')
-
-    
-    
     const [createProd, setCreateProd] = useState({
         name: '',
         stock: '',
@@ -111,7 +106,6 @@ const CreateProduct = () => {
                     />
                     <Mockup 
                         localState={createProd}
-                        handleDeleteCategory={handleDeleteCategory}
                     />
                 </div>
             </div>

@@ -46,32 +46,35 @@ export function CardDetails() {
 
             {!loading && <div className="detail">
 
-            <div className="image">
+                <div className="image">
                     <Swiper className='mySwiper'
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
                         navigation
                         pagination={{ clickable: true }}
                         scrollbar={{ draggable: true }}>
-                            <SwiperSlide><img src={product.img} alt="Product pic" /></SwiperSlide>
-                            <SwiperSlide><img src={product.img} alt="Product pic" /></SwiperSlide>
+                        {
+                            product.img.split(',').length > 0 ?
+                                product.img.split(',').map((c, i) => (
+                                    <SwiperSlide key={i}>
+                                        <img src={c} alt="Product pic" />
+                                    </SwiperSlide>
+                                ))
+                                :
+                                <img src={product.img} alt="Product pic" />
+                        }
                     </Swiper>
-                  
                 </div>
 
-                {/* <div className="image">
-                    <img src={product.img} alt="Product pic" />
-                </div> */}
-                
                 <div className="description">
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <span className="material-symbols-outlined">keyboard_backspace</span>
                     </button>
 
                     {admin && <div className='container-buttons_edit_remove'>
-                        <NavLink className='button buton-edit' to={`/products/edit/${id}`}>Edit</NavLink>
-                        <button className='button '>Remove</button>
+                        <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
+                        <button className='button-delete'>Remove</button>
                     </div>}
-
+<br></br>
                     <h1>{product.name}</h1>
                     <hr />
                     {product && product.description ? <h5>{product.description}</h5> : <p>No description added</p>}
@@ -91,8 +94,9 @@ export function CardDetails() {
                     }
 
                 </div>
-
-                <h5 className='mt-5'>Reviews</h5>
+                <div className="container-reviews">
+                    <h5 className='mt-5' >Reviews</h5>
+                </div>
                 <div className="reviews">
                     <hr />
                     {reviews && reviews.map(review => {
@@ -106,6 +110,7 @@ export function CardDetails() {
                         )
                     })}
                 </div>
+
             </div>}
 
         </div>

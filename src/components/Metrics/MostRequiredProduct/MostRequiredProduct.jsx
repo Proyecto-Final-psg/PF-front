@@ -12,6 +12,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { useState } from "react";
 
 
 ChartJS.register(
@@ -27,24 +28,8 @@ ChartJS.register(
 
 export function MostRequiredProduct() {
   // eslint-disable-next-line 
-  const products = useSelector(store => store.products)
   const orderItems = useSelector(store => store.orderItems)
-  const dispatch = useDispatch()
-  // let names = [...new Set(orderItems.map(i => i.product))]
-  useEffect(() => {
-    dispatch(getOrderItems())
-  },
-    // eslint-disable-next-line 
-    [])
-
-  useEffect(() => {
-    // console.log('orderItems',orderItems)
-    // console.log(names)
-  },
-    // eslint-disable-next-line 
-    [orderItems])
-
-  const result = orderItems.reduce((acc, curr) => {
+  let result = orderItems.reduce((acc, curr) => {
     const index = acc.findIndex(item => item.product === curr.product)
     index > -1 ? acc[index].quantity += curr.quantity : acc.push({
       product: curr.product,
@@ -53,7 +38,28 @@ export function MostRequiredProduct() {
     return acc
   }, [])
 
+
+  const [filterView, setFilterView] = useState(10)
+  const [topSells, setTopSells] = useState(result)
+  const dispatch = useDispatch()
+  // let names = [...new Set(orderItems.map(i => i.product))]
+  useEffect(() => {
+    dispatch(getOrderItems())
+  },
+    // eslint-disable-next-line 
+    [])
+
+  
+
+
+  // result = result.slice(0,10)
   result.sort((b, a) => a.quantity - b.quantity); // b - a for reverse sort
+
+  useEffect(()=>{
+    if(filterView !== 'all'){
+      result = result.slice(0,filterView)
+    }
+  },[filterView])
 
 
   const options = {
@@ -69,14 +75,14 @@ export function MostRequiredProduct() {
     },
   };
 
-  const labels = result.map(i => i.product);
-
+  const labels = topSells.map(i => i.product);
+  // console.log('labels',labels)
   const data = {
     labels,
     datasets: [
       {
         label: 'Sold',
-        data: result.map(i => i.quantity),
+        data: topSells.map(i => i.quantity),
         backgroundColor: 'green',
       }
     ],
@@ -90,14 +96,40 @@ export function MostRequiredProduct() {
     // eslint-disable-next-line 
     [])
 
-  // useEffect(()=>{
-  //   console.log(order)
-  // },[order])
+  function filterSellingView(e){
+    console.log('entre')
+    setFilterView(e.target.value)
+  }
+
+  useEffect(()=>{
+    //  console.log('cambió a',filterView)
+    //  if(!filterView) setTopSells(result.slice(0,10))
+
+    if(filterView !== 'all')
+      result = result.slice(0,filterView)
+    else{
+      result = orderItems.reduce((acc, curr) => {
+        const index = acc.findIndex(item => item.product === curr.product)
+        index > -1 ? acc[index].quantity += curr.quantity : acc.push({
+          product: curr.product,
+          quantity: curr.quantity
+        })
+        return acc
+      }, [])
+
+    }
+      setTopSells(result)
+  },[filterView])
 
   return <div className="container datas">
 
     <h1 className="mt-5 custom-title">Best selling products</h1>
-
+    <span>Showing</span>
+    <select className="select" name="" id="" onChange={filterSellingView}>
+      <option value="all">All Products</option>
+      <option value="10" selected>Top 10</option>
+      <option value="20">Top 20</option>
+    </select>
 
     <div className="lower-10" style={{ width: "100%" }}>
 

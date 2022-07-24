@@ -27,9 +27,22 @@
 }
 
 
+
+
+.tabla-conteiner::-webkit-scrollbar-thumb {
+    background-color: #2B5800;
+    border-radius: 20px;
+    border: 1px solid #f1f2f3;
+}
+.tabla-conteiner::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
 @media (max-width: 525px) {
+  
     .tabla-conteiner{
         overflow-x:auto;
         width: 100vw;
     }
+
 }

@@ -6,6 +6,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    box-shadow: -1px 1px 10px 5px rgba(0, 0, 0, 0.123);
 }
 
 .cmp-CardDetails-loading-container {
@@ -26,7 +27,8 @@
 
 .image {
     width: 30%;
-    border: 1px solid rgb(201, 201, 201);
+    min-width: 200px;
+ 
     padding: 20px;
 }
 
@@ -35,12 +37,13 @@
 }
 
 .description {
-    border: 1px solid rgb(201, 201, 201);
+ 
     width: 70%;
     padding: 20px;
 }
 
 .stock-detail {
+    margin-top: 10px;
     width: 100px;
     height: 25px;
     text-align: center;
@@ -81,14 +84,14 @@
 .button:not(.back, #carousel-btn) {
     font-family: inherit;
     font-size: 15px;
-    background: rgb(88, 124, 89);
+    background: #438a00;
     color: white;
     padding: 0.7em 1em;
     padding-left: 0.9em;
     display: flex;
     align-items: center;
     border: none;
-    border-radius: 16px;
+    border-radius: 4px;
     overflow: hidden;
     transition: all 0.2s;
     margin-top: 10px;
@@ -155,7 +158,7 @@
     text-align: center;
     font-size: 18px;
     background: #fff;
-  
+
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -169,15 +172,87 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-  }
-  
-  .swiper-slide img {
+}
+
+.swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .swiper {
+}
+
+.swiper {
     width: 100%;
     height: 100%;
-  }
+}
+
+.container-reviews {
+    text-align: center;
+    width: 200px;
+}
+
+.button-edit{
+    width: 80%;
+    height: 50px;
+    outline: none;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 4px;
+    background-color: #438a00;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-delete {
+    margin-top: 10px;
+    width: 80px;
+    height: 40px;
+    outline: none;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 4px;
+    background-color: #438a00;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-delete:hover{
+    background-color: red;
+}
+
+
+
+@media (max-width: 525px) {
+    .image {
+        width: 100vw;
+    }
+
+    .description {
+        width: 100vw;
+    }
+
+    .detail {
+        width: 100vw;
+        padding: 0;
+    }
+
+    .button-delete{
+        width: 100%;
+    }
+    .button-edit {
+        width: 100%;
+    }
+    .button:not(.back, #carousel-btn){
+        width: 100%;
+    }
+    .stock-detail{
+        width: 100%;
+    }
+}
