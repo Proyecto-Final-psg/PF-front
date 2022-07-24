@@ -4,21 +4,23 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { registerUser } from '../../Redux/Actions'
 import { API_URL } from '../../Redux/Constants'
+import axios from 'axios'
 // import { faMehRollingEyes } from '@fortawesome/free-regular-svg-icons'
 // import { useSearchParams } from 'react-router-dom'
 
 const Profile = () => {
-    const { user } = useAuth0()
+    const { user, getAccessTokenSilently } = useAuth0()
     const userRedux = useSelector(state => state.user[0])
     const [roll, setRoll] = useState(userRedux.roll)
     const dispatch = useDispatch()
+    // const [tokenAuth0, setToken] = useState("")
+
     useEffect(() => {
         if (user) {
             let nuevo = {
                 email: user.email,
                 name: user.name,
                 img: user.picture,
-                token: user.token
             }
             dispatch(registerUser(nuevo))
         }
@@ -36,9 +38,8 @@ const Profile = () => {
                         email: user.email,
                         name: user.name,
                         img: user.picture,
-                        token: user.token
                     }
-                    
+
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
                 }
@@ -51,7 +52,7 @@ const Profile = () => {
     // async function token() {
     //     try {
     //         const token = await getAccessTokenSilently()
-    //         const response = await axios.get('http://localhost:8081/prueba', {
+    //         const response = await axios.get('http://localhost:8081/pruebaPost', {
     //             headers: {
     //                 authorization: `Bearer ${token}`
     //             }
@@ -65,7 +66,9 @@ const Profile = () => {
         <div>
             {/* {console.log(userRedux)} */}
             {/* {console.log(roll.roll)} */}
-            {/* <button onClick={token}>probando</button> */}
+            {/* <button onClick={token} className='boton-prueba'>
+                BOTON PRUEBA
+            </button> */}
         </div>
     )
 }
