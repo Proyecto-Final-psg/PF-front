@@ -39,7 +39,6 @@ const Profile = () => {
                         name: user.name,
                         img: user.picture,
                     }
-
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
                 }
