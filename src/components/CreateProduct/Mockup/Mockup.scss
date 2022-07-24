@@ -2,8 +2,9 @@
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
     background-color: rgba(233, 234, 232, 0.785);
     width: 350px;
-    height: 650px;
+    height:75vh;
     margin-left: 30px;
+    margin-top: 27px;
     border-radius: 10px;
    display: flex;
    flex-direction: column;
@@ -24,7 +25,8 @@
 
 .img-create h4 {
     color: #438a00;
-    font-size: 30px;
+    font-size: 50px;
+    font-weight: bolder;
    padding-bottom: 13px;
 }
 
@@ -47,7 +49,7 @@
 }
 
 .img-create_title{
-    font-size: 35px;
+    font-size: 45px;
     padding-top: 7%;
 }
 
@@ -67,5 +69,6 @@
     .img-create{
         visibility: hidden;
         position: absolute;
+        display: none;
     }
 }
