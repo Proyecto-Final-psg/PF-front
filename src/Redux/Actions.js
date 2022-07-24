@@ -410,8 +410,11 @@ export function filterByCategory(category) {
 }
 
 export function updateOrderStatus(id, status){
-    return fetch(`http://localhost:8081/update-order?id=${id}&status=${status}`,{
-        method:"PUT"
+    return fetch(`${API_URL}/update-order?id=${id}&status=${status}`,{
+        method:"PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
     .then(data => data.json())
     .then(res => console.log(res))
