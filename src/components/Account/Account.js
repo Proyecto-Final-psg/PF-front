@@ -1,7 +1,7 @@
 // eslint-disable-next-line 
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-// import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, getUserReviews } from "../../Redux/Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,7 +18,7 @@ import "./Account.scss";
 const Account = () => {
   const [active, setActive] = useState('history-shops')
   const usr = useSelector((store) => store.user);
-  const orders = useSelector((store) => store.orderDetails);
+  //const orders = useSelector((store) => store.orderDetails);
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -69,19 +69,19 @@ const Account = () => {
                 </ul>
               </div>
             </div>
-            {/* <div className="content">
-          <Outlet />
-        </div> */}
+            <div className="account-content">
+              <Outlet />
+            </div>
 
           </div>
 
-          <div className="cmp-account-container-purchases">
+          {/* <div className="cmp-account-container-purchases">
             {orders.map((e, i) => {
               return (
                 <Purchases key={i} user={usr} data={e} />
               )
             })}
-          </div>
+          </div> */}
 
         </div>
       }

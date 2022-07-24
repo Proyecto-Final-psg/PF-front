@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProductById, editProduct } from '../../Redux/Actions'
-import { Validator } from '../CreateProduct/helpers/Validator'
+import { validator } from '../CreateProduct/helpers/validator'
 import Form from '../CreateProduct/Form/Form'
 import Mockup from '../CreateProduct/Mockup/Mockup'
 import ButtonBack from '../CreateProduct/ButtonBack/ButtonBack'
@@ -44,7 +44,7 @@ export function EditCard() {
             ...editedProduct,
             [e.target.name]: e.target.value
         })
-        setError(Validator({
+        setError(validator({
             ...editedProduct,
             [e.target.name]: e.target.value,
         }))
@@ -55,7 +55,7 @@ export function EditCard() {
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
         })
-        setError(Validator({
+        setError(validator({
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
         }))
