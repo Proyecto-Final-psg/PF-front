@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
-import { Validator } from './helpers/Validator';
+import { validator } from './helpers/validator';
 import Form from './Form/Form';
 import Mockup from './Mockup/Mockup';
 import ButtonBack from './ButtonBack/ButtonBack';
@@ -33,7 +33,7 @@ const CreateProduct = () => {
             ...createProd,
             [e.target.name]: e.target.value,
         })
-        setError(Validator({
+        setError(validator({
             ...createProd,
             [e.target.name]: e.target.value,
         }))
@@ -43,7 +43,7 @@ const CreateProduct = () => {
             ...createProd,
             categories: [...createProd.categories, e.target.value],
         })
-        setError(Validator({
+        setError(validator({
             ...createProd,
             categories: [...createProd.categories, e.target.value],
         }))
@@ -88,7 +88,7 @@ const CreateProduct = () => {
     return (
         <>
             <div className='create'>
-                <ButtonBack button={'Create'}/>
+                <ButtonBack button={'Create product'}/>
                 <div className='form-create'>
                     <Form 
                         handleInputChange={handleInputChange}

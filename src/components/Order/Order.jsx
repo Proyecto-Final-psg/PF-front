@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './Order.scss'
 import { submitOrder,cleanCart } from '../../Redux/Actions'
 import { useEffect } from 'react';
-import { Validator } from '../CreateProduct/helpers/Validator';
+import { validator } from '../CreateProduct/helpers/validator';
 
 function Order() {
     const cart = useSelector((store) => store.cart);
@@ -55,12 +55,12 @@ function Order() {
                 ...order,
                 email: e.target.value
             })
-            setError(Validator({
+            setError(validator({
                 ...addressOrder,
                 email: e.target.value
             }))
         } else {
-            setError(Validator({
+            setError(validator({
                 ...addressOrder,
                 email: order.email
             }))
@@ -73,7 +73,7 @@ function Order() {
             ...addressOrder,
             [e.target.name]: e.target.value
         })
-        setError(Validator({
+        setError(validator({
             ...addressOrder,
             [e.target.name]: e.target.value,
             email: order.email

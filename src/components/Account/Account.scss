@@ -146,11 +146,13 @@
 }
 
 
-.content {
-  width: 70%;
+.account-content {
+  width: 800px;
+  min-width: 800px;
   height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   max-height: 100vh;
+  /* border: 1px solid red; */
 }
