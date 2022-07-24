@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProductById, editProduct } from '../../Redux/Actions'
-import { validator } from '../CreateProduct/helpers/validator'
+import { validator } from '../CreateProduct/helpers/Validator'
 import Form from '../CreateProduct/Form/Form'
 import Mockup from '../CreateProduct/Mockup/Mockup'
 import ButtonBack from '../CreateProduct/ButtonBack/ButtonBack'
@@ -17,14 +17,7 @@ export function EditCard() {
     const product = useSelector(store => store.product)
     const categories = useSelector(state => state.categories);
     // const [newCategory, setNewCategory] = useState('')
-    const [error, setError] = useState({
-        stateName: false,
-        stateMessage: false,
-        stateType: false,
-        messageName: '',
-        messageDescription: '',
-        messageType: ''
-    })
+    const [error, setError] = useState({})
 
     const [editedProduct, setEditProduct] = useState({
         name: product.name,
@@ -85,6 +78,7 @@ export function EditCard() {
             name: '',
             stock: 0,
             price: 0,
+            img:'',
             type: '',
             description: '',
             thc: 0,
@@ -105,8 +99,6 @@ export function EditCard() {
         return () => {setEditProduct(null)}
     },[])
 
-    let errorSubmit = error.stateName === true || error.stateMessage === true || error.stateType === true;
-
     return (
         <>
             <div className='create'>
@@ -119,12 +111,10 @@ export function EditCard() {
                         onSubmit={handleSubmit}
                         category={handleSelectCategories}
                         newCategory={handleClickCategory}
-                        // setNewCategory={setNewCategory}
                         localState={editedProduct}
                         setLocalState={setEditProduct}
                         handleDeleteCategory={handleDeleteCategory}
                         error={error}
-                        errorSubmit={errorSubmit}
                         state={categories}
                         button={'Modify'}
                     />

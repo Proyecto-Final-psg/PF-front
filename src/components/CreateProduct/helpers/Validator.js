@@ -1,8 +1,7 @@
 
-
 export const validator = (input) => {
 
-    let cond_name = /^[aA-zZ 0-9 _]*$/
+    let cond_name = /^[aA-zZ 0-9 _&-]*$/
     let cond_email = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
     let cond_description = /^[a-zA-Z 0-9\u00C0-\u00FF &@&!&¡&?&¿&()&=&+&/&:&;&_&,&.&%&-]*$/;
 

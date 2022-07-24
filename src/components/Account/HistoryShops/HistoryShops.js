@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../../../Redux/Actions';
 import Card from '../../Card/Card';
-import { validator } from '../../CreateProduct/helpers/validator';
+import { validator } from '../../CreateProduct/helpers/Validator';
 import Purchases from '../../Purchases/Purchases';
 import './History.scss'
 import StarRating from './StarRating/StarRating';
