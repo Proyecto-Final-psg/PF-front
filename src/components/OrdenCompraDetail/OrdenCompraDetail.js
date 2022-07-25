@@ -40,7 +40,7 @@ const OrdenCompraDetail = () => {
                     {order.arrayItems.map((e, i) => {
                         total += e.price * e.quantity
                         return (
-                            <NavLink to={`/products/${e.id}`}>
+                            <NavLink key={i} to={`/products/${e.id}`}>
                                 <div key={i} className="card card-contenedor">
                                     <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
                                     <div className="card-image">
