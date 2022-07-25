@@ -18,14 +18,14 @@ export function UserManagement() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     setUserRol(usersprueba)
-  },[usersprueba])
+  }, [usersprueba])
 
-  function changeRol(user, id, rol){
+  function changeRol(user, id, rol) {
 
-    if(rol === 'admin') rol = 'user' 
-    else rol='admin'
+    if (rol === 'admin') rol = 'user'
+    else rol = 'admin'
 
     swal({
       title: `Are you sure you want to change ${user}'s rol to ${rol} ?`,
@@ -50,15 +50,16 @@ export function UserManagement() {
       }
     })
 
-    
+
   }
 
   return <div className="container datas">
 
     <h1 className="mt-5 custom-title">User Roles</h1>
 
-<span>To modify a user rol, just press into the user-rol icon that you want to change</span>
-<div className="lower-10" style={{ width: "100%" }}>
+    <span>To modify a user rol, just press into the user-rol icon that you want to change</span>
+    <div className="lower-10" style={{ width: "100%" }}>
+      <div className="container-top">
         <table className="table shadow">
           <thead>
             <tr>
@@ -69,23 +70,24 @@ export function UserManagement() {
             </tr>
           </thead>
           <tbody>
-              {userRol && userRol.map(user =>
-                <tr key={user.user_email}>
-                  <td>
-                   {user.user_name ? user.user_name : 'N/A'}
-                  </td>
-                  <td>
-                   {user.user_email}
-                  </td>
-                  <td>
-                    <abbr title={`Rol: ${user.roll}`}>
-                      <img src={user.roll === 'admin' ? admin : normalUser } alt="" onClick={() =>changeRol(user.user_name, user.user_id, user.roll)}/>
-                    </abbr>
-                  </td>
-                </tr>
-              )}
-            </tbody>
+            {userRol && userRol.map(user =>
+              <tr key={user.user_email}>
+                <td>
+                  {user.user_name ? user.user_name : 'N/A'}
+                </td>
+                <td>
+                  {user.user_email}
+                </td>
+                <td>
+                  <abbr title={`Rol: ${user.roll}`}>
+                    <img src={user.roll === 'admin' ? admin : normalUser} alt="" onClick={() => changeRol(user.user_name, user.user_id, user.roll)} />
+                  </abbr>
+                </td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
+    </div>
   </div>
 }
