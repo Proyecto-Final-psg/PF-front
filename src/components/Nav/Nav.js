@@ -12,7 +12,7 @@ const Nav = () => {
     const [nav, setNav] = useState('')
     const userRedux = useSelector(state => state.user[0])
     const productscart = useSelector(state => state.cart)
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
+    const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
     const handleMenu = (e) => {
         e.preventDefault()
@@ -118,11 +118,9 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <div className="navbar-link avatar">
-
-                                        <img src={userRedux.user_img ? userRedux.user_img : noImage} alt='user' />
+                                        <img src={user.picture ? user.picture : noImage} alt='user' />
                                         <p>{userRedux.user_name}</p>
                                     </div>
-
                                     <div className="navbar-dropdown">
                                         <Link className="navbar-item" to="/account">
                                             Profile
