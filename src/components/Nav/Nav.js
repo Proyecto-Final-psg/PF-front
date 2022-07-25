@@ -20,6 +20,8 @@ const Nav = () => {
         else setNav('')
     }
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
+    let isUser = userRedux.roll === 'user'
+
     return (
         <div>
             <nav className="navbar is-light is-fixed-top nav" role="navigation" aria-label="main navigation">
@@ -57,12 +59,16 @@ const Nav = () => {
                                 </Link>
                                 <FontAwesomeIcon icon={faCannabis} />
                             </div>
-                            <div className='item'>
-                                <Link className="navbar-item" to="/account">
-                                    Profile
-                                </Link>
-                                <FontAwesomeIcon icon={faUser} />
-                            </div>
+                            {
+                                admin || isUser ?
+                                <div className='item'>
+                                    <Link className="navbar-item" to="/account">
+                                        Profile
+                                    </Link>
+                                    <FontAwesomeIcon icon={faUser} />
+                                </div>
+                                : null
+                            }
                             <hr className="navbar-divider" />
                             {
                                 isAuthenticated ?
