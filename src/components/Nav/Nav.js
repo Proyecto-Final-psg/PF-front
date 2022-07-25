@@ -1,26 +1,35 @@
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faScrewdriverWrench, faUser, faSignal, faArrowRightFromBracket, faCannabis, faUserPlus, faChalkboardUser } from '@fortawesome/free-solid-svg-icons';
 import Logo from './logo2.png'
 import Carrito from './carrito.png'
-import noImage from '../.././assets/no_user_image.jpeg'
+//import noImage from '../.././assets/no_user_image.jpeg'
+import imagen from '../Loading/Loading.gif';
 import './Nav.scss'
 const Nav = () => {
     const [nav, setNav] = useState('')
+    const [img, setImg] = useState(false)
     const userRedux = useSelector(state => state.user[0])
     const productscart = useSelector(state => state.cart)
     const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
-
     const handleMenu = (e) => {
         e.preventDefault()
         if (nav === '') setNav('is-active')
         else setNav('')
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setImg(true)
+        }, 1000);
+    }, [])
+
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     let isUser = userRedux.roll === 'user'
+    let userImg = userRedux.user_img
 
     return (
         <div>
@@ -61,13 +70,13 @@ const Nav = () => {
                             </div>
                             {
                                 admin || isUser ?
-                                <div className='item'>
-                                    <Link className="navbar-item" to="/account">
-                                        Profile
-                                    </Link>
-                                    <FontAwesomeIcon icon={faUser} />
-                                </div>
-                                : null
+                                    <div className='item'>
+                                        <Link className="navbar-item" to="/account">
+                                            Profile
+                                        </Link>
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </div>
+                                    : null
                             }
                             <hr className="navbar-divider" />
                             {
@@ -124,7 +133,7 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <div className="navbar-link avatar">
-                                        <img src={user.picture ? user.picture : noImage} alt='user' />
+                                        <img src={img ? userImg : imagen} alt='user' />
                                         <p>{userRedux.user_name}</p>
                                     </div>
                                     <div className="navbar-dropdown">

@@ -8,7 +8,7 @@ import './CardDetails.scss'
 import LoadingImg from '../../assets/Loading.gif'
 // import Swiper from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -106,7 +106,7 @@ export function CardDetails() {
 
                 <div className="image">
                     <Swiper className='mySwiper'
-                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        modules={[Navigation, Pagination, A11y]}
                         navigation
                         pagination={{ clickable: true }}
                         scrollbar={{ draggable: true }}>
