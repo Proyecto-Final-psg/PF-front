@@ -61,6 +61,7 @@
 
 .cmp-purchases-container {
     width: 350px;
+    margin-right: 31px;
     @include respond-to('medium') {
         width: 750px;
     }
