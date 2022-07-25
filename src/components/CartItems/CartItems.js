@@ -27,7 +27,9 @@ const CartItems = ({ name, id, price, cant }) => {
       {/* <input className="cart-cant" type="number" onChange={updateCart} value={cant} ></input> */}
       <span className="cart-span">{name}</span>
       <div className="cart-span">${price}</div>
-      <button onClick={deleteItemToCart} className="item-delete">BORRAR</button>
+      <button onClick={deleteItemToCart} className="item-delete">
+      <span class="material-symbols-outlined">delete</span>
+      </button>
     </div>
   );
 };
