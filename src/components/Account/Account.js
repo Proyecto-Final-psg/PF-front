@@ -24,7 +24,7 @@ const Account = () => {
     dispatch(getOrderDetails(usr[0].user_id))
     setTimeout(() => {
       setLoading(false)
-    }, 600)
+    }, 500)
     return () => {
 
     };
@@ -36,7 +36,7 @@ const Account = () => {
 
       {loading &&
         <div className='cmp-CardDetails-loading-container-profile'>
-          < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+          < img className='cmp-Account-loading-img' src={LoadingImg} alt="my-gif" />
         </div>}
       {
         !loading && <div className="account">
