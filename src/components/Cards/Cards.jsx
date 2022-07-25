@@ -2,7 +2,7 @@ import Card from "../Card/Card"
 
 export function Cards({ items }) {
     return <div className="grid">
-        {items.length <= 0 && <p>No items finded.</p>}
+        {items.length <= 0 && <p>No items found.</p>}
         {items && items.map(p => <Card
             key={p.id}
             name={p.name}

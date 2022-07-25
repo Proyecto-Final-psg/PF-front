@@ -1,6 +1,6 @@
 
 export const validator = (input) => {
-
+//console.log(input)
     let cond_name = /^[aA-zZ 0-9 _&-]*$/
     let cond_email = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
     let cond_description = /^[a-zA-Z 0-9\u00C0-\u00FF &@&!&¡&?&¿&()&=&+&/&:&;&_&,&.&%&-]*$/;
@@ -34,6 +34,8 @@ export const validator = (input) => {
             error.review = 'Description is required'
         }
     }
+
+    if (input.price === "0" ) error.price = "Price can't be null"
 
     if (cond_name.test(input.type) === false) error.type = 'No symbols allowed'
 

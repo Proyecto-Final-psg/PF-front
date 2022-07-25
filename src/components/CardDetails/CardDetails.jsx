@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getProductById, getReviews, addToCart } from '../../Redux/Actions'
@@ -12,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import swal from 'sweetalert'
 
 export function CardDetails() {
     const { id } = useParams()
@@ -21,6 +23,9 @@ export function CardDetails() {
     const reviews = useSelector(store => store.reviews)
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
+    let user = userRedux.roll === "user" 
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
+
     const [loading, setLoading] = useState(true)
     useEffect(() => {
 
@@ -37,6 +42,50 @@ export function CardDetails() {
     const addCart = () => {
         dispatch(addToCart(product.id, product.name, product.price,))
     }
+
+    function handleClickStock(e){
+        e.preventDefault()
+        if(!admin && !user){
+            swal({
+                title: `Sure! Sign in and we'll let you know when this item is available.`,
+               // text: "Doing this, the user will be unable to login to Weedical",
+                icon: "info",
+                buttons: [
+                  'Cancel',
+                  'Sign In'
+                ],
+                dangerMode: true})
+            .then(
+                function (isConfirm) {
+                    if (isConfirm) {
+                        loginWithRedirect()
+                    } 
+                  }
+            )
+        }else{
+            swal({
+            title: `To confirm:`,
+            text: "We'll notify you when this item is available.",
+            icon: "info",
+            buttons: [
+              'Cancel',
+              'Yes, Notify Me'
+            ],
+            dangerMode: true,
+          }).then(function (isConfirm) {
+            if (isConfirm) {
+              swal({
+                title: `We let you know when this item is available!`,
+                icon: 'success'
+              }).then(function () {
+                // suscription to newsletter
+              });
+            } 
+          })
+        }
+        
+    }
+
 
     if(!product.id || loading){
         return(
@@ -86,15 +135,18 @@ export function CardDetails() {
                     </div>}
 <br></br>
                     <p className='name-product-detail'>{product.name}</p>
-                    <p className='name-product-detail'>$ {product.price}</p>
+
+                    <p className='name-product-detail'>$ {product.price}
+                    <span className='span-thc-detail'>{product.thc ? `THC: ${product.thc}.mg` : `THC: 0.mg`}</span>
+                    <span className='span-cbd-detail'>{product.cbd ? `CBD: ${product.cbd}.mg` : `CBD: 0.mg`}</span></p>
+
                     <hr className='hr-product-detail'/>
                     {product && product.description ? <h5>{product.description}</h5> : <p>No description added</p>}
 
                     <div className={`stock-detail ${product.stock === 0 ? 'none' : (product.stock < 10 ? 'low' : '')}`}>{product.stock === 0 ? 'No stock' : (product.stock < 10 ? 'Low stock' : 'Stock')}</div>
-                    { product.stock === 0 && <div>let me know </div>}
 
                     {
-                        product.stock > 0 &&
+                        product.stock > 0 ?
                         <button onClick={addCart} className='button button-add-cart-detail'>
                             <div className="svg-wrapper-1">
                                 <div className="svg-wrapper">
@@ -103,6 +155,8 @@ export function CardDetails() {
                             </div>
                             <span>Add</span>
                         </button>
+                        :
+                        <button className='button' onClick={handleClickStock}>Notify Me</button> 
                     }
 
                 </div>
