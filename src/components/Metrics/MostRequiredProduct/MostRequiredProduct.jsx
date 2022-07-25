@@ -40,7 +40,7 @@ export function MostRequiredProduct() {
 
 
   const [filterView, setFilterView] = useState(10)
-  const [topSells, setTopSells] = useState(result)
+  const [topSells, setTopSells] = useState(result.sort((b,a)=> a.quantity - b.quantity))
   const dispatch = useDispatch()
   // let names = [...new Set(orderItems.map(i => i.product))]
   useEffect(() => {
@@ -53,13 +53,17 @@ export function MostRequiredProduct() {
 
 
   // result = result.slice(0,10)
-  result.sort((b, a) => a.quantity - b.quantity); // b - a for reverse sort
+  // result.sort((b, a) => a.quantity - b.quantity); // b - a for reverse sort
 
-  useEffect(()=>{
-    if(filterView !== 'all'){
-      result = result.slice(0,filterView)
-    }
-  },[filterView])
+  // useEffect(()=>{
+  //   result = topSells.sort((b,a) => a.quantity - b.quantity)
+  //   if(filterView !== 'all'){
+  //     // console.log('algunos')
+  //     result = topSells.slice(0,filterView)
+  //   }
+  //   setTopSells(result)
+  //   // console.log('result', result)
+  // },[filterView])
 
 
   const options = {
@@ -105,19 +109,22 @@ export function MostRequiredProduct() {
     //  console.log('cambió a',filterView)
     //  if(!filterView) setTopSells(result.slice(0,10))
 
-    if(filterView !== 'all')
-      result = result.slice(0,filterView)
-    else{
-      result = orderItems.reduce((acc, curr) => {
-        const index = acc.findIndex(item => item.product === curr.product)
-        index > -1 ? acc[index].quantity += curr.quantity : acc.push({
-          product: curr.product,
-          quantity: curr.quantity
-        })
-        return acc
-      }, [])
-
-    }
+    if(filterView !== 'all'){
+      result = result.slice(0,filterView)}
+      else{
+        
+        result = orderItems.reduce((acc, curr) => {
+          const index = acc.findIndex(item => item.product === curr.product)
+          index > -1 ? acc[index].quantity += curr.quantity : acc.push({
+            product: curr.product,
+            quantity: curr.quantity
+          })
+          
+          return acc
+        }, [])
+        
+      }
+      result = result.sort((b,a) => a.quantity - b.quantity)
       setTopSells(result)
   },[filterView])
 
