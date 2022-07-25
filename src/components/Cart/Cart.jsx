@@ -15,9 +15,9 @@ const Cart = () => {
   return (
     <div className="cart">
       <div className="cart-info">
-        <span >Unidades</span>
-        <span className="cart-span">Producto</span>
-        <span className="cart-span">Precio</span>
+        <span >Units</span>
+        <span className="cart-span">Product</span>
+        <span className="cart-span">Price</span>
         <span className="cart-info1"></span>
       </div>
       {allCartItems && allCartItems.map(item =>
@@ -33,15 +33,15 @@ const Cart = () => {
       )}
 
       {(allCartItems.length === 0) && <button className="cart-purchase">
-        Carrito vacío
+        Empty cart
       </button>}
 
       {(allCartItems.length > 1) && <Link className="cart-purchase" to='/order'>
-        Realizar compra por ${(allCartItems.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })}
+        Make purchase for ${(allCartItems.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })}
       </Link>}
 
       {(allCartItems.length === 1) && <Link className="cart-purchase" to='/order'>
-        Realizar compra por ${allCartItems[0].price * allCartItems[0].cant}
+        Make purchase for ${allCartItems[0].price * allCartItems[0].cant}
       </Link>}
 
     </div>

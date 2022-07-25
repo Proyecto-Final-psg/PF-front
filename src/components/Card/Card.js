@@ -24,7 +24,7 @@ const Card = ({ name, id, description, img, price, stock, review, setModal, setL
       position: "center", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
       style: {
-        background: "linear-gradient(to right, #83c78a, #417a4b)",
+        background: "#438A00",
         padding: "20px"
       },
       onClick: function(){} // Callback after click
