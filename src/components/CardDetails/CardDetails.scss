@@ -9,15 +9,21 @@
     box-shadow: -1px 1px 10px 5px rgba(0, 0, 0, 0.123);
 }
 
-.cmp-CardDetails-loading-container {
+.cmp-CardDetails-loading-container-1 {
     display: flex;
     justify-content: center;
     height: 700px;
     align-items: center;
 }
 
-.cmp-CardDetails-container {
+.cmp-CardDetails-container-1 {
     min-height: 80vh;
+    margin-top: 37px;
+    height: 500px;
+    position: absolute;
+    left: 35%;
+    bottom: 34%;
+    transform: translate(50px, 50px);
 }
 
 .cmp-CardDetails-loading-img {

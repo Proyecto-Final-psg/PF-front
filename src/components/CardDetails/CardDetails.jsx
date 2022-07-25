@@ -89,8 +89,8 @@ export function CardDetails() {
 
     if(!product.id || loading){
         return(
-            <div className='cmp-CardDetails-loading-container'>
-                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+            <div className='cmp-CardDetails-loading-container-1'>
+                    < img className='cmp-CardDetails-loading-img-1' src={LoadingImg} alt="my-gif" />
               </div>
         )
     }
