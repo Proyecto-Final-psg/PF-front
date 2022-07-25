@@ -7,9 +7,7 @@ import { faScrewdriverWrench, faUser, faSignal, faArrowRightFromBracket, faCanna
 import Logo from './logo2.png'
 import Carrito from './carrito.png'
 import noImage from '../.././assets/no_user_image.jpeg'
-import Profile from '../Profile/Profile'
 import './Nav.scss'
-
 const Nav = () => {
     const [nav, setNav] = useState('')
     const userRedux = useSelector(state => state.user[0])
@@ -24,7 +22,6 @@ const Nav = () => {
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     return (
         <div>
-            <Profile />
             <nav className="navbar is-light is-fixed-top nav" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand logo_container">
                     <Link className="brand" to="/home">
@@ -35,8 +32,6 @@ const Nav = () => {
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                     </div>
-
-
                     <div className={`menu-resp ${nav}`}>
                         <div className="navbar-dropdown sidebar">
                             {

@@ -27,13 +27,14 @@ import HistoryShops from "../Account/HistoryShops/HistoryShops";
 import Favourites from "../Account/Favourites/Favourites";
 import { About } from "../About/About";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllUsers } from "../../Redux/Actions";
 import OrdenCompraDetail from "../OrdenCompraDetail/OrdenCompraDetail";
+import Profile from "../Profile/Profile";
+
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
   const dispatch = useDispatch()
-  const userRedux = useSelector(state => state.user)
   useEffect(() => {
     dispatch(getAllUsers())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,9 +55,8 @@ const Home = () => {
   }
   return (
     <div>
-      {console.log(userRedux)}
-     {false &&<div>User Block</div>}
-      {true && <div className="cmp-hero">
+      <Profile />
+      <div className="cmp-hero">
         <Nav />
         <Routes>
           <Route path='/home' element={<PrincipalPage />} exact />
@@ -82,7 +82,6 @@ const Home = () => {
             <Route path='top-customers' element={<TopCustomers />} />
             <Route path='admin-orders' element={<Orders />} />
             <Route path='order-detailed/:id' element={<OrderDetailed />} />
-
           </Route>
         </Routes>
 
@@ -103,7 +102,7 @@ const Home = () => {
         </button>
 
         <Footer />
-      </div>}
+      </div>
     </div>
 
   );

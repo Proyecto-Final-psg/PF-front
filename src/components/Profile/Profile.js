@@ -2,19 +2,15 @@ import './Profile.scss'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { registerUser } from '../../Redux/Actions'
+import { registerUser, addGuest } from '../../Redux/Actions'
 import { API_URL } from '../../Redux/Constants'
-import axios from 'axios'
-// import { faMehRollingEyes } from '@fortawesome/free-regular-svg-icons'
-// import { useSearchParams } from 'react-router-dom'
-
+// import axios from 'axios'
 const Profile = () => {
-    const { user, getAccessTokenSilently } = useAuth0()
+    const { user, getAccessTokenSilently, logout } = useAuth0()
     const userRedux = useSelector(state => state.user[0])
     const [roll, setRoll] = useState(userRedux.roll)
     const dispatch = useDispatch()
     // const [tokenAuth0, setToken] = useState("")
-
     useEffect(() => {
         if (user) {
             let nuevo = {
@@ -41,6 +37,19 @@ const Profile = () => {
                     }
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
+                }
+                if (roll.block == true) {
+                    alert("usted esta blokeado")
+                    logout({ returnTo: window.location.origin })
+                    let guest = [
+                        {
+                            email: "guest",
+                            name: "guest",
+                            roll: "guest"
+                        }
+                    ]
+                    dispatch(addGuest(guest))
+                    return
                 }
             }
         }
