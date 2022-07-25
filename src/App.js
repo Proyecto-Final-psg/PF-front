@@ -7,7 +7,6 @@ import 'bulma/css/bulma.min.css'
 export default function App() {
   return (
     <HashRouter>
-      
       <Routes>
         <Route path='/' element={<Landing />} exact />
         <Route path='/*' element={<Home />} exact />
