@@ -116,65 +116,68 @@ export function TopCustomers() {
       </div>}
     <div>
       <div className="lower-10" style={{ width: "100%" }}>
-        <table className="table is-bordered is-narrow shadow">
-          <thead>
-            <tr>
-              <th><abbr title="Top users">Name</abbr></th>
-              <th><abbr title="Totals">Totals</abbr></th>
-              <th><abbr title="Send Discounts">Send discount coupon</abbr></th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              obj2 && obj2.map(o => {
-                num = num + 1
-                return <tr key={o.username}>
-                  <td >
-                    <div className="position">
-                      {num === 1 ? <img src={placeOne} alt="1st place" />
-                        :
-                        num === 2 ? <img src={placeTwo} alt="2st place" />
+        <div className="container-top">
+          <table className="table is-bordered is-narrow shadow">
+            <thead>
+              <tr>
+                <th><abbr title="Top users">Name</abbr></th>
+                <th><abbr title="Totals">Totals</abbr></th>
+                <th><abbr title="Send Discounts">Send discount coupon</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                obj2 && obj2.map(o => {
+                  num = num + 1
+                  return <tr key={o.username}>
+                    <td >
+                      <div className="position">
+                        {num === 1 ? <img src={placeOne} alt="1st place" />
                           :
-                          num === 3 ? <img src={placeThree} alt="3st place" />
+                          num === 2 ? <img src={placeTwo} alt="2st place" />
                             :
-                            null
-                      }
-                      {o.username}
-                    </div>
-                  </td>
-                  <td style={{ fontWeight: "bold" }}>${o.total}</td>
+                            num === 3 ? <img src={placeThree} alt="3st place" />
+                              :
+                              null
+                        }
+                        {o.username}
+                      </div>
+                    </td>
+                    <td style={{ fontWeight: "bold" }}>${o.total}</td>
 
-                  <td>
-                    <div >
-                      <form onSubmit={sendEmail} className="order-form">
-                        <div>
-                          <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
+                    <td>
+                      <div >
+                        <form onSubmit={sendEmail} className="order-form">
+                          <div>
+                            <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
 
-                        </div>
+                          </div>
 
-                        <div>
-                          <button className="discoun-button" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }}>
-                            <div className="svg-wrapper-1">
-                              <div className="svg-wrapper">
-                                <span id="icon" className="material-symbols-outlined">sell</span>
+                          <div>
+                            <button className="discoun-button" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }}>
+                              <div className="svg-wrapper-1">
+                                <div className="svg-wrapper">
+                                  <span id="icon" className="material-symbols-outlined">sell</span>
+                                </div>
                               </div>
-                            </div>
-                            <span id="sp">Send</span>
-                          </button>
-                        </div>
-                        <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
-                        <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                        <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
-                      </form>
-                    </div>
-                  </td>
-                </tr>
-              })
+                              <span id="sp">Send</span>
+                            </button>
+                          </div>
+                          <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
+                          <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
+                          <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                })
 
-            }
-          </tbody>
-        </table>
+              }
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
+
   </div>
 }

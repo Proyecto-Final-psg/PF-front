@@ -116,3 +116,8 @@ table thead tr abbr {
     background-color: green($color: white);
 }
 
+@media (max-width: 525px) {
+    .menu  {
+        height: auto;
+    }
+}

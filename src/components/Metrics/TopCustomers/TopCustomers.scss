@@ -8,6 +8,21 @@
     align-items: center;
 }
 /* From uiverse.io by @adamgiebl */
+.container-top{
+    width: 100vw;
+    overflow-x: auto;
+}
+
+.container-top::-webkit-scrollbar-thumb {
+    background-color: #2B5800;
+    border-radius: 20px;
+    border: 1px solid #f1f2f3;
+}
+.container-top::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+
 .discoun-button {
     font-family: inherit;
     font-size: 15px;

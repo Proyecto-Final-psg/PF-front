@@ -88,20 +88,21 @@ export function UserCrud() {
         <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} />
       </form>
 
-      
+
 
       <div className="lower-10" style={{ width: "100%" }}>
-        <table className="table shadow">
-          <thead>
-            <tr>
-              {/* <th><abbr title="User Picture" >*</abbr></th> */}
-              <th><abbr title="User Name">User Name</abbr></th>
-              <th><abbr title="User Email">User Email</abbr></th>
-              <th><abbr title="Action">Action</abbr></th>
-            </tr>
-          </thead>
-          <tbody>
-          {blockUsers && blockUsers.map(u => {
+        <div className="container-top">
+          <table className="table shadow">
+            <thead>
+              <tr>
+                {/* <th><abbr title="User Picture" >*</abbr></th> */}
+                <th><abbr title="User Name">User Name</abbr></th>
+                <th><abbr title="User Email">User Email</abbr></th>
+                <th><abbr title="Action">Action</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+              {blockUsers && blockUsers.map(u => {
                 return <tr key={u.user_id} className={u.block ? 'red' : ''}>
                   {/* <td style={{ backgroundImage: `url('${u.user_img}')`}}></td> */}
                   <td style={{ width: "auto" }} key={u.id}>{u.user_name}</td>
@@ -116,8 +117,9 @@ export function UserCrud() {
                   </td>
                 </tr>
               })}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
 
 
