@@ -15,13 +15,11 @@ export const validator = (input) => {
     if (input.state === '') error.state = 'State is required'
     if (input.zipCode === '') error.zipCode = 'Zip Code is required'
 
-    if (input.email) {
-        if (cond_email.test(input.email) === false) {
-            error.email = 'Must be a valid email'
-        }
-        else if (input.email === '')
-            error.email = 'Email is required'
-    }
+   
+    if (cond_email.test(input.email) === false) error.email = 'Must be a valid email'
+       
+    if (input.email === '')  error.email = 'Email is required'
+    
 
     if (input.description === '') error.description = 'Description is required'
     if (cond_description.test(input.description) === false) error.description = 'No symbols allowed'
