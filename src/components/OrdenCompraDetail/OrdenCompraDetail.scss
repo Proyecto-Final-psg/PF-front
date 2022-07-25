@@ -70,7 +70,7 @@
 
 @media (max-width: 700px) {
     .content {
-        position: absolute;
+        position: relative;
         top: 6px;
         left: 276px;
     }
@@ -92,15 +92,15 @@
 
 .cmp-detalle-button-pay {
     margin-top: 30px;
-    width: 410px;
+    width: 310px;
     display: flex;
     justify-content: space-around;
     cursor: pointer;
-
     @include respond-to('medium') {
         position: absolute;
         left: 132px;
-        bottom: 212px
+        bottom: 200px;
+
     }
 }
 

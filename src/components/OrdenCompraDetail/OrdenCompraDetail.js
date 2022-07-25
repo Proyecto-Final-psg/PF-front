@@ -2,6 +2,7 @@ import './OrdenCompraDetail.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import logo from './logo.png'
+import { NavLink } from 'react-router-dom'
 import premio from './premios.png'
 const OrdenCompraDetail = () => {
     const { id } = useParams()
@@ -39,38 +40,40 @@ const OrdenCompraDetail = () => {
                     {order.arrayItems.map((e, i) => {
                         total += e.price * e.quantity
                         return (
-                            <div key={i} className="card card-contenedor">
-                                <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
-                                <div className="card-image">
-                                    <figure className="cmp-ordendetail-container-img">
-                                        <img src={e.img} alt="Placeholder" />
-                                    </figure>
-                                </div>
+                            <NavLink to={`/products/${e.id}`}>
+                                <div key={i} className="card card-contenedor">
+                                    <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
+                                    <div className="card-image">
+                                        <figure className="cmp-ordendetail-container-img">
+                                            <img src={e.img} alt="Placeholder" />
+                                        </figure>
+                                    </div>
 
-                                <div className="card-content">
+                                    <div className="card-content">
 
-                                    <div className="media">
-                                        <div className="media-content">
-                                            <p className="title is-4">{e.name}</p>
-                                            <p className="subtitle is-6">{`Quantity:  ${e.quantity}`}</p>
+                                        <div className="media">
+                                            <div className="media-content">
+                                                <p className="title is-4">{e.name}</p>
+                                                <p className="subtitle is-6">{`Quantity:  ${e.quantity}`}</p>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="content">
-                                        <span className="tag is-link ">
-                                            {`Thc:  ${e.thc}`}
-                                        </span>
-                                        <span className="tag is-warning ">
-                                            {`Cbs:  ${e.cbd}`}
-                                        </span>
-                                        <span className="tag is-success">
-                                            {` $ ${e.price * e.quantity}`}
-                                        </span>
-                                        <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" />
-                                    </div>
+                                        <div className="content">
+                                            <span className="tag is-link ">
+                                                {`Thc:  ${e.thc}`}
+                                            </span>
+                                            <span className="tag is-warning ">
+                                                {`Cbs:  ${e.cbd}`}
+                                            </span>
+                                            <span className="tag is-success">
+                                                {` $ ${e.price * e.quantity}`}
+                                            </span>
+                                            {/* <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" /> */}
+                                        </div>
 
+                                    </div>
                                 </div>
-                            </div>
+                            </NavLink>
                         )
                     })}
                 </div >
