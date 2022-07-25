@@ -95,7 +95,6 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                             {localState.categories?.map((categ, i) => <button className='btn_category' key={i} name={categ} onClick={(e) => handleDeleteCategory(e)}>{categ}</button>)}
                         </div>
                     </div>
-                    {console.log(error)}
                     {
                         Object.keys(error).length || localState.categories.length === 0 ?
                             <button className='btn_not_create' disabled>{button}</button>
