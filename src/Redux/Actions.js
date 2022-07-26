@@ -442,7 +442,7 @@ export function updateOrderStatus(id, status){
 // }
 
 export function mailer(userid, order, status, address, arrayItems){
-    return fetch(`http://localhost:8081/mail`,{
+    return fetch(`${API_URL}/mail`,{
         method:"POST",
         body: JSON.stringify({userid, order, status, address, arrayItems}),
         headers: {
