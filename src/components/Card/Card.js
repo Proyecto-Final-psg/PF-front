@@ -48,18 +48,15 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
-      <NavLink to={`/products/${id}`} className='link-card'>
+      <NavLink to={`/products/${id}`}>
 
         <div className="card-details">
           <p className="text-title">{name}</p>
           {loading && <div className="card-img-loading">
             <img className="card-img" src={LoadingImg} alt="LoadingImg" />
           </div>}
-          {!loading && 
-          <div className="card-img-div-container">
-            <div className="card-img-div">
-              <img className="card-img" src={img} alt='product img' />
-            </div>
+          {!loading && <div className="card-img">
+            <img className="card-img" src={img} alt={description} />
           </div>}
           <p className="text-body">{description}</p>
           <h2 className="card-price" > ${price}</h2>
