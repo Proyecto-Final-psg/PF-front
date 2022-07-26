@@ -4,6 +4,7 @@ import { addReview } from '../../Redux/Actions';
 import { validator } from '../CreateProduct/helpers/Validator';
 import './ModalReview.scss'
 import StarRating from './StarRating/StarRating';
+import swal from 'sweetalert'
 //import { validate } from './Validate';
 
 const ModalReview = ({modal, setModal, id}) => {
@@ -48,6 +49,11 @@ const ModalReview = ({modal, setModal, id}) => {
       review: ''
     })
     setModal(false)
+    swal({
+      title: `Review created succesfully!`,
+      icon: "success",
+      button: 'Ok'
+    })
   }
 
   const handleCancel = (e) => {

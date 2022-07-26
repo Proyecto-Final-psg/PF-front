@@ -19,8 +19,8 @@ export const validator = (input) => {
     if (input.email && cond_email.test(input.email) === false) error.email = 'Must be a valid Email'
     
     if (input.description === '') error.description = 'Description is required'
+    if (cond_description.test(input.description) === false) error.description = 'No symbols allowed'
    
-
     if (input.review) {
         if (cond_description.test(input.review) === false) {
             error.review = 'Some special characters are not allowed'
