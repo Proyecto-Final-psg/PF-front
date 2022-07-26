@@ -3,6 +3,7 @@ import './carousel.css'
 import one from '../../assets/1.jpg'
 import two from '../../assets/2.jpg'
 import three from '../../assets/3.jpg'
+import four from '../../assets/4.jpg'
 
 function Carousel(){
    
@@ -16,6 +17,9 @@ function Carousel(){
       </div>
       <div className="carousel-item">
         <img src={three} className="d-block w-100" alt="..." />
+      </div>
+      <div className="carousel-item">
+        <img src={four} className="d-block w-100" alt="..." />
       </div>
     </div>
     <button id='carousel-btn' className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">

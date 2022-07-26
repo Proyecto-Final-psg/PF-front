@@ -105,15 +105,14 @@ export function MostRequiredProduct() {
     setFilterView(e.target.value)
   }
 
-  useEffect(()=>{
-    //  console.log('cambió a',filterView)
-    //  if(!filterView) setTopSells(result.slice(0,10))
+  let aux = null;
 
+  function filter(){
     if(filterView !== 'all'){
-      result = result.slice(0,filterView)}
+      aux = result.slice(0,filterView)}
       else{
         
-        result = orderItems.reduce((acc, curr) => {
+        aux = orderItems.reduce((acc, curr) => {
           const index = acc.findIndex(item => item.product === curr.product)
           index > -1 ? acc[index].quantity += curr.quantity : acc.push({
             product: curr.product,
@@ -124,19 +123,23 @@ export function MostRequiredProduct() {
         }, [])
         
       }
-      result = result.sort((b,a) => a.quantity - b.quantity)
-      setTopSells(result)
-  },[filterView])
-
+      aux.sort((b,a) => a.quantity - b.quantity)
+      setTopSells(aux)
+  }
+ 
   return <div className="container datas">
 
     <h1 className="mt-5 custom-title">Best selling products</h1>
     <span>Showing</span>
-    <select className="select" name="" id="" onChange={filterSellingView}>
-      <option value="all">All Products</option>
-      <option value="10" selected>Top 10</option>
-      <option value="20">Top 20</option>
-    </select>
+    <div className="best-selling">
+      <select className="select" name="" id="" onChange={filterSellingView}>
+        <option value="all">All Products</option>
+        <option value="10" selected>Top 10</option>
+        <option value="20">Top 20</option>
+      </select>
+      <button className="ml-4 btn btn-success" onClick={filter}>Filter</button>
+
+    </div>
 
     <div className="lower-10" style={{ width: "100%" }}>
 

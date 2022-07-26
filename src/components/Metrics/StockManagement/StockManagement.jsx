@@ -91,15 +91,16 @@ export function StockManagement() {
 
   return (
     <div className="container datas">
-      {loading &&
-        <div className='cmp-admin-loading-container'>
-          < img className='cmp-CardDetails-loading-img-2' src={LoadingImg} alt="my-gif" />
-        </div>}
-      {!loading &&
-        <div className="cmp-stockManagement-container"> 
+     
           <h1 className="mt-5 custom-title">Stock Management</h1>
+        <div className="cmp-stockManagement-container"> 
           {/* <hr /> */}
 
+          {loading &&
+        <div className='loading-chart'>
+          < img className='' src={LoadingImg} alt="my-gif" />
+        </div>}
+      {!loading &&
           <div className="stock-mgm">
             <table className="table is-bordered is-narrow shadow">
               <thead>
@@ -153,7 +154,7 @@ export function StockManagement() {
             <div className="circular-chart">
               <Pie data={data} />
             </div>
-          </div>
-        </div>}
+          </div>}
+        </div>
     </div>)
 }
