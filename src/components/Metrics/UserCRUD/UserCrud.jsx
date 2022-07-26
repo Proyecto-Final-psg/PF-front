@@ -7,8 +7,15 @@ import './UserCrud.scss'
 import { API_URL } from "../../../Redux/Constants"
 import LoadingImg from '../../../assets/Loading.gif'
 import swal from 'sweetalert'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 export function UserCrud() {
+  
+  useEffect(() => {
+      Aos.init({ once: true })
+  }, [])
+
   const dispatch = useDispatch()
   const users = useSelector(store => store.users)
   const [search, setSearch] = useState('')
@@ -92,7 +99,7 @@ export function UserCrud() {
 
       <div className="lower-10" style={{ width: "100%" }}>
         <div className="container-top">
-          <table className="table shadow">
+          <table className="table shadow" data-aos='fade-up'>
             <thead>
               <tr>
                 {/* <th><abbr title="User Picture" >*</abbr></th> */}

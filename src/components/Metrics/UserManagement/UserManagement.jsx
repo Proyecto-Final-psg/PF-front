@@ -6,9 +6,17 @@ import admin from '../../../assets/admin.png'
 import '../Metrics.scss'
 import swal from 'sweetalert'
 import { useState } from 'react'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 
 
 export function UserManagement() {
+  
+  useEffect(() => {
+      Aos.init({ once: true })
+  }, [])
+
   const usersprueba = useSelector(store => store.users)
   const [userRol, setUserRol] = useState(usersprueba)
   const dispatch = useDispatch()
@@ -61,7 +69,7 @@ export function UserManagement() {
     <span>To modify a user rol, just press into the user-rol icon that you want to change</span>
     <div className="lower-10" style={{ width: "100%" }}>
       <div className="container-top">
-        <table className="table shadow">
+        <table className="table shadow" data-aos='fade-up'>
           <thead>
             <tr>
               {/* <th><abbr title="User Picture" >*</abbr></th> */}

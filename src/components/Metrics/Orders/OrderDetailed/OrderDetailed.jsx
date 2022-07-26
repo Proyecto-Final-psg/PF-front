@@ -95,14 +95,15 @@ export function OrderDetailed() {
 
         <div className="space-modal">
 
-            <Modal
+            <Modal id="modal-order-detail"
                 isOpen={modal}
                 style={ModalStyleOrders}
                 ariaHideApp={false}
             >
-                <div className="modala">
+                <div className="modal-order">
                     {/* <form> */}
                     <h2 >Select the new order status</h2>
+                    <span class="material-symbols-outlined">list_alt</span>
                     <select style={{ margin: "20px" }} name="" id="" onChange={orderStatusState}>
                         <option value="completed" selected disabled='disabled'>Select</option>
                         <option value="completed">Completed</option>
@@ -110,7 +111,7 @@ export function OrderDetailed() {
                         <option value="canceled">Canceled</option>
                     </select>
                     <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success">Ok</button>
-                    <button onClick={() => setModal(false)} className="btn btn-basic">Cancel</button>
+                    <button onClick={() => setModal(false)} className="m-2 btn btn-basic">Cancel</button>
                     {/* </form> */}
 
                 </div>
@@ -127,7 +128,6 @@ export function OrderDetailed() {
                         <td><abbr title="User name">User</abbr></td>
                         <td colSpan='3'>
                             <abbr title="Products">Products</abbr>
-
                         </td>
                     </tr>
                     <tr>

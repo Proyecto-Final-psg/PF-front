@@ -71,7 +71,7 @@ export const ModalStyleOrders = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "auto",
+    width: "fit-content",
     flexDirection: "column",
     fontSize: "20px",
 
@@ -81,7 +81,7 @@ export const ModalStyleOrders = {
     WebkitOverflowScrolling: 'touch',
     borderRadius: '20px',
     outline: 'none',
-    padding: '20px 0px 20px 0px',
+    padding: '20px',
 
   }
 }
