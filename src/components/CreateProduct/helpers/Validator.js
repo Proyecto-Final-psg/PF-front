@@ -19,7 +19,7 @@ export const validator = (input) => {
     if (input.email && cond_email.test(input.email) === false) error.email = 'Must be a valid Email'
     
     if (input.description === '') error.description = 'Description is required'
-    if (cond_description.test(input.description) === false) error.description = 'No symbols allowed'
+   
 
     if (input.review) {
         if (cond_description.test(input.review) === false) {
@@ -30,7 +30,7 @@ export const validator = (input) => {
         }
     }
 
-    if (input.price === "0" ) error.price = "Price can't be null"
+    if (input.price === "0" || input.price === "") error.price = "Price can't be null"
 
     if (cond_name.test(input.type) === false) error.type = 'No symbols allowed'
 

@@ -28,8 +28,8 @@
     color: black;
     height: 100%;
     gap: .5em;
-    display: grid;
-    place-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .card-button {
@@ -122,6 +122,10 @@
     filter: blur(10px);
 }
 
+.link-card{
+    width: 100%;
+}
+
 /*Text*/
 .text-title {
     margin-top: 10px;
@@ -159,11 +163,31 @@
     opacity: 1;
 }
 
-.card-img {
-    padding-top: 5px;
-    width: 100%;
-    transition: 1s;
+.card-img-div-container{  
+    width: 90%;
+    height: 55vh;
+    overflow: hidden;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+.card-img-div{
+    height: 80%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+    .card-img {
+        height: 42vh;
+        width: auto;
+        transition: 1s;
+
+    }
+
 
 .card-price {
     position: absolute;
@@ -236,14 +260,5 @@
         opacity: 1;
     }
 
-    .card-img {
-
-        margin-top: 20px;
-        margin-left: 5%;
-        padding: auto;
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-
-    }
+    
 }

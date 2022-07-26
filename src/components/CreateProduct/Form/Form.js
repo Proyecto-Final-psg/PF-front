@@ -12,27 +12,27 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                 <div className='left-container-create'>
                     <div className='input_container'>
                         <label htmlFor='name'><span>*</span>Name: </label>
-                        <input required className={error.name ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="text" value={localState.name} placeholder='CBD-Aceite n12...' name='name' onChange={handleInputChange} autoComplete='off' />
+                        <input required className={error.name ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="text" value={localState.name}  name='name' onChange={handleInputChange} autoComplete='off' />
                         {error.name && <p className="help">{error.name}</p>}
                     </div>
                     <div className='input_container'>
                         <label htmlFor='type'><span>*</span>Type: </label>
-                        <input required className={error.type ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="text" value={localState.type} placeholder='Oil...' name='type' onChange={handleInputChange} autoComplete='off' />
+                        <input required className={error.type ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="text" value={localState.type}  name='type' onChange={handleInputChange} autoComplete='off' />
                         {error.type && <p className="help">{error.type}</p>}
                     </div>
                     <div className='input_container'>
-                        <textarea required className={error.description ? 'textarea is-hovered is-danger' : 'textarea is-hovered is-success'} name='description' value={localState.description} type="text" placeholder="Description..." onChange={handleInputChange} />
+                        <textarea required className={error.description ? 'textarea is-hovered is-danger' : 'textarea is-hovered is-success'} name='description' value={localState.description} type="text" onChange={handleInputChange} />
                         {error.description && <p className="help">{error.description}</p>}
                     </div>
 
                     <div>
                         <div className='input_container'>
                             <label htmlFor='stock'>Stock: </label>
-                            <input required className='input is-hovered is-success' type="number" value={localState.stock} placeholder='stock' min="0" name='stock' onChange={handleInputChange} />
+                            <input required className='input is-hovered is-success' type="number" value={localState.stock}  min="0" name='stock' onChange={handleInputChange} />
                         </div>
                         <div className='input_container'>
                             <label htmlFor='price'><span>*</span>Price: </label>
-                            <input required className={error.price ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="number" value={localState.price} placeholder='0' min='0' name='price' onChange={handleInputChange} />
+                            <input required className={error.price ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="number" value={localState.price}  min='0' name='price' onChange={handleInputChange} />
                             {error.price && <p className="help">{error.price}</p>}
                         </div>
                     </div>
@@ -40,7 +40,7 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                         <div className='input_container'>
                             <label htmlFor='thc'><span>*</span>Thc:</label>
                             <div className='input-mg-thc'>
-                                <input className={error.thc_cbd ? 'input is-hovered is-danger' : 'input is-hovered is-success'} min="0" max="100" type="number" value={localState.thc} placeholder='0' name='thc' step='0.1' onChange={handleInputChange} />
+                                <input className={error.thc_cbd ? 'input is-hovered is-danger' : 'input is-hovered is-success'} min="0" max="100" type="number" value={localState.thc}  name='thc' step='0.1' onChange={handleInputChange} />
                                 .mg
                             </div>
 
@@ -49,7 +49,7 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                         <div className='input_container'>
                             <label htmlFor='cbd' ><span>*</span>Cbd:</label>
                             <div className='input-mg-thc'>
-                                <input className={error.thc_cbd ? 'input is-hovered is-danger' : 'input is-hovered is-success'} min="0" max="100" type="number" value={localState.cbd} placeholder='0' name='cbd' step='0.1' onChange={handleInputChange} />
+                                <input className={error.thc_cbd ? 'input is-hovered is-danger' : 'input is-hovered is-success'} min="0" max="100" type="number" value={localState.cbd} name='cbd' step='0.1' onChange={handleInputChange} />
                                 .mg
                             </div>
                             {error.thc_cbd && <p className="help">{error.thc_cbd}</p>}
