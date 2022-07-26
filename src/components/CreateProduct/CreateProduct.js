@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
@@ -7,11 +8,13 @@ import { validator } from './helpers/Validator';
 import Form from './Form/Form';
 import Mockup from './Mockup/Mockup';
 import ButtonBack from './ButtonBack/ButtonBack';
+import swal from 'sweetalert'
 import './CreateProduct.scss'
 
 const CreateProduct = () => {
-    
+
     const state = useSelector(state => state.categories);
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const [newCategory, setNewCategory] = useState('')
     const [createProd, setCreateProd] = useState({
@@ -25,7 +28,7 @@ const CreateProduct = () => {
         cbd: '',
         categories: []
     })
-    
+
     const [error, setError] = useState({})
 
     const handleInputChange = (e) => {
@@ -72,7 +75,15 @@ const CreateProduct = () => {
                 cbd: '',
                 categories: []
             })
-            
+        swal({
+            title: `Product created succesfully!`,
+            icon: "success",
+            button: 'Ok'
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                navigate('/home')
+            }
+        })
     }
 
     function handleDeleteCategory(e) {
@@ -86,9 +97,9 @@ const CreateProduct = () => {
     return (
         <>
             <div className='create'>
-                <ButtonBack button={'Create product'}/>
+                <ButtonBack button={'Create product'} />
                 <div className='form-create'>
-                    <Form 
+                    <Form
                         handleInputChange={handleInputChange}
                         onSubmit={handleSubmit}
                         category={handleSelectCategories}
@@ -101,7 +112,7 @@ const CreateProduct = () => {
                         button={'Create'}
                         handleDeleteCategory={handleDeleteCategory}
                     />
-                    <Mockup 
+                    <Mockup
                         localState={createProd}
                     />
                 </div>
