@@ -39,7 +39,7 @@ const Profile = () => {
                     setRoll(userRedux)
                 }
                 if (roll.block == true) {
-                    alert("usted esta blokeado")
+                    alert("User Block")
                     logout({ returnTo: window.location.origin })
                     let guest = [
                         {
