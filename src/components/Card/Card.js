@@ -11,15 +11,14 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setLoading(false)
-    // }, 600)
-    // return () => {
-    //   setLoading(true)
-    // };
+    setTimeout(() => {
+      setLoading(false)
+    }, 600)
+    return () => {
+      setLoading(true)
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
 
 
   function addItemToCart(e) {
@@ -46,7 +45,6 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
     dispatch(addToCart(id, name, price,))
   }
-
 
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
