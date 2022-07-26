@@ -8,9 +8,17 @@ import './TopCustomers.scss'
 import placeOne from '../../../assets/1place.png'
 import placeTwo from '../../../assets/2place.png'
 import placeThree from '../../../assets/3place.png'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
+  
+  useEffect(() => {
+      Aos.init({ once: true })
+  }, [])
+
   const dispatch = useDispatch()
   const topCustomers = useSelector(store => store.topCustomers)
   // const users = useSelector(store => store.users)
@@ -117,7 +125,7 @@ export function TopCustomers() {
     <div>
       <div className="lower-10" style={{ width: "100%" }}>
         <div className="container-top">
-          <table className="table is-bordered is-narrow shadow">
+          <table className="table is-bordered is-narrow shadow" data-aos='fade-up'>
             <thead>
               <tr>
                 <th><abbr title="Top users">Name</abbr></th>

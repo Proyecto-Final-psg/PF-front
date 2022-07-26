@@ -6,9 +6,16 @@ import { getAllOrders } from '../../../Redux/Actions'
 import { NavLink } from 'react-router-dom'
 import { format } from 'date-fns';
 import noOrder from '../../../assets/noorder.png'
-
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 export function Orders() {
+
+
+  useEffect(() => {
+      Aos.init({ once: true })
+  }, [])
+
   const dispatch = useDispatch()
   const orders = useSelector(store => store.order)
   const [orderList, setOrderList] = useState([])
@@ -65,7 +72,7 @@ export function Orders() {
     <div className="lower-10" style={{width:"100%"}}>
       {orderList.length > 0 ?
         <div className='tabla-conteiner'>
-          <table className="table is-bordered shadow scrolldown" >
+          <table className="table is-bordered shadow scrolldown" data-aos='fade-up' >
             <thead>
               <tr>
                 <th><abbr title="ID of the order">ID</abbr></th>
