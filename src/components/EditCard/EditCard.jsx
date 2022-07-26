@@ -7,6 +7,7 @@ import { validator } from '../CreateProduct/helpers/Validator'
 import Form from '../CreateProduct/Form/Form'
 import Mockup from '../CreateProduct/Mockup/Mockup'
 import ButtonBack from '../CreateProduct/ButtonBack/ButtonBack'
+import swal from 'sweetalert'
 import './EditCard.scss'
 
 export function EditCard() {
@@ -30,9 +31,9 @@ export function EditCard() {
         cbd: product.cbd,
         categories: product.categories
     })
-
+    console.log(editedProduct)
     const handleInputChange = (e) => {
-       
+
         setEditProduct({
             ...editedProduct,
             [e.target.name]: e.target.value
@@ -76,16 +77,24 @@ export function EditCard() {
         dispatch(editProduct(id, editedProduct))
         setEditProduct({
             name: '',
-            stock: 0,
-            price: 0,
-            img:'',
+            stock: '',
+            price: '',
+            img: '',
             type: '',
             description: '',
-            thc: 0,
-            cbd: 0,
+            thc: '',
+            cbd: '',
             categories: []
-        });
-        navigate(-2)
+        }); 
+        swal({
+            title: `Product edited succesfully!`,
+            icon: "success",
+            button: 'Ok'
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                navigate('/home')
+            }
+        })
     }
 
 
@@ -95,14 +104,14 @@ export function EditCard() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(()=>{
-        return () => {setEditProduct(null)}
-    },[])
+    useEffect(() => {
+        return () => { setEditProduct(null) }
+    }, [])
 
     return (
         <>
             <div className='create'>
-                <ButtonBack 
+                <ButtonBack
                     button={'Edit product'}
                 />
                 <div className='form-create'>
@@ -118,7 +127,7 @@ export function EditCard() {
                         state={categories}
                         button={'Modify'}
                     />
-                    <Mockup 
+                    <Mockup
                         localState={editedProduct}
                         handleDeleteCategory={handleDeleteCategory}
                     />
