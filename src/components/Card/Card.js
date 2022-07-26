@@ -69,12 +69,12 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
       (stock < 10 ? 
         <>
       Low stock
-        <span class="material-symbols-outlined">warning</span>
+        <span className="material-symbols-outlined">warning</span>
       </>
        : 
        <>
        Stock
-       <span class="material-symbols-outlined">done</span>
+       <span className="material-symbols-outlined">done</span>
        </>
        )}</div>
 
