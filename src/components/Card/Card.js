@@ -30,7 +30,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
     Toastify({
       text: "Added to cart 🙌",
       duration: 3000,
-      destination: "https://github.com/apvarun/toastify-js",
+    
       newWindow: true,
       close: false,
       gravity: "top", // `top` or `bottom`

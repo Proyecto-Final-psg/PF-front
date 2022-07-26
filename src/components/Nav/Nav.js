@@ -47,13 +47,13 @@ const Nav = () => {
                             {
                                 admin &&
                                 <>
-                                    <div className='item'>
+                                    <div onClick={handleMenu} className='item'>
                                         <Link className="navbar-item" to="/products/create">
                                             Create product
                                         </Link>
                                         <FontAwesomeIcon icon={faScrewdriverWrench} />
                                     </div>
-                                    <div className='item'>
+                                    <div onClick={handleMenu} className='item'>
                                         <Link className="navbar-item" to="/metrics">
                                             Admin panel
                                         </Link>
@@ -61,16 +61,16 @@ const Nav = () => {
                                     </div>
                                 </>
                             }
-                            <div className='item'>
-                                <Link className="navbar-item" to="#">
+                            <div onClick={handleMenu} className='item'>
+                                <Link className="navbar-item" to="/about">
                                     About
                                 </Link>
                                 <FontAwesomeIcon icon={faCannabis} />
                             </div>
                             {
                                 admin || isUser ?
-                                    <div className='item'>
-                                        <Link className="navbar-item" to="/account">
+                                    <div onClick={handleMenu} className='item'>
+                                        <Link className="navbar-item" to="/account" >
                                             Profile
                                         </Link>
                                         <FontAwesomeIcon icon={faUser} />
@@ -135,7 +135,7 @@ const Nav = () => {
                                         <img src={userImg ? userImg : image} alt='user' />
                                         <p>{userRedux.user_name}</p>
                                     </div>
-                                    <div className="navbar-dropdown">
+                                    <div  className="navbar-dropdown">
                                         <Link className="navbar-item" to="/account">
                                             Profile
                                         </Link>
