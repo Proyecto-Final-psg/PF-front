@@ -24,18 +24,12 @@ const Account = () => {
     dispatch(getOrderDetails(usr[0].user_id))
     setTimeout(() => {
       setLoading(false)
-    }, 500)
+    }, 600)
     return () => {
 
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr])
-
-
-
-
-
-
 
   return (
     <div>
