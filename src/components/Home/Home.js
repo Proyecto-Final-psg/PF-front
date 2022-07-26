@@ -27,13 +27,14 @@ import HistoryShops from "../Account/HistoryShops/HistoryShops";
 import Favourites from "../Account/Favourites/Favourites";
 import { About } from "../About/About";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../Redux/Actions";
 import OrdenCompraDetail from "../OrdenCompraDetail/OrdenCompraDetail";
 import Profile from "../Profile/Profile";
 
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
+  const userprohibido = useSelector(store => store.user[0].roll)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllUsers())
@@ -73,7 +74,7 @@ const Home = () => {
             <Route path='history-shops' element={<HistoryShops />} />
             <Route path='favourites' element={<Favourites />} />
           </Route>
-          <Route path='/metrics' element={<Metrics />}>
+          <Route path='/metrics' element={(userprohibido === "admin") ?  <Metrics /> : <PrincipalPage />}>
             <Route index element={<StockManagement />} />
             <Route path='stock-management' element={<StockManagement />} />
             <Route path='most-required-product' element={<MostRequiredProduct />} />
