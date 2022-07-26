@@ -1,6 +1,6 @@
 
 export const validator = (input) => {
-//console.log(input)
+
     let cond_name = /^[aA-zZ 0-9 _&-]*$/
     let cond_email = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
     let cond_description = /^[a-zA-Z 0-9\u00C0-\u00FF &@&!&¡&?&¿&()&=&+&/&:&;&_&,&.&%&-]*$/;
@@ -15,12 +15,9 @@ export const validator = (input) => {
     if (input.state === '') error.state = 'State is required'
     if (input.zipCode === '') error.zipCode = 'Zip Code is required'
 
-   
-    if (cond_email.test(input.email) === false) error.email = 'Must be a valid email'
-       
-    if (input.email === '')  error.email = 'Email is required'
+    if (input.email === '') error.email = 'Email is required'
+    if (input.email && cond_email.test(input.email) === false) error.email = 'Must be a valid Email'
     
-
     if (input.description === '') error.description = 'Description is required'
     if (cond_description.test(input.description) === false) error.description = 'No symbols allowed'
 
@@ -43,8 +40,5 @@ export const validator = (input) => {
 
     if (input.categories && parseInt(input.categories.length) === 0) error.categories = 'At least one category is required'
 
-
-
     return error
-
 }

@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faScrewdriverWrench, faUser, faSignal, faArrowRightFromBracket, faCannabis, faUserPlus, faChalkboardUser } from '@fortawesome/free-solid-svg-icons';
 import Logo from './logo2.png'
 import Carrito from './carrito.png'
-//import noImage from '../.././assets/no_user_image.jpeg'
-import imagen from '../Loading/Loading.gif';
+import image from '../Loading/Loading.gif';
 import './Nav.scss'
 const Nav = () => {
     const [nav, setNav] = useState('')
-    const [img, setImg] = useState(false)
+    //const [img, setImg] = useState(false)
     const userRedux = useSelector(state => state.user[0])
     const productscart = useSelector(state => state.cart)
     const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
@@ -21,11 +20,11 @@ const Nav = () => {
         else setNav('')
     }
 
-    useEffect(() => {
+/*     useEffect(() => {
         setTimeout(() => {
             setImg(true)
         }, 1000);
-    }, [])
+    }, []) */
 
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     let isUser = userRedux.roll === 'user'
@@ -133,7 +132,7 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <div className="navbar-link avatar">
-                                        <img src={img ? userImg : imagen} alt='user' />
+                                        <img src={userImg ? userImg : image} alt='user' />
                                         <p>{userRedux.user_name}</p>
                                     </div>
                                     <div className="navbar-dropdown">
