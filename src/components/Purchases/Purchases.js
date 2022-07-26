@@ -9,7 +9,7 @@ const Purchases = ({ data }) => {
     let total = 0
     const sumaTotal = () => {
         data.arrayItems.forEach((e) => {
-            total += e.price
+            total += e.price*e.quantity
         })
         return total
     }
