@@ -6,12 +6,17 @@
     width: 80vw;
 }
 
-.cmp-CardDetails-loading-img {
+.cmp-CardDetails-loading-img-2 {
     margin-top: 50px;
     height: 500px;
     position: absolute;
-    left: 20%;
-    transform: translate(50px, 50px);
+    left: 4%;
+    bottom: 58px;
+    @include respond-to('medium') {
+        left: 21%;
+        bottom: 15%;
+
+    }
 }
 
 .no-stock {

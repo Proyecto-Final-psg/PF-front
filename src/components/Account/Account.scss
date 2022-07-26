@@ -7,13 +7,22 @@
   height: 720px;
   align-items: center;
 }
-.cmp-Account-loading-img{
+
+.cmp-Account-loading-img {
   margin-top: 37px;
   height: 500px;
   position: absolute;
-  left: 35%;
-  bottom: 34%;
-  transform: translate(50px, 50px);
+ 
+
+  @include respond-to('medium') {
+    min-height: 80vh;
+    margin-top: 37px;
+    height: 500px;
+    position: absolute;
+    left: 28%;
+    bottom: 15%;
+    transform: translate(50px, 50px);
+  }
 }
 
 .account {

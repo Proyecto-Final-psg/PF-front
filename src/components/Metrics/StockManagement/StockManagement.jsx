@@ -78,12 +78,12 @@ export function StockManagement() {
 
   useEffect(() => {
     dispatch(getAllProducts())
-    setTimeout(() => {
-      setLoading(false)
-    }, 600)
-    return () => {
-      setLoading(true)
-    };
+    // setTimeout(() => {
+    //   setLoading(false)
+    // }, 600)
+    // return () => {
+    //   setLoading(true)
+    // };
   },
     // eslint-disable-next-line 
     [])
@@ -96,7 +96,7 @@ export function StockManagement() {
 
       {loading &&
         <div className='cmp-admin-loading-container'>
-          < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+          < img className='cmp-CardDetails-loading-img-2' src={LoadingImg} alt="my-gif" />
         </div>}
       {!loading && <div>
         <h1 className="mt-5 custom-title">Stock Management</h1>
