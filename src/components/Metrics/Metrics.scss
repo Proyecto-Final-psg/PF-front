@@ -48,8 +48,13 @@ table thead tr abbr {
         // background-color: green;
         height: 100%;
         width: auto;
-
+        
         /* Hide the horizontal scroll */
+    }
+
+    @include respond-to('large'){
+        position: sticky;
+        top: 80px;
     }
 }
 
