@@ -90,72 +90,70 @@ export function StockManagement() {
 
 
   return (
-
-
     <div className="container datas">
-
       {loading &&
         <div className='cmp-admin-loading-container'>
           < img className='cmp-CardDetails-loading-img-2' src={LoadingImg} alt="my-gif" />
         </div>}
-      {!loading && <div>
-        <h1 className="mt-5 custom-title">Stock Management</h1>
-        {/* <hr /> */}
+      {!loading &&
+        <div className="cmp-stockManagement-container"> 
+          <h1 className="mt-5 custom-title">Stock Management</h1>
+          {/* <hr /> */}
 
-        <div className="stock-mgm">
-          <table className="table is-bordered is-narrow shadow">
-            <thead>
-              <tr>
-                {/* <th><abbr title="ID">ID</abbr></th> */}
-                <th><abbr title="Product name">Product</abbr></th>
-                <th><abbr title="Stock">Stock</abbr></th>
-                <th><abbr title="Action">Action</abbr></th>
-              </tr>
-            </thead>
-            <tbody>
-              {noStock && noStock.map((p, i) => {
-                return <tr key={i} className='no-stock'>
-                  {/* <th style={{ color: "white" }}>{p.id}</th> */}
-                  <td>{p.name}</td>
-                  <td>{p.stock}</td>
-                  <td>
-                    <NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink>
-                  </td>
+          <div className="stock-mgm">
+            <table className="table is-bordered is-narrow shadow">
+              <thead>
+                <tr>
+                  {/* <th><abbr title="ID">ID</abbr></th> */}
+                  <th><abbr title="Product name">Product</abbr></th>
+                  <th><abbr title="Stock">Stock</abbr></th>
+                  <th><abbr title="Action">Action</abbr></th>
                 </tr>
-              })}
+              </thead>
+              <tbody>
+                {noStock && noStock.map((p, i) => {
+                  return <tr key={i} className='no-stock'>
+                    {/* <th style={{ color: "white" }}>{p.id}</th> */}
+                    <td>{p.name}</td>
+                    <td>{p.stock}</td>
+                    <td>
+                      <NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink>
+                    </td>
+                  </tr>
+                })}
 
-              {lowerThan10 && lowerThan10.map((p, i) => {
-                return <tr key={i} className='lower-than-10'>
-                  {/* <th style={{ color: "white" }}>{p.id}</th> */}
-                  <td>{p.name}</td>
-                  <td>{p.stock}</td>
-                  <td><NavLink className='link' style={{ color: "black" }} to={`/products/edit/${p.id}`}>Edit</NavLink></td>
-                </tr>
-              })}
-              {lowerThan50 && lowerThan50.map((p, i) => {
-                return <tr key={i} className='lower-than-50'>
-                  {/* <th style={{ color: "white" }}>{p.id}</th> */}
-                  <td>{p.name}</td>
-                  <td>{p.stock}</td>
-                  <td><NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink></td>
-                </tr>
-              })}
+                {lowerThan10 && lowerThan10.map((p, i) => {
+                  return <tr key={i} className='lower-than-10'>
+                    {/* <th style={{ color: "white" }}>{p.id}</th> */}
+                    <td>{p.name}</td>
+                    <td>{p.stock}</td>
+                    <td><NavLink className='link' style={{ color: "black" }} to={`/products/edit/${p.id}`}>Edit</NavLink></td>
+                  </tr>
+                })}
+                {lowerThan50 && lowerThan50.map((p, i) => {
+                  return <tr key={i} className='lower-than-50'>
+                    {/* <th style={{ color: "white" }}>{p.id}</th> */}
+                    <td>{p.name}</td>
+                    <td>{p.stock}</td>
+                    <td><NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink></td>
+                  </tr>
+                })}
 
-              {noStock.length === 0 && lowerThan10.length === 0 && lowerThan50.length === 0 &&
-                <tr className=''>
-                  <th>-</th>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-              }
-            </tbody>
-          </table>
+                {noStock.length === 0 && lowerThan10.length === 0 && lowerThan50.length === 0 &&
+                  <tr className=''>
+                    <th>-</th>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
 
-          <div className="circular-chart">
-            <Pie data={data} />
+            <div className="circular-chart">
+              <Pie data={data} />
+            </div>
           </div>
-        </div>
-      </div>}
+        </div>}
     </div>)
 }

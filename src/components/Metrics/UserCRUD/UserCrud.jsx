@@ -71,7 +71,7 @@ export function UserCrud() {
 
 
 
-  return <div className="container datas">
+  return <div className="container datas ">
 
     <h1 className="mt-5 custom-title">Lock Users</h1>
     <span>Locked users will not be able to access weedical ecommerce </span>

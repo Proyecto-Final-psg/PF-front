@@ -7,19 +7,22 @@
 }
 
 .cmp-CardDetails-loading-img-2 {
-    margin-top: 50px;
-    height: 500px;
-    position: absolute;
-    left: 4%;
-    bottom: 58px;
+
+    left: -3%;
+    top: 20%;
+    position: relative;
 
     @include respond-to('medium') {
-        left: 21%;
-        bottom: 15%;
+        left: 25%;
+
+        top: 20%;
+        position: relative;
 
     }
 }
-
+.cmp-stockManagement-container{
+    margin-top: 7%;
+}
 .no-stock {
     background-color: rgb(255, 109, 109);
     color: white // font-weight: bold;
