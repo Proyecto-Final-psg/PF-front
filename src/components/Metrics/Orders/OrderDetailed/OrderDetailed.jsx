@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { getOrdersByOrderId } from "../../../../Redux/Actions"
+import { getOrdersByOrderId, mailer } from "../../../../Redux/Actions"
 import ButtonBack from "../../../CreateProduct/ButtonBack/ButtonBack"
 import Modal from 'react-modal'
 import './OrderDetailed.scss'
@@ -68,7 +68,7 @@ export function OrderDetailed() {
                 })
                     .then(ok => {
                         dispatch(getOrdersByOrderId(id))
-                        // navigate(-1)
+                        dispatch(mailer(orderDetailed.orden.userUserId, orderDetailed.orden.id, orderStatus, orderDetailed.orden.address, orderDetailed.productos))
                     })
             }
             )
