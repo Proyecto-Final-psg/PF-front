@@ -29,7 +29,8 @@ export function UserManagement() {
   useEffect(() => {
     setUserRol(usersprueba)
     dispatch(getAllUsers())
-  }, [usersprueba])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[usersprueba])
 
   function changeRol(user, id, rol) {
 
