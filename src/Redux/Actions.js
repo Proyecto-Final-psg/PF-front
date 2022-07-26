@@ -441,6 +441,18 @@ export function updateOrderStatus(id, status){
 //     }
 // }
 
+export function mailer(userid, order, status, address, arrayItems){
+    return fetch(`http://localhost:8081/mail`,{
+        method:"POST",
+        body: JSON.stringify({userid, order, status, address, arrayItems}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(data => data.json())
+    .then(res => console.log('done',res))
+}
+
 export function getTopCustomers(){
     return function(dispatch){
         return fetch(`${API_URL}/getTotalByUserByOrder`)
