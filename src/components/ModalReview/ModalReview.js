@@ -14,7 +14,7 @@ const ModalReview = ({modal, setModal, id}) => {
   const userReviews = useSelector(store => store.userReviews);
   const usr = useSelector((store) => store.user);
   const orders = useSelector((store) => store.orderDetails);
-  console.log('userReviews', userReviews)
+  //console.log('userReviews', userReviews)
   //console.log(history)
   //console.log('reviews',reviews)
   const dispatch = useDispatch()

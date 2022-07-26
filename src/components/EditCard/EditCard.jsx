@@ -27,11 +27,10 @@ export function EditCard() {
         img: product.img,
         type: product.type,
         description: product.description,
-        thc: product.thc,
-        cbd: product.cbd,
+        thc: product.thc !== null ? product.thc : 0,
+        cbd: product.cbd !== null ? product.cbd : 0,
         categories: product.categories
     })
-    console.log(editedProduct)
     const handleInputChange = (e) => {
 
         setEditProduct({
