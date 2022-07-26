@@ -20,7 +20,7 @@ const Nav = () => {
         else setNav('')
     }
 
-/*     useEffect(() => {
+    /*  useEffect(() => {
         setTimeout(() => {
             setImg(true)
         }, 1000);
