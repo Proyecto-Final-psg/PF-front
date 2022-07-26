@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux'
 import party from "party-js";
 import Toastify from 'toastify-js'
 
-const Card = ({ name, id, description, img, price, stock, review, setModal, setLocalState, localState, widthProp, heightProp }) => {
+const Card = ({ name, id, description, img, price, stock, widthProp, heightProp }) => {
   const dispatch = useDispatch()
   function addItemToCart(e) {
 
-     //Efecto confeti
-     party.confetti(e.target, {
+    //Efecto confeti
+    party.confetti(e.target, {
       count: party.variation.range(20, 40),
     });
 
@@ -27,19 +27,12 @@ const Card = ({ name, id, description, img, price, stock, review, setModal, setL
         background: "#438A00",
         padding: "20px"
       },
-      onClick: function(){} // Callback after click
+      onClick: function () { } // Callback after click
     }).showToast();
 
-    dispatch(addToCart( id,name, price,))
+    dispatch(addToCart(id, name, price,))
   }
 
-  const handleReviewId = (id) => {
-    setLocalState({
-      ...localState,
-      product_id: id
-    })
-    setModal(true)
-  }
 
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
@@ -51,25 +44,18 @@ const Card = ({ name, id, description, img, price, stock, review, setModal, setL
             <img className="card-img" src={img} alt={description} />
           </div>
           <p className="text-body">{description}</p>
-          {
-            !review &&
-            <h2 className="card-price" > ${price}</h2>
-          }
+          <h2 className="card-price" > ${price}</h2>
         </div>
 
       </NavLink>
+
+      <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' : (stock < 10 ? 'Low stock' : 'Stock')}</div>
+
       {
-        !review &&
-        <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' : (stock < 10 ? 'Low stock' : 'Stock')}</div>
-      }
-      {
-        stock > 0 && !review ?
+        stock > 0 &&
         <button onClick={addItemToCart} className="card-button" key={id}>
           <span className="material-symbols-outlined">add_shopping_cart</span>
         </button>
-        :
-        review &&
-        <button className="card-button review" onClick={() => handleReviewId(id)}>Leave review</button>
       }
 
     </div>

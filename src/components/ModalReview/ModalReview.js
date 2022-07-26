@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview } from '../../../Redux/Actions';
-import Card from '../../Card/Card';
-import { validator } from '../../CreateProduct/helpers/Validator';
-import Purchases from '../../Purchases/Purchases';
-import './History.scss'
+import { addReview } from '../../Redux/Actions';
+import { validator } from '../CreateProduct/helpers/Validator';
+import './ModalReview.scss'
 import StarRating from './StarRating/StarRating';
 //import { validate } from './Validate';
 
-const HistoryShops = () => {
+const ModalReview = ({modal, setModal, id}) => {
 
   const history = useSelector(store => store.orderDetails[0]?.arrayItems)
   //const reviews = useSelector(store => store.reviews)
@@ -20,10 +18,9 @@ const HistoryShops = () => {
   //console.log('reviews',reviews)
   const dispatch = useDispatch()
 
-  const [modal, setModal] = useState(false)
   const [review, setReview] = useState({
     user_id: usr[0].user_id,
-    product_id: '',
+    product_id: id,
     name: '',
     score: '',
     review: ''
@@ -66,38 +63,7 @@ const HistoryShops = () => {
 
   return (
     <div className='history'>
-      <h1>Your purchases</h1>
-      {/* <div className='cards_container'>
-          {
-            history?.length > 0 &&
-            history?.map(c => (
-                <Card
-                  key={c.id}
-                  id={c.id}
-                  name={c.name}
-                  description={c.description}
-                  img={c.img}
-                  price={c.price}
-                  stock={c.stock}
-                  review={true}
-                  setModal={setModal}
-                  localState={review}
-                  setLocalState={setReview}
-                  widthProp="150px"
-                  heightProp="auto"
-                />
-            ))
-          }
-      </div> */}
-
-      <div className="cmp-account-container-purchases">
-        {orders.map((e, i) => {
-          return (
-            <Purchases key={i} user={usr} data={e} />
-          )
-        })}
-      </div>
-
+    
       <div className={`modal ${modal && 'is-active'}`}>
         <div className="modal-background" onClick={handleCancel}></div>
         <div className="modal-card">
@@ -128,4 +94,4 @@ const HistoryShops = () => {
   )
 }
 
-export default HistoryShops
+export default ModalReview
