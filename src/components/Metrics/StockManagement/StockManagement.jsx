@@ -78,12 +78,12 @@ export function StockManagement() {
 
   useEffect(() => {
     dispatch(getAllProducts())
-    // setTimeout(() => {
-    //   setLoading(false)
-    // }, 600)
-    // return () => {
-    //   setLoading(true)
-    // };
+    setTimeout(() => {
+      setLoading(false)
+    }, 600)
+    return () => {
+      setLoading(true)
+    };
   },
     // eslint-disable-next-line 
     [])
