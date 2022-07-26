@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faScrewdriverWrench, faUser, faSignal, faArrowRightFromBracket, faCannabis, faUserPlus, faChalkboardUser } from '@fortawesome/free-solid-svg-icons';
-import Logo from './logo2.png'
+import Logo from './logo_navbar.png'
 import Carrito from './carrito.png'
 import image from '../Loading/Loading.gif';
 import './Nav.scss'

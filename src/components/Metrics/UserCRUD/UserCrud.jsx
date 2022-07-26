@@ -112,7 +112,7 @@ export function UserCrud() {
                       ?
                       <img onClick={() => blockUser(u.user_id, 'unlock')} src={lock} alt="lock_icon" />
                       :
-                      <button className="btn btn-danger" onClick={() => blockUser(u.user_id, 'lock')}>Block</button>
+                      <button className="btn btn-danger" onClick={() => blockUser(u.user_id, 'lock')}>Lock</button>
                     }
                   </td>
                 </tr>

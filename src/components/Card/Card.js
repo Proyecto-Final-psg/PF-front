@@ -13,7 +13,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 600)
+    }, 300)
     return () => {
       setLoading(true)
     };
@@ -67,7 +67,19 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
       </NavLink>
 
-      <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' : (stock < 10 ? 'Low stock' : 'Stock')}</div>
+      <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' 
+      : 
+      (stock < 10 ? 
+        <>
+      Low stock
+        <span class="material-symbols-outlined">warning</span>
+      </>
+       : 
+       <>
+       Stock
+       <span class="material-symbols-outlined">done</span>
+       </>
+       )}</div>
 
       {
         stock > 0 &&

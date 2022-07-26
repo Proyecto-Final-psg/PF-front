@@ -20,6 +20,7 @@ export function UserManagement() {
 
   useEffect(() => {
     setUserRol(usersprueba)
+    dispatch(getAllUsers())
   }, [usersprueba])
 
   function changeRol(user, id, rol) {
@@ -38,18 +39,18 @@ export function UserManagement() {
       dangerMode: true,
     }).then(function (isConfirm) {
       if (isConfirm) {
+        dispatch(changeRoles({ user_id: id, roll: rol }))
         swal({
           title: `Rol changed`,
           icon: 'success'
         }).then(function () {
-          dispatch(changeRoles({ user_id: id, roll: rol }))
-          dispatch(getAllUsers())
         })
       } else {
         swal("Cancelled", "No changes were made", "error");
       }
     })
-
+    
+    
 
   }
 

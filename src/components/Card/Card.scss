@@ -74,6 +74,9 @@
     color: #fff;
     position: absolute;
     left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     bottom: 45px;
     opacity: 0;
     transition: 0.3s ease-out;
