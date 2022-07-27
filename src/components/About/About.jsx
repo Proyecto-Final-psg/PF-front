@@ -38,7 +38,7 @@ export function About() {
             <hr />
             <div className="team" style={{width:"100%", padding:"50px"}}>
             <h1 className='m-5'>Development Team</h1>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa necessitatibus dolore nostrum reprehenderit aperiam eveniet, modi cumque voluptates vero. Adipisci nisi dignissimos alias unde. Laboriosam voluptates reiciendis repellendus voluptatum adipisci!</span>
+            <span>We are Weedical! We are six fullstack developers and this is our final bootcamp project. We've been working on this for a whole month, with 3 frontend developers and 3 backend developers. Henry's bootcamp was a great experience, and we are grateful for it.</span>
               <div className="devs">
                 <div data-aos="fade-up">
                     <DevCard img={juan} name='Juan Cataldo' />
