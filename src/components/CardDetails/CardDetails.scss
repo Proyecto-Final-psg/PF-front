@@ -215,6 +215,23 @@
     border: none;
     transition: all 0.3s ease-in-out;
 }
+.button-favorite {
+    margin-top: 10px;
+    width: 80px;
+    margin-right: 20px;
+    height: 40px;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 4px;
+    background-color: #438a00;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
 
 .name-product-detail{
     font-size: 180%;
@@ -230,6 +247,10 @@
 
 .button-delete:hover{
     background-color: red;
+}
+
+.button-favorite:hover{
+    background-color: rgb(207, 157, 6);
 }
 
 .span-thc-detail{

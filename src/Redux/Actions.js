@@ -1,5 +1,5 @@
 
-import { GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER } from "./Constants"
+import { GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
 
 
 export function getAllProducts() {
@@ -321,6 +321,38 @@ export function editProduct(id, editedProduct) {
     }
 }
 
+export function getFavorite() {
+    return function (dispatch) {
+        return fetch(`${API_URL}/favorites`)
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_FAVORITE,
+                    payload: data
+                })
+            })
+            .catch(e => console.log(e))
+    }
+}
+
+export function addFavorite(product_id, user_id) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/addfavorites/${product_id}`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify({user_id}), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: ADD_FAVORITE,
+                    payload: data
+                })
+            })
+    }
+}
 
 export function changeRoles(nuevoroll) {
     return function (dispatch) {
