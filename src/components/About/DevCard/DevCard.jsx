@@ -9,12 +9,12 @@ export function DevCard({ img, name, link, git }) {
             <h2>{name}</h2>
             <ul className='ul'>
                 <li className='li'>
-                    <a href={git} target="_blank">
+                    <a href={git} target="_blank" rel="noreferrer">
                         <img src={github} alt="" />
                     </a>
                 </li>
                 <li className='li' style={{ backgroundColor: "rgb(84, 189, 189)" }}>
-                    <a href={link} target="_blank">
+                    <a href={link} target="_blank" rel="noreferrer">
                         <img src={linkedin} alt="" />
                     </a>
                 </li>
