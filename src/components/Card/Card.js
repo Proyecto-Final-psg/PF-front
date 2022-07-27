@@ -46,10 +46,29 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
     dispatch(addToCart(id, name, price,))
   }
 
+  function addToFavourites() {
+    Toastify({
+      text: "Added " + name +" to Favourites ♥",
+      duration: 3000,
+
+      newWindow: true,
+      close: false,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "#438A00",
+        padding: "20px"
+      },
+      onClick: function () { } // Callback after click
+    }).showToast();
+
+  }
+
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
+      <p className="card-favourites" onClick={addToFavourites}>♥</p>
       <NavLink to={`/products/${id}`}>
-
         <div className="card-details">
           <p className="text-title">{name}</p>
           {loading && <div className="card-img-loading">
@@ -64,19 +83,19 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
       </NavLink>
 
-      <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock' 
-      : 
-      (stock < 10 ? 
-        <>
-      Low stock
-        <span className="material-symbols-outlined">warning</span>
-      </>
-       : 
-       <>
-       Stock
-       <span className="material-symbols-outlined">done</span>
-       </>
-       )}</div>
+      <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock'
+        :
+        (stock < 10 ?
+          <>
+            Low stock
+            <span className="material-symbols-outlined">warning</span>
+          </>
+          :
+          <>
+            Stock
+            <span className="material-symbols-outlined">done</span>
+          </>
+        )}</div>
 
       {
         stock > 0 &&

@@ -134,7 +134,7 @@ export function MostRequiredProduct() {
     <div className="best-selling">
       <select className="select" name="" id="" onChange={filterSellingView}>
         <option value="all">All Products</option>
-        <option value="10" selected>Top 10</option>
+        <option value="10" >Top 10</option>
         <option value="20">Top 20</option>
       </select>
       <button className="ml-4 btn btn-success" onClick={filter}>Filter</button>
