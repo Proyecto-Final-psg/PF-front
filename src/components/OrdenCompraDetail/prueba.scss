@@ -92,15 +92,13 @@
 
 .cmp-detalle-button-pay {
     margin-top: 30px;
-    width: 310px;
+    width: 380px;
     display: flex;
     justify-content: space-around;
     cursor: pointer;
     @include respond-to('medium') {
-       
         left: 132px;
-        bottom: 200px;
-
+        bottom: 212px
     }
 }
 
