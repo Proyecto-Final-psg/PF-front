@@ -1,7 +1,4 @@
-import { useEffect } from 'react'
 import Modal from 'react-modal'
-import { useDispatch, useSelector } from 'react-redux'
-import { getItemsOfOrder } from '../../../../Redux/Actions'
 
 export function ModalOrder({isOpen, order}){
 

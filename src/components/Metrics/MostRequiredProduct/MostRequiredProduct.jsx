@@ -131,13 +131,16 @@ export function MostRequiredProduct() {
 
     <h1 className="mt-5 custom-title">Best selling products</h1>
     <span>Showing</span>
-    <div className="best-selling">
+    <div className="filter-orders">
       <select className="select" name="" id="" onChange={filterSellingView}>
         <option value="all">All Products</option>
         <option value="10" >Top 10</option>
         <option value="20">Top 20</option>
       </select>
-      <button className="ml-4 btn btn-success" onClick={filter}>Filter</button>
+      <button className="ml-4 btn btn-success btn-w" onClick={filter}>
+        <span>Filter </span>
+        <span class="material-symbols-outlined">bar_chart</span>
+        </button>
 
     </div>
 

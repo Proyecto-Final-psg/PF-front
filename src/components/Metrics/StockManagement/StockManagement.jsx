@@ -100,15 +100,18 @@ ChartJS.register(
     <div className="container datas">
      
           <h1 className="mt-5 custom-title">Stock Management</h1>
+          <span>Stock with low quantity warnings</span>
         <div className="cmp-stockManagement-container"> 
+          
           {/* <hr /> */}
 
-          {loading &&
+          {/* {loading &&
         <div className='loading-chart'>
           < img className='' src={LoadingImg} alt="my-gif" />
-        </div>}
-      {!loading &&
+        </div>} */}
+      {/* {!loading && */}
           <div className="stock-mgm">
+            
             <table className="table is-bordered is-narrow shadow" data-aos='fade-right'>
               <thead>
                 <tr>
@@ -158,10 +161,11 @@ ChartJS.register(
               </tbody>
             </table>
 
-            <div className="circular-chart"  data-aos='fade-left'>
+            <div className="circular-chart"  data-aos='fade-left' data-aos-delay="600">
               <Pie data={data} />
             </div>
-          </div>}
+          </div>
+          {/* } */}
         </div>
     </div>)
 }

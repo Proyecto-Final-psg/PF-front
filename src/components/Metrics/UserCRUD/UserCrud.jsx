@@ -72,8 +72,6 @@ export function UserCrud() {
         swal("Cancelled", "No changes were made", "error");
       }
     })
-
-
   }
 
 
@@ -92,7 +90,11 @@ export function UserCrud() {
 
       <form action="" id="form" onSubmit={searchUser}>
         <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock' />
-        <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} />
+        {/* <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} /> */}
+        <button type="submit" className="btn btn-success btn-w">
+            <span>Search </span> 
+            <span className="material-symbols-outlined">person_search</span>
+         </button>
       </form>
 
 
@@ -113,13 +115,16 @@ export function UserCrud() {
                 return <tr key={u.user_id} className={u.block ? 'red' : ''}>
                   {/* <td style={{ backgroundImage: `url('${u.user_img}')`}}></td> */}
                   <td style={{ width: "auto" }} key={u.id}>{u.user_name}</td>
-                  <th key={u.id}>{u.user_email}</th>
+                  <th key={u.id}><span>{u.user_email}</span></th>
                   <td id="img" key={u.id}>
                     {u.block
                       ?
                       <img onClick={() => blockUser(u.user_id, 'unlock')} src={lock} alt="lock_icon" />
                       :
-                      <button className="btn btn-danger" onClick={() => blockUser(u.user_id, 'lock')}>Lock</button>
+                      <button className="btn btn-danger btn-w-red" onClick={() => blockUser(u.user_id, 'lock')}>
+                        <span>Lock </span>
+                        <span class="material-symbols-outlined">lock</span>
+                        </button>
                     }
                   </td>
                 </tr>

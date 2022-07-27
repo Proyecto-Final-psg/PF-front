@@ -102,15 +102,18 @@ export function OrderDetailed() {
             >
                 <div className="modal-order">
                     {/* <form> */}
-                    <h2 >Select the new order status</h2>
-                    <span class="material-symbols-outlined">list_alt</span>
+                    <h2 >Change the order status</h2>                    
+                    <span>Changing the order status will send an email to the client with the new status</span>
                     <select style={{ margin: "20px" }} name="" id="" onChange={orderStatusState}>
-                        <option value="completed" selected disabled='disabled'>Select</option>
+                        <option value="completed" selected disabled='disabled'>Select new status</option>
                         <option value="completed">Completed</option>
                         <option value="inprogress">In Progress</option>
                         <option value="canceled">Canceled</option>
                     </select>
-                    <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success">Ok</button>
+                    <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success btn-w">
+                        <span>Save</span>
+                        <span class="material-symbols-outlined">save</span>
+                        </button>
                     <button onClick={() => setModal(false)} className="m-2 btn btn-basic">Cancel</button>
                     {/* </form> */}
 
