@@ -97,7 +97,7 @@
     justify-content: space-around;
     cursor: pointer;
     @include respond-to('medium') {
-        position: absolute;
+       
         left: 132px;
         bottom: 200px;
 
