@@ -132,7 +132,7 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <div className="navbar-link avatar">
-                                        <img src={userImg ? userImg : image} alt='user' />
+                                        <img src={userImg ? userImg : image} alt='user' referrerPolicy='no-referrer' />
                                         <p>{userRedux.user_name}</p>
                                     </div>
                                     <div  className="navbar-dropdown">
