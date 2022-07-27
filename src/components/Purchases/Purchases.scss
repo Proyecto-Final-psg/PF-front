@@ -2,13 +2,26 @@
 @import '../../scss/mixins.scss';
 
 .cmp-purchases-status {
-    margin-right: 10px;
-    box-shadow: 2px 2px 2px rgba(226, 216, 216, 0.648);
-    position: absolute;
-    right: 3px;
+    // margin-right: 10px;
+    // box-shadow: 2px 2px 2px rgba(226, 216, 216, 0.648);
+    // position: absolute;
+    // right: 3px;
     display: flex;
-    flex-direction: column;
-    width: 90px;
+    flex-direction: row;
+    // width: 90px;
+    margin-top: 10px;
+
+    @include respond-to('medium') {
+        margin-right: 10px;
+        // box-shadow: 2px 2px 2px rgba(226, 216, 216, 0.648);
+        // position: absolute;
+        // right: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90px;
+    }
 }
 
 .span {
@@ -20,29 +33,44 @@
 }
 
 .camion {
-    width: 80px;
+    position: absolute;
+    right: 25px;
+    width: 51px;
+    @include respond-to('medium') {
+        width: 51px;
+        position: inherit;
+    }
 }
 
 .entregado {
-    width: 80px;
-    margin-left: 50px;
+    // width: 80px;
+    // margin-left: 50px;
 
 }
 
 .cmp-purchases-img-despachado {
-    position: absolute;
+    // position: absolute;
     width: 25px;
-    top: 67px;
-    margin-left: 60px;
+    height: 25px;
+    // top: 67px;
+    // margin-left: 60px;
 
 }
 
 .cmp-purchases-img-mensaje {
-    position: absolute;
+    display: none;
+
+    @include respond-to('medium') {
+        // position: absolute;
     width: 31px;
-    top: 3px;
+    // top: 3px;
     margin-left: 1px;
     cursor: pointer;
+    }
+}
+
+.tag{
+    width: 100%;
 }
 
 .cmp-purchases-img {
@@ -60,50 +88,70 @@
 }
 
 .cmp-purchases-container {
-    width: 350px;
-    margin-right: 31px;
+    width: auto;
+    // margin-right: 31px;
+    height: 120px;
 
     @include respond-to('medium') {
-        width: 750px;
+        width: auto;
     }
 }
 
 .media-left {
     right: 160px;
-    width: 70px;
-    height: 70px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(209, 205, 205);
-    margin-right: 1rem;
+    /* border-style: solid; */
+    /* border-width: 1px; */
+    /* border-color: rgb(209, 205, 205); */
     display: flex;
     align-content: flex-start;
     justify-content: space-around;
-    margin-left: 10px;
-    box-shadow: 5px 5px 5px rgba(226, 216, 216, 0.648);
-    border-radius: 7px;
+    /* box-shadow: 5px 5px 5px rgb(226 216 216 / 65%); */
+    /* border-radius: 7px; */
+
 }
 
 .container-card {
-    width: 750px;
+    // width: 750px;
     height: 100px;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    cursor: pointer;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        cursor: pointer;
+    @include respond-to('medium') {
+        height: 100px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+    }
 }
 
 .container-imagenes-pequeñas {
-    display: none;
-
+    // display: none;
+    display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
     @include respond-to('medium') {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
     }
 }
 
 .container-imagenPrincipal {
-    position: absolute;
-    right: 170px;
+    // display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    width: 40px;
+    
+
+    @include respond-to('medium') {
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    }
 }
