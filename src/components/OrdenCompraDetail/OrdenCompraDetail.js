@@ -1,7 +1,6 @@
 import './OrdenCompraDetail.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import logo from './logo.png'
 import { NavLink } from 'react-router-dom'
 import premio from './premios.png'
 const OrdenCompraDetail = () => {
@@ -31,10 +30,7 @@ const OrdenCompraDetail = () => {
                 {order.status === "canceled" && <span className="tag is-danger is-large span-status">
                     Canceled
                 </span>}
-
             </div>
-
-
             <div className='over-cmp'>
                 <div className='cmp-order-compra-detil-container-imgs'>
                     {order.arrayItems.map((e, i) => {
