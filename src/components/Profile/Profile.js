@@ -6,7 +6,7 @@ import { registerUser, addGuest } from '../../Redux/Actions'
 import { API_URL } from '../../Redux/Constants'
 // import axios from 'axios'
 const Profile = () => {
-    const { user, getAccessTokenSilently, logout } = useAuth0()
+    const { user,  logout } = useAuth0()
     const userRedux = useSelector(state => state.user[0])
     const [roll, setRoll] = useState(userRedux.roll)
     const dispatch = useDispatch()
@@ -38,7 +38,7 @@ const Profile = () => {
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
                 }
-                if (roll.block == true) {
+                if (roll.block === true) {
                     alert("Your user is locked. Please contact weedical.shop@gmail.com")
                     logout({ returnTo: window.location.origin })
                     let guest = [
