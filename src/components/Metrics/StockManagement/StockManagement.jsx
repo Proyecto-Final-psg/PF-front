@@ -7,6 +7,8 @@ import { Pie } from 'react-chartjs-2';
 import LoadingImg from '../../../assets/Loading.gif'
 // import '../Metrics.scss'
 import './StockManagement.scss'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
@@ -18,9 +20,14 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+  );
+  
+  export function StockManagement() {
+  
+    useEffect(() => {
+        Aos.init({ once: true })
+    }, [])
 
-export function StockManagement() {
   const [loading, setLoading] = useState(true)
   const products = useSelector(store => store.products)
   const dispatch = useDispatch()
@@ -102,7 +109,7 @@ export function StockManagement() {
         </div>}
       {!loading &&
           <div className="stock-mgm">
-            <table className="table is-bordered is-narrow shadow">
+            <table className="table is-bordered is-narrow shadow" data-aos='fade-right'>
               <thead>
                 <tr>
                   {/* <th><abbr title="ID">ID</abbr></th> */}
@@ -151,7 +158,7 @@ export function StockManagement() {
               </tbody>
             </table>
 
-            <div className="circular-chart">
+            <div className="circular-chart"  data-aos='fade-left'>
               <Pie data={data} />
             </div>
           </div>}

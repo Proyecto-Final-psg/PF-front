@@ -50,7 +50,7 @@ class ActionProvider {
     }
 
     contactHandler = () => {
-        this.message = this.createChatBotMessage('If you want to contact some of the owners or sellers, please send an email to weedical@oilstore.com')
+        this.message = this.createChatBotMessage('If you want to contact some of the owners or sellers, please send an email to weedical.shop@gmail.com')
         this.setChatbotMessage(this.message)
     }
 
