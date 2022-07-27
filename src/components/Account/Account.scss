@@ -7,9 +7,11 @@
   height: 730px;
   align-items: center;
 }
+
 .cmp-Account-loading-img {
   margin-top: 50px;
   height: 500px;
+
   @include respond-to('medium') {
     min-height: 58vh;
     margin-top: 38px;
@@ -31,7 +33,7 @@
   min-height: 75vh;
 
   @include respond-to('medium') {
-    width: 75%;
+    width: 90%;
   }
 }
 
@@ -40,7 +42,7 @@
 
   @include respond-to('medium') {
     margin: 0%;
-    margin-left: 100px;
+    margin-left: 68px;
   }
 }
 
