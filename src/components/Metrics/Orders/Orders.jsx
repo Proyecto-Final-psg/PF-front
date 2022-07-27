@@ -88,9 +88,14 @@ export function Orders() {
             <tbody>
               {orderList.length > 0 && orderList.map(o => {
                 return <tr key={o.id} style={{width:"100%"}}>
-                  <th><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
+                  <th className='fit'><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
                   <td>{o.user_email && o.user_email !=="" ? o.user_email : 'N/A'}</td>
-                  <td>{o.status}</td>
+                  <td className='fit'>{
+                  (o.status === 'inprogress') ? <span class="material-symbols-outlined">hourglass_empty</span>
+                  : (o.status === 'completed') ? <span class="material-symbols-outlined">verified</span>
+                  : (o.status === 'canceled') ? <span class="material-symbols-outlined">cancel</span>
+                  : ''
+                  }</td>
                   <td>{formatDate(o.createdAt)}</td>
                 </tr>
 
