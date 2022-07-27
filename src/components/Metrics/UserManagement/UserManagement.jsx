@@ -20,6 +20,8 @@ export function UserManagement() {
   const usersprueba = useSelector(store => store.users)
   const [userRol, setUserRol] = useState(usersprueba)
   const dispatch = useDispatch()
+  const [search, setSearch] = useState('')
+  
   useEffect(() => {
     dispatch(getAllUsers())
     // console.log(usersprueba)
@@ -28,12 +30,12 @@ export function UserManagement() {
 
   useEffect(() => {
     setUserRol(usersprueba)
-    dispatch(getAllUsers())
+    // dispatch(getAllUsers())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[usersprueba])
 
   function changeRol(user, id, rol) {
-
+    
     if (rol === 'admin') rol = 'user'
     else rol = 'admin'
 
@@ -48,19 +50,29 @@ export function UserManagement() {
       dangerMode: true,
     }).then(function (isConfirm) {
       if (isConfirm) {
+        
         dispatch(changeRoles({ user_id: id, roll: rol }))
         swal({
           title: `Rol changed`,
           icon: 'success'
         }).then(function () {
+          dispatch(getAllUsers())
         })
       } else {
         swal("Cancelled", "No changes were made", "error");
       }
     })
-    
-    
+  }
 
+  const fillSearchObj = (e) => {
+    setSearch(e.target.value.toLowerCase())
+  }
+
+  function searchUser(e) {
+    console.log('pressed');
+    e.preventDefault()
+    let res = usersprueba.filter(u => u.user_email.includes(search))
+    setUserRol(res)
   }
 
   return <div className="container datas">
@@ -68,6 +80,17 @@ export function UserManagement() {
     <h1 className="mt-5 custom-title">User Roles</h1>
 
     <span>To modify a user rol, just press into the user-rol icon that you want to change</span>
+    <div style={{width:"100%"}}>
+      <form id="form" onSubmit={searchUser}>
+          <input type="text" className="input" onChange={fillSearchObj} placeholder='Search user' />
+          {/* <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} /> */}
+          <button type="submit" className="btn btn-success btn-w">
+              <span>Search </span> 
+              <span className="material-symbols-outlined">person_search</span>
+          </button>
+        </form>
+    </div>
+
     <div className="lower-10" style={{ width: "100%" }}>
       <div className="container-top">
         <table className="table shadow" data-aos='fade-up'>

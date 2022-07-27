@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from 'react-router-dom'
 import { getAllProducts } from "../../../Redux/Actions"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import LoadingImg from '../../../assets/Loading.gif'
 // import '../Metrics.scss'
 import './StockManagement.scss'
 import Aos from 'aos'
@@ -28,7 +27,6 @@ ChartJS.register(
         Aos.init({ once: true })
     }, [])
 
-  const [loading, setLoading] = useState(true)
   const products = useSelector(store => store.products)
   const dispatch = useDispatch()
   let noStock = products.filter(p => p.stock <= 0)
@@ -84,13 +82,7 @@ ChartJS.register(
   };
 
   useEffect(() => {
-    dispatch(getAllProducts())
-    setTimeout(() => {
-      setLoading(false)
-    }, 600)
-    return () => {
-      setLoading(true)
-    };
+    dispatch(getAllProducts())   
   },
     // eslint-disable-next-line 
     [])
@@ -100,15 +92,18 @@ ChartJS.register(
     <div className="container datas">
      
           <h1 className="mt-5 custom-title">Stock Management</h1>
+          <span>Stock with low quantity warnings</span>
         <div className="cmp-stockManagement-container"> 
+          
           {/* <hr /> */}
 
-          {loading &&
+          {/* {loading &&
         <div className='loading-chart'>
           < img className='' src={LoadingImg} alt="my-gif" />
-        </div>}
-      {!loading &&
+        </div>} */}
+      {/* {!loading && */}
           <div className="stock-mgm">
+            
             <table className="table is-bordered is-narrow shadow" data-aos='fade-right'>
               <thead>
                 <tr>
@@ -158,10 +153,11 @@ ChartJS.register(
               </tbody>
             </table>
 
-            <div className="circular-chart"  data-aos='fade-left'>
+            <div className="circular-chart"  data-aos='fade-left' data-aos-delay="600">
               <Pie data={data} />
             </div>
-          </div>}
+          </div>
+          {/* } */}
         </div>
     </div>)
 }

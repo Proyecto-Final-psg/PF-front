@@ -42,3 +42,37 @@ h1, h2, h3, h4, h5, h6 {
     overflow-x: hidden;
     font-family: 'Nunito Sans', sans-serif;
 }
+
+.btn-w{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 0px;    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-w span{
+    padding-left: 3px;
+}
+
+.btn-w-red{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 0px;    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-w-red span{
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+tr{
+    text-align: center;
+}
+
+.fit {
+    white-space: nowrap;
+    width: 1%;
+}

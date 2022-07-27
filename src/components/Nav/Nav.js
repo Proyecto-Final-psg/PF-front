@@ -55,7 +55,7 @@ const Nav = () => {
                                     </div>
                                     <div onClick={handleMenu} className='item'>
                                         <Link className="navbar-item" to="/metrics">
-                                            Admin panel
+                                            Admin Dashboard
                                         </Link>
                                         <FontAwesomeIcon icon={faSignal} />
                                     </div>
@@ -132,7 +132,7 @@ const Nav = () => {
                             isAuthenticated ?
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <div className="navbar-link avatar">
-                                        <img src={userImg ? userImg : image} alt='user' />
+                                        <img src={userImg ? userImg : image} alt='user' referrerPolicy='no-referrer' />
                                         <p>{userRedux.user_name}</p>
                                     </div>
                                     <div  className="navbar-dropdown">

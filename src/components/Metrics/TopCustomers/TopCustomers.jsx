@@ -151,9 +151,9 @@ export function TopCustomers() {
                         {o.username}
                       </div>
                     </td>
-                    <td style={{ fontWeight: "bold" }}>${o.total}</td>
+                    <td className="fit" style={{ fontWeight: "bold" }}>${o.total}</td>
 
-                    <td>
+                    <td className="fit">
                       <div >
                         <form onSubmit={sendEmail} className="order-form">
                           <div>
@@ -162,7 +162,7 @@ export function TopCustomers() {
                           </div>
 
                           <div>
-                            <button className="discoun-button" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }}>
+                            <button className="discoun-button btn-w" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }}>
                               <div className="svg-wrapper-1">
                                 <div className="svg-wrapper">
                                   <span id="icon" className="material-symbols-outlined">sell</span>

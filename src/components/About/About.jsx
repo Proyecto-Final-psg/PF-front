@@ -37,15 +37,15 @@ export function About() {
             </div>
             <hr />
             <div className="team" style={{width:"100%", padding:"50px"}}>
-            <h1 className='m-5'>Development Team</h1>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa necessitatibus dolore nostrum reprehenderit aperiam eveniet, modi cumque voluptates vero. Adipisci nisi dignissimos alias unde. Laboriosam voluptates reiciendis repellendus voluptatum adipisci!</span>
+            <h1 className='m-5'>Development Team 🚀</h1>
+            <span>We are Weedical! We are six fullstack developers and this is our final bootcamp project. We've been working on this for a whole month, with 3 frontend developers and 3 backend developers. Henry's bootcamp was a great experience, and we are grateful for it.</span>
               <div className="devs">
                 <div data-aos="fade-up">
-                    <DevCard img={juan} name='Juan Cataldo' />
+                    <DevCard img={juan} name='Juan Cataldo' link={'https://www.linkedin.com/in/juanocataldo/'} git={'https://github.com/juanocataldo'} />
                 </div>
 
                 <div data-aos="fade-down">
-                    <DevCard img={gian} name='Gianfranco Gobbi'/>
+                    <DevCard img={gian} name='Gianfranco Gobbi' link={'https://www.linkedin.com/in/gianfranco-gobbi'} git={'https://github.com/GianfrancoGobbi'} />
                 </div>
 
                 <div data-aos="fade-up">
@@ -53,15 +53,15 @@ export function About() {
                 </div>
 
                 <div data-aos="fade-down">
-                    <DevCard img={flor} name='Florencia Taburelli'/>                
+                    <DevCard img={flor} name='Florencia Taburelli' link={'https://www.linkedin.com/in/florencia-taburelli/'} git={'https://github.com/FlorenciaTaburelli'}  />                
                 </div>
 
                 <div data-aos="fade-up">
-                    <DevCard img={rodrigo} name='Rodrigo Perez'/>
+                    <DevCard img={rodrigo} name='Rodrigo Perez' link={'https://www.linkedin.com/in/rodrigo-perez-54073314b'} git={'https://github.com/rodrigo0109'} />
                 </div>
 
                 <div data-aos="fade-down">
-                    <DevCard img={rami} name='Ramiro Grisales'/>
+                    <DevCard img={rami} name='Ramiro Grisales' link={'https://www.linkedin.com/in/rami-grisales-62a086239/'} git={'https://github.com/orimarselasirg'} />
                 </div>
             </div>  
             </div>
