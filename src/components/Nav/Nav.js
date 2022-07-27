@@ -55,7 +55,7 @@ const Nav = () => {
                                     </div>
                                     <div onClick={handleMenu} className='item'>
                                         <Link className="navbar-item" to="/metrics">
-                                            Admin panel
+                                            Admin Dashboard
                                         </Link>
                                         <FontAwesomeIcon icon={faSignal} />
                                     </div>
