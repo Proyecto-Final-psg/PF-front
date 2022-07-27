@@ -23,7 +23,6 @@ import { TopCustomers } from "../Metrics/TopCustomers/TopCustomers";
 import { Orders } from "../Metrics/Orders/Orders";
 import { OrderDetailed } from "../Metrics/Orders/OrderDetailed/OrderDetailed";
 import Order from "../Order/Order";
-import Favourites from "../Account/Favourites/Favourites";
 import { About } from "../About/About";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,7 +68,7 @@ const Home = () => {
           <Route path='/order' element={<Order />} exact />
           <Route path='/orden-compra-detalle/:id' element={<OrdenCompraDetail />} />
           <Route path='/account' element={<Account />} />
-          <Route path='/metrics' element={(userprohibido === "admin") ?  <Metrics /> : <PrincipalPage />}>
+          <Route path='/metrics' element={(userprohibido === "admin") ? <Metrics /> : <PrincipalPage />}>
             <Route index element={<StockManagement />} />
             <Route path='stock-management' element={<StockManagement />} />
             <Route path='most-required-product' element={<MostRequiredProduct />} />

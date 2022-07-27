@@ -9,11 +9,11 @@ import swal from 'sweetalert'
 
 const ModalReview = ({modal, setModal, id}) => {
 
-  const history = useSelector(store => store.orderDetails[0]?.arrayItems)
+  // const history = useSelector(store => store.orderDetails[0]?.arrayItems)
   //const reviews = useSelector(store => store.reviews)
-  const userReviews = useSelector(store => store.userReviews);
+  // const userReviews = useSelector(store => store.userReviews);
   const usr = useSelector((store) => store.user);
-  const orders = useSelector((store) => store.orderDetails);
+  // const orders = useSelector((store) => store.orderDetails);
   //console.log('userReviews', userReviews)
   //console.log(history)
   //console.log('reviews',reviews)
