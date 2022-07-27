@@ -24,6 +24,8 @@ export const ADD_REVIEW = 'ADD_REVIEW'
 export const GET_ORDER_BY_ORDERID = 'GET_ORDER_BY_ORDERID'
 export const API_URL = 'https://desarrollo-back.herokuapp.com'
 export const CLEAR_CART = 'CLEAR_CART'
+export const ADD_FAVORITE = 'ADD_FAVORITE'
+export const GET_FAVORITE = 'GET_FAVORITE'
 
 // export const API_URL = 'http://localhost:8081'
 
