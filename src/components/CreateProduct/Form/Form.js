@@ -5,7 +5,7 @@ import './Form.scss'
 const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, category, localState, setLocalState, state, error, button, handleDeleteCategory }) => {
 
     return (
-        <div className='form-create-container'>
+        <div className='form-create-container' data-aos='fade-right'>
 
             <form onSubmit={onSubmit} className='create_form'>
 

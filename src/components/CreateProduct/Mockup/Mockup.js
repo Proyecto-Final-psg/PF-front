@@ -6,7 +6,7 @@ import './Mockup.scss'
 const Mockup = ({ localState }) => {
     return (
         <>
-            <div className='mockup-product'>
+            <div className='mockup-product' data-aos='fade-left'>
                 <div className='img-create'>
                     <p className='img-create_title'>{localState.name}</p>
                     <div className='img-mockup-container'>
