@@ -4,19 +4,29 @@
 .cmp-ordendetail-container {
     width: 90%;
     min-height: 77vh;
+    margin: auto;
+    @include respond-to('medium') {
+        width: 90%;
+        min-height: 77vh;
+        // margin: auto;
+    }
+
 }
 
 .cmp-order-compra-detil-container-imgs {
-    margin-top: 120px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
+    // margin-left: 15px;
 
     @include respond-to('medium') {
         display: flex;
-        left: 200px;
-        flex-direction: row;
-        width: max-content;
+    /* left: 200px; */
+    flex-direction: row;
+    /* width: max-content; */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 
     }
 }
@@ -24,7 +34,7 @@
 .over-cmp {
     @include respond-to('medium') {
         overflow: auto;
-        width: 111%;
+        // width: 111%;
 
     }
 
@@ -59,22 +69,21 @@
 .content {
     display: flex;
     flex-direction: column;
-
-    span {
-        margin-top: 5px;
-        width: 60px;
-        margin-right: 100px;
-
-    }
-}
-
-@media (max-width: 700px) {
-    .content {
+    @media (max-width: 700px) {
         position: absolute;
         top: 6px;
         left: 276px;
     }
+
 }
+
+.content span{
+        margin-top: 5px;
+        width: 60px;
+        margin-right: 100px;
+}
+
+
 
 .cmp-ordendetail-container-img-logo {
     width: 60px;
@@ -113,10 +122,11 @@
 }
 
 .cmp-orden-compra-back {
+    margin-top: 40px;
+    width: 90%;
+    /* margin: auto; */
     display: flex;
-    position: relative;
-    top: 90px;
-    left: 40px;
+    width: 100%;
 }
 
 .btn-back {
