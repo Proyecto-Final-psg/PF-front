@@ -101,7 +101,7 @@ export function MostRequiredProduct() {
     [])
 
   function filterSellingView(e){
-    console.log('entre')
+    // console.log('entre')
     setFilterView(e.target.value)
   }
 
