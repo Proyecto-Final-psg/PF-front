@@ -13,7 +13,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 300)
+    }, 400)
     return () => {
       setLoading(true)
     };
