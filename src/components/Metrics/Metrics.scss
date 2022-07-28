@@ -117,7 +117,8 @@ table thead tr abbr {
 }
 
 .link {
-    color: white;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 .is-active {
@@ -128,4 +129,16 @@ table thead tr abbr {
     .menu {
         height: auto;
     }
+}
+
+#admin-table-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-decoration: none;
+}
+
+#admin-table-header span{
+    margin-left: 4px;
 }

@@ -36,7 +36,8 @@
 
 .lower-than-50 {
     background-color: rgb(108, 177, 255);
-    color: white // font-weight: bold;
+    color: white;
+    
 }
 
 
@@ -55,10 +56,16 @@
         justify-content: space-between;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: center;
+        align-items: flex-start;;
         width: min-content;
 
     }
+}
+
+#edit-btn{
+    background: rgb(88,128,87);
+background: linear-gradient(90deg, rgba(88,128,87,0) 0%, rgba(0,0,0,0.6250875350140056) 100%);
+vertical-align: middle;
 }
 
 .position {
