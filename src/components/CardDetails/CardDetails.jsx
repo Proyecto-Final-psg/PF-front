@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductById, getReviews, addToCart, addFavorite } from '../../Redux/Actions'
+import { getProductById, getReviews, addToCart, addFavorite, getUserReviews } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import ModalReview from '../ModalReview/ModalReview'
 import './CardDetails.scss'
@@ -10,6 +10,8 @@ import LoadingImg from '../../assets/Loading.gif'
 // import Swiper from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -22,6 +24,7 @@ export function CardDetails() {
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
+    const userReviews = useSelector(store => store.userReviews)
    
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
@@ -35,6 +38,7 @@ export function CardDetails() {
 
         dispatch(getProductById(id))
         dispatch(getReviews(id))
+        dispatch(getUserReviews(user_id))
         setTimeout(() => {
             setLoading(false)
         }, 600)
@@ -43,6 +47,7 @@ export function CardDetails() {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    
     const addCart = () => {
         dispatch(addToCart(product.id, product.name, product.price,))
     }
@@ -111,7 +116,7 @@ export function CardDetails() {
                 <div className='cmp-CardDetails-loading-container'>
                     < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
                 </div>} */}
-            <ModalReview modal={modal} setModal={setModal} id={id}/>
+            <ModalReview modal={modal} setModal={setModal} id={id} />
 
             <div className="detail">
 
@@ -136,14 +141,17 @@ export function CardDetails() {
 
                 <div className="description">
                     <button className='btn back' onClick={() => navigate(-1)}>
-                        <span className="material-symbols-outlined">keyboard_backspace</span>
+                        <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
 
                     {admin &&
                         <div className='container-buttons_edit_remove'>
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                             <button className='button-delete'>Remove</button>
-                            <button className='button-edit' onClick={() => setModal(true)}>Review</button>
+                            {
+                                !userReviews.map(r => r.productId).filter(r => r == id).length &&
+                                <button className='button-edit' onClick={() => setModal(true)}>Review</button>  
+                            }
                             <button className='button-favorite' onClick= {addFavorites}>Favorite</button>
                         </div>}
                     <br></br>

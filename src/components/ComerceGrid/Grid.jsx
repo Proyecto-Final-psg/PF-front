@@ -146,7 +146,7 @@ function Grid() {
                 {/* <input type="submit" value="Search" className='btn_search' /> */}
                 <button type='submit' className='btn btn-success btn-w' style={{width:"fit-content"}}>
                     Buscar
-                    <span class="material-symbols-outlined">search</span>
+                    <span className="material-symbols-outlined">search</span>
                     </button>
             </form>
 
@@ -184,7 +184,7 @@ function Grid() {
                 </ul>
                 <button className="btn-filter-reset btn-w" onClick={resetFilters} style={{width:"fit-content"}}>
                     Reset filters
-                    <span class="material-symbols-outlined">restart_alt</span>
+                    <span className="material-symbols-outlined">restart_alt</span>
                     </button>
             </div>
         </div>
