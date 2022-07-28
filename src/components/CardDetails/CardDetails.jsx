@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductById, getReviews, addToCart, addFavorite } from '../../Redux/Actions'
+import { getProductById, getReviews, addToCart, addFavorite, getUserReviews } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import ModalReview from '../ModalReview/ModalReview'
 import './CardDetails.scss'
@@ -24,6 +24,7 @@ export function CardDetails() {
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
+    const userReviews = useSelector(store => store.userReviews)
    
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
@@ -37,6 +38,7 @@ export function CardDetails() {
 
         dispatch(getProductById(id))
         dispatch(getReviews(id))
+        dispatch(getUserReviews(user_id))
         setTimeout(() => {
             setLoading(false)
         }, 600)
@@ -147,10 +149,9 @@ export function CardDetails() {
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                             <button className='button-delete'>Remove</button>
                             {
-                                !reviews.map(r => r.productId).filter(r => r == id).length &&
+                                !userReviews.map(r => r.productId).filter(r => r == id).length &&
                                 <button className='button-edit' onClick={() => setModal(true)}>Review</button>  
                             }
-                           {/*  {console.log('estado', reviews.map(r => r.productId).filter(r => r == id).length)} */}
                             <button className='button-favorite' onClick= {addFavorites}>Favorite</button>
                         </div>}
                     <br></br>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview, getReviews } from '../../Redux/Actions';
+import { addReview, getReviews, getUserReviews } from '../../Redux/Actions';
 import { validator } from '../CreateProduct/helpers/Validator';
 import './ModalReview.scss'
 import StarRating from './StarRating/StarRating';
@@ -48,6 +48,7 @@ const ModalReview = ({modal, setModal, id}) => {
     }).then(function (isConfirm) {
       if (isConfirm) {
         dispatch(getReviews(id))
+        dispatch(getUserReviews(usr[0].user_id))
       }
   })
   }
