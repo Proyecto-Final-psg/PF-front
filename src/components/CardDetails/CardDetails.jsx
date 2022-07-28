@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductById, getReviews, addToCart, addFavorite, getFavorite } from '../../Redux/Actions'
+import { getProductById, getReviews, addToCart, addFavorite } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import ModalReview from '../ModalReview/ModalReview'
 import './CardDetails.scss'
@@ -22,15 +22,15 @@ export function CardDetails() {
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
-    const wishlist = useSelector(state => state.wishlist)
+   
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     let user = userRedux.roll === "user"
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
+    const { loginWithRedirect } = useAuth0()
     const user_id = userRedux.user_id
     const [modal, setModal] = useState(false)
     const [loading, setLoading] = useState(true)
-    console.log(wishlist)
+
     useEffect(() => {
 
         dispatch(getProductById(id))

@@ -2,7 +2,7 @@ import './footer.scss'
 
 function Footer() {
     return <div className="">
-        <div className="footer">
+        <div className="foot">
             <span>Application developed by PSG</span>
             <br />
             <span>weedical.shop@gmail.com</span>
