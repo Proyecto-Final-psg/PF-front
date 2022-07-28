@@ -143,10 +143,7 @@
 }
 
 .container-imagenPrincipal {
-
     width: 40px;
-
-
     @include respond-to('medium') {
         //   display: flex;
         //   justify-content: center;
