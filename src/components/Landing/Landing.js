@@ -31,8 +31,12 @@ export function Landing() {
         }
         setTimeout(() => {
             setLoading(false);
-        }, 800);
-        return () => { };
+        }, 1000);
+        return () => {
+
+
+
+        };
     })
     return (
 
