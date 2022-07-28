@@ -61,15 +61,15 @@ const Home = () => {
         <Routes>
           <Route path='/home' element={<PrincipalPage />} exact />
           <Route path='/products/:id' element={<CardDetails />} />
-          <Route path='/products/edit/:id' element={<EditCard />} />
-          <Route path='/products/create' element={<CreateProduct />} />
+          <Route path='/products/edit/:id' element={(userprohibido === "admin") ? <EditCard /> : <PrincipalPage />} />
+          <Route path='/products/create' element={(userprohibido === "admin") ? <CreateProduct /> : <PrincipalPage />} />
           <Route path='/about' element={<About />} />
           <Route path='/users' element={<Users />}></Route>
           <Route path='/cart' element={<Cart />} exact />
           <Route path='/order' element={<Order />} exact />
           <Route path='/orden-compra-detalle/:id' element={<OrdenCompraDetail />} />
           <Route path='/account' element={<Account />} />
-          <Route path='/metrics' element={(userprohibido === "admin") ?  <Metrics /> : <PrincipalPage />}>
+          <Route path='/metrics' element={(userprohibido === "admin") ? <Metrics /> : <PrincipalPage />}>
             <Route index element={<StockManagement />} />
             <Route path='stock-management' element={<StockManagement />} />
             <Route path='most-required-product' element={<MostRequiredProduct />} />

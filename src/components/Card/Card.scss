@@ -79,6 +79,39 @@
     transition: 0.3s ease-out;
 }
 
+.card-button-cart {
+    transform: translate(-50%, 125%);
+    width: 60%;
+    border-radius: 4px;
+    border: none;
+    background-color: #c00707;
+    color: #fff;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.3s ease-out;
+}
+
+
+.card-button-cart:hover {
+    transform: translate(-50%, 125%);
+    width: 60%;
+    border-radius: 4px;
+    border: none;
+    background-color: #6e0000;
+    color: #fff;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.3s ease-out;
+}
+
 .stock {
     transform: translate(-50%, 125%);
     width: 60%;
@@ -163,6 +196,12 @@
 }
 
 .card:hover .card-button {
+    transform: translate(-50%, -19%);
+    opacity: 1;
+    box-shadow: 0px 5px 13px 3px rgba(0, 0, 0, 0.219);
+}
+
+.card:hover .card-button-cart {
     transform: translate(-50%, -19%);
     opacity: 1;
     box-shadow: 0px 5px 13px 3px rgba(0, 0, 0, 0.219);
@@ -262,6 +301,9 @@
         justify-content: center;
         align-items: center;
         width: 90%;
+    }
 
+    .card-favourites {
+        bottom: 100px;
     }
 }
