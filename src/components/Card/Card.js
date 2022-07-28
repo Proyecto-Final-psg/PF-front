@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "./Card.scss";
 import { addToCart } from "../../Redux/Actions"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteToCart } from '../../Redux/Actions';
 import party from "party-js";
 import Toastify from 'toastify-js'
 import LoadingImg from '../../assets/Loading.gif'
@@ -9,6 +10,7 @@ import { useState, useEffect } from "react";
 const Card = ({ name, id, description, img, price, stock, widthProp, heightProp }) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
+  const allCartItems = useSelector(store => store.cart.map(item => item.name))
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,6 +22,26 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+
+  const deleteItemToCart = (e) => {
+    dispatch(deleteToCart(id))
+
+    Toastify({
+      text: "Delete cart 🗑 ",
+      duration: 3000,
+
+      newWindow: true,
+      close: false,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "#6e0000",
+        padding: "20px"
+      },
+      onClick: function () { } // Callback after click
+    }).showToast();
+  }
 
   function addItemToCart(e) {
     //Efecto confeti
@@ -48,7 +70,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
   function addToFavourites() {
     Toastify({
-      text: "Added " + name +" to Favourites ♥",
+      text: "Added " + name + " to Favourites ♥",
       duration: 3000,
 
       newWindow: true,
@@ -99,8 +121,11 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
       {
         stock > 0 &&
-        <button onClick={addItemToCart} className="card-button" key={id}>
-          <span className="material-symbols-outlined">add_shopping_cart</span>
+        <button onClick={allCartItems.includes(name) ? deleteItemToCart : addItemToCart} className={allCartItems.includes(name) ? "card-button-cart" : "card-button"} key={id}>
+         {allCartItems.includes(name) ? 
+         <span className="material-symbols-outlined">delete_shopping_cart</span>
+         :<span className="material-symbols-outlined">add_shopping_cart</span>
+         }
         </button>
       }
 
