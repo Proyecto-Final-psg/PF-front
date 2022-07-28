@@ -24,13 +24,15 @@ export function CardDetails() {
     const reviews = useSelector(store => store.reviews)
     const wishlist = useSelector(state => state.wishlist)
     const userRedux = useSelector(state => state.user[0])
+    const userReviews = useSelector(store => store.userReviews);
+    //console.log(userReviews)
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     let user = userRedux.roll === "user"
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
     const user_id = userRedux.user_id
     const [modal, setModal] = useState(false)
+    const [btn, setButton] = useState(true)
     const [loading, setLoading] = useState(true)
-    console.log(wishlist)
     useEffect(() => {
 
         dispatch(getProductById(id))
@@ -43,6 +45,12 @@ export function CardDetails() {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+/*     useEffect(() => {
+      if(userReviews.map(r => r.productId).filter(r => r == id).length === 0) setButton(false)
+      console.log(userReviews.map(r => r.productId).filter(r => r == id))
+    }, []) */
+    
     const addCart = () => {
         dispatch(addToCart(product.id, product.name, product.price,))
     }
@@ -111,7 +119,7 @@ export function CardDetails() {
                 <div className='cmp-CardDetails-loading-container'>
                     < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
                 </div>} */}
-            <ModalReview modal={modal} setModal={setModal} id={id}/>
+            <ModalReview modal={modal} setModal={setModal} id={id} setButton={setButton}/>
 
             <div className="detail">
 
@@ -143,7 +151,11 @@ export function CardDetails() {
                         <div className='container-buttons_edit_remove'>
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                             <button className='button-delete'>Remove</button>
-                            <button className='button-edit' onClick={() => setModal(true)}>Review</button>
+                            {
+                                !btn &&
+                                <button className='button-edit' onClick={() => setModal(true)}>Review</button>  
+                            }
+                            {console.log('estado',btn)}
                             <button className='button-favorite' onClick= {addFavorites}>Favorite</button>
                         </div>}
                     <br></br>

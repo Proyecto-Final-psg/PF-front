@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview } from '../../Redux/Actions';
+import { addReview, getReviews } from '../../Redux/Actions';
 import { validator } from '../CreateProduct/helpers/Validator';
 import './ModalReview.scss'
 import StarRating from './StarRating/StarRating';
 import swal from 'sweetalert'
+import { useEffect } from 'react';
 //import { validate } from './Validate';
 
-const ModalReview = ({modal, setModal, id}) => {
+const ModalReview = ({modal, setModal, id, setButton}) => {
 
   const history = useSelector(store => store.orderDetails[0]?.arrayItems)
   //const reviews = useSelector(store => store.reviews)
   const userReviews = useSelector(store => store.userReviews);
+  console.log(userReviews)
   const usr = useSelector((store) => store.user);
   const orders = useSelector((store) => store.orderDetails);
   //console.log('userReviews', userReviews)
@@ -50,10 +52,16 @@ const ModalReview = ({modal, setModal, id}) => {
     })
     setModal(false)
     swal({
-      title: `Review created succesfully!`,
+      title: `Review created successfully!`,
       icon: "success",
       button: 'Ok'
-    })
+    }).then(function (isConfirm) {
+      if (isConfirm) {
+        dispatch(getReviews(id))
+        //setButton(userReviews.map(r => r.productId).filter(r => r == id))
+        //console.log(userReviews.find(r => r.productId == id))
+      }
+  })
   }
 
   const handleCancel = (e) => {
@@ -66,6 +74,8 @@ const ModalReview = ({modal, setModal, id}) => {
     })
     setModal(false)
   }
+
+
 
   return (
     <div className='history'>
