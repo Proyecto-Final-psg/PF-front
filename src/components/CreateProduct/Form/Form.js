@@ -87,7 +87,7 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                         {error.categories && <p className="help">{error.categories}</p>}
                     </div>
                     <div className='new-category'>
-                        <input className='input is-hovered is-success' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
+                        <input className='input is-hovered is-success' type="text" placeholder='New Category...' maxLength="10" onChange={(e) => setNewCategory(e.target.value)} name='categories' />
                         <button className='btn_category' onClick={newCategory}>Add</button>
                     </div>
                     <div className='buttons-submit-categories'>
