@@ -120,7 +120,7 @@ const Account = () => {
               <h2 className="custom-title mb-5">Purchases</h2>
               {orders && orders.length > 0 ? orders.map((e, i) => {
                 return (
-                  <Accordion defaultActiveKey="1" data-aos="fade-left">
+                  <Accordion defaultActiveKey="1" data-aos="fade-left" key={i}>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
                         Order n° {i}
