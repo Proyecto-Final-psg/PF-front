@@ -8,7 +8,7 @@ const PrincipalPage = () => {
     }, [])
     return (
         <div>
-            <Carousel classname="carousel" />
+            <Carousel className="carousel" />
             <Grid />
         </div>
     )
