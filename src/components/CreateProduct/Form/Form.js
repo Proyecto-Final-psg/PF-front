@@ -12,7 +12,7 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                 <div className='left-container-create'>
                     <div className='input_container'>
                         <label htmlFor='name'><span>*</span>Name: </label>
-                        <input required className={error.name ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="text" value={localState.name}  name='name' onChange={handleInputChange} autoComplete='off' />
+                        <input required className={error.name ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="text"  maxLength="18" value={localState.name}  name='name' onChange={handleInputChange} autoComplete='off' />
                         {error.name && <p className="help">{error.name}</p>}
                     </div>
                     <div className='input_container'>
@@ -32,7 +32,7 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                         </div>
                         <div className='input_container'>
                             <label htmlFor='price'><span>*</span>Price: </label>
-                            <input required className={error.price ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="number" value={localState.price}  min='0' name='price' onChange={handleInputChange} />
+                            <input  required className={error.price ? 'input is-hovered is-danger' : 'input is-hovered is-success'} type="number"  value={localState.price}  min='0'   name='price' onChange={handleInputChange} />
                             {error.price && <p className="help">{error.price}</p>}
                         </div>
                     </div>
@@ -87,7 +87,7 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                         {error.categories && <p className="help">{error.categories}</p>}
                     </div>
                     <div className='new-category'>
-                        <input className='input is-hovered is-success' type="text" placeholder='New Category...' onChange={(e) => setNewCategory(e.target.value)} name='categories' />
+                        <input className='input is-hovered is-success' type="text" placeholder='New Category...' maxLength="10" onChange={(e) => setNewCategory(e.target.value)} name='categories' />
                         <button className='btn_category' onClick={newCategory}>Add</button>
                     </div>
                     <div className='buttons-submit-categories'>

@@ -16,8 +16,22 @@ import boy2 from "../../assets/boy2.png"; */
 //import Image from '../../assets/no_user_image.jpeg'
 import "./Account.scss";
 import Accordion from "react-bootstrap/Accordion";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 
 const Account = () => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [])
+  
+  useEffect(() => {
+      Aos.init({ 
+          duration: 400,
+          once: true,
+       })
+  }, [])
+  
   const [active, setActive] = useState("history-shops");
   const usr = useSelector((store) => store.user);
   const orders = useSelector((store) => store.orderDetails);
@@ -36,11 +50,12 @@ const Account = () => {
   return (
     <div>
       {loading && (
-        <div className="cmp-CardDetails-loading-container-profile">
+        <div className="cmp-CardDetails-loading-container-profile" >
           <img
             className="cmp-Account-loading-img"
             src={LoadingImg}
             alt="my-gif"
+            style={{padding:"100px"}}
           />
         </div>
       )}
@@ -98,16 +113,17 @@ const Account = () => {
 
           {active === "favourites" ? (
             <div className="cmp-account-container-purchases">
-              <h1>Favourites</h1>
+              <h1>Favorites</h1>
             </div>
           ) : (
             <div className="cmp-account-container-purchases mt-5">
+              <h2 className="custom-title mb-5">Purchases</h2>
               {orders && orders.length > 0 ? orders.map((e, i) => {
                 return (
-                  <Accordion defaultActiveKey="1">
+                  <Accordion defaultActiveKey="1" data-aos="fade-left">
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
-                        Order {i}
+                        Order n° {i}
                         <img src={mensaje} id='cmp-account-mensaje' />
                         </Accordion.Header>
                       <Accordion.Body>

@@ -42,22 +42,30 @@ const CreateProduct = () => {
         }))
     }
     function handleSelectCategories(e) {
-        setCreateProd({
+        let categoryFound = createProd.categories.find(a => a === e.target.value)
+        if(!categoryFound){
+           setCreateProd({
             ...createProd,
             categories: [...createProd.categories, e.target.value],
-        })
-        setError(validator({
-            ...createProd,
-            categories: [...createProd.categories, e.target.value],
-        }))
+            })
+            setError(validator({
+                ...createProd,
+                categories: [...createProd.categories, e.target.value],
+            })) 
+        }
+        
     }
 
     function handleClickCategory(e) {
         e.preventDefault()
-        setCreateProd({
+        let categoryFound = createProd.categories.find(a => a === newCategory)
+        if(!categoryFound) {
+            setCreateProd({
             ...createProd,
             categories: [...createProd.categories, newCategory],
-        })
+            })
+        }
+        
     }
 
     const handleSubmit = (e) => {

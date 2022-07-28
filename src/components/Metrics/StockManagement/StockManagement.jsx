@@ -8,6 +8,7 @@ import { Pie } from 'react-chartjs-2';
 import './StockManagement.scss'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import { aosEffectConfig } from "../Metrics";
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
@@ -24,7 +25,7 @@ ChartJS.register(
   export function StockManagement() {
   
     useEffect(() => {
-        Aos.init({ once: true })
+        Aos.init({duration: aosEffectConfig, once: true })
     }, [])
 
   const products = useSelector(store => store.products)
@@ -104,13 +105,13 @@ ChartJS.register(
       {/* {!loading && */}
           <div className="stock-mgm">
             
-            <table className="table is-bordered is-narrow shadow" data-aos='fade-right'>
+            <table className="table is-narrow shadow" data-aos='fade-right'>
               <thead>
                 <tr>
                   {/* <th><abbr title="ID">ID</abbr></th> */}
                   <th><abbr title="Product name">Product</abbr></th>
                   <th><abbr title="Stock">Stock</abbr></th>
-                  <th><abbr title="Action">Action</abbr></th>
+                  <th><abbr title="Action">Edit</abbr></th>
                 </tr>
               </thead>
               <tbody>
@@ -119,8 +120,10 @@ ChartJS.register(
                     {/* <th style={{ color: "white" }}>{p.id}</th> */}
                     <td>{p.name}</td>
                     <td>{p.stock}</td>
-                    <td>
-                      <NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink>
+                    <td id='edit-btn'>
+                      <NavLink className='link' to={`/products/edit/${p.id}`}>
+                      <span class="material-symbols-outlined">edit_note</span>
+                      </NavLink>
                     </td>
                   </tr>
                 })}
@@ -130,7 +133,9 @@ ChartJS.register(
                     {/* <th style={{ color: "white" }}>{p.id}</th> */}
                     <td>{p.name}</td>
                     <td>{p.stock}</td>
-                    <td><NavLink className='link' style={{ color: "black" }} to={`/products/edit/${p.id}`}>Edit</NavLink></td>
+                    <td id='edit-btn'><NavLink className='link' to={`/products/edit/${p.id}`}>
+                    <span class="material-symbols-outlined">edit_note</span>
+                      </NavLink></td>
                   </tr>
                 })}
                 {lowerThan50 && lowerThan50.map((p, i) => {
@@ -138,7 +143,9 @@ ChartJS.register(
                     {/* <th style={{ color: "white" }}>{p.id}</th> */}
                     <td>{p.name}</td>
                     <td>{p.stock}</td>
-                    <td><NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink></td>
+                    <td id='edit-btn'><NavLink className='link' to={`/products/edit/${p.id}`}>
+                      <span class="material-symbols-outlined">edit_note</span>
+                    </NavLink></td>
                   </tr>
                 })}
 

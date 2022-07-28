@@ -128,9 +128,18 @@ export function TopCustomers() {
           <table className="table is-bordered is-narrow shadow" data-aos='fade-up'>
             <thead>
               <tr>
-                <th><abbr title="Top users">Name</abbr></th>
-                <th><abbr title="Totals">Totals</abbr></th>
-                <th><abbr title="Send Discounts">Send discount coupon</abbr></th>
+              <th><abbr id="admin-table-header" title="User Name">
+                  User
+                  <span class="material-symbols-outlined">person</span>
+                  </abbr></th>
+                  <th><abbr id="admin-table-header" title="Total">
+                  Total
+                  <span class="material-symbols-outlined">savings</span>
+                  </abbr></th>
+                  <th><abbr id="admin-table-header" title="Send discount coupon to the client">
+                  Discount coupon
+                  <span class="material-symbols-outlined">shopping_bag</span>
+                  </abbr></th>
               </tr>
             </thead>
             <tbody>

@@ -129,13 +129,16 @@ export function OrderDetailed() {
                         <td><abbr title="ID">ID</abbr></td>
                         <td><abbr title="Status">Status</abbr></td>
                         <td><abbr title="User name">User</abbr></td>
-                        <td colSpan='3'>
+                        <td colSpan='2'>
                             <abbr title="Products">Products</abbr>
                         </td>
                     </tr>
                     <tr>
-                        <td colSpan='3'></td>
-                        <td><abbr title="Product name">Name</abbr></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        {/* <td><abbr title="Product quantity">Quantity</abbr></td> */}
+                        <td><abbr title="Product quantity">Product</abbr></td>
                         <td><abbr title="Product quantity">Quantity</abbr></td>
                         {/* <td><abbr title="Product price">Price</abbr></td> */}
                     </tr>
@@ -143,18 +146,31 @@ export function OrderDetailed() {
                 <tbody>
                     {orderDetailed && orderDetailed.orden && <tr key={orderDetailed.orden.id}>
                         <td style={{ fontWeight: "bold" }}>{orderDetailed.orden.id}</td>
-                        <td>
-                            {orderDetailed.orden.status} <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
+                        <td id='status-row'>                        
+                            {(orderDetailed.orden.status === 'inprogress') ? <span class="material-symbols-outlined" style={{color:"rgb(167, 164, 0)"}}>hourglass_empty</span>
+                            : (orderDetailed.orden.status === 'completed')  ? <span class="material-symbols-outlined" style={{color:"green"}}>verified</span>
+                            : (orderDetailed.orden.status === 'canceled') ? <span class="material-symbols-outlined" style={{color:"red"}}>cancel</span>
+                            : ''
+                         } 
+                            <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>
                         </td>
                         <td>{orderDetailed.orden.user ? orderDetailed.orden.user.user_name : 'N/A'}</td>
-                        <td colSpan='3'>
+                        <td colSpan='2'>
                             {orderDetailed.productos && orderDetailed.productos.length > 0 && orderDetailed.productos.map(i => {
-                                return <div key={i.name}>
-                                    <img src={i.img} alt="" id='detail-prod-pic' />
-                                    <span style={{ fontWeight: "bold" }}>{i.name} </span>
-                                    <span>[{i.quantity}u.] </span>
-                                    {/* <span>${i.priceOfSale}</span> */}
-                                </div>
+                                return <tr className="tr-order-detail">
+                                <td style={{border:"none"}}>
+                                    <div key={i.name} className="card-order-detail-table">
+                                        <img src={i.img} alt="" id='detail-prod-pic' />
+                                        <span style={{ fontWeight: "bold" }}>{i.name} </span>
+                                        {/* <span>${i.priceOfSale}</span> */}
+                                    </div>
+                                </td>
+                                <td style={{border:"none"}}>
+                                <span style={{fontWeight:"bold"}}>{i.quantity} </span>
+
+                                </td>
+
+                                </tr>
 
                             })}
                         </td>

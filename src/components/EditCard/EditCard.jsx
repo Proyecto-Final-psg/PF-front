@@ -17,7 +17,7 @@ export function EditCard() {
     const { id } = useParams()
     const product = useSelector(store => store.product)
     const categories = useSelector(state => state.categories);
-    // const [newCategory, setNewCategory] = useState('')
+    const [newCategory, setNewCategory] = useState('')
     const [error, setError] = useState({})
 
     const [editedProduct, setEditProduct] = useState({
@@ -44,23 +44,29 @@ export function EditCard() {
     }
 
     function handleSelectCategories(e) {
-        setEditProduct({
+        let categoryFound = editedProduct.categories.find(a => a === e.target.value)
+        if(!categoryFound) {
+            setEditProduct({
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
-        })
-        setError(validator({
+            })
+            setError(validator({
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
-        }))
+          }))
+        }
     }
 
     function handleClickCategory(e) {
         e.preventDefault()
-        let categoryFound = editedProduct.categories.find(a => a === e.target.value)
-        setEditProduct({
+        let categoryFound = editedProduct.categories.find(a => a === newCategory)
+        if(!categoryFound){
+            setEditProduct({
             ...editedProduct,
-            categories: categoryFound ? [...editedProduct.categories] : [...editedProduct.categories, e.target.value],
+            categories: [...editedProduct.categories, newCategory],
         })
+        }
+        
     }
 
     function handleDeleteCategory(e) {
@@ -122,6 +128,7 @@ export function EditCard() {
                         localState={editedProduct}
                         setLocalState={setEditProduct}
                         handleDeleteCategory={handleDeleteCategory}
+                        setNewCategory={setNewCategory}
                         error={error}
                         state={categories}
                         button={'Modify'}

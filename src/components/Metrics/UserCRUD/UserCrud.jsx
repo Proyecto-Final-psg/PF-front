@@ -79,7 +79,7 @@ export function UserCrud() {
   return <div className="container datas ">
 
     <h1 className="mt-5 custom-title">Lock Users</h1>
-    <span>Locked users will not be able to access weedical ecommerce </span>
+    <span>Locked users wont be able to access weedical ecommerce </span>
     {loading &&
       <div className='loadingGif'>
         <h3>Loading</h3>
@@ -105,9 +105,18 @@ export function UserCrud() {
             <thead>
               <tr>
                 {/* <th><abbr title="User Picture" >*</abbr></th> */}
-                <th><abbr title="User Name">User Name</abbr></th>
-                <th><abbr title="User Email">User Email</abbr></th>
-                <th><abbr title="Action">Action</abbr></th>
+                <th><abbr id="admin-table-header" title="User Name">
+                  User Name
+                  <span class="material-symbols-outlined">person</span>
+                  </abbr></th>
+                <th><abbr id="admin-table-header" title="User Email">
+                  User Email
+                  <span class="material-symbols-outlined">mail</span>
+                  </abbr></th>
+                <th><abbr id="admin-table-header" title="Action">
+                  Action
+                  <span class="material-symbols-outlined">lock</span>
+                  </abbr></th>
               </tr>
             </thead>
             <tbody>

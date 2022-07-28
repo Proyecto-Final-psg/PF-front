@@ -38,6 +38,8 @@ export const validator = (input) => {
 
     if (input.price && parseInt(input.price.length) === 0) error.price = 'Price need to be more than $0'
 
+    if (input.price > 9999) error.price = 'Price < $10000'
+
     if (input.categories && parseInt(input.categories.length) === 0) error.categories = 'At least one category is required'
 
     return error

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
 import './Order.scss'
-import { submitOrder, cleanCart } from '../../Redux/Actions'
+import { submitOrder, cleanCart, orderProductsCbd } from '../../Redux/Actions'
 import { useEffect } from 'react';
 import { validator } from '../CreateProduct/helpers/Validator';
 
@@ -21,6 +21,7 @@ function Order() {
 
     const [order, setOrder] = useState({
         user_id: user[0].user_id,
+        name: '',
         email: '',
         address: '',
         arrayItems: []
@@ -50,22 +51,14 @@ function Order() {
     }
 
     function handleInputOrder(e) {
-        if (e.target.name === 'email') {
-            setOrder({
-                ...order,
-                email: e.target.value
-            })
-            setError(validator({
-                ...addressOrder,
-                email: e.target.value
-            }))
-        } else {
-            setError(validator({
-                ...addressOrder,
-                email: order.email
-            }))
-        }
-
+        setOrder({
+            ...order,
+            [e.target.name]: e.target.value
+        })
+        setError(validator({
+            ...order,
+            [e.target.name]: e.target.value
+        }))
     }
 
     function handleInputAddress(e) {
@@ -76,7 +69,8 @@ function Order() {
         setError(validator({
             ...addressOrder,
             [e.target.name]: e.target.value,
-            email: order.email
+            email: order.email,
+            name: order.name
         }))
     }
 
@@ -92,8 +86,8 @@ function Order() {
                         <label className="label-order">Personal data</label>
                         <div className="control control-order">
                             <div className='input-order'>
-                                <input className="input" type="text" onChange={handleInputOrder} autoComplete="on" />
-                                <p className="help">First and last name</p>
+                                <input className="input" type="text" name='name' onChange={handleInputOrder}  required autoComplete="on" />
+                                <p className="help">{error.name ? <span style={{ color: 'red' }}>{error.name}</span> : 'First and last name'}</p>
                             </div>
                             <div className='input-order'>
                                 <input className="input" type="text" name='email' onChange={handleInputOrder} required autoComplete="on" />
@@ -153,7 +147,7 @@ function Order() {
 
                     <p className="label-order">Total: ${subtotal + (subtotal * (10 / 100))}</p>
                 </div>
-                {order.email === '' || Object.keys(error).length > 0 ? <button type='submit' className='button-submit-order no-submit' disabled>Submit</button>
+                {order.email === '' || order.name === '' || Object.keys(error).length > 0 ? <button type='submit' className='button-submit-order no-submit' disabled>Submit</button>
                     :
                     <button type='submit' className='button-submit-order' onClick={handleSubmitOrder}>Submit</button>
                 }
