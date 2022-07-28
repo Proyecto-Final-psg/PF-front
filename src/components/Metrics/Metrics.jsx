@@ -3,17 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Outlet } from 'react-router-dom'
 import { getAllProducts } from "../../Redux/Actions"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
- // eslint-disable-next-line 
-import { Line } from 'react-chartjs-2';
- // eslint-disable-next-line 
-import { Pie } from 'react-chartjs-2';
 import './Metrics.scss'
- // eslint-disable-next-line 
-import { MostRequiredProduct } from "./MostRequiredProduct/MostRequiredProduct";
- // eslint-disable-next-line 
-import { StockManagement } from "./StockManagement/StockManagement";
 import { useState } from "react";
-
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
@@ -28,6 +19,8 @@ ChartJS.register(
 );
 
 export function Metrics() {
+
+  
 
    // eslint-disable-next-line 
   const products = useSelector(store => store.products)
@@ -176,3 +169,5 @@ export function Metrics() {
       
   </div>
 }
+
+export const aosEffectConfig = 400;

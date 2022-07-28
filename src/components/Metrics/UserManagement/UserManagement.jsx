@@ -97,9 +97,18 @@ export function UserManagement() {
           <thead>
             <tr>
               {/* <th><abbr title="User Picture" >*</abbr></th> */}
-              <th><abbr title="User Name">User Name</abbr></th>
-              <th><abbr title="User Email">User Email</abbr></th>
-              <th><abbr title="To modify a user rol, just press into the user-rol that you want to change">Actual rol</abbr></th>
+              <th><abbr id="admin-table-header" title="User Name">
+                  User Name
+                  <span class="material-symbols-outlined">person</span>
+                  </abbr></th>
+                  <th><abbr id="admin-table-header" title="User Email">
+                  User Email
+                  <span class="material-symbols-outlined">mail</span>
+                  </abbr></th>
+              <th><abbr id="admin-table-header"  title="To modify a user rol, just press into the user-rol that you want to change">
+                Actual rol
+                <span class="material-symbols-outlined">admin_panel_settings</span>
+                </abbr></th>
             </tr>
           </thead>
           <tbody>
