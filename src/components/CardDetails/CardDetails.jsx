@@ -10,6 +10,8 @@ import LoadingImg from '../../assets/Loading.gif'
 // import Swiper from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -24,19 +26,13 @@ export function CardDetails() {
     const reviews = useSelector(store => store.reviews)
    
     const userRedux = useSelector(state => state.user[0])
-    const userReviews = useSelector(store => store.userReviews);
-    //console.log(userReviews)
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     let user = userRedux.roll === "user"
     const { loginWithRedirect } = useAuth0()
     const user_id = userRedux.user_id
     const [modal, setModal] = useState(false)
-    const [btn, setButton] = useState(true)
     const [loading, setLoading] = useState(true)
-<<<<<<< HEAD
-=======
 
->>>>>>> develop-main
     useEffect(() => {
 
         dispatch(getProductById(id))
@@ -49,11 +45,6 @@ export function CardDetails() {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-/*     useEffect(() => {
-      if(userReviews.map(r => r.productId).filter(r => r == id).length === 0) setButton(false)
-      console.log(userReviews.map(r => r.productId).filter(r => r == id))
-    }, []) */
     
     const addCart = () => {
         dispatch(addToCart(product.id, product.name, product.price,))
@@ -123,7 +114,7 @@ export function CardDetails() {
                 <div className='cmp-CardDetails-loading-container'>
                     < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
                 </div>} */}
-            <ModalReview modal={modal} setModal={setModal} id={id} setButton={setButton}/>
+            <ModalReview modal={modal} setModal={setModal} id={id} />
 
             <div className="detail">
 
@@ -148,7 +139,7 @@ export function CardDetails() {
 
                 <div className="description">
                     <button className='btn back' onClick={() => navigate(-1)}>
-                        <span className="material-symbols-outlined">keyboard_backspace</span>
+                        <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
 
                     {admin &&
@@ -156,10 +147,10 @@ export function CardDetails() {
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                             <button className='button-delete'>Remove</button>
                             {
-                                !btn &&
+                                !reviews.map(r => r.productId).filter(r => r == id).length &&
                                 <button className='button-edit' onClick={() => setModal(true)}>Review</button>  
                             }
-                            {console.log('estado',btn)}
+                           {/*  {console.log('estado', reviews.map(r => r.productId).filter(r => r == id).length)} */}
                             <button className='button-favorite' onClick= {addFavorites}>Favorite</button>
                         </div>}
                     <br></br>

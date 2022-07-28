@@ -5,20 +5,10 @@ import { validator } from '../CreateProduct/helpers/Validator';
 import './ModalReview.scss'
 import StarRating from './StarRating/StarRating';
 import swal from 'sweetalert'
-import { useEffect } from 'react';
-//import { validate } from './Validate';
 
-const ModalReview = ({modal, setModal, id, setButton}) => {
+const ModalReview = ({modal, setModal, id}) => {
 
-  const history = useSelector(store => store.orderDetails[0]?.arrayItems)
-  //const reviews = useSelector(store => store.reviews)
-  const userReviews = useSelector(store => store.userReviews);
-  console.log(userReviews)
   const usr = useSelector((store) => store.user);
-  const orders = useSelector((store) => store.orderDetails);
-  //console.log('userReviews', userReviews)
-  //console.log(history)
-  //console.log('reviews',reviews)
   const dispatch = useDispatch()
 
   const [review, setReview] = useState({
@@ -58,8 +48,6 @@ const ModalReview = ({modal, setModal, id, setButton}) => {
     }).then(function (isConfirm) {
       if (isConfirm) {
         dispatch(getReviews(id))
-        //setButton(userReviews.map(r => r.productId).filter(r => r == id))
-        //console.log(userReviews.find(r => r.productId == id))
       }
   })
   }
