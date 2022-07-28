@@ -7,6 +7,7 @@ import { faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Purchases from "../Purchases/Purchases";
 import LoadingImg from "../../assets/Loading.gif";
 import mensaje from './mensaje.png';
+import noOrders from './no_orders.png'
 //import bag from "../../assets/bag.png";
 // eslint-disable-next-line
 /* import boy1 from "../../assets/boy1.png";
@@ -101,7 +102,7 @@ const Account = () => {
             </div>
           ) : (
             <div className="cmp-account-container-purchases mt-5">
-              {orders.map((e, i) => {
+              {orders && orders.length > 0 ? orders.map((e, i) => {
                 return (
                   <Accordion defaultActiveKey="1">
                     <Accordion.Item eventKey="0">
@@ -115,7 +116,13 @@ const Account = () => {
                     </Accordion.Item>
                   </Accordion>
                 );
-              })}
+              })
+            :
+            <div style={{textAlign:"center"}}>
+              <h4>You have no purchases</h4>
+              <img src={noOrders} alt="no_order_icon" className="mt-5" />
+            </div>
+            }
             </div>
           )}
         </div>
