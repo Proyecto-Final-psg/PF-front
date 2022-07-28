@@ -9,7 +9,7 @@ const Purchases = ({ data }) => {
     let total = 0
     const sumaTotal = () => {
         data.arrayItems.forEach((e) => {
-            total += e.price*e.quantity
+            total += e.price * e.quantity
         })
         return total
     }
@@ -41,22 +41,22 @@ const Purchases = ({ data }) => {
                         {data.status === "inprogress" && <span className="tag is-warning">{data.status}</span>}
                         {data.status === "canceled" && <span className="tag is-danger">Canceled</span>}
                         <span className="tag is-success is-light">{`Total:  $  ${sumaTotal()}`}</span>
-                    {data.status === "inprogress" &&
-                        <div className='container-imagenPrincipal'>
-                            <img className='cmp-purchases-img-puntos' src="https://miro.medium.com/max/600/1*jAd0U5wLSjHXe1xL7TH67w.png" alt="puntos" />
-                            <img className='cmp-purchases-img-puntos camion' src={imgEnvio1} alt="envio" />
-                        </div>
-                    }
-                    {data.status === "completed" &&
-                        <div className='container-imagenPrincipal'>
-                            <img className='cmp-purchases-img-puntos camion entregado' src={entregado} alt="entregado" />
-                        </div>
-                    }
-                    {data.status === "canceled" &&
-                        <div className='container-imagenPrincipal'>
-                            <img className='cmp-purchases-img-puntos camion entregado' src={canceled} alt="canceled" />
-                        </div>
-                    }
+                        {data.status === "inprogress" &&
+                            <div className='container-imagenPrincipal'>
+                                <img className='cmp-purchases-img-puntos camion' src={imgEnvio1} alt="envio" />
+                                <img className='cmp-purchases-img-puntos puntos' src="https://miro.medium.com/max/600/1*jAd0U5wLSjHXe1xL7TH67w.png" alt="puntos" />
+                            </div>
+                        }
+                        {data.status === "completed" &&
+                            <div className='container-imagenPrincipal'>
+                                <img className='cmp-purchases-img-puntos camion entregado' src={entregado} alt="entregado" />
+                            </div>
+                        }
+                        {data.status === "canceled" &&
+                            <div className='container-imagenPrincipal'>
+                                <img className='cmp-purchases-img-puntos camion entregado' src={canceled} alt="canceled" />
+                            </div>
+                        }
                     </div>
 
                 </div>
