@@ -143,7 +143,11 @@ function Grid() {
                     {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select >
                 <br></br>
-                <input type="submit" value="Search" className='btn_search' />
+                {/* <input type="submit" value="Search" className='btn_search' /> */}
+                <button type='submit' className='btn btn-success btn-w' style={{width:"fit-content"}}>
+                    Buscar
+                    <span class="material-symbols-outlined">search</span>
+                    </button>
             </form>
 
             <div className='form'>
@@ -178,7 +182,10 @@ function Grid() {
                     </li>
 
                 </ul>
-                <button className="btn-filter-reset" onClick={resetFilters}>Reset filters</button>
+                <button className="btn-filter-reset btn-w" onClick={resetFilters} style={{width:"fit-content"}}>
+                    Reset filters
+                    <span class="material-symbols-outlined">restart_alt</span>
+                    </button>
             </div>
         </div>
 
