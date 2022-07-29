@@ -202,6 +202,9 @@
     width: 200px;
 }
 
+.container-reviews h5 {
+    font-weight: 600;
+}
 
 .button-delete, .button-edit {
     margin-top: 10px;
@@ -240,6 +243,13 @@
 
 .name-product-detail{
     font-size: 180%;
+    font-weight: 600;
+}
+
+.span-price-detail{
+    font-size: 180%;
+    font-weight: 600;
+    color: #157347;
 }
 
 .hr-product-detail{
@@ -283,6 +293,7 @@
 
     .description {
         width: 100vw;
+        text-align: center;
     }
 
     .detail {

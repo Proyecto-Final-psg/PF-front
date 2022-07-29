@@ -3,6 +3,10 @@
     width: 300px;
     padding: 10px;
     margin: 5px;
+    transition: all 0.2s ease-in-out;
+}
+.review-detail:hover{
+    box-shadow: 5px 5px 5px rgba(4, 85, 38, 0.288);
 }
 
 .review span{
@@ -20,5 +24,6 @@
 }
 
 .star-detail{
+    margin-left: 5px;
     color: rgb(255, 221, 0)
 }

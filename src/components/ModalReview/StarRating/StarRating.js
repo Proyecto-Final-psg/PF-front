@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaStar } from 'react-icons/fa'
+import { FaCannabis } from 'react-icons/fa'
 import './StarRating.scss'
 
 const StarRating = ({localState, setLocalState, modal, value}) => {
@@ -32,7 +32,7 @@ const StarRating = ({localState, setLocalState, modal, value}) => {
                     onClick={() => handleClick(ratingValue)}
                     disabled={value && true}
                   />
-                  <FaStar 
+                  <FaCannabis 
                     className='star' 
                     size={value ? 20 : 30}
                     color={ratingValue <= (hover || rating) ? '#ffc107' : '#666'}
