@@ -197,30 +197,48 @@ export function CardDetails() {
                     }
                 </div>
                 <div className="container-reviews">
-                    <h5 className='mt-5'>Our clients opinion</h5>
+                    {
+                        reviews && reviews.length ?
+                        <h5 className='mt-5'>Our clients opinion</h5>
+                        : null
+                    }
                 </div>
                 <div className="reviews">
                     <hr />
-                    <Swiper className='mySwiper'
-                        modules={[Pagination, A11y]}
-                        scrollbar={{ draggable: true }}
-                        slidesPerView={window.innerWidth > 450 ? 2 : 1}
-                        autoplay={{ delay: 2000 }}
-                        loop
-                    >
-                        {reviews && reviews.map((review,i) => {
+                    {
+                        reviews && reviews.length > 1 ?
+                        <Swiper className='mySwiper'
+                            modules={[Pagination, A11y]}
+                            scrollbar={{ draggable: true }}
+                            slidesPerView={window.innerWidth > 450 ? 2 : 1}
+                            autoplay={{ delay: 2000 }}
+                            loop
+                        >
+                            {reviews && reviews.map((review,i) => {
+                                return (
+                                    <SwiperSlide key={i}>
+                                        <Review
+                                            name={review.name}
+                                            score={review.score}
+                                            review={review.review}
+                                            key={review.id}
+                                        />
+                                    </SwiperSlide>
+                                )
+                            })}
+                        </Swiper>
+                        :
+                        reviews && reviews.map((review) => {
                             return (
-                                <SwiperSlide key={i}>
                                     <Review
                                         name={review.name}
                                         score={review.score}
                                         review={review.review}
                                         key={review.id}
                                     />
-                                </SwiperSlide>
                             )
-                        })}
-                    </Swiper>
+                        })
+                    }
                 </div>
 
             </div>
