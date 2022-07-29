@@ -34,7 +34,7 @@ const StarRating = ({localState, setLocalState, modal, value}) => {
                   />
                   <FaStar 
                     className='star' 
-                    size={30}
+                    size={value ? 20 : 30}
                     color={ratingValue <= (hover || rating) ? '#ffc107' : '#666'}
                     onMouseEnter={() => setHover(value ? value : ratingValue)}
                     onMouseLeave={() => setHover(null)}

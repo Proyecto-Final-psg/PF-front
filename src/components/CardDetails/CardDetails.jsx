@@ -17,6 +17,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import swal from 'sweetalert'
+import StarRating from '../ModalReview/StarRating/StarRating'
 
 export function CardDetails() {
     const { id } = useParams()
@@ -25,6 +26,8 @@ export function CardDetails() {
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
     const userReviews = useSelector(store => store.userReviews)
+    const score = reviews.map(r => r.score) 
+    const reducer = (accumulator, curr) => accumulator + curr;
    
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
@@ -157,7 +160,13 @@ export function CardDetails() {
                             <button className='button-favorite' onClick= {addFavorites}>Favorite</button>
                         </div>}
                     <br></br>
-                    <p className='name-product-detail'>{product.name}</p>
+                    <div className='container-name'>
+                        <p className='name-product-detail'>{product.name}</p>
+                        {
+                            score.length &&
+                            <StarRating value={Math.round(score.reduce(reducer) / score.length)} />
+                        }
+                    </div>
 
                     <p className='name-product-detail'>$ {product.price}
                         <span className='span-thc-detail'>{product.thc ? `THC: ${product.thc}.mg` : `THC: 0.mg`}</span>
