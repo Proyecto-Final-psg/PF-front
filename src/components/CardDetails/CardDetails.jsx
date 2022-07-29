@@ -163,7 +163,7 @@ export function CardDetails() {
                     <div className='container-name'>
                         <p className='name-product-detail'>{product.name}</p>
                         {
-                            score.length &&
+                            score.length > 0 &&
                             <StarRating value={Math.round(score.reduce(reducer) / score.length)} />
                         }
                     </div>
