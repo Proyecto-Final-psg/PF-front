@@ -115,7 +115,10 @@ export function TopCustomers() {
 
   return <div className="container datas">
 
-    <h1 className="mt-5 custom-title">Top Customers</h1>
+    <h1 className="mt-5 custom-title">
+      Top Customers
+      <span id="topCustomer" className="iconMenu material-symbols-outlined">face</span>
+      </h1>
     <span>Send discounts to your top three customers</span>
     {loading &&
       <div className='loadingGif'>

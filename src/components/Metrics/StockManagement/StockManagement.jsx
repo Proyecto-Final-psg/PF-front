@@ -97,7 +97,10 @@ ChartJS.register(
   return (
     <div className="container datas">
      
-          <h1 className="mt-5 custom-title">Stock Management</h1>
+          <h1 className="mt-5 custom-title">
+            Stock Management
+            <span id="stock" className="iconMenu material-symbols-outlined">inventory</span>
+            </h1>
           <span>Stock with low quantity warnings</span>
         <div className="cmp-stockManagement-container"> 
           

@@ -121,7 +121,6 @@ export function Metrics() {
 
         Orders 
         <span id="orders" className="iconMenu material-symbols-outlined">receipt_long</span>
-
       </NavLink></li>
       </ul>
     
