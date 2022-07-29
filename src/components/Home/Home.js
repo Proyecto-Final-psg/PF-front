@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../Redux/Actions";
 import OrdenCompraDetail from "../OrdenCompraDetail/OrdenCompraDetail";
 import Profile from "../Profile/Profile";
+import 'animate.css';
 
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
@@ -53,6 +54,12 @@ const Home = () => {
       bot.classList.remove('showBot')
     }
   }
+
+  const bot = document.querySelector('.chatbot');
+  
+  if(bot)
+    bot.style.setProperty('--animate-duration', '2s');
+
   return (
     <div>
       <Profile />
@@ -90,7 +97,7 @@ const Home = () => {
           />
         </div>
 
-        <button className='chatbot chat-button' onClick={showMeTheBot}>
+        <button className='chatbot chat-button animate__fast animate__animated animate__headShake animate__infinite	infinite' onClick={showMeTheBot}>
           <span className="material-symbols-outlined">
             smart_toy
           </span>

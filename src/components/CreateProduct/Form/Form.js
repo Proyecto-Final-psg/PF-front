@@ -97,9 +97,15 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                     </div>
                     {
                         Object.keys(error).length || localState.categories.length === 0 ?
-                            <button className='btn_not_create' disabled>{button}</button>
+                            <button className='btn btn-success btn-w' disabled style={{justifyContent:"center"}}>
+                                {button}
+                                <span class="material-symbols-outlined">add_circle</span>
+                            </button>
                             :
-                            <button className='btn_create' type='submit' >{button}</button>
+                            <button className='btn_not_create btn-w' type='submit' style={{justifyContent:"center"}} >
+                                {button}
+                                <span class="material-symbols-outlined">add_circle</span>
+                            </button>
                     }
                 </div>
 
