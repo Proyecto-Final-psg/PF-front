@@ -3,11 +3,18 @@
 
 
 
-.custom-title {
+.custom-title{
     font-weight: bold;
     font-size: 30px;
     text-decoration-line: underline;
     text-decoration-color: rgba(0, 128, 0, 0.301);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-title span{
+    font-size: 34px;
 }
 
 table thead tr {

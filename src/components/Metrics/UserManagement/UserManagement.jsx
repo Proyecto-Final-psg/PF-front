@@ -77,7 +77,10 @@ export function UserManagement() {
 
   return <div className="container datas">
 
-    <h1 className="mt-5 custom-title">User Roles</h1>
+    <h1 className="mt-5 custom-title">
+      User Roles
+      <span id="userMgm" className="iconMenu material-symbols-outlined">badge</span>
+    </h1>
 
     <span>To modify a user rol, just press into the user-rol icon that you want to change</span>
     <div style={{width:"100%"}}>

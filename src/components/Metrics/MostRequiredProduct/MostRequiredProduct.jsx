@@ -129,7 +129,10 @@ export function MostRequiredProduct() {
  
   return <div className="container datas">
 
-    <h1 className="mt-5 custom-title">Best selling products</h1>
+    <h1 className="mt-5 custom-title">
+      Best selling products
+      <span id="bestSell" className="iconMenu material-symbols-outlined">trending_up</span>
+      </h1>
     <span>Showing</span>
     <div className="filter-orders">
       <select className="select" name="" id="" onChange={filterSellingView}>

@@ -33,54 +33,59 @@ ChartJS.register(
   let noStock = products.filter(p => p.stock <= 0)
   let lowerThan10 = products.filter(p => p.stock > 0 && p.stock <= 10)
   let lowerThan50 = products.filter(p => p.stock > 10 && p.stock < 50)
-
+  let stock = products.length;
+  
+  if(lowerThan10)
+    stock = stock - lowerThan10.length
+  
+  if(lowerThan50)
+    stock = stock - lowerThan50.length
 
   //PIE CHART
   const data = {
-    labels: ['No stock', 'Lower than 10', 'Lower than 50'],
+    labels: ['No stock', 'Lower than 10', 'Lower than 50', 'All Products'],
     datasets: [
       {
-        label: [noStock.length, lowerThan10.length, lowerThan50.length],
-        data: [noStock.length, lowerThan10.length, lowerThan50.length],
+        label: [noStock.length, lowerThan10.length, lowerThan50.length, stock],
+        data: [noStock.length, lowerThan10.length, lowerThan50.length, stock],
         backgroundColor: [
           'rgb(255, 109, 109)',
           '#FFF3CD',
-          'rgb(108, 177, 255)'
-
+          'rgb(108, 177, 255)',
+          'green'
         ],
         borderColor: [
           '#d62506',
           '#f9d66b',
-          '#2041a3'
-
+          '#2041a3',
+          'green'
         ],
         borderWidth: 1,
       },
     ],
   };
 
-
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  // eslint-disable-next-line 
-  const data2 = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: products.map(p => p.stock),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y',
-      },
-      {
-        label: 'Dataset 2',
-        data: products.map(p => p.name),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y1',
-      },
-    ],
-  };
+  // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  // // eslint-disable-next-line 
+  // const data2 = {
+  //   labels,
+  //   datasets: [
+  //     {
+  //       label: 'Dataset 1',
+  //       data: products.map(p => p.stock),
+  //       borderColor: 'rgb(255, 99, 132)',
+  //       backgroundColor: 'rgba(255, 99, 132, 0.5)',
+  //       yAxisID: 'y',
+  //     },
+  //     {
+  //       label: 'Dataset 2',
+  //       data: products.map(p => p.name),
+  //       borderColor: 'rgb(53, 162, 235)',
+  //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
+  //       yAxisID: 'y1',
+  //     },
+  //   ],
+  // };
 
   useEffect(() => {
     dispatch(getAllProducts())   
@@ -92,7 +97,10 @@ ChartJS.register(
   return (
     <div className="container datas">
      
-          <h1 className="mt-5 custom-title">Stock Management</h1>
+          <h1 className="mt-5 custom-title">
+            Stock Management
+            <span id="stock" className="iconMenu material-symbols-outlined">inventory</span>
+            </h1>
           <span>Stock with low quantity warnings</span>
         <div className="cmp-stockManagement-container"> 
           

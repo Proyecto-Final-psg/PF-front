@@ -55,7 +55,10 @@ export function Orders() {
   }
 
   return <div className="container datas">
-    <h1 className="mt-5 custom-title">Order List</h1>
+    <h1 className="mt-5 custom-title">
+      Order List
+      <span id="orders" className="iconMenu material-symbols-outlined">receipt_long</span>
+      </h1>
     <span>Orders will be listed here, and you can access them, change their status, and see the details</span>
       <span>Filter orders by status</span>
     <form onSubmit={filterOrdersByStatus} className='filter-orders'>

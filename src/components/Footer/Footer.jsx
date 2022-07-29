@@ -1,21 +1,26 @@
 import './footer.scss'
-
+import like from '../../assets/like.png'
+import logo from '../../assets/logo.png'
 function Footer() {
     return <div className="">
         <div className="foot">
-            <span>Application developed by PSG</span>
-            <br />
-            <span>weedical.shop@gmail.com</span>
-            {/* <br /><span>by PSG</span><br />
-            <span>Info</span>
-            <span>Info</span> */}
+            <div className="footer-cmp">
+                <img className='footer-icon' src={logo} alt="logo_icon" />
+                <span>Application developed by PSG</span>
+            </div>
+            
+            <div className='footer-cmp-group'>
+                <div className='footer-cmp'>
+                <span class="material-symbols-outlined">mail</span>
+                <span>weedical.shop@gmail.com</span>    
+                </div>
+
+                <div className='footer-cmp'>
+                    <img className='footer-icon' src={like} alt="like_icon" />
+                    <span>@weedical</span>
+                </div>
+            </div>
         </div>
-{/* 
-        <div className="">
-            <span>Info</span><br />
-            <span>Info</span><br />
-            <span>Info</span>
-        </div> */}
     </div>
 }
 

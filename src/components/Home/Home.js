@@ -30,9 +30,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../Redux/Actions";
 import OrdenCompraDetail from "../OrdenCompraDetail/OrdenCompraDetail";
 import Profile from "../Profile/Profile";
+import 'animate.css';
 
 const Home = () => {
   const [showBot, setShowBot] = useState(true)
+  const [animated, setAnimated] = useState(true)
   const userprohibido = useSelector(store => store.user[0].roll)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -41,18 +43,41 @@ const Home = () => {
   }, [])
 
   function showMeTheBot() {
+    
+    
     const bot = document.getElementById('bot')
     // eslint-disable-next-line 
     { showBot ? setShowBot(false) : setShowBot(true) }
     if (showBot) {
       // bot.setAttribute('data-aos','fade-right');
       bot.classList.add('showBot')
+      setAnimated(false)
     }
     else {
       // bot.setAttribute('data-aos','');
       bot.classList.remove('showBot')
+      setAnimated(true)
     }
   }
+
+  const bot = document.querySelector('.chatbot');
+  
+  if(bot && animated){
+    bot.classList.add('animate__fast')
+    bot.classList.add('animate__animated')
+    bot.classList.add('animate__headShake')
+    bot.classList.add('animate__infinite')
+    bot.classList.add('infinite')
+    bot.style.setProperty('--animate-duration', '2s');
+  }
+  if(bot && !animated){
+    bot.classList.remove('animate__fast')
+    bot.classList.remove('animate__animated')
+    bot.classList.remove('animate__headShake')
+    bot.classList.remove('animate__infinite')
+    bot.classList.remove('infinite')
+  }
+
   return (
     <div>
       <Profile />
@@ -90,7 +115,7 @@ const Home = () => {
           />
         </div>
 
-        <button className='chatbot chat-button' onClick={showMeTheBot}>
+        <button className={`chatbot chat-button`} onClick={showMeTheBot}>
           <span className="material-symbols-outlined">
             smart_toy
           </span>

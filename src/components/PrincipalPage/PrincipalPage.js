@@ -7,8 +7,10 @@ const PrincipalPage = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, [])
     return (
-        <div>
-            <Carousel className="carousel" />
+        <div className='principal'>
+            <div style={{height:"100px"}}>
+                <Carousel className="carousel" />
+            </div>
             <Grid />
         </div>
     )
