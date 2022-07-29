@@ -1,5 +1,5 @@
 import './Review.scss'
-import { FaStar } from 'react-icons/fa'
+import { FaCannabis } from 'react-icons/fa'
 
 export function Review({name, score, review}) {
 
@@ -12,7 +12,7 @@ score = parseInt(score)
             <div className="stars">
                {score && [...Array(score)].map((star, i) => {
                 return(
-                    <FaStar className='star-detail' key={i}/>
+                    <FaCannabis className='star-detail' key={i}/>
                 )
                })}
             </div>

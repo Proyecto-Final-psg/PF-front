@@ -9,7 +9,7 @@ import './CardDetails.scss'
 import LoadingImg from '../../assets/Loading.gif'
 // import Swiper from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, A11y } from 'swiper';
+import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import 'swiper/css';
@@ -20,15 +20,16 @@ import swal from 'sweetalert'
 import StarRating from '../ModalReview/StarRating/StarRating'
 
 export function CardDetails() {
+    SwiperCore.use([Autoplay]);
     const { id } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
     const userReviews = useSelector(store => store.userReviews)
-    const score = reviews.map(r => r.score) 
+    const score = reviews.map(r => r.score)
     const reducer = (accumulator, curr) => accumulator + curr;
-   
+
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     let user = userRedux.roll === "user"
@@ -51,16 +52,16 @@ export function CardDetails() {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
+
     const addCart = () => {
         dispatch(addToCart(product.id, product.name, product.price,))
     }
     // const idNumber = parseInt(id)
-    const addFavorites = (e) =>{
+    const addFavorites = (e) => {
         e.preventDefault()
         dispatch(addFavorite(id, user_id))
     }
-    
+
     function handleClickStock(e) {
         e.preventDefault()
         if (!admin && !user) {
@@ -155,9 +156,9 @@ export function CardDetails() {
                             <button className='button-delete'>Remove</button>
                             {
                                 !userReviews.map(r => r.productId).filter(r => r == id).length &&
-                                <button className='button-edit' onClick={() => setModal(true)}>Review</button>  
+                                <button className='button-edit' onClick={() => setModal(true)}>Review</button>
                             }
-                            <button className='button-favorite' onClick= {addFavorites}>Favorite</button>
+                            <button className='button-favorite' onClick={addFavorites}>Favorite</button>
                         </div>}
                     <br></br>
                     <div className='container-name'>
@@ -168,9 +169,11 @@ export function CardDetails() {
                         }
                     </div>
 
-                    <p className='name-product-detail'>$ {product.price}
+                    <p className='price-product-detail'> 
+                        <span className='span-price-detail'>${product.price}</span>
                         <span className='span-thc-detail'>{product.thc ? `THC: ${product.thc}.mg` : `THC: 0.mg`}</span>
-                        <span className='span-cbd-detail'>{product.cbd ? `CBD: ${product.cbd}.mg` : `CBD: 0.mg`}</span></p>
+                        <span className='span-cbd-detail'>{product.cbd ? `CBD: ${product.cbd}.mg` : `CBD: 0.mg`}</span>
+                    </p>
 
                     <hr className='hr-product-detail' />
                     {product && product.description ? <h5>{product.description}</h5> : <p>No description added</p>}
@@ -189,25 +192,53 @@ export function CardDetails() {
                             </button>
                             :
                             !subscribe ? <button className='button' onClick={handleClickStock}>Notify Me</button>
-                            :
-                            <p><b><em>We let you know when this item is available!</em></b></p>
+                                :
+                                <p><b><em>We let you know when this item is available!</em></b></p>
                     }
                 </div>
                 <div className="container-reviews">
-                    <h5 className='mt-5' >Reviews</h5>
+                    {
+                        reviews && reviews.length ?
+                        <h5 className='mt-5'>Our clients opinion</h5>
+                        : null
+                    }
                 </div>
                 <div className="reviews">
                     <hr />
-                    {reviews && reviews.map(review => {
-                        return (
-                            <Review
-                                name={review.name}
-                                score={review.score}
-                                review={review.review}
-                                key={review.id}
-                            />
-                        )
-                    })}
+                    {
+                        reviews && reviews.length > 1 ?
+                        <Swiper className='mySwiper'
+                            modules={[Pagination, A11y]}
+                            scrollbar={{ draggable: true }}
+                            slidesPerView={window.innerWidth > 450 ? 2 : 1}
+                            autoplay={{ delay: 2000 }}
+                            loop
+                        >
+                            {reviews && reviews.map((review,i) => {
+                                return (
+                                    <SwiperSlide key={i}>
+                                        <Review
+                                            name={review.name}
+                                            score={review.score}
+                                            review={review.review}
+                                            key={review.id}
+                                        />
+                                    </SwiperSlide>
+                                )
+                            })}
+                        </Swiper>
+                        :
+                        reviews && reviews.map((review) => {
+                            return (
+                                    <Review
+                                        name={review.name}
+                                        score={review.score}
+                                        review={review.review}
+                                        key={review.id}
+                                    />
+                            )
+                        })
+                    }
                 </div>
 
             </div>
