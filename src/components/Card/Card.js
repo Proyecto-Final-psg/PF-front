@@ -123,7 +123,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
         stock > 0 &&
         <button onClick={allCartItems.includes(name) ? deleteItemToCart : addItemToCart} className={allCartItems.includes(name) ? "card-button-cart" : "card-button"} key={id}>
          {allCartItems.includes(name) ? 
-         <span className="material-symbols-outlined">delete_shopping_cart</span>
+         <span class="material-symbols-outlined">remove_shopping_cart</span>
          :<span className="material-symbols-outlined">add_shopping_cart</span>
          }
         </button>
