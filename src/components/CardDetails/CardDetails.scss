@@ -48,6 +48,11 @@
     padding: 20px;
 }
 
+.container-name {
+    display: flex;
+    flex-direction: row;
+}
+
 .stock-detail {
     margin-top: 10px;
     width: 100px;
@@ -293,6 +298,10 @@
     }
     .button:not(.back, #carousel-btn){
         width: 100%;
+    }
+    .container-name {
+        align-items: center;
+        flex-direction: column;
     }
     .stock-detail{
         width: 100%;
