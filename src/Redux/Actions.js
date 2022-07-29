@@ -114,6 +114,25 @@ export function submitOrder(order) {
     }
 }
 
+
+///users/subscribe
+export function subscribeStock(user_id, product_id) {
+    console.log(user_id, product_id);
+    return function (dispatch) {
+        return fetch(`${API_URL}/users/subscribe`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify({user_id, product_id}), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error))
+    }
+}
+
+
 export const addGuest = (guest) => {
     return (
         { type: ADD_GUEST, guest: guest }
