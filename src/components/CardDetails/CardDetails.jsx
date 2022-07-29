@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductById, getReviews, addToCart, addFavorite, getUserReviews } from '../../Redux/Actions'
+import { getProductById, getReviews, addToCart, addFavorite, getUserReviews, subscribeStock } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import ModalReview from '../ModalReview/ModalReview'
 import './CardDetails.scss'
@@ -33,6 +33,7 @@ export function CardDetails() {
     const user_id = userRedux.user_id
     const [modal, setModal] = useState(false)
     const [loading, setLoading] = useState(true)
+    const [subscribe, setSubscribe] = useState(false)
 
     useEffect(() => {
 
@@ -93,7 +94,8 @@ export function CardDetails() {
                         title: `We let you know when this item is available!`,
                         icon: 'success'
                     }).then(function () {
-                        // suscription to newsletter
+                        dispatch(subscribeStock(userRedux.user_id, id))
+                        setSubscribe(true)
                     });
                 }
             })
@@ -177,9 +179,10 @@ export function CardDetails() {
                                 <span>Add</span>
                             </button>
                             :
-                            <button className='button' onClick={handleClickStock}>Notify Me</button>
+                            !subscribe ? <button className='button' onClick={handleClickStock}>Notify Me</button>
+                            :
+                            <p><b><em>We let you know when this item is available!</em></b></p>
                     }
-
                 </div>
                 <div className="container-reviews">
                     <h5 className='mt-5' >Reviews</h5>
