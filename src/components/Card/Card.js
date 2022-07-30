@@ -35,7 +35,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
     dispatch(deleteToCart(id))
 
     Toastify({
-      text: "Delete cart 🗑 ",
+      text: `Removed ${name} from cart 🗑 `,
       duration: 3000,
 
       newWindow: true,
@@ -53,12 +53,13 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
   function addItemToCart(e) {
     //Efecto confeti
+    
     party.confetti(e.target, {
       count: party.variation.range(20, 40),
     });
 
     Toastify({
-      text: "Added to cart 🙌",
+      text: `Added ${name} to cart 🙌`,
       duration: 3000,
 
       newWindow: true,
@@ -80,7 +81,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   function addToFavourites(e) {
     e.preventDefault()
     Toastify({
-      text: "Added " + name + " to Favourites ♥",
+      text: "Added " + name + " to Favorites ♥",
       duration: 3000,
 
       newWindow: true,
@@ -101,7 +102,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   function deleteFavourite(e) {
     e.preventDefault()
     Toastify({
-      text: "Deleted " + name + " from Favourites ♥",
+      text: "Deleted " + name + " from Favorites ♥",
       duration: 3000,
 
       newWindow: true,
