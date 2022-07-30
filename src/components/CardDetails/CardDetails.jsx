@@ -39,6 +39,11 @@ export function CardDetails() {
     const [loading, setLoading] = useState(true)
     const [subscribe, setSubscribe] = useState(false)
 
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, [])
+
     useEffect(() => {
 
         dispatch(getProductById(id))
