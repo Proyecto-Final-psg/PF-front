@@ -33,8 +33,11 @@ function Grid() {
     const indexOfLastPost = currentPage * itemsPerPage;
     const indexOfFirstPost = indexOfLastPost - itemsPerPage;
     let currentPosts = null;
-    currentPosts = allProducts.slice(indexOfFirstPost, indexOfLastPost).sort(compare)
-
+    
+    if(allProducts.length === 1)
+        currentPosts = allProducts
+    else
+        currentPosts = allProducts.slice(indexOfFirstPost, indexOfLastPost).sort(compare)
 
     const [categorySelected, setCategorySelected] = useState('none')
 
@@ -93,6 +96,7 @@ function Grid() {
 
     function productsByName(e) {
         e.preventDefault()
+        // console.log(searchProd.toLowerCase())
         // dispatch(getAllProducts())
         dispatch(getProductByName(searchProd.toLowerCase()))
     }

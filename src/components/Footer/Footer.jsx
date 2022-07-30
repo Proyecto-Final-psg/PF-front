@@ -11,7 +11,7 @@ function Footer() {
             
             <div className='footer-cmp-group'>
                 <div className='footer-cmp'>
-                <span class="material-symbols-outlined">mail</span>
+                <span className="material-symbols-outlined">mail</span>
                 <span>weedical.shop@gmail.com</span>    
                 </div>
 

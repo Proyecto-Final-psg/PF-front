@@ -35,7 +35,7 @@ const Account = () => {
   
   const [active, setActive] = useState("history-shops");
   const usr = useSelector((store) => store.user);
-  const orders = useSelector((store) => store.orderDetails);
+  let orders = useSelector((store) => store.orderDetails);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -47,6 +47,9 @@ const Account = () => {
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr]);
+
+  orders = orders.sort((a,b) => b.order_id - a.order_id)
+  console.log('ordenadas?',orders)
 
   return (
     <div>
@@ -124,7 +127,7 @@ const Account = () => {
                   <Accordion defaultActiveKey="1" data-aos="fade-left" key={i}>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
-                        Order n° {i}
+                        Order n° {e.order_id}
                         <img src={mensaje} id='cmp-account-mensaje' alt='order-message'/>
                         </Accordion.Header>
                       <Accordion.Body>

@@ -1,5 +1,5 @@
 
-import {REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
+import {REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE,CLEAN_FAVORITES } from "./Constants"
 
 
 export function getAllProducts() {
@@ -346,8 +346,9 @@ export function getFavorite(user_id) {
         return fetch(`${API_URL}/favoritebyuser/${user_id}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 dispatch({
-                    type: GET_FAVORITE,
+                    type: ADD_FAVORITE,
                     payload: data
                 })
             })
@@ -364,6 +365,13 @@ export function addFavReducer(product_id){
     )
 }
 
+export function cleanFavs(){
+    return(
+        {
+            type: CLEAN_FAVORITES
+        }
+    )
+}
 
 export function removeFavReducer(product_id){
     return(
@@ -374,10 +382,11 @@ export function removeFavReducer(product_id){
     )
 }
 
-export function deleteProductFav(id) {
+export function deleteProductFav(id, user_id) {
     return function (dispatch) {
         return fetch(`${API_URL}/removefavorites/${id}`, {
             method: 'DELETE', // or 'PUT'
+            body: JSON.stringify({user_id}), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
