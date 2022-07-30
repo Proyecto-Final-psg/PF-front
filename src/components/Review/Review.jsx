@@ -1,44 +1,32 @@
 import './Review.scss'
 import { FaCannabis } from 'react-icons/fa'
-
+import Hover from 'react-3d-hover';
 export function Review({ name, score, review }) {
 
     score = parseInt(score)
 
-    return <div class="card-review">
-        <div class="align">
-            <span class="red"></span>
-            <span class="yellow"></span>
-            <span class="green"></span>
-        </div>
-
-        <h1><b>{name}</b></h1>
-        <div className="stars">
-            {score && [...Array(score)].map((star, i) => {
-                return (
-                    <FaCannabis className='star-detail' key={i} />
-                )
-            })}
-        </div>
-        <p>{review}</p>
-    </div>
-    {/* </div>
-
     return (
-    <div className="review-detail">
-        <div className="review-header">
-            <span><b>{name}</b></span>
-            <div className="stars">
-               {score && [...Array(score)].map((star, i) => {
-                return(
-                    <FaCannabis className='star-detail' key={i}/>
-                )
-               })}
-            </div>
+        <div>
+            <Hover 
+            scale={1.2} 
+            perspective={200} 
+            speed={3500}
+            max={10}
+            easing="cubic-bezier(.03,.98,.52,.99)"
+            >
 
+                <div class="cardreview">
+                        <h2><b>{name}</b></h2>
+                        <div className="stars">
+                            {score && [...Array(score)].map((star, i) => {
+                                return (
+                                    <FaCannabis className='star-detail' key={i} />
+                                )
+                            })}
+                        </div>
+                        <p>{review}</p>
+                </div>
+            </Hover>
         </div>
-        <p>{review}</p>
-
-    </div>
-    ) */}
+    )
 }

@@ -346,7 +346,7 @@ export function getFavorite(user_id) {
         return fetch(`${API_URL}/favoritebyuser/${user_id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 dispatch({
                     type: ADD_FAVORITE,
                     payload: data
