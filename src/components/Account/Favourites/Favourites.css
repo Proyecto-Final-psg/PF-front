@@ -1,0 +1,12 @@
+.favourites-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.favourites-cards-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

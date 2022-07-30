@@ -1,5 +1,5 @@
 
-import { CLEAR_CART, GET_USER_REVIEWS, GET_ORDER_BY_ORDERID, GET_BEST_CUSTOMERS, GET_REVIEWS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
+import { REMOVE_FAVORITE, CLEAR_CART, GET_USER_REVIEWS, GET_ORDER_BY_ORDERID, GET_BEST_CUSTOMERS, GET_REVIEWS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
 
 
 const initialState = {
@@ -23,15 +23,16 @@ const initialState = {
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_FAVORITE:
-            return {
-                ...state,
-                wishlist: [...state.wishlist, action.payload]
-            }
         case GET_FAVORITE:
+            const newFav = state.products.find(product => product.id === action.payload)
             return {
                 ...state,
-                wishlist: action.payload
+                wishlist: [...state.wishlist, newFav]
+            }
+        case REMOVE_FAVORITE:
+            return{
+                ...state,
+                wishlist: state.wishlist.filter( p => p.id !== action.payload)
             }
         case CLEAR_CART:
             return {

@@ -32,7 +32,7 @@
     place-content: center;
 }
 
-.card-favourites {
+.card-green-heart, .card-red-heart {
     position: absolute;
     font-size: 35px;
     color: #438a0054;
@@ -42,8 +42,17 @@
     cursor: pointer;
 }
 
-.card-favourites:hover {
+.card-red-heart{
+    color: #ff4c4cc4;
+}
+
+.card-green-heart:hover {
     color: #438a00;
+    transition: 1s;
+}
+
+.card-red-heart:hover {
+    color: #ff4c4c;
     transition: 1s;
 }
 

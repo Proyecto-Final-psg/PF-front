@@ -26,7 +26,7 @@ export const API_URL = 'https://desarrollo-back.herokuapp.com'
 export const CLEAR_CART = 'CLEAR_CART'
 export const ADD_FAVORITE = 'ADD_FAVORITE'
 export const GET_FAVORITE = 'GET_FAVORITE'
-
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE'
 // export const API_URL = 'http://localhost:8081'
 
 export const ModalStyle = {

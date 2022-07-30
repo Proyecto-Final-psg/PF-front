@@ -8,6 +8,7 @@ import Purchases from "../Purchases/Purchases";
 import LoadingImg from "../../assets/Loading.gif";
 import mensaje from './mensaje.png';
 import noOrders from './no_orders.png'
+import Favorites from './Favourites/Favourites'
 //import bag from "../../assets/bag.png";
 // eslint-disable-next-line
 /* import boy1 from "../../assets/boy1.png";
@@ -113,7 +114,7 @@ const Account = () => {
 
           {active === "favourites" ? (
             <div className="cmp-account-container-purchases">
-              <h1>Favorites</h1>
+              <Favorites />
             </div>
           ) : (
             <div className="cmp-account-container-purchases mt-5">
@@ -124,7 +125,7 @@ const Account = () => {
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
                         Order n° {i}
-                        <img src={mensaje} id='cmp-account-mensaje' />
+                        <img src={mensaje} id='cmp-account-mensaje' alt='order-message'/>
                         </Accordion.Header>
                       <Accordion.Body>
                         <Purchases key={i} user={usr} data={e} />
