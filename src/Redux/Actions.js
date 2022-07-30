@@ -1,5 +1,5 @@
 
-import { GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
+import {REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
 
 
 export function getAllProducts() {
@@ -340,9 +340,10 @@ export function editProduct(id, editedProduct) {
     }
 }
 
-export function getFavorite() {
+export function getFavorite(user_id) {
+   
     return function (dispatch) {
-        return fetch(`${API_URL}/favorites`)
+        return fetch(`${API_URL}/favoritebyuser/${user_id}`)
             .then(res => res.json())
             .then(data => {
                 dispatch({
@@ -351,6 +352,37 @@ export function getFavorite() {
                 })
             })
             .catch(e => console.log(e))
+    }
+}
+
+export function addFavReducer(product_id){
+    return(
+        {
+            type: GET_FAVORITE,
+            payload: product_id
+        }
+    )
+}
+
+
+export function removeFavReducer(product_id){
+    return(
+        {
+            type: REMOVE_FAVORITE,
+            payload: product_id
+        }
+    )
+}
+
+export function deleteProductFav(id) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/removefavorites/${id}`, {
+            method: 'DELETE', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        
     }
 }
 
@@ -363,13 +395,6 @@ export function addFavorite(product_id, user_id) {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                dispatch({
-                    type: ADD_FAVORITE,
-                    payload: data
-                })
-            })
     }
 }
 

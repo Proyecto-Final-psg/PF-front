@@ -2,26 +2,34 @@ import { NavLink } from "react-router-dom";
 import "./Card.scss";
 import { addToCart } from "../../Redux/Actions"
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteToCart } from '../../Redux/Actions';
+import { deleteToCart, addFavorite, deleteProductFav , addFavReducer, removeFavReducer} from '../../Redux/Actions';
 import party from "party-js";
 import Toastify from 'toastify-js'
 import LoadingImg from '../../assets/Loading.gif'
 import { useState, useEffect } from "react";
+
 const Card = ({ name, id, description, img, price, stock, widthProp, heightProp }) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const allCartItems = useSelector(store => store.cart.map(item => item.name))
+  const user = useSelector(state => state.user[0]) 
+  const favourites = useSelector(state => state.wishlist) 
+  
+  const productFavourite = favourites.find(f => f.id === id)
+
+  
 
   useEffect(() => {
+    
     setTimeout(() => {
       setLoading(false)
     }, 400)
     return () => {
       setLoading(true)
     };
+   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
 
   const deleteItemToCart = (e) => {
     dispatch(deleteToCart(id))
@@ -66,9 +74,11 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
     }).showToast();
 
     dispatch(addToCart(id, name, price,))
+   
   }
 
-  function addToFavourites() {
+  function addToFavourites(e) {
+    e.preventDefault()
     Toastify({
       text: "Added " + name + " to Favourites ♥",
       duration: 3000,
@@ -84,12 +94,35 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
       },
       onClick: function () { } // Callback after click
     }).showToast();
+    dispatch(addFavorite(id, user.user_id))
+    dispatch(addFavReducer(id))
+  }
+  
+  function deleteFavourite(e) {
+    e.preventDefault()
+    Toastify({
+      text: "Deleted " + name + " from Favourites ♥",
+      duration: 3000,
 
+      newWindow: true,
+      close: false,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "#6e0000",
+        padding: "20px"
+      },
+      onClick: function () { } // Callback after 
+    }).showToast();
+    dispatch(deleteProductFav(id))
+    dispatch(removeFavReducer(id))
   }
 
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
-      <p className="card-favourites" onClick={addToFavourites}>♥</p>
+      <p title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} className={ !productFavourite? "card-green-heart" :"card-red-heart" } onClick={!productFavourite ? addToFavourites : deleteFavourite}>♥</p>
+      
       <NavLink to={`/products/${id}`}>
         <div className="card-details">
           <p className="text-title">{name}</p>

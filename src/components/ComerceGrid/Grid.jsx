@@ -121,7 +121,7 @@ function Grid() {
 
             <form className='form' onSubmit={productsByName}>
                 <h4>FILTERS</h4>
-
+                <br />
                 <input list='products' autoComplete='off' className="grid-input" type="text" name="name" id="name" placeholder='Enter name product' onChange={fillProdSearch} />
                 <datalist id='products'>
 
@@ -137,17 +137,19 @@ function Grid() {
 
                 </datalist>
                 <br></br>
+                <button type='submit' className='btn btn-success btn-w' style={{width:"fit-content"}}>
+                    Search
+                    <span className="material-symbols-outlined">search</span>
+                </button>
+                <br></br>
                 <label className="grid-label">By category</label>
                 <select className="grid-input" name="category" id="" onChange={handleFilterCategory}>
                     <option className="grid-input" value="all" key='all'>All Categories</option>
                     {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select >
-                <br></br>
+              
                 {/* <input type="submit" value="Search" className='btn_search' /> */}
-                <button type='submit' className='btn btn-success btn-w' style={{width:"fit-content"}}>
-                    Buscar
-                    <span className="material-symbols-outlined">search</span>
-                    </button>
+                
             </form>
 
             <div className='form'>
