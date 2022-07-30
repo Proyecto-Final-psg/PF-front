@@ -195,7 +195,7 @@ export function CardDetails() {
                 <div className="container-reviews">
                     {
                         reviews && reviews.length ?
-                        <h5 className='mt-5'>Our clients opinion</h5>
+                        <h2 className='mt-5'>Our clients opinion</h2>
                         : null
                     }
                 </div>

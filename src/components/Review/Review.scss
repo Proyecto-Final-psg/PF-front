@@ -25,7 +25,9 @@
 
 .star-detail{
     margin-left: 5px;
-    color: rgb(255, 221, 0)
+    color: rgb(255, 221, 0);
+    -webkit-filter: drop-shadow(0px 0px 0px #222);
+  filter: drop-shadow(0px 2px 3px #222);
 }
 
 
@@ -96,3 +98,24 @@
   }
   
   
+
+
+
+  .cardreview {
+    // color: white;
+    width: 190px;
+    height: 144px;
+    background: rgb(255, 255, 255);
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+   }
+
+   .cardreview p{
+    font-size: 12px;
+   }

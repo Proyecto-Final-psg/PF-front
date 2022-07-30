@@ -26,6 +26,7 @@
     "emailjs": "^4.0.0",
     "party-js": "^2.2.0",
     "react": "^17.0.2",
+    "react-3d-hover": "^1.1.1",
     "react-animated-numbers": "^0.13.0",
     "react-bootstrap": "^2.4.0",
     "react-chartjs-2": "^4.3.1",
