@@ -38,7 +38,7 @@ const Info = React.memo(()=>{
         <br></br>
         <br></br>
         <div className="discounts" data-aos="fade-left">
-            <span>In July</span>
+            <span>In August</span>
             <AnimatedNumbers
                 includeComma
                 animateToNumber={discount}
