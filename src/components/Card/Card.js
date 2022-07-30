@@ -25,6 +25,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
     if(admin || isUser){
       dispatch(getFavorite(user.user_id))  
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []) 
 
   useEffect(() => {
@@ -151,7 +152,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
-      <p title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} className={ !productFavourite? "card-green-heart" :"card-red-heart" } onClick={!admin || !isUser ? signInFav : !productFavourite ? addToFavourites : deleteFavourite}>♥</p>
+      <p title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} className={ !productFavourite? "card-green-heart" :"card-red-heart" } onClick={!admin && !isUser ? signInFav : !productFavourite ? addToFavourites : deleteFavourite}>♥</p>
       
       <NavLink to={`/products/${id}`}>
         <div className="card-details">
