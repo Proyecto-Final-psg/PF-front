@@ -58,12 +58,13 @@ export function Landing() {
 
                     <img className="landing-brand" src={Brand} alt={Brand} />
                     <p className="landing-paragraph">
-                        Es una realidad, cada vez hay más productos derivados del cannabis en el mercado.
-                        Y lejos de lo que muchas personas podrían pensar, sus usos no son recreativos.
-                        En Cannabis Store nos desempeñamos en acercar estos derivados.
+                        It's a reallity, cannabis-products are present in shops.
+                        And further of bad critics, they have healthy uses.
+                        In Weedical we offer the best quality in this kind of products.
                     </p>
                     <p className="landing-paragraph">
-                        PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS
+                        This project is not real. It was developed as a final bootcamp project.
+                        {/* PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS */}
                     </p>
                     <Login />
                     <NavLink to='./home' >
