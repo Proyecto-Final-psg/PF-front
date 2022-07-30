@@ -6,9 +6,8 @@ import three from '../../assets/3.jpg'
 import four from '../../assets/4.jpg'
 import five from '../../assets/5.jpg'
 import six from '../../assets/6.jpg'
-import React from 'react';
 
-const Carousel2 = React.memo(()=>{
+function Carousel2(){
 
   let slides = [
     <img  src={one} alt="1" />,
@@ -20,15 +19,12 @@ const Carousel2 = React.memo(()=>{
   ]
 
   const callback = function(index){
-    // console.log("callback",index);
+    console.log("callback",index);
 }
     
    return <div className='mt-5'>
     <Carousel slides={slides} autoplay={true} interval={3000} onSlideChange={callback}/>
    
    </div>
-})
-
-
- 
+}
 export default Carousel2
