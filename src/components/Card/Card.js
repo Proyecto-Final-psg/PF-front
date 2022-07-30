@@ -1,12 +1,14 @@
 import { NavLink } from "react-router-dom";
 import "./Card.scss";
-import { addToCart } from "../../Redux/Actions"
+import { addToCart, getFavorite } from "../../Redux/Actions"
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteToCart, addFavorite, deleteProductFav , addFavReducer, removeFavReducer} from '../../Redux/Actions';
 import party from "party-js";
 import Toastify from 'toastify-js'
 import LoadingImg from '../../assets/Loading.gif'
 import { useState, useEffect } from "react";
+import swal from 'sweetalert'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Card = ({ name, id, description, img, price, stock, widthProp, heightProp }) => {
   const dispatch = useDispatch()
@@ -14,10 +16,16 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   const allCartItems = useSelector(store => store.cart.map(item => item.name))
   const user = useSelector(state => state.user[0]) 
   const favourites = useSelector(state => state.wishlist) 
-  
-  const productFavourite = favourites.find(f => f.id === id)
+  const { loginWithRedirect } = useAuth0()
+  const productFavourite = favourites && favourites.find(f => f.id === id)
+  let admin = user.roll === "admin" || user.roll === "super-admin"
+  let isUser = user.roll === 'user'
 
-  
+  useEffect(() => {
+    if(admin || isUser){
+      dispatch(getFavorite(user.user_id))  
+    }
+}, []) 
 
   useEffect(() => {
     
@@ -115,13 +123,34 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
       },
       onClick: function () { } // Callback after 
     }).showToast();
-    dispatch(deleteProductFav(id))
+    dispatch(deleteProductFav(id, user.user_id ))
     dispatch(removeFavReducer(id))
+  }
+
+  function signInFav(e){
+    e.preventDefault()
+    swal({
+      title: `Sign in to add this product to favorites`,
+      // text: "Doing this, the user will be unable to login to Weedical",
+      icon: "info",
+      buttons: [
+          'Cancel',
+          'Sign In'
+      ],
+      dangerMode: true
+  })
+      .then(
+          function (isConfirm) {
+              if (isConfirm) {
+                  loginWithRedirect()
+              }
+          }
+      )
   }
 
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
-      <p title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} className={ !productFavourite? "card-green-heart" :"card-red-heart" } onClick={!productFavourite ? addToFavourites : deleteFavourite}>♥</p>
+      <p title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} className={ !productFavourite? "card-green-heart" :"card-red-heart" } onClick={!admin || !isUser ? signInFav : !productFavourite ? addToFavourites : deleteFavourite}>♥</p>
       
       <NavLink to={`/products/${id}`}>
         <div className="card-details">
