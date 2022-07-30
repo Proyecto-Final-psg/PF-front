@@ -149,7 +149,7 @@ export function Metrics() {
       </p>
       <ul className="menu-list">
         <li onClick={menuSelected}><NavLink id="userMgm" to='user-management'>
-        User Rol
+        User Role
         <span id="userMgm" className="iconMenu material-symbols-outlined">badge</span>
         </NavLink></li>
       </ul>
