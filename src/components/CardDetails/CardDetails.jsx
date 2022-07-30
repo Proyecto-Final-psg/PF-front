@@ -32,7 +32,6 @@ export function CardDetails() {
     let user = userRedux.roll === "user"
     const { loginWithRedirect } = useAuth0()
     const user_id = userRedux.user_id
-    const [modal, setModal] = useState(false)
     const [loading, setLoading] = useState(true)
     const [subscribe, setSubscribe] = useState(false)
 
