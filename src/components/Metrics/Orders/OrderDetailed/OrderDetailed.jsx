@@ -122,7 +122,7 @@ export function OrderDetailed() {
         </div>
 
 
-        <div className="lower-10" style={{ width: "100%" }}>
+        <div className="lower-10" >
             <table className="table is-hoverable is-bordered is-narrow shadow ">
                 <thead>
                     <tr>

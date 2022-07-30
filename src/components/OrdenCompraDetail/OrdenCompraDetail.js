@@ -22,7 +22,7 @@ const OrdenCompraDetail = () => {
                     <span className="material-symbols-outlined">keyboard_backspace</span>
                 </button>
                 {order.status === "completed" && <span className="tag is-primary is-large span-status">
-                    Succes
+                    Success
                 </span>}
                 {order.status === "inprogress" && <span className="tag is-warning is-large span-status">
                     {order.status}
