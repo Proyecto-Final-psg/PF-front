@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview, getReviews, getUserReviews } from '../../Redux/Actions';
 import { validator } from '../CreateProduct/helpers/Validator';
@@ -7,19 +7,30 @@ import StarRating from './StarRating/StarRating';
 import swal from 'sweetalert'
 
 const ModalReview = ({modal, setModal, id}) => {
-
   const usr = useSelector((store) => store.user);
   const dispatch = useDispatch()
-
+  
   const [review, setReview] = useState({
     user_id: usr[0].user_id,
-    product_id: id,
+    product_id: '',
     name: '',
     score: '',
     review: ''
   })
-  const [error, setError] = useState({})
+ 
+  useEffect(() => {
+    if(modal){
+      setTimeout(() => {
+        setReview({
+          ...review,
+          product_id: id
+        })
+      }, 1);
+    }
+  }, [modal])
 
+  const [error, setError] = useState({})
+  
   const handleInputChange = (e) => {
     setReview({
       ...review,
@@ -30,7 +41,7 @@ const ModalReview = ({modal, setModal, id}) => {
       [e.target.name]: e.target.value,
     }))
   }
-  //console.log(review)
+
   const handleReview = (e) => {
     e.preventDefault()
     dispatch(addReview(review))
@@ -40,7 +51,10 @@ const ModalReview = ({modal, setModal, id}) => {
       score: '',
       review: ''
     })
-    setModal(false)
+    setModal({
+      modal:false,
+      id:''
+    })
     swal({
       title: `Review created successfully!`,
       icon: "success",
@@ -61,7 +75,10 @@ const ModalReview = ({modal, setModal, id}) => {
       score: '',
       review: ''
     })
-    setModal(false)
+    setModal({
+      modal:false,
+      id:''
+    })
   }
 
 

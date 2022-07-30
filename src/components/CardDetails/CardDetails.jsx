@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getProductById, getReviews, addToCart, addFavorite, getUserReviews, subscribeStock } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
-import ModalReview from '../ModalReview/ModalReview'
 import './CardDetails.scss'
 import LoadingImg from '../../assets/Loading.gif'
 // import Swiper from 'swiper';
@@ -26,16 +25,13 @@ export function CardDetails() {
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
-    const userReviews = useSelector(store => store.userReviews)
     const score = reviews.map(r => r.score)
     const reducer = (accumulator, curr) => accumulator + curr;
-
     const userRedux = useSelector(state => state.user[0])
     let admin = userRedux.roll === "admin" || userRedux.roll === "super-admin"
     let user = userRedux.roll === "user"
     const { loginWithRedirect } = useAuth0()
     const user_id = userRedux.user_id
-    const [modal, setModal] = useState(false)
     const [loading, setLoading] = useState(true)
     const [subscribe, setSubscribe] = useState(false)
 
@@ -127,7 +123,6 @@ export function CardDetails() {
                 <div className='cmp-CardDetails-loading-container'>
                     < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
                 </div>} */}
-            <ModalReview modal={modal} setModal={setModal} id={id} />
 
             <div className="detail">
 
@@ -159,10 +154,6 @@ export function CardDetails() {
                         <div className='container-buttons_edit_remove'>
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                             <button className='button-delete'>Remove</button>
-                            {
-                                !userReviews.map(r => r.productId).filter(r => r == id).length &&
-                                <button className='button-edit' onClick={() => setModal(true)}>Review</button>
-                            }
                             <button className='button-favorite' onClick={addFavorites}>Favorite</button>
                         </div>}
                     <br></br>
