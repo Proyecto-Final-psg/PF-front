@@ -107,6 +107,7 @@ const CreateProduct = () => {
             <div className='create'>
                 <ButtonBack button={'Create product'} />
                 <div className='form-create'>
+                    
                     <Form
                         handleInputChange={handleInputChange}
                         onSubmit={handleSubmit}

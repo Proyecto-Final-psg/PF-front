@@ -88,7 +88,9 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                     </div>
                     <div className='new-category'>
                         <input className='input is-hovered is-success' type="text" placeholder='New Category...' maxLength="10" onChange={(e) => setNewCategory(e.target.value)} name='categories' />
-                        <button className='btn_category' onClick={newCategory}>Add</button>
+                        <button className='btn_category' onClick={newCategory}>
+                             <span class="material-symbols-outlined">add_circle</span>
+                        </button>
                     </div>
                     <div className='buttons-submit-categories'>
                         <div className="buttons-categories">
@@ -97,14 +99,14 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                     </div>
                     {
                         Object.keys(error).length || localState.categories.length === 0 ?
-                            <button className='btn btn-success btn-w' disabled style={{justifyContent:"center"}}>
+                            <button className='btn btn-success' disabled style={{justifyContent:"center"}}>
                                 {button}
-                                <span class="material-symbols-outlined">add_circle</span>
+                                {/* <span class="material-symbols-outlined">add_circle</span> */}
                             </button>
                             :
-                            <button className='btn_not_create btn-w' type='submit' style={{justifyContent:"center"}} >
+                            <button className='btn_not_create' type='submit' style={{justifyContent:"center"}} >
                                 {button}
-                                <span class="material-symbols-outlined">add_circle</span>
+                                {/* <span class="material-symbols-outlined">add_circle</span> */}
                             </button>
                     }
                 </div>

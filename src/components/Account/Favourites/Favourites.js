@@ -3,11 +3,14 @@ import {  useSelector } from 'react-redux'
 import Card from '../../Card/Card'
 import './Favourites.css'
 import heartWeed from '../../../assets/favweed.png'
+import { useEffect } from 'react'
 
 const Favourites = () => {
 
   const favourites = useSelector(state => state.wishlist) 
-   
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+}, [])
 
   return (
     <div className='favourites-container'>
@@ -15,7 +18,8 @@ const Favourites = () => {
       {
       favourites.length === 0 && 
       <div className='favourites-no-favs-container'>
-        <p>You have no favorites</p>
+        <p>You didn't add any products to favorites.</p>
+        <span style={{textAlign:"center",fontSize:"12px",color:"grey"}}>To do this, go to the home section, place the mouse over the product you want to add, and you will see a litle heart in the bottom-right corner</span>
         <img className='no-favorites-img-heart' src={heartWeed} alt='no favs'/>
       </div>
       }

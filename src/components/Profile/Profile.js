@@ -6,7 +6,9 @@ import { registerUser, addGuest } from '../../Redux/Actions'
 import { API_URL } from '../../Redux/Constants'
 // import axios from 'axios'
 const Profile = () => {
-    const { user, getAccessTokenSilently, logout } = useAuth0()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const { user, logout } = useAuth0()
+    // const {getAccessTokenSilently} = useAuth0()
     const userRedux = useSelector(state => state.user[0])
     const [roll, setRoll] = useState(userRedux.roll)
     const dispatch = useDispatch()

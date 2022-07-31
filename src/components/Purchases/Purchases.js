@@ -5,7 +5,11 @@ import despacahdo from './despachado.png';
 import entregado from './entregado.png'
 import { NavLink } from "react-router-dom";
 import canceled from './canceled.png'
+import { useEffect } from 'react';
 const Purchases = ({ data }) => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, [])
     let total = 0
     const sumaTotal = () => {
         data.arrayItems.forEach((e) => {

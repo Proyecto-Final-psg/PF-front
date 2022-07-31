@@ -11,17 +11,15 @@ import placeThree from '../../../assets/3place.png'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
-  
+
   useEffect(() => {
-      Aos.init({ once: true })
+    Aos.init({ once: true })
   }, [])
 
   const dispatch = useDispatch()
   const topCustomers = useSelector(store => store.topCustomers)
-  // const users = useSelector(store => store.users)
   const [loading, setLoading] = useState(false)
   let num = 0;
   useEffect(() => {
@@ -30,13 +28,8 @@ export function TopCustomers() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    // console.log(topCustomers)
-  }, [topCustomers])
-
   var holder = {};
   let resumen = []
-
 
   topCustomers.forEach(o => {
     if (o.user) {
@@ -95,7 +88,6 @@ export function TopCustomers() {
 
     emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
       .then((result) => {
-        // console.log(result.text);
         setLoading(false)
         swal({
           title: "Email has been sent",
@@ -103,8 +95,7 @@ export function TopCustomers() {
           icon: "success",
           button: "Ok"
         })
-          .then(ok => {
-            // navigate(-1)
+          .then(() => {
           })
       }, (error) => {
         console.log(error.text);
@@ -118,7 +109,7 @@ export function TopCustomers() {
     <h1 className="mt-5 custom-title">
       Top Customers
       <span id="topCustomer" className="iconMenu material-symbols-outlined">face</span>
-      </h1>
+    </h1>
     <span>Send discounts to your top three customers</span>
     {loading &&
       <div className='loadingGif'>
@@ -131,18 +122,18 @@ export function TopCustomers() {
           <table className="table is-bordered is-narrow shadow" data-aos='fade-up'>
             <thead>
               <tr>
-              <th><abbr id="admin-table-header" title="User Name">
+                <th><abbr id="admin-table-header" title="User Name">
                   User
                   <span class="material-symbols-outlined">person</span>
-                  </abbr></th>
-                  <th><abbr id="admin-table-header" title="Total">
+                </abbr></th>
+                <th><abbr id="admin-table-header" title="Total">
                   Total
                   <span class="material-symbols-outlined">savings</span>
-                  </abbr></th>
-                  <th><abbr id="admin-table-header" title="Send discount coupon to the client">
+                </abbr></th>
+                <th><abbr id="admin-table-header" title="Send discount coupon to the client">
                   Discount coupon
                   <span class="material-symbols-outlined">shopping_bag</span>
-                  </abbr></th>
+                </abbr></th>
               </tr>
             </thead>
             <tbody>
@@ -191,7 +182,6 @@ export function TopCustomers() {
                     </td>
                   </tr>
                 })
-
               }
             </tbody>
           </table>

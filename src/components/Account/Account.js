@@ -50,8 +50,9 @@ const Account = () => {
   }, [usr]);
 
   orders = orders.sort((a,b) => b.order_id - a.order_id)
-  console.log('ordenadas?',orders)
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+}, [])
   return (
     <div>
       {loading && (
@@ -94,7 +95,9 @@ const Account = () => {
                   >
                     <button
                       className="link"
-                      onClick={() => setActive("history-shops")}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) 
+                        setActive("history-shops")}}
                     >
                       <FontAwesomeIcon icon={faBagShopping} /> Purchases
                     </button>
@@ -141,7 +144,7 @@ const Account = () => {
               })
             :
             <div style={{textAlign:"center"}}>
-              <h4>You have no purchases</h4>
+              <h4>You didn't purchase any product yet</h4>
               <img src={noOrders} alt="no_order_icon" className="mt-5" />
             </div>
             }
