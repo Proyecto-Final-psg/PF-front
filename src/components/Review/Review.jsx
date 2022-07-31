@@ -15,7 +15,7 @@ export function Review({ name, score, review }) {
             easing="cubic-bezier(.03,.98,.52,.99)"
             >
 
-                <div class="cardreview">
+                <div className="cardreview">
                         <h2><b>{name}</b></h2>
                         <div className="stars">
                             {score && [...Array(score)].map((star, i) => {

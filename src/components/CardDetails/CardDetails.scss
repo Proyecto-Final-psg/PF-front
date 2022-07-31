@@ -241,7 +241,7 @@
     border: none;
     transition: all 0.3s ease-in-out;
 }
-.button-favorite {
+.button-green-favorite, .button-red-favorite {
     margin-top: 10px;
     width: 80px;
     margin-right: 20px;
@@ -257,6 +257,10 @@
     color: #fff;
     border: none;
     transition: all 0.3s ease-in-out;
+}
+
+.button-red-favorite{
+    background-color: #ff4c4cc4;
 }
 
 .name-product-detail{
@@ -282,7 +286,7 @@
     background-color: red;
 }
 
-.button-favorite:hover{
+.button-green-favorite:hover{
     background-color: rgb(207, 157, 6);
 }
 

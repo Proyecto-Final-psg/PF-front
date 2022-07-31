@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getFavorite } from '../../../Redux/Actions'
+import React from 'react'
+import {  useSelector } from 'react-redux'
 import Card from '../../Card/Card'
 import './Favourites.css'
+import heartWeed from '../../../assets/favweed.png'
 
 const Favourites = () => {
 
-  const user = useSelector(state => state.user[0]) 
   const favourites = useSelector(state => state.wishlist) 
-   const dispatch = useDispatch()
-
-
-  // useEffect(() => {
-  //   dispatch(getFavorite(user.user_id))
-  //    // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
-
+   
 
   return (
     <div className='favourites-container'>
-      <h1>Favorites</h1>
+      <h2 className="custom-title mb-5">Favorites</h2>
+      {
+      favourites.length === 0 && 
+      <div className='favourites-no-favs-container'>
+        <p>You have no favorites</p>
+        <img className='no-favorites-img-heart' src={heartWeed} alt='no favs'/>
+      </div>
+      }
       <div className='favourites-cards-container'>
         {favourites && favourites.map((p, i) => {
           return(
