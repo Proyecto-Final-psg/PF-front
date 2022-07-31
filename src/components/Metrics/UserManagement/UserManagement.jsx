@@ -9,33 +9,29 @@ import { useState } from 'react'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-
-
 export function UserManagement() {
-  
+
   useEffect(() => {
-      Aos.init({ once: true })
+    Aos.init({ once: true })
   }, [])
 
   const usersprueba = useSelector(store => store.users)
   const [userRol, setUserRol] = useState(usersprueba)
   const dispatch = useDispatch()
   const [search, setSearch] = useState('')
-  
+
   useEffect(() => {
     dispatch(getAllUsers())
-    // console.log(usersprueba)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     setUserRol(usersprueba)
-    // dispatch(getAllUsers())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[usersprueba])
+  }, [usersprueba])
 
   function changeRol(user, id, rol) {
-    
+
     if (rol === 'admin') rol = 'user'
     else rol = 'admin'
 
@@ -50,7 +46,7 @@ export function UserManagement() {
       dangerMode: true,
     }).then(function (isConfirm) {
       if (isConfirm) {
-        
+
         dispatch(changeRoles({ user_id: id, roll: rol }))
         swal({
           title: `Rol changed`,
@@ -83,15 +79,14 @@ export function UserManagement() {
     </h1>
 
     <span>To modify a user rol, just press into the user-rol icon that you want to change</span>
-    <div style={{width:"100%"}}>
+    <div style={{ width: "100%" }}>
       <form id="form" onSubmit={searchUser}>
-          <input type="text" className="input" onChange={fillSearchObj} placeholder='Search user' />
-          {/* <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} /> */}
-          <button type="submit" className="btn btn-success btn-w">
-              <span>Search </span> 
-              <span className="material-symbols-outlined">person_search</span>
-          </button>
-        </form>
+        <input type="text" className="input" onChange={fillSearchObj} placeholder='Search user' />
+        <button type="submit" className="btn btn-success btn-w">
+          <span>Search </span>
+          <span className="material-symbols-outlined">person_search</span>
+        </button>
+      </form>
     </div>
 
     <div className="lower-10" style={{ width: "100%" }}>
@@ -99,19 +94,18 @@ export function UserManagement() {
         <table className="table shadow" data-aos='fade-up'>
           <thead>
             <tr>
-              {/* <th><abbr title="User Picture" >*</abbr></th> */}
               <th><abbr id="admin-table-header" title="User Name">
-                  User Name
-                  <span className="material-symbols-outlined">person</span>
-                  </abbr></th>
-                  <th><abbr id="admin-table-header" title="User Email">
-                  User Email
-                  <span className="material-symbols-outlined">mail</span>
-                  </abbr></th>
-              <th><abbr id="admin-table-header"  title="To modify a user rol, just press into the user-rol that you want to change">
+                User Name
+                <span className="material-symbols-outlined">person</span>
+              </abbr></th>
+              <th><abbr id="admin-table-header" title="User Email">
+                User Email
+                <span className="material-symbols-outlined">mail</span>
+              </abbr></th>
+              <th><abbr id="admin-table-header" title="To modify a user rol, just press into the user-rol that you want to change">
                 Actual rol
                 <span className="material-symbols-outlined">admin_panel_settings</span>
-                </abbr></th>
+              </abbr></th>
             </tr>
           </thead>
           <tbody>

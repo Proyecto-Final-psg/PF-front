@@ -4,7 +4,7 @@ import './Order.scss'
 import { submitOrder, cleanCart, orderProductsCbd } from '../../Redux/Actions'
 import { useEffect } from 'react';
 import { validator } from '../CreateProduct/helpers/Validator';
-
+import logo from '../../assets/logo.png'
 function Order() {
     const cart = useSelector((store) => store.cart);
     const user = useSelector((store) => store.user);
@@ -80,7 +80,7 @@ function Order() {
         <div className="order-container">
 
             <div className="form-container">
-
+            <img src={logo} alt="logo_icon" className='logo' />
                 <form className='form-vertical'>
                     <p><b>Getting your order</b></p>
                     <br />

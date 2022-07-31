@@ -14,7 +14,6 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { useState } from "react";
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,8 +22,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-
 
 export function MostRequiredProduct() {
   // eslint-disable-next-line 
@@ -40,31 +37,13 @@ export function MostRequiredProduct() {
 
 
   const [filterView, setFilterView] = useState(10)
-  const [topSells, setTopSells] = useState(result.sort((b,a)=> a.quantity - b.quantity))
+  const [topSells, setTopSells] = useState(result.sort((b, a) => a.quantity - b.quantity))
   const dispatch = useDispatch()
-  // let names = [...new Set(orderItems.map(i => i.product))]
   useEffect(() => {
     dispatch(getOrderItems())
   },
     // eslint-disable-next-line 
     [])
-
-  
-
-
-  // result = result.slice(0,10)
-  // result.sort((b, a) => a.quantity - b.quantity); // b - a for reverse sort
-
-  // useEffect(()=>{
-  //   result = topSells.sort((b,a) => a.quantity - b.quantity)
-  //   if(filterView !== 'all'){
-  //     // console.log('algunos')
-  //     result = topSells.slice(0,filterView)
-  //   }
-  //   setTopSells(result)
-  //   // console.log('result', result)
-  // },[filterView])
-
 
   const options = {
     responsive: true,
@@ -80,7 +59,6 @@ export function MostRequiredProduct() {
   };
 
   const labels = topSells.map(i => i.product);
-  // console.log('labels',labels)
   const data = {
     labels,
     datasets: [
@@ -92,7 +70,6 @@ export function MostRequiredProduct() {
     ],
   };
 
-
   useEffect(() => {
     dispatch(getAllOrders())
     dispatch(getAllProducts())
@@ -100,39 +77,39 @@ export function MostRequiredProduct() {
     // eslint-disable-next-line 
     [])
 
-  function filterSellingView(e){
-    // console.log('entre')
+  function filterSellingView(e) {
     setFilterView(e.target.value)
   }
 
   let aux = null;
 
-  function filter(){
-    if(filterView !== 'all'){
-      aux = result.slice(0,filterView)}
-      else{
-        
-        aux = orderItems.reduce((acc, curr) => {
-          const index = acc.findIndex(item => item.product === curr.product)
-          index > -1 ? acc[index].quantity += curr.quantity : acc.push({
-            product: curr.product,
-            quantity: curr.quantity
-          })
-          
-          return acc
-        }, [])
-        
-      }
-      aux.sort((b,a) => a.quantity - b.quantity)
-      setTopSells(aux)
+  function filter() {
+    if (filterView !== 'all') {
+      aux = result.slice(0, filterView)
+    }
+    else {
+
+      aux = orderItems.reduce((acc, curr) => {
+        const index = acc.findIndex(item => item.product === curr.product)
+        index > -1 ? acc[index].quantity += curr.quantity : acc.push({
+          product: curr.product,
+          quantity: curr.quantity
+        })
+
+        return acc
+      }, [])
+
+    }
+    aux.sort((b, a) => a.quantity - b.quantity)
+    setTopSells(aux)
   }
- 
+
   return <div className="container datas">
 
     <h1 className="mt-5 custom-title">
       Best selling products
       <span id="bestSell" className="iconMenu material-symbols-outlined">trending_up</span>
-      </h1>
+    </h1>
     <span>Showing</span>
     <div className="filter-orders">
       <select className="select" name="" id="" onChange={filterSellingView}>
@@ -143,7 +120,7 @@ export function MostRequiredProduct() {
       <button className="ml-4 btn btn-success btn-w" onClick={filter}>
         <span>Filter </span>
         <span class="material-symbols-outlined">bar_chart</span>
-        </button>
+      </button>
 
     </div>
 

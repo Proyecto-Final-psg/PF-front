@@ -13,7 +13,7 @@ export function Orders() {
 
 
   useEffect(() => {
-      Aos.init({ once: true })
+    Aos.init({ once: true })
   }, [])
 
   const dispatch = useDispatch()
@@ -30,25 +30,23 @@ export function Orders() {
 
   useEffect(() => {
     setOrderList(orders)
-    // console.log('ORDERS', orders);
   }, [orders])
 
   function formatDate(timestamp) {
     const d = new Date(timestamp);
     const date = format(d, 'yyyy/MM/dd kk:mm:ss')
-    // const date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
     return date;
   }
-  function statusToFilter(e){
+  function statusToFilter(e) {
     setStatusFilter(e.target.value)
   }
 
-  function filterOrdersByStatus(e){
+  function filterOrdersByStatus(e) {
     e.preventDefault()
     console.log(statusFilter)
-    if(statusFilter === "")
-    setOrderList(orders)
-    else{
+    if (statusFilter === "")
+      setOrderList(orders)
+    else {
       let filteredOrders = orders.filter(o => o.status === statusFilter)
       setOrderList(filteredOrders)
     }
@@ -58,9 +56,9 @@ export function Orders() {
     <h1 className="mt-5 custom-title">
       Order List
       <span id="orders" className="iconMenu material-symbols-outlined">receipt_long</span>
-      </h1>
+    </h1>
     <span>Orders will be listed here, and you can access them, change their status, and see the details</span>
-      <span>Filter orders by status</span>
+    <span>Filter orders by status</span>
     <form onSubmit={filterOrdersByStatus} className='filter-orders'>
       <select name="" id="" onChange={statusToFilter} value={statusFilter}>
         <option value="" disabled >Status</option>
@@ -69,17 +67,16 @@ export function Orders() {
         <option value="inprogress">In Progress</option>
         <option value="canceled" >Canceled</option>
       </select>
-      {/* <input type='submit' className='btn btn-success' value='Filter' /> */}
       <button type='submit' className="btn btn-success btn-w">
         <span>Filter </span>
         <span class="material-symbols-outlined">content_paste_search</span>
       </button>
     </form>
 
-    <div className="lower-10" style={{width:"100%"}}>
+    <div className="lower-10" style={{ width: "100%" }}>
       {orderList.length > 0 ?
         <div className='conteiner-top'>
-          <table className="table is-bordered is-narrow shadow" data-aos='fade-up' >
+          <table className="table is-striped is-hoverable is-bordered is-narrow shadow" data-aos='fade-up' >
             <thead>
               <tr>
                 <th><abbr title="ID of the order">ID</abbr></th>
@@ -90,14 +87,14 @@ export function Orders() {
             </thead>
             <tbody>
               {orderList.length > 0 && orderList.map(o => {
-                return <tr key={o.id} style={{width:"100%"}}>
+                return <tr key={o.id} style={{ width: "100%" }}>
                   <th className='fit'><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
-                  <td>{o.user_email && o.user_email !=="" ? o.user_email : 'N/A'}</td>
+                  <td>{o.user_email && o.user_email !== "" ? o.user_email : 'N/A'}</td>
                   <td className='fit'>{
-                  (o.status === 'inprogress') ? <span class="material-symbols-outlined">hourglass_empty</span>
-                  : (o.status === 'completed') ? <span class="material-symbols-outlined">verified</span>
-                  : (o.status === 'canceled') ? <span class="material-symbols-outlined">cancel</span>
-                  : ''
+                    (o.status === 'inprogress') ? <span class="material-symbols-outlined">hourglass_empty</span>
+                      : (o.status === 'completed') ? <span class="material-symbols-outlined">verified</span>
+                        : (o.status === 'canceled') ? <span class="material-symbols-outlined">cancel</span>
+                          : ''
                   }</td>
                   <td>{formatDate(o.createdAt)}</td>
                 </tr>

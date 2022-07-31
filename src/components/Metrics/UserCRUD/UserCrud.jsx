@@ -11,9 +11,9 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 export function UserCrud() {
-  
+
   useEffect(() => {
-      Aos.init({ once: true })
+    Aos.init({ once: true })
   }, [])
 
   const dispatch = useDispatch()
@@ -28,7 +28,6 @@ export function UserCrud() {
 
   useEffect(() => {
     setBlockUsers(users)
-    // console.log(users)
   }, [users])
 
   const fillSearchObj = (e) => {
@@ -42,8 +41,6 @@ export function UserCrud() {
   }
 
   function blockUser(userId, status) {
-    // setLoading(true)
-
     swal({
       title: `Are you sure you want to ${status} the user?`,
       text: "Doing this, the user will be unable to login to Weedical",
@@ -93,39 +90,34 @@ export function UserCrud() {
 
       <form action="" id="form" onSubmit={searchUser}>
         <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock' />
-        {/* <input type='submit' className="btn btn-success" value="Search" style={{ width: "auto" }} /> */}
         <button type="submit" className="btn btn-success btn-w">
-            <span>Search </span> 
-            <span className="material-symbols-outlined">person_search</span>
-         </button>
+          <span>Search </span>
+          <span className="material-symbols-outlined">person_search</span>
+        </button>
       </form>
-
-
 
       <div className="lower-10" style={{ width: "100%" }}>
         <div className="container-top">
           <table className="table shadow" data-aos='fade-up'>
             <thead>
               <tr>
-                {/* <th><abbr title="User Picture" >*</abbr></th> */}
                 <th><abbr id="admin-table-header" title="User Name">
                   User Name
                   <span class="material-symbols-outlined">person</span>
-                  </abbr></th>
+                </abbr></th>
                 <th><abbr id="admin-table-header" title="User Email">
                   User Email
                   <span class="material-symbols-outlined">mail</span>
-                  </abbr></th>
+                </abbr></th>
                 <th><abbr id="admin-table-header" title="Action">
                   Action
                   <span class="material-symbols-outlined">lock</span>
-                  </abbr></th>
+                </abbr></th>
               </tr>
             </thead>
             <tbody>
               {blockUsers && blockUsers.map(u => {
                 return <tr key={u.user_id} className={u.block ? 'red' : ''}>
-                  {/* <td style={{ backgroundImage: `url('${u.user_img}')`}}></td> */}
                   <td style={{ width: "auto" }} key={u.id}>{u.user_name}</td>
                   <th key={u.id}><span>{u.user_email}</span></th>
                   <td id="img" key={u.id}>
@@ -136,7 +128,7 @@ export function UserCrud() {
                       <button className="btn btn-danger btn-w-red" onClick={() => blockUser(u.user_id, 'lock')}>
                         <span>Lock </span>
                         <span class="material-symbols-outlined">lock</span>
-                        </button>
+                      </button>
                     }
                   </td>
                 </tr>
@@ -145,8 +137,6 @@ export function UserCrud() {
           </table>
         </div>
       </div>
-
-
     </div>
   </div>
 }

@@ -99,6 +99,11 @@
 }
 
 .btn_category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // border-radius: ;
     width: auto;
     height: 40px;
     padding: 0 12px 0 12px;
@@ -183,6 +188,10 @@
     background-color: #2B5800;
     font-size: 14px;
     font-weight: bolder;
+}
+
+.uploadcare--widget__file-name:before {
+    content: "Change image";
 }
 
 /* .btn_not_create{
