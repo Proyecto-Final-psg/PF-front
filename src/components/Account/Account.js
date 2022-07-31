@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, getUserReviews } from "../../Redux/Actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faEnvelope, faBagShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import Purchases from "../Purchases/Purchases";
 import LoadingImg from "../../assets/Loading.gif";
 import mensaje from './mensaje.png';
 import noOrders from './no_orders.png'
 import Favorites from './Favourites/Favourites'
+
 //import bag from "../../assets/bag.png";
 // eslint-disable-next-line
 /* import boy1 from "../../assets/boy1.png";
@@ -95,7 +96,7 @@ const Account = () => {
                       className="link"
                       onClick={() => setActive("history-shops")}
                     >
-                      <FontAwesomeIcon icon={faUser} /> Purchases
+                      <FontAwesomeIcon icon={faBagShopping} /> Purchases
                     </button>
                   </li>
                   <li
@@ -107,7 +108,8 @@ const Account = () => {
                       className="link"
                       onClick={() => setActive("favourites")}
                     >
-                      <FontAwesomeIcon icon={faUser} /> Favorites
+                      <FontAwesomeIcon icon={faHeart} /> Favorites
+                      {/* <FontAwesomeIcon icon={faUser} />  */}
                     </button>
                   </li>
                 </ul>

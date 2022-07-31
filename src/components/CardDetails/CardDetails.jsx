@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductById, getReviews, addToCart, addFavorite, getUserReviews, subscribeStock } from '../../Redux/Actions'
+import { getProductById, getReviews, addToCart, getUserReviews, subscribeStock } from '../../Redux/Actions'
 import { Review } from '../Review/Review'
 import './CardDetails.scss'
 import LoadingImg from '../../assets/Loading.gif'
-// import Swiper from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +16,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import swal from 'sweetalert'
 import StarRating from '../ModalReview/StarRating/StarRating'
+import { addToFavourites, deleteFavourite, signInFav } from '../Account/Favourites/favortitesFunctions'
 
 export function CardDetails() {
     SwiperCore.use([Autoplay]);
@@ -25,6 +25,8 @@ export function CardDetails() {
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
+    const favourites = useSelector(state => state.wishlist) 
+    const productFavourite = favourites && favourites.find(f => f.id === product.id)
     const score = reviews.map(r => r.score)
     const reducer = (accumulator, curr) => accumulator + curr;
     const userRedux = useSelector(state => state.user[0])
@@ -56,11 +58,6 @@ export function CardDetails() {
 
     const addCart = () => {
         dispatch(addToCart(product.id, product.name, product.price,))
-    }
-    // const idNumber = parseInt(id)
-    const addFavorites = (e) => {
-        e.preventDefault()
-        dispatch(addFavorite(id, user_id))
     }
 
     function handleClickStock(e) {
@@ -154,7 +151,17 @@ export function CardDetails() {
                         <div className='container-buttons_edit_remove'>
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                             <button className='button-delete'>Remove</button>
-                            <button className='button-favorite' onClick={addFavorites}>Favorite</button>
+                            <button className='button-favorite' onClick={addToFavourites}>Favorite</button>
+                        </div>}
+                    {user && 
+                        <div className='container-buttons_edit_remove'>
+                        <button 
+                        title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} 
+                        className={ !productFavourite? "button-green-favorite" :"button-red-favorite" } 
+                        onClick={!admin && !user ? (e) => signInFav(e, loginWithRedirect)
+                        : !productFavourite ? (e) => addToFavourites(e, product.id, product.name, user_id, dispatch)
+                        : (e) => deleteFavourite(e, product.id, product.name, user_id, dispatch)
+                        }>Favorite</button>
                         </div>}
                     <br></br>
                     <div className='container-name'>
