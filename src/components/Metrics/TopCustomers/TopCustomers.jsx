@@ -15,6 +15,7 @@ import 'aos/dist/aos.css'
 export function TopCustomers() {
 
   const [percentage, setPercentage] = useState(0)
+  const [usrDsc, setUsrDsc] = useState('')
   const discountCreated = useSelector(store => store.discount_created)
   const code = document.getElementById('code')
 
@@ -91,13 +92,13 @@ export function TopCustomers() {
 
 
   useEffect(()=>{
+    const cod = document.getElementById('code')
     // console.log(discountCreated);
-    if(code){
-      code.value = discountCreated.code
-      setTheCode(true)
+    if(cod && discountCreated){
+      // console.log(discountCreated.code)
+      cod.value = discountCreated.code
+      setTheCode(true) 
     }
-    
-
   }, [discountCreated])
  
   function makeid(length) {
@@ -113,22 +114,35 @@ export function TopCustomers() {
   
   const discountCode = makeid(6)
 
-  function createCodeAndSendMail(e){
-    e.preventDefault()
-    console.log(code);
-    code.value = discountCode;
 
+
+  function createCodeAndSendMail(e, user){
+    e.preventDefault()
+    // e.reset()
+    // console.log(user);
+    // setUsrDsc(user)
+    // setTheCode(discountCode)
+    document.getElementById('mailTo').value = user
+    document.getElementById('name').value = user
+    document.getElementById('code').value = discountCode
+    document.getElementById('discount').value = percentage
+    
+    // code.value = discountCode;
+    // const usr = document.createElement('input')
+    // usr.value = 
     dispatch(createDiscount(discountCode,percentage))
     
     sendEmail()
   }
 
   const sendEmail = () => {
+    
+    // e.preventDefault()
     // dispatch(createDiscount(percentage))
     setLoading(true)
     const form = document.getElementById('emailForm')
     // form.preventDefault()
-
+    // console.log(form)
     // e.preventDefault();
     
       emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', form, 'LidHyzsmZ0-R4ClFZ')
@@ -141,7 +155,7 @@ export function TopCustomers() {
             button: "Ok"
           })
             .then(() => {              
-              console.log('OK');
+              // console.log('OK');
               // dispatch(createDiscount(percentage))
             })
         }, (error) => {
@@ -206,7 +220,7 @@ export function TopCustomers() {
 
                     <td className="fit">
                       <div >
-                        <form onSubmit={createCodeAndSendMail} className="order-form" id='emailForm' >
+                        <form onSubmit={(e) => createCodeAndSendMail(e, o.username)} className="order-form" id='emailForm' >
                           <div>
                             <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="%" id="input-disc" onChange={fillDiscountNumber} />
 
@@ -222,10 +236,11 @@ export function TopCustomers() {
                               <span id="sp">Send</span>
                             </button>
                           </div>
-                          <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
-                          <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
-                          <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
-                          <input type="text" name="code" id='code' readOnly value='' style={{ display: "none" }} />
+                          <input type="text" name="name" id="name" value={usrDsc}  style={{ display: "none" }} />
+                          {/* <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} /> */}
+                          <input type="text" name="mailTo" id="mailTo" value={usrDsc} style={{ display: "none" }} />
+                          <input type="text" name="code" id='code' value={theCode} style={{ display: "none" }} />
+                          <input type="text" name="discount" id='discount' style={{ display: "none" }} />
                         </form>
                       </div>
                     </td>
