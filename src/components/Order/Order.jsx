@@ -59,6 +59,7 @@ function Order() {
         })
         setError(validator({
             ...order,
+            ...addressOrder,
             [e.target.name]: e.target.value
         }))
     }
