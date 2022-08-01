@@ -3,10 +3,11 @@
 @import '../../scss/mixins.scss';
 
 
-.stars{
+.stars {
     position: relative;
     bottom: 40px;
 }
+
 .card-img-loading {
     margin-top: 60px;
 }
@@ -37,7 +38,8 @@
     place-content: center;
 }
 
-.card-green-heart, .card-red-heart {
+.card-green-heart,
+.card-red-heart {
     position: absolute;
     font-size: 35px;
     color: #438a0054;
@@ -47,7 +49,7 @@
     cursor: pointer;
 }
 
-.card-red-heart{
+.card-red-heart {
     color: #ff4c4cc4;
 }
 
