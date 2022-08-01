@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllUsers, getTopCustomers, } from "../../../Redux/Actions"
+import { createDiscount, getAllUsers, getTopCustomers, } from "../../../Redux/Actions"
 import emailjs from '@emailjs/browser';
 import swal from 'sweetalert'
 import LoadingImg from '../../../assets/Loading.gif'
@@ -14,13 +14,24 @@ import 'aos/dist/aos.css'
 // eslint-disable-next-line react-hooks/exhaustive-deps
 export function TopCustomers() {
 
+  const [percentage, setPercentage] = useState(0)
+  const discountCreated = useSelector(store => store.discount_created)
+  const code = document.getElementById('code')
+
+  function fillDiscountNumber(e){
+      setPercentage(e.target.value)    
+  }
+
   useEffect(() => {
     Aos.init({ once: true })
   }, [])
 
   const dispatch = useDispatch()
   const topCustomers = useSelector(store => store.topCustomers)
+  
   const [loading, setLoading] = useState(false)
+  const [theCode, setTheCode] = useState(false)
+
   let num = 0;
   useEffect(() => {
     dispatch(getTopCustomers())
@@ -79,28 +90,65 @@ export function TopCustomers() {
   obj2 = obj2.slice(0, 10)
 
 
+  useEffect(()=>{
+    // console.log(discountCreated);
+    if(code){
+      code.value = discountCreated.code
+      setTheCode(true)
+    }
+    
 
+  }, [discountCreated])
+ 
+  function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+  
+  const discountCode = makeid(6)
 
-  const sendEmail = (e) => {
+  function createCodeAndSendMail(e){
+    e.preventDefault()
+    console.log(code);
+    code.value = discountCode;
+
+    dispatch(createDiscount(discountCode,percentage))
+    
+    sendEmail()
+  }
+
+  const sendEmail = () => {
+    // dispatch(createDiscount(percentage))
     setLoading(true)
+    const form = document.getElementById('emailForm')
+    // form.preventDefault()
 
-    e.preventDefault();
-
-    emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', e.target, 'LidHyzsmZ0-R4ClFZ')
-      .then((result) => {
-        setLoading(false)
-        swal({
-          title: "Email has been sent",
-          text: "The client should receive the email with the notification soon",
-          icon: "success",
-          button: "Ok"
-        })
-          .then(() => {
+    // e.preventDefault();
+    
+      emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', form, 'LidHyzsmZ0-R4ClFZ')
+        .then((result) => {
+          setLoading(false)
+          swal({
+            title: "Email has been sent",
+            text: "The client should receive the email with the notification soon",
+            icon: "success",
+            button: "Ok"
           })
-      }, (error) => {
-        console.log(error.text);
-      });
-
+            .then(() => {              
+              console.log('OK');
+              // dispatch(createDiscount(percentage))
+            })
+        }, (error) => {
+          console.log(error.text);
+        });
+    
+      
   };
 
 
@@ -158,9 +206,9 @@ export function TopCustomers() {
 
                     <td className="fit">
                       <div >
-                        <form onSubmit={sendEmail} className="order-form">
+                        <form onSubmit={createCodeAndSendMail} className="order-form" id='emailForm' >
                           <div>
-                            <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" />
+                            <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" onChange={fillDiscountNumber} />
 
                           </div>
 
@@ -177,6 +225,7 @@ export function TopCustomers() {
                           <input type="text" name="name" readOnly value={o.username} style={{ display: "none" }} />
                           <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} />
                           <input type="text" name="mailTo" readOnly value={o.username} style={{ display: "none" }} />
+                          <input type="text" name="code" id='code' readOnly value='' style={{ display: "none" }} />
                         </form>
                       </div>
                     </td>
