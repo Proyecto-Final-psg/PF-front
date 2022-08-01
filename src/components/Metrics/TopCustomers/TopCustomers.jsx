@@ -208,7 +208,7 @@ export function TopCustomers() {
                       <div >
                         <form onSubmit={createCodeAndSendMail} className="order-form" id='emailForm' >
                           <div>
-                            <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="15%" id="input-disc" onChange={fillDiscountNumber} />
+                            <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="%" id="input-disc" onChange={fillDiscountNumber} />
 
                           </div>
 

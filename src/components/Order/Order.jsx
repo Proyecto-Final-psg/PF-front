@@ -37,16 +37,6 @@ function Order() {
     }, [])
 
     useEffect(() => {
-        // console.log('EL DISC', disc);
-        // setOrder(
-        //     {
-        //         ...order,
-        //         total: disc
-        //     }
-        // )
-    }, [disc])
-
-    useEffect(() => {
         setOrder({
             ...order,
             address: `address: ${addressOrder.address}, city: ${addressOrder.city}, state: ${addressOrder.state}, zip: ${addressOrder.zipCode}`,
@@ -61,9 +51,18 @@ function Order() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addressOrder])
 
+    useEffect(() => {
+
+        setOrder(
+            {
+                ...order,
+                total: disc
+            }
+        )
+    }, [disc])
+
+
     let subtotal = (cart.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
-
-
     function handleSubmitOrder(e) {
         e.preventDefault();
 
