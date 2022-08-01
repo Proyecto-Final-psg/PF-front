@@ -23,10 +23,6 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   let admin = user.roll === "admin" || user.roll === "super-admin"
   let isUser = user.roll === 'user'
 
-  const reviews = useSelector(store => store.reviews)
- 
-
-
   useEffect(() => {
     if (admin || isUser) {
       dispatch(getFavorite(user.user_id))
@@ -111,10 +107,10 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
           </div>}
           {!loading && <div className="card-img">
             <img className="card-img" src={img} alt={description} />
-          
+
             {
 
-              true  &&
+              true &&
               <StarRating clase={"stars"} value={4} />
             }
           </div>}

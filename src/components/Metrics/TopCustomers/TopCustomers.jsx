@@ -15,12 +15,13 @@ import 'aos/dist/aos.css'
 export function TopCustomers() {
 
   const [percentage, setPercentage] = useState(0)
-  const [usrDsc, setUsrDsc] = useState('')
+  var usrDsc = ""
+  // const [usrDsc, setUsrDsc] = useState('')
   const discountCreated = useSelector(store => store.discount_created)
-  const code = document.getElementById('code')
 
-  function fillDiscountNumber(e){
-      setPercentage(e.target.value)    
+
+  function fillDiscountNumber(e) {
+    setPercentage(e.target.value)
   }
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export function TopCustomers() {
 
   const dispatch = useDispatch()
   const topCustomers = useSelector(store => store.topCustomers)
-  
+
   const [loading, setLoading] = useState(false)
   const [theCode, setTheCode] = useState(false)
 
@@ -91,32 +92,32 @@ export function TopCustomers() {
   obj2 = obj2.slice(0, 10)
 
 
-  useEffect(()=>{
+  useEffect(() => {
     const cod = document.getElementById('code')
     // console.log(discountCreated);
-    if(cod && discountCreated){
+    if (cod && discountCreated) {
       // console.log(discountCreated.code)
       cod.value = discountCreated.code
-      setTheCode(true) 
+      setTheCode(true)
     }
   }, [discountCreated])
- 
+
   function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   return result;
-}
-  
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() *
+        charactersLength));
+    }
+    return result;
+  }
+
   const discountCode = makeid(6)
 
 
 
-  function createCodeAndSendMail(e, user){
+  function createCodeAndSendMail(e, user) {
     e.preventDefault()
     // e.reset()
     // console.log(user);
@@ -126,17 +127,17 @@ export function TopCustomers() {
     document.getElementById('name').value = user
     document.getElementById('code').value = discountCode
     document.getElementById('discount').value = percentage
-    
+
     // code.value = discountCode;
     // const usr = document.createElement('input')
     // usr.value = 
-    dispatch(createDiscount(discountCode,percentage))
-    
+    dispatch(createDiscount(discountCode, percentage))
+
     sendEmail()
   }
 
   const sendEmail = () => {
-    
+
     // e.preventDefault()
     // dispatch(createDiscount(percentage))
     setLoading(true)
@@ -144,25 +145,25 @@ export function TopCustomers() {
     // form.preventDefault()
     // console.log(form)
     // e.preventDefault();
-    
-      emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', form, 'LidHyzsmZ0-R4ClFZ')
-        .then((result) => {
-          setLoading(false)
-          swal({
-            title: "Email has been sent",
-            text: "The client should receive the email with the notification soon",
-            icon: "success",
-            button: "Ok"
+
+    emailjs.sendForm('service_rquohvh', 'template_mwwg3i9', form, 'LidHyzsmZ0-R4ClFZ')
+      .then((result) => {
+        setLoading(false)
+        swal({
+          title: "Email has been sent",
+          text: "The client should receive the email with the notification soon",
+          icon: "success",
+          button: "Ok"
+        })
+          .then(() => {
+            // console.log('OK');
+            // dispatch(createDiscount(percentage))
           })
-            .then(() => {              
-              // console.log('OK');
-              // dispatch(createDiscount(percentage))
-            })
-        }, (error) => {
-          console.log(error.text);
-        });
-    
-      
+      }, (error) => {
+        console.log(error.text);
+      });
+
+
   };
 
 
@@ -236,7 +237,7 @@ export function TopCustomers() {
                               <span id="sp">Send</span>
                             </button>
                           </div>
-                          <input type="text" name="name" id="name" value={usrDsc}  style={{ display: "none" }} />
+                          <input type="text" name="name" id="name" value={usrDsc} style={{ display: "none" }} />
                           {/* <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} /> */}
                           <input type="text" name="mailTo" id="mailTo" value={usrDsc} style={{ display: "none" }} />
                           <input type="text" name="code" id='code' value={theCode} style={{ display: "none" }} />

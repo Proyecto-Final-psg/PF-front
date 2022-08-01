@@ -6,10 +6,10 @@ import './ModalReview.scss'
 import StarRating from './StarRating/StarRating';
 import swal from 'sweetalert'
 
-const ModalReview = ({modal, setModal, id}) => {
+const ModalReview = ({ modal, setModal, id }) => {
   const usr = useSelector((store) => store.user);
   const dispatch = useDispatch()
-  
+
   const [review, setReview] = useState({
     user_id: usr[0].user_id,
     product_id: '',
@@ -17,9 +17,9 @@ const ModalReview = ({modal, setModal, id}) => {
     score: '',
     review: ''
   })
- 
+
   useEffect(() => {
-    if(modal){
+    if (modal) {
       setTimeout(() => {
         setReview({
           ...review,
@@ -27,10 +27,11 @@ const ModalReview = ({modal, setModal, id}) => {
         })
       }, 1);
     }
+       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modal])
 
   const [error, setError] = useState({})
-  
+
   const handleInputChange = (e) => {
     setReview({
       ...review,
@@ -52,8 +53,8 @@ const ModalReview = ({modal, setModal, id}) => {
       review: ''
     })
     setModal({
-      modal:false,
-      id:''
+      modal: false,
+      id: ''
     })
     swal({
       title: `Review created successfully!`,
@@ -64,7 +65,7 @@ const ModalReview = ({modal, setModal, id}) => {
         dispatch(getReviews(id))
         dispatch(getUserReviews(usr[0].user_id))
       }
-  })
+    })
   }
 
   const handleCancel = (e) => {
@@ -76,8 +77,8 @@ const ModalReview = ({modal, setModal, id}) => {
       review: ''
     })
     setModal({
-      modal:false,
-      id:''
+      modal: false,
+      id: ''
     })
   }
 
@@ -85,7 +86,7 @@ const ModalReview = ({modal, setModal, id}) => {
 
   return (
     <div className='history'>
-    
+
       <div className={`modal ${modal && 'is-active'}`}>
         <div className="modal-background" onClick={handleCancel}></div>
         <div className="modal-card">
