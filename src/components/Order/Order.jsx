@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
 import './Order.scss'
-import { submitOrder, cleanCart, orderProductsCbd, getDiscount, useCoupon, usedCoupon } from '../../Redux/Actions'
+import { submitOrder, cleanCart, usedCoupon } from '../../Redux/Actions'
 import { useEffect } from 'react';
 import { validator } from '../CreateProduct/helpers/Validator';
 import logo from '../../assets/logo.png'
@@ -59,6 +59,7 @@ function Order() {
                 total: disc
             }
         )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [disc])
 
 

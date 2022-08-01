@@ -24,7 +24,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   let isUser = user.roll === 'user'
 
   const reviews = useSelector(store => store.reviews)
-  const score = reviews.map(r => r.score)
+ 
 
 
   useEffect(() => {

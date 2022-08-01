@@ -13,7 +13,7 @@ const Nav = () => {
     //const [img, setImg] = useState(false)
     const userRedux = useSelector(state => state.user[0])
     const productscart = useSelector(state => state.cart)
-    const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
+    const {  isAuthenticated, loginWithRedirect, logout } = useAuth0()
     const handleMenu = (e) => {
         e.preventDefault()
         if (nav === '') setNav('is-active')

@@ -1,7 +1,7 @@
 import './OrdenCompraDetail.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import logo from './logo.png'
+
 import { NavLink } from 'react-router-dom'
 import premio from './premios.png'
 import { useEffect, useState } from 'react'
@@ -14,7 +14,6 @@ const OrdenCompraDetail = () => {
     const order = orders.filter(e => e.order_id === parseInt(id))[0]
     const userReviews = useSelector(store => store.userReviews)
     const userRedux = useSelector(state => state.user[0])
-    const reviews = useSelector(store => store.reviews)
     const user_id = userRedux.user_id
     const [modal, setModal] = useState({
         modal: false,
@@ -28,6 +27,7 @@ const OrdenCompraDetail = () => {
 
     useEffect(() => {
         dispatch(getUserReviews(user_id))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -56,53 +56,53 @@ const OrdenCompraDetail = () => {
                     {order.arrayItems.map((e, i) => {
                         total += e.price * e.quantity
                         return (
-                                <div key={i} className="card card-contenedor">
-                                    <NavLink to={`/products/${e.id}`}>
-                                        <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
+                            <div key={i} className="card card-contenedor">
+                                <NavLink to={`/products/${e.id}`}>
+                                    <img className='cmp-ordendetail-container-img-premio' src={premio} alt="premio" />
 
-                                        <div>
-                                            <div className="card-image">
-                                                <figure className="cmp-ordendetail-container-img">
-                                                    <img src={e.img} alt="Placeholder" />
-                                                </figure>
+                                    <div>
+                                        <div className="card-image">
+                                            <figure className="cmp-ordendetail-container-img">
+                                                <img src={e.img} alt="Placeholder" />
+                                            </figure>
+                                        </div>
+
+                                        <div className="card-content">
+
+                                            <div className="media">
+                                                <div className="media-content">
+                                                    <p className="title is-4">{e.name}</p>
+                                                    <p className="subtitle is-6">{`Quantity:  ${e.quantity}`}</p>
+                                                </div>
                                             </div>
 
-                                            <div className="card-content">
-
-                                                <div className="media">
-                                                    <div className="media-content">
-                                                        <p className="title is-4">{e.name}</p>
-                                                        <p className="subtitle is-6">{`Quantity:  ${e.quantity}`}</p>
-                                                    </div>
-                                                </div>
-
-                                                <div className="content">
-                                                    <span className="tag is-link ">
-                                                        {`Thc:  ${e.thc}`}
-                                                    </span>
-                                                    <span className="tag is-warning ">
-                                                        {`Cbs:  ${e.cbd}`}
-                                                    </span>
-                                                    <span className="tag is-success">
-                                                        {` $ ${e.price * e.quantity}`}
-                                                    </span>
-                                                    {/* <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" /> */}
-                                                </div>
-
+                                            <div className="content">
+                                                <span className="tag is-link ">
+                                                    {`Thc:  ${e.thc}`}
+                                                </span>
+                                                <span className="tag is-warning ">
+                                                    {`Cbs:  ${e.cbd}`}
+                                                </span>
+                                                <span className="tag is-success">
+                                                    {` $ ${e.price * e.quantity}`}
+                                                </span>
+                                                {/* <img className='cmp-ordendetail-container-img-logo' src={logo} alt="logo" /> */}
                                             </div>
 
                                         </div>
-                                    </NavLink>
-                                    {
-                                        !userReviews.map(r => r.productId).filter(r => r == e.id).length &&
-                                        <button className='btn-review' onClick={() => setModal({
-                                            modal:true,
-                                            id:e.id
-                                        })}>
-                                            Review
-                                        </button>
-                                    }
-                                </div>
+
+                                    </div>
+                                </NavLink>
+                                {
+                                    !userReviews.map(r => r.productId).filter(r => r === e.id).length &&
+                                    <button className='btn-review' onClick={() => setModal({
+                                        modal: true,
+                                        id: e.id
+                                    })}>
+                                        Review
+                                    </button>
+                                }
+                            </div>
                         )
                     })}
                 </div >

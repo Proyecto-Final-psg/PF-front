@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch} from "react-redux"
 import { NavLink, Outlet } from 'react-router-dom'
 import { getAllProducts } from "../../Redux/Actions"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
