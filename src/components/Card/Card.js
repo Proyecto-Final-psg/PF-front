@@ -111,7 +111,12 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
           </div>}
           {!loading && <div className="card-img">
             <img className="card-img" src={img} alt={description} />
-            <StarRating clase={"stars"} value={4} />
+          
+            {
+
+              true  &&
+              <StarRating clase={"stars"} value={4} />
+            }
           </div>}
           <p className="text-body">{description}</p>
           <h2 className="card-price" > ${price}</h2>
