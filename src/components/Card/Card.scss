@@ -2,13 +2,18 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
+
+.stars{
+    position: relative;
+    bottom: 40px;
+}
 .card-img-loading {
     margin-top: 60px;
 }
 
 .card {
     width: 215px;
-    height: 395px;
+    height: 422px;
     border-radius: 4px;
     background: #ffffff;
     position: relative;
@@ -150,7 +155,7 @@
 
 .text-body {
     position: absolute;
-    top: 395px;
+    top: 422px;
     font-size: small;
     color: rgb(134, 134, 134);
     transition: 1s;
@@ -235,7 +240,7 @@
     position: absolute;
     width: 100%;
     text-align: center;
-    top: 355px;
+    top: 380px;
     color: #438a00;
     font-size: 1.5em;
     font-weight: 900;

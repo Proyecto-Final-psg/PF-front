@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaCannabis } from 'react-icons/fa'
 import './StarRating.scss'
 
-const StarRating = ({localState, setLocalState, modal, value}) => {
+const StarRating = ({localState, setLocalState, modal, value,clase}) => {
 
   const [rating, setRating] = useState(value ? value : null)
   const [hover, setHover] = useState(value ? value : null)
@@ -17,7 +17,7 @@ const StarRating = ({localState, setLocalState, modal, value}) => {
   }
 
   return (
-    <div className='star_container'>
+    <div className={`star_container ${clase}`}>
         {
             [...Array(5)].map((star,i) => {
               const ratingValue = i + 1

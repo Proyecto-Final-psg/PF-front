@@ -10,33 +10,39 @@ import LoadingImg from '../../assets/Loading.gif'
 import { useState, useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
 
+import StarRating from '../ModalReview/StarRating/StarRating'
+
 const Card = ({ name, id, description, img, price, stock, widthProp, heightProp }) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const allCartItems = useSelector(store => store.cart.map(item => item.name))
-  const user = useSelector(state => state.user[0]) 
-  const favourites = useSelector(state => state.wishlist) 
+  const user = useSelector(state => state.user[0])
+  const favourites = useSelector(state => state.wishlist)
   const { loginWithRedirect } = useAuth0()
   const productFavourite = favourites && favourites.find(f => f.id === id)
   let admin = user.roll === "admin" || user.roll === "super-admin"
   let isUser = user.roll === 'user'
 
-  useEffect(() => {
-    if(admin || isUser){
-      dispatch(getFavorite(user.user_id))  
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []) 
+  const reviews = useSelector(store => store.reviews)
+  const score = reviews.map(r => r.score)
+
 
   useEffect(() => {
-    
+    if (admin || isUser) {
+      dispatch(getFavorite(user.user_id))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+
     setTimeout(() => {
       setLoading(false)
     }, 400)
     return () => {
       setLoading(true)
     };
-   
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -62,7 +68,7 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
   function addItemToCart(e) {
     //Efecto confeti
-    
+
     party.confetti(e.target, {
       count: party.variation.range(20, 40),
     });
@@ -84,19 +90,19 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
     }).showToast();
 
     dispatch(addToCart(id, name, price,))
-   
+
   }
 
   return (
     <div className="card" style={{ width: widthProp, height: heightProp }}>
-      <p 
-      title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} 
-      className={ !productFavourite? "card-green-heart" :"card-red-heart" } 
-      onClick={!admin && !isUser ? (e) => signInFav(e, loginWithRedirect) 
-      : !productFavourite ? (e) => addToFavourites(e, id, name, user.user_id, dispatch) 
-      : (e) => deleteFavourite(e, id, name, user.user_id, dispatch)
-      }>♥</p>
-      
+      <p
+        title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'}
+        className={!productFavourite ? "card-green-heart" : "card-red-heart"}
+        onClick={!admin && !isUser ? (e) => signInFav(e, loginWithRedirect)
+          : !productFavourite ? (e) => addToFavourites(e, id, name, user.user_id, dispatch)
+            : (e) => deleteFavourite(e, id, name, user.user_id, dispatch)
+        }>♥</p>
+
       <NavLink to={`/products/${id}`}>
         <div className="card-details">
           <p className="text-title">{name}</p>
@@ -105,12 +111,15 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
           </div>}
           {!loading && <div className="card-img">
             <img className="card-img" src={img} alt={description} />
+            <StarRating clase={"stars"} value={4} />
           </div>}
           <p className="text-body">{description}</p>
           <h2 className="card-price" > ${price}</h2>
         </div>
 
       </NavLink>
+
+
 
       <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock'
         :
@@ -129,10 +138,10 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
       {
         stock > 0 &&
         <button onClick={allCartItems.includes(name) ? deleteItemToCart : addItemToCart} className={allCartItems.includes(name) ? "card-button-cart" : "card-button"} key={id}>
-         {allCartItems.includes(name) ? 
-         <span className="material-symbols-outlined">remove_shopping_cart</span>
-         :<span className="material-symbols-outlined">add_shopping_cart</span>
-         }
+          {allCartItems.includes(name) ?
+            <span className="material-symbols-outlined">remove_shopping_cart</span>
+            : <span className="material-symbols-outlined">add_shopping_cart</span>
+          }
         </button>
       }
 
