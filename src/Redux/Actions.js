@@ -1,5 +1,5 @@
 
-import {REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE,CLEAN_FAVORITES } from "./Constants"
+import {DISCOUNT, DISCOUNT_CREATED, REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE,CLEAN_FAVORITES } from "./Constants"
 
 
 export function getAllProducts() {
@@ -564,7 +564,50 @@ export function addReview(review) {
 }
 
 
+export function createDiscount(code,percentage){
+    return function(dispatch){
+        return fetch(`${API_URL}/add-discount`,{
+            method: "POST",
+            body: JSON.stringify({code,percentage}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        // .then(data => data.json())
+        // .then(res =>{
+        //     dispatch({
+        //         type: DISCOUNT_CREATED,
+        //         payload: res
+        //     })
+        // })
+    }
+}
 
+export function usedCoupon(code){
+    return function(){
+        console.log('aplicando descuento ',code);
+        return fetch(`${API_URL}/discount-used`,{
+            method:"PUT",
+            body: JSON.stringify({code}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+    }
+}
+
+// export function getDiscount(code){
+//     return function(dispatch){
+//         return fetch(`${API_URL}/get-discount?code=${code}`)
+//         .then(data => data.json())
+//         .then(res =>{
+//             dispatch({
+//                 type: DISCOUNT,
+//                 payload: res
+//             })
+//         })
+//     }
+// }
 
 
 

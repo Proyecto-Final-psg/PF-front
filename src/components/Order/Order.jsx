@@ -1,15 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
 import './Order.scss'
-import { submitOrder, cleanCart, orderProductsCbd } from '../../Redux/Actions'
+import { submitOrder, cleanCart, orderProductsCbd, getDiscount, useCoupon, usedCoupon } from '../../Redux/Actions'
 import { useEffect } from 'react';
 import { validator } from '../CreateProduct/helpers/Validator';
 import logo from '../../assets/logo.png'
+import { API_URL } from '../../Redux/Constants';
 function Order() {
     const cart = useSelector((store) => store.cart);
     const user = useSelector((store) => store.user);
+    let discount = 0;
+    const discountText = document.getElementById('discountText')
+
     const dispatch = useDispatch()
 
+    const [code, setCode] = useState('')
     const [addressOrder, setAddressOrder] = useState({
         address: '',
         city: '',
@@ -18,7 +23,7 @@ function Order() {
     })
 
     const [error, setError] = useState({})
-
+    const [disc, setDisc] = useState(0)
     const [order, setOrder] = useState({
         user_id: user[0].user_id,
         name: '',
@@ -30,6 +35,10 @@ function Order() {
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       }, [])
+
+      useEffect(()=>{
+        console.log('EL DISC',disc);
+      },[disc])
 
     useEffect(() => {
         setOrder({
@@ -44,10 +53,12 @@ function Order() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addressOrder])
 
-    const subtotal = (cart.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
+    let subtotal = (cart.map((e) => (e.price * e.cant))).reduce(function (a, b) { return a + b; })
+
 
     function handleSubmitOrder(e) {
         e.preventDefault();
+        dispatch(usedCoupon(code))
         dispatch(submitOrder(order))
         dispatch(cleanCart())
     }
@@ -74,6 +85,41 @@ function Order() {
             email: order.email,
             name: order.name
         }))
+    }
+
+    function setTheCode(e){
+        setCode(e.target.value)
+    }
+
+    function fetchTheCode(e){
+        e.preventDefault()
+        let aux = 0;
+        let d = 0;
+        fetch(`${API_URL}/get-discount?code=${code}`)
+        .then(data => data.json())
+        .then(res => {
+            console.log(res);
+            
+            if(res.discount !== 'Discount not found'){
+                if(!res.discount.used){
+                    discountText.textContent = res.discount.amount+'% COUPON!'
+                    aux = Math.ceil(subtotal + (subtotal * (10 / 100)))
+                    console.log('subtotal',aux);
+                    d = Math.ceil(res.discount.amount*100/aux)
+                    console.log(aux);
+                    console.log(d);
+                     console.log('CON DESCUENTO QUEDA ',);
+                    setDisc(Math.ceil(aux-d))             
+                }else{
+                    discountText.textContent = 'This coupon is not available'
+                }
+            }
+            else{
+                discountText.textContent = 'Coupon not found'
+                setDisc(0)    
+            }
+        })
+        .catch(e => console.log(e))
     }
 
     return (
@@ -132,7 +178,11 @@ function Order() {
                 </form>
 
                 <hr className='hr-order' />
-
+                <form action="" className='mb-5' onSubmit={fetchTheCode}>
+                <input  type="text" name="" id="discountInput" placeholder='Coupon code' onChange={setTheCode} />
+                <button type='submit' className='btn btn-success btn-w'>Coupon</button>
+                </form>
+                <span style={{fontSize:"20px",fontWeight:"bold"}} id='discountText' className='mb-3'></span>
                 <div className='bottom-container'>
                     <p className="label-order">Resume Order</p>
                     <div className='items-order'>
@@ -146,8 +196,16 @@ function Order() {
                         })}
                         <span>Shipping: ${Math.ceil(subtotal * (10 / 100))}</span>
                     </div>
-
-                    <p className="label-order">Total: ${subtotal + (subtotal * (10 / 100))}</p>
+                    
+                    <p className="label-order">
+                        Total: ${
+                        disc !== 0 ? 
+                        <>
+                            <span style={{textDecoration:"line-through"}}>{subtotal + (subtotal * (10 / 100))}</span>
+                            <p>${disc}</p>
+                        </>
+                        : subtotal + (subtotal * (10 / 100))}</p>
+                        
                 </div>
                 {order.email === '' || order.name === '' || Object.keys(error).length > 0 ? <button type='submit' className='button-submit-order no-submit' disabled>Submit</button>
                     :
