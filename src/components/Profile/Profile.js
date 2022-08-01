@@ -40,7 +40,7 @@ const Profile = () => {
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
                 }
-                if (roll.block == true) {
+                if (roll.block === true) {
                     alert("Your user is locked. Please contact weedical.shop@gmail.com")
                     logout({ returnTo: window.location.origin })
                     let guest = [

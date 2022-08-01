@@ -27,7 +27,7 @@ const ModalReview = ({ modal, setModal, id }) => {
         })
       }, 1);
     }
-       // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modal])
 
   const [error, setError] = useState({})
