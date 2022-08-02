@@ -37,10 +37,7 @@ const ModalReview = ({ modal, setModal, id }) => {
       ...review,
       [e.target.name]: e.target.value
     })
-    setError(validator({
-      ...review,
-      [e.target.name]: e.target.value,
-    }))
+    setError(validator(review.review))
   }
 
   const handleReview = (e) => {
@@ -95,15 +92,14 @@ const ModalReview = ({ modal, setModal, id }) => {
             <button className="delete" aria-label="close" onClick={() => setModal(false)}></button>
           </header>
           <section className="modal-card-body">
-            <p className='warning'>{error.name}</p>
-            <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
+            <input className="input field has-text-black-bis" type="text" placeholder="Your name or anonymous" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
             <p className='warning'>{error.review}</p>
             <textarea className="textarea field" placeholder="Your review" value={review.review} name='review' onChange={handleInputChange} />
             <StarRating localState={review} setLocalState={setReview} modal={modal} />
           </section>
           <footer className="modal-card-foot">
             {
-              Object.keys(error).length || review.name.length === 0 ?
+              Object.keys(error).length || review.review.length === 0 ?
                 <button className="button is-light" disabled={true}>Done</button>
                 :
                 <button className="button is-success" onClick={handleReview}>Done</button>
