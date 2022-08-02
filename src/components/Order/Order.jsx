@@ -91,9 +91,8 @@ function Order() {
         })
         setError(validator({
             ...addressOrder,
+            ...order,
             [e.target.name]: e.target.value,
-            email: order.email,
-            name: order.name
         }))
     }
 
@@ -152,12 +151,12 @@ function Order() {
                                 <p className="help">{error.email ? <span style={{ color: 'red' }}>{error.email}</span> : 'Email'}</p>
                             </div>
                             <div className='input-order'>
-                                <input className="input" type="text" onChange={handleInputOrder} />
-                                <p className="help">DNI</p>
+                                <input className="input" type="text" name='dni' onChange={handleInputOrder} />
+                                <p className="help">{error.dni ? <span style={{ color: 'red' }}>{error.dni}</span> : 'DNI'}</p>
                             </div>
                             <div >
-                                <input className="input" type="text" onChange={handleInputOrder} />
-                                <p className="help">Phone</p>
+                                <input className="input" type="text" name='phone' onChange={handleInputOrder} />
+                                <p className="help">{error.phone ? <span style={{ color: 'red' }}>{error.phone}</span> : 'Phone'}</p>
                             </div>
                         </div>
                     </div>
