@@ -1,97 +1,18 @@
-.review-detail{
-    border: 1px solid rgb(223, 223, 223);
-    width: 300px;
-    padding: 10px;
-    margin: 5px;
-    transition: all 0.2s ease-in-out;
-}
-.review-detail:hover{
-    box-shadow: 5px 5px 5px rgba(4, 85, 38, 0.288);
-}
-
-.review span{
-    font-size: 10px;
-}
-
-.review-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.review p{
-    font-size: 12px;
-}
 
 .star-detail{
-    margin-left: 5px;
+    // margin-left: 5px;
     color: rgb(255, 221, 0);
     -webkit-filter: drop-shadow(0px 0px 0px #222);
   filter: drop-shadow(0px 2px 3px #222);
+  animation: ease-in-out 1s infinite;
 }
 
 
 
-
-
-
-/* From uiverse.io by @Fcodingx */
-.card-review{
-    width: 190px;
-    height: 120px;
-    padding: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.669);
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
-    position: absolute;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.440);
-    border-left: 2px  rgba(255, 255, 255, 0.545) outset;
-    box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
-    transform: skewX(10deg);
-    transition: .4s;
-    overflow: hidden;
-    color: white;
-  }
   
-  .card-review:hover {
-    height: auto;
-    transform: skew(0deg);
-  }
-  
-  .align {
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    align-self: flex-start;
-  }
-  
-  .red {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ff605c;
-    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
-  }
-  
-  .yellow {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ffbd44;
-    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
-  }
-  
-  .green {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #00ca4e;
-    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
-  }
-  
-  .card-review h1, .stars {
-    text-align: center;
+  .stars {
+    margin-top: 20px;
+    // text-align: center;
     // margin: 1rem;
     color: rgb(218, 244, 237);
     text-shadow: -5px 5px 5px rgba(0, 0, 0, 0.573);
@@ -101,21 +22,97 @@
 
 
 
-  .cardreview {
-    // color: white;
-    width: 190px;
-    height: 144px;
-    background: rgb(255, 255, 255);
-    border-radius: 50px;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px;
-   }
 
-   .cardreview p{
-    font-size: 12px;
-   }
+
+
+
+
+
+
+
+
+
+
+
+
+   /* From uiverse.io by @JoseIsra */
+.card-rev {
+  width: fit-content;
+  cursor: default;
+
+}
+
+.content-rev {
+  text-align: center;
+  position: relative;
+  transition: all 1s;
+  // background-color: rgb(196, 196, 196);
+  padding: 5em;
+  transform-style: preserve-3d;
+  // border-radius: 100%;
+  align-items: center;
+  
+}
+
+.card-rev:hover .content-rev {
+  transform: rotateY(0.5turn);
+  // background-color: rgb(194, 20, 20);
+  // border-radius: 100%;
+  
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0.5em;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  // border-radius: 100%;
+  animation: load89234 2s infinite;
+  
+}
+
+.title {
+  transform: translateZ(5rem);
+  font-size: 1rem;
+}
+
+.subtitle {
+  transform: translateZ(2rem);
+}
+
+.back {
+  transform: rotateY(1.5turn);
+  // background-color: #d2d2d2;
+  // border-radius: 100%;
+  
+}
+
+
+.card_load {
+  // width: 100%;
+  // height: 70px;
+  // position: relative;
+  float: left;
+  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 
+  40%, #e5e5e5 48%);
+  border-radius: 20%;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: load89234 2s infinite;
+  }
+
+  
+  @keyframes load89234 {
+    100% {
+      background-position: -100% 0;
+    }
+  }
