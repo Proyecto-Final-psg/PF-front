@@ -25,7 +25,7 @@ export function CardDetails() {
     const navigate = useNavigate()
     const product = useSelector(store => store.product)
     const reviews = useSelector(store => store.reviews)
-    const favourites = useSelector(state => state.wishlist) 
+    const favourites = useSelector(state => state.wishlist)
     const productFavourite = favourites && favourites.find(f => f.id === product.id)
     const score = reviews.map(r => r.score)
     const reducer = (accumulator, curr) => accumulator + curr;
@@ -151,9 +151,8 @@ export function CardDetails() {
                         <div className='container-buttons_edit_remove'>
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
                             <button className='button-delete'>Remove</button>
-                            <button className='button-favorite' onClick={addToFavourites}>Favorite</button>
                         </div>}
-                    {user && 
+                    {user || admin ?
                         <div className='container-buttons_edit_remove'>
                         <button 
                         title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} 
@@ -162,7 +161,7 @@ export function CardDetails() {
                         : !productFavourite ? (e) => addToFavourites(e, product.id, product.name, user_id, dispatch)
                         : (e) => deleteFavourite(e, product.id, product.name, user_id, dispatch)
                         }>Favorite</button>
-                        </div>}
+                        </div> : null}
                     <br></br>
                     <div className='container-name'>
                         <p className='name-product-detail'>{product.name}</p>
@@ -172,7 +171,7 @@ export function CardDetails() {
                         }
                     </div>
 
-                    <p className='price-product-detail'> 
+                    <p className='price-product-detail'>
                         <span className='span-price-detail'>${product.price}</span>
                         <span className='span-thc-detail'>{product.thc ? `THC: ${product.thc}.mg` : `THC: 0.mg`}</span>
                         <span className='span-cbd-detail'>{product.cbd ? `CBD: ${product.cbd}.mg` : `CBD: 0.mg`}</span>
