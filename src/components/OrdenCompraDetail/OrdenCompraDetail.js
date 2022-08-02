@@ -63,7 +63,7 @@ const OrdenCompraDetail = () => {
                                     <div>
                                         <div className="card-image">
                                             <figure className="cmp-ordendetail-container-img">
-                                                <img src={e.img} alt="Placeholder" />
+                                                <img src={e.img.split(',')[0]} alt="Placeholder" />
                                             </figure>
                                         </div>
 

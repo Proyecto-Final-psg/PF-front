@@ -26,7 +26,7 @@ const Purchases = ({ data }) => {
                         {data.arrayItems.map((e, i) => {
                             if (i <= 3) {
                                 return <div key={i} className="media-left">
-                                    <img className='cmp-purchases-img' src={e.img} alt="Placeholder" />
+                                    <img className='cmp-purchases-img' src={e.img.split(',')[0]} alt="Placeholder" />
                                     <img className='cmp-purchases-img-despachado' src={despacahdo} alt="despacho" />
 
                                 </div>
