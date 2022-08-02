@@ -7,8 +7,15 @@ import './UserCrud.scss'
 import { API_URL } from "../../../Redux/Constants"
 import LoadingImg from '../../../assets/Loading.gif'
 import swal from 'sweetalert'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 export function UserCrud() {
+
+  useEffect(() => {
+    Aos.init({ once: true })
+  }, [])
+
   const dispatch = useDispatch()
   const users = useSelector(store => store.users)
   const [search, setSearch] = useState('')
@@ -30,29 +37,25 @@ export function UserCrud() {
   function searchUser(e) {
     e.preventDefault()
     let res = users.filter(u => u.user_email.includes(search))
-    console.log(res)
     setBlockUsers(res)
   }
 
   function blockUser(userId, status) {
-    // setLoading(true)
-
-    
     swal({
       title: `Are you sure you want to ${status} the user?`,
       text: "Doing this, the user will be unable to login to Weedical",
       icon: "info",
       buttons: [
-        'No, cancel it!',
-        'Yes, I am sure!'
+        'No',
+        'Yes'
       ],
       dangerMode: true,
-    }).then(function(isConfirm) {
+    }).then(function (isConfirm) {
       if (isConfirm) {
         swal({
           title: `The user were ${status}ed`,
           icon: 'success'
-        }).then(function() {
+        }).then(function () {
           fetch(`${API_URL}/users/${userId}`, {
             method: "PUT"
           })
@@ -66,53 +69,73 @@ export function UserCrud() {
         swal("Cancelled", "No changes were made", "error");
       }
     })
-
-    
   }
 
 
 
-  return <div className="container datas">
+  return <div className="container datas ">
 
-    <h1 className="mt-5 custom-title">Block Users</h1>
-
+    <h1 className="mt-5 custom-title">
+      Lock Users
+      <span id="userCrud" className="iconMenu material-symbols-outlined">manage_accounts</span>
+    </h1>
+    <span>Locked users wont be able to access weedical ecommerce </span>
     {loading &&
-                <div className='loadingGif'>
-                    <h3>Loading</h3>
-                    < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
-                </div>}
+      <div className='loadingGif'>
+        <h3>Loading</h3>
+        < img className='cmp-CardDetails-loading-img' src={LoadingImg} alt="my-gif" />
+      </div>}
 
     <div className="user-block" style={{ width: "100%" }}>
-   
+
       <form action="" id="form" onSubmit={searchUser}>
-        <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock'/>
-        <input type='submit' className="btn btn-success" value="Search" style={{width:"auto"}} />
+        <input type="text" className="input" onChange={fillSearchObj} placeholder='Enter user email to lock' />
+        <button type="submit" className="btn btn-success btn-w">
+          <span>Search </span>
+          <span className="material-symbols-outlined">person_search</span>
+        </button>
       </form>
 
-      <div className="table-container" >
-        <table className="table scrolldown shadow" >
-          <thead>
-            <tr>
-            </tr>
-          </thead>
-          <tbody>
-            {blockUsers && blockUsers.map(u => {
-              return <tr key={u.user_id} className={u.blocked ? 'red' : ''}>
-                <td style={{ backgroundImage: `url(${u.picture})`, backgroundSize: "cover", backgroundPosition: "center", width: "100px" }}></td>
-                <td style={{ width: "auto" }} key={u.id}>{u.user_name}</td>
-                <th key={u.id}>{u.user_email}</th>
-                <td id="img" key={u.id}>
-                  {u.block
-                    ?
-                    <img onClick={() => blockUser(u.user_id, 'unlock')} src={lock} alt="lock_icon" />
-                    :
-                    <button className="btn btn-danger" onClick={() => blockUser(u.user_id, 'lock')}>Block</button>
-                  }
-                </td>
+      <div className="lower-10" style={{ width: "100%" }}>
+        <div className="container-top">
+          <table className="table shadow" data-aos='fade-up'>
+            <thead>
+              <tr>
+                <th><abbr id="admin-table-header" title="User Name">
+                  User Name
+                  <span class="material-symbols-outlined">person</span>
+                </abbr></th>
+                <th><abbr id="admin-table-header" title="User Email">
+                  User Email
+                  <span class="material-symbols-outlined">mail</span>
+                </abbr></th>
+                <th><abbr id="admin-table-header" title="Action">
+                  Action
+                  <span class="material-symbols-outlined">lock</span>
+                </abbr></th>
               </tr>
-            })}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {blockUsers && blockUsers.map(u => {
+                return <tr key={u.user_id} className={u.block ? 'red' : ''}>
+                  <td style={{ width: "auto" }} key={u.id}>{u.user_name}</td>
+                  <th key={u.id}><span>{u.user_email}</span></th>
+                  <td id="img" key={u.id}>
+                    {u.block
+                      ?
+                      <img onClick={() => blockUser(u.user_id, 'unlock')} src={lock} alt="lock_icon" />
+                      :
+                      <button className="btn btn-danger btn-w-red" onClick={() => blockUser(u.user_id, 'lock')}>
+                        <span>Lock </span>
+                        <span class="material-symbols-outlined">lock</span>
+                      </button>
+                    }
+                  </td>
+                </tr>
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

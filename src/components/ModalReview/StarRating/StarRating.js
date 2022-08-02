@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { FaStar } from 'react-icons/fa'
+import { FaCannabis } from 'react-icons/fa'
 import './StarRating.scss'
 
-const StarRating = ({localState, setLocalState, modal}) => {
+const StarRating = ({localState, setLocalState, modal, value,clase}) => {
 
-  const [rating, setRating] = useState(null)
-  const [hover, setHover] = useState(null)
+  const [rating, setRating] = useState(value ? value : null)
+  const [hover, setHover] = useState(value ? value : null)
 
   const handleClick = (ratingValue) => {
     
@@ -17,7 +17,7 @@ const StarRating = ({localState, setLocalState, modal}) => {
   }
 
   return (
-    <div className='star_container'>
+    <div className={`star_container ${clase}`}>
         {
             [...Array(5)].map((star,i) => {
               const ratingValue = i + 1
@@ -28,14 +28,15 @@ const StarRating = ({localState, setLocalState, modal}) => {
                     className='radio'
                     type='radio'
                     name='rating'
-                    value={ratingValue}
+                    value={value ? value : ratingValue}
                     onClick={() => handleClick(ratingValue)}
+                    disabled={value && true}
                   />
-                  <FaStar 
+                  <FaCannabis 
                     className='star' 
-                    size={30}
+                    size={value ? 20 : 30}
                     color={ratingValue <= (hover || rating) ? '#ffc107' : '#666'}
-                    onMouseEnter={() => setHover(ratingValue)}
+                    onMouseEnter={() => setHover(value ? value : ratingValue)}
                     onMouseLeave={() => setHover(null)}
                   />
                 </label>

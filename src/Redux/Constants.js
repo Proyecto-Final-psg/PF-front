@@ -23,6 +23,13 @@ export const GET_USER_REVIEWS = 'GET_USER_REVIEWS'
 export const ADD_REVIEW = 'ADD_REVIEW'
 export const GET_ORDER_BY_ORDERID = 'GET_ORDER_BY_ORDERID'
 export const API_URL = 'https://desarrollo-back.herokuapp.com'
+export const CLEAR_CART = 'CLEAR_CART'
+export const ADD_FAVORITE = 'ADD_FAVORITE'
+export const GET_FAVORITE = 'GET_FAVORITE'
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE'
+export const CLEAN_FAVORITES = 'CLEAN_FAVORITES'
+export const DISCOUNT_CREATED = 'DISCOUNT_CREATED'
+export const DISCOUNT = 'DISCOUNT'
 // export const API_URL = 'http://localhost:8081'
 
 export const ModalStyle = {
@@ -69,7 +76,7 @@ export const ModalStyleOrders = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "auto",
+    width: "fit-content",
     flexDirection: "column",
     fontSize: "20px",
 
@@ -79,7 +86,7 @@ export const ModalStyleOrders = {
     WebkitOverflowScrolling: 'touch',
     borderRadius: '20px',
     outline: 'none',
-    padding: '20px 0px 20px 0px',
+    padding: '20px',
 
   }
 }

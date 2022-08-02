@@ -1,14 +1,14 @@
 .star_container {
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+.star {
+    margin-left: 5px;
 }
 
 input[type='radio'] {
     display: none;
-}
-
-.star {
-    cursor: pointer;
 }

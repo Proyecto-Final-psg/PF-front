@@ -1,6 +1,5 @@
 
-import { GET_USER_REVIEWS, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER } from "./Constants"
-
+import { REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE,CLEAN_FAVORITES } from "./Constants"
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -114,6 +113,25 @@ export function submitOrder(order) {
     }
 }
 
+
+///users/subscribe
+export function subscribeStock(user_id, product_id) {
+    console.log(user_id, product_id);
+    return function (dispatch) {
+        return fetch(`${API_URL}/users/subscribe`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify({user_id, product_id}), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error))
+    }
+}
+
+
 export const addGuest = (guest) => {
     return (
         { type: ADD_GUEST, guest: guest }
@@ -205,6 +223,13 @@ export const updateToCart = (id, name, price, contador) => {
 }
 
 
+export const cleanCart = () => {
+    return (
+        {
+            type: CLEAR_CART,
+        }
+    )
+}
 
 export const getAllItems = () => {
     return (
@@ -314,6 +339,72 @@ export function editProduct(id, editedProduct) {
     }
 }
 
+export function getFavorite(user_id) {
+   
+    return function (dispatch) {
+        return fetch(`${API_URL}/favoritebyuser/${user_id}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                dispatch({
+                    type: ADD_FAVORITE,
+                    payload: data
+                })
+            })
+            .catch(e => console.log(e))
+    }
+}
+
+export function addFavReducer(product_id){
+    return(
+        {
+            type: GET_FAVORITE,
+            payload: product_id
+        }
+    )
+}
+
+export function cleanFavs(){
+    return(
+        {
+            type: CLEAN_FAVORITES
+        }
+    )
+}
+
+export function removeFavReducer(product_id){
+    return(
+        {
+            type: REMOVE_FAVORITE,
+            payload: product_id
+        }
+    )
+}
+
+export function deleteProductFav(id, user_id) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/removefavorites/${id}`, {
+            method: 'DELETE', // or 'PUT'
+            body: JSON.stringify({user_id}), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        
+    }
+}
+
+export function addFavorite(product_id, user_id) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/addfavorites/${product_id}`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify({user_id}), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+}
 
 export function changeRoles(nuevoroll) {
     return function (dispatch) {
@@ -403,8 +494,11 @@ export function filterByCategory(category) {
 }
 
 export function updateOrderStatus(id, status){
-    return fetch(`http://localhost:8081/update-order?id=${id}&status=${status}`,{
-        method:"PUT"
+    return fetch(`${API_URL}/update-order?id=${id}&status=${status}`,{
+        method:"PUT",
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // }
     })
     .then(data => data.json())
     .then(res => console.log(res))
@@ -430,6 +524,18 @@ export function updateOrderStatus(id, status){
 //           .catch(e => console.log(e))
 //     }
 // }
+
+export function mailer(userid, order, status, address, arrayItems){
+    return fetch(`${API_URL}/mail`,{
+        method:"POST",
+        body: JSON.stringify({userid, order, status, address, arrayItems}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(data => data.json())
+    .then(res => console.log('done',res))
+}
 
 export function getTopCustomers(){
     return function(dispatch){
@@ -457,7 +563,50 @@ export function addReview(review) {
 }
 
 
+export function createDiscount(code,percentage){
+    return function(dispatch){
+        return fetch(`${API_URL}/add-discount`,{
+            method: "POST",
+            body: JSON.stringify({code,percentage}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        // .then(data => data.json())
+        // .then(res =>{
+        //     dispatch({
+        //         type: DISCOUNT_CREATED,
+        //         payload: res
+        //     })
+        // })
+    }
+}
 
+export function usedCoupon(code){
+    return function(){
+        console.log('aplicando descuento ',code);
+        return fetch(`${API_URL}/discount-used`,{
+            method:"PUT",
+            body: JSON.stringify({code}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+    }
+}
+
+// export function getDiscount(code){
+//     return function(dispatch){
+//         return fetch(`${API_URL}/get-discount?code=${code}`)
+//         .then(data => data.json())
+//         .then(res =>{
+//             dispatch({
+//                 type: DISCOUNT,
+//                 payload: res
+//             })
+//         })
+//     }
+// }
 
 
 

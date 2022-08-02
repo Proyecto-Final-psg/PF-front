@@ -1,25 +1,32 @@
 import './Review.scss'
-import { FaStar } from 'react-icons/fa'
+import { FaCannabis } from 'react-icons/fa'
+import Hover from 'react-3d-hover';
+export function Review({ name, score, review }) {
 
-export function Review({name, score, review}) {
-
-score = parseInt(score)
+    score = parseInt(score)
 
     return (
-    <div className="review-detail">
-        <div className="review-header">
-            <span><b>{name}</b></span>
-            <div className="stars">
-               {score && [...Array(score)].map((star, i) => {
-                return(
-                    <FaStar className='star-detail' key={i}/>
-                )
-               })}
-            </div>
+        <div>
+            <Hover 
+            scale={1.2} 
+            perspective={200} 
+            speed={3500}
+            max={10}
+            easing="cubic-bezier(.03,.98,.52,.99)"
+            >
 
+                <div className="cardreview">
+                        <h2><b>{name}</b></h2>
+                        <div className="stars">
+                            {score && [...Array(score)].map((star, i) => {
+                                return (
+                                    <FaCannabis className='star-detail' key={i} />
+                                )
+                            })}
+                        </div>
+                        <p>{review}</p>
+                </div>
+            </Hover>
         </div>
-        <p>{review}</p>
-
-    </div>
     )
 }

@@ -1,30 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview } from '../../../Redux/Actions';
-import Card from '../../Card/Card';
-import './History.scss'
+import { addReview, getReviews, getUserReviews } from '../../Redux/Actions';
+import { validator } from '../CreateProduct/helpers/Validator';
+import './ModalReview.scss'
 import StarRating from './StarRating/StarRating';
-import { validate } from './Validate';
+import swal from 'sweetalert'
 
-const HistoryShops = () => {
-
-  const history = useSelector(store => store.orderDetails[0]?.arrayItems)
-  //const reviews = useSelector(store => store.reviews)
-  const userReviews = useSelector(store => store.userReviews);
+const ModalReview = ({ modal, setModal, id }) => {
   const usr = useSelector((store) => store.user);
-  console.log('userReviews',userReviews)
-  //console.log(history)
-  //console.log('reviews',reviews)
   const dispatch = useDispatch()
 
-  const [modal, setModal] = useState(false)
   const [review, setReview] = useState({
-    user_id:usr[0].user_id,
+    user_id: usr[0].user_id,
     product_id: '',
     name: '',
     score: '',
     review: ''
   })
+
+  useEffect(() => {
+    if (modal) {
+      setTimeout(() => {
+        setReview({
+          ...review,
+          product_id: id
+        })
+      }, 1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modal])
+
   const [error, setError] = useState({})
 
   const handleInputChange = (e) => {
@@ -32,12 +37,12 @@ const HistoryShops = () => {
       ...review,
       [e.target.name]: e.target.value
     })
-    setError(validate({
+    setError(validator({
       ...review,
       [e.target.name]: e.target.value,
-  }))
+    }))
   }
-  //console.log(review)
+
   const handleReview = (e) => {
     e.preventDefault()
     dispatch(addReview(review))
@@ -47,7 +52,20 @@ const HistoryShops = () => {
       score: '',
       review: ''
     })
-    setModal(false)
+    setModal({
+      modal: false,
+      id: ''
+    })
+    swal({
+      title: `Review created successfully!`,
+      icon: "success",
+      button: 'Ok'
+    }).then(function (isConfirm) {
+      if (isConfirm) {
+        dispatch(getReviews(id))
+        dispatch(getUserReviews(usr[0].user_id))
+      }
+    })
   }
 
   const handleCancel = (e) => {
@@ -58,34 +76,16 @@ const HistoryShops = () => {
       score: '',
       review: ''
     })
-    setModal(false)
+    setModal({
+      modal: false,
+      id: ''
+    })
   }
+
+
 
   return (
     <div className='history'>
-      <h1>Your purchases</h1>
-      <div className='cards_container'>
-          {
-            history?.length > 0 &&
-            history?.map(c => (
-                <Card
-                  key={c.id}
-                  id={c.id}
-                  name={c.name}
-                  description={c.description}
-                  img={c.img}
-                  price={c.price}
-                  stock={c.stock}
-                  review={true}
-                  setModal={setModal}
-                  localState={review}
-                  setLocalState={setReview}
-                  widthProp="150px"
-                  heightProp="auto"
-                />
-            ))
-          }
-      </div>
 
       <div className={`modal ${modal && 'is-active'}`}>
         <div className="modal-background" onClick={handleCancel}></div>
@@ -99,14 +99,14 @@ const HistoryShops = () => {
             <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
             <p className='warning'>{error.review}</p>
             <textarea className="textarea field" placeholder="Your review" value={review.review} name='review' onChange={handleInputChange} />
-            <StarRating localState={review} setLocalState={setReview} modal={modal}/>
+            <StarRating localState={review} setLocalState={setReview} modal={modal} />
           </section>
           <footer className="modal-card-foot">
             {
               Object.keys(error).length || review.name.length === 0 ?
-              <button className="button is-light" disabled={true}>Done</button>
-              :
-              <button className="button is-success" onClick={handleReview}>Done</button>
+                <button className="button is-light" disabled={true}>Done</button>
+                :
+                <button className="button is-success" onClick={handleReview}>Done</button>
             }
             <button className="button" onClick={handleCancel}>Cancel</button>
           </footer>
@@ -117,4 +117,4 @@ const HistoryShops = () => {
   )
 }
 
-export default HistoryShops
+export default ModalReview

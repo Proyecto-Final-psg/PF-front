@@ -2,23 +2,23 @@ import './Profile.scss'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { registerUser } from '../../Redux/Actions'
+import { registerUser, addGuest } from '../../Redux/Actions'
 import { API_URL } from '../../Redux/Constants'
-// import { faMehRollingEyes } from '@fortawesome/free-regular-svg-icons'
-// import { useSearchParams } from 'react-router-dom'
-
+// import axios from 'axios'
 const Profile = () => {
-    const { user } = useAuth0()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const { user, logout } = useAuth0()
+    // const {getAccessTokenSilently} = useAuth0()
     const userRedux = useSelector(state => state.user[0])
     const [roll, setRoll] = useState(userRedux.roll)
     const dispatch = useDispatch()
+    // const [tokenAuth0, setToken] = useState("")
     useEffect(() => {
         if (user) {
             let nuevo = {
                 email: user.email,
                 name: user.name,
                 img: user.picture,
-                token: user.token
             }
             dispatch(registerUser(nuevo))
         }
@@ -36,11 +36,22 @@ const Profile = () => {
                         email: user.email,
                         name: user.name,
                         img: user.picture,
-                        token: user.token
                     }
-                    
                     dispatch(registerUser(nuevo))
                     setRoll(userRedux)
+                }
+                if (roll.block === true) {
+                    alert("Your user is locked. Please contact weedical.shop@gmail.com")
+                    logout({ returnTo: window.location.origin })
+                    let guest = [
+                        {
+                            email: "guest",
+                            name: "guest",
+                            roll: "guest"
+                        }
+                    ]
+                    dispatch(addGuest(guest))
+                    return
                 }
             }
         }
@@ -51,7 +62,7 @@ const Profile = () => {
     // async function token() {
     //     try {
     //         const token = await getAccessTokenSilently()
-    //         const response = await axios.get('http://localhost:8081/prueba', {
+    //         const response = await axios.get('http://localhost:8081/pruebaPost', {
     //             headers: {
     //                 authorization: `Bearer ${token}`
     //             }
@@ -65,7 +76,9 @@ const Profile = () => {
         <div>
             {/* {console.log(userRedux)} */}
             {/* {console.log(roll.roll)} */}
-            {/* <button onClick={token}>probando</button> */}
+            {/* <button onClick={token} className='boton-prueba'>
+                BOTON PRUEBA
+            </button> */}
         </div>
     )
 }

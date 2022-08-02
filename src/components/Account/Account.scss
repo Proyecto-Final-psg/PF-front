@@ -4,8 +4,23 @@
 .cmp-CardDetails-loading-container-profile {
   display: flex;
   justify-content: center;
-  height: 720px;
+  height: 730px;
   align-items: center;
+}
+
+.cmp-Account-loading-img {
+  margin-top: 50px;
+  height: 500px;
+
+  @include respond-to('medium') {
+    min-height: 58vh;
+    margin-top: 38px;
+    height: 500px;
+    position: absolute;
+    left: 33%;
+    bottom: 33%;
+    transform: translate(50px, 50px);
+  }
 }
 
 .account {
@@ -14,29 +29,38 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   min-height: 75vh;
 
   @include respond-to('medium') {
-    width: 75%;
+    width: 90%;
   }
 }
 
 .cmp-account-container-purchases {
   margin: auto;
-
+  width: 90%;
   @include respond-to('medium') {
-    margin: 0%;
+    // margin: 0%;
+    // margin-left: 68px;
+    width: 60%;
   }
 }
 
 .account_container {
-
-  height: 100%;
-  margin: auto;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  width: 100%;
 
+  @include respond-to('medium') {
+    height: 100%;
+    // margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+  }
   /*  border: 1px solid red; */
 }
 
@@ -71,7 +95,7 @@
 .user_image img {
   width: 50%;
   border-radius: 50%;
-  box-shadow: 7px 5px 5px rgba(75, 73, 73, 0.648);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .user_description {
@@ -123,11 +147,14 @@
 }
 
 .nav-item .link {
+  border: none;
+  background: transparent;
   color: #323232;
-
 }
 
 .nav-item-active .link {
+  border: none;
+  background: transparent;
   color: #fff
 }
 
@@ -146,11 +173,29 @@
 }
 
 
-.content {
-  width: 70%;
+.account-content {
+  width: 80%;
   height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   max-height: 100vh;
+}
+
+.accordion{
+  margin-bottom: 5px;  
+}
+
+.accordion-button{
+//   background: rgb(198,219,195);
+// background: linear-gradient(98deg, rgba(198,219,195,0.9925012241224614) 18%, rgba(32,85,27,1) 100%);
+  // color: white;
+  border: 1px solid rgba(20, 83, 59, 0.276);
+  // margin: 5px;
+  // box-shadow: rgba(50, 50, 93, 0) 0px 50px 100px -20px, rgba(0, 0, 0, 0) 0px 30px 60px -30px, rgba(10, 37, 64, 0.15) 0px -2px 6px 0px inset;
+}
+
+#cmp-account-mensaje{
+  width: 40px;
+  margin-left: 10px;
 }

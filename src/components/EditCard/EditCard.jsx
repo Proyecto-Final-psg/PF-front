@@ -3,10 +3,11 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProductById, editProduct } from '../../Redux/Actions'
-import { Validator } from '../CreateProduct/helpers/Validator'
+import { validator } from '../CreateProduct/helpers/Validator'
 import Form from '../CreateProduct/Form/Form'
 import Mockup from '../CreateProduct/Mockup/Mockup'
 import ButtonBack from '../CreateProduct/ButtonBack/ButtonBack'
+import swal from 'sweetalert'
 import './EditCard.scss'
 
 export function EditCard() {
@@ -16,15 +17,8 @@ export function EditCard() {
     const { id } = useParams()
     const product = useSelector(store => store.product)
     const categories = useSelector(state => state.categories);
-    // const [newCategory, setNewCategory] = useState('')
-    const [error, setError] = useState({
-        stateName: false,
-        stateMessage: false,
-        stateType: false,
-        messageName: '',
-        messageDescription: '',
-        messageType: ''
-    })
+    const [newCategory, setNewCategory] = useState('')
+    const [error, setError] = useState({})
 
     const [editedProduct, setEditProduct] = useState({
         name: product.name,
@@ -33,41 +27,46 @@ export function EditCard() {
         img: product.img,
         type: product.type,
         description: product.description,
-        thc: product.thc,
-        cbd: product.cbd,
+        thc: product.thc !== null ? product.thc : 0,
+        cbd: product.cbd !== null ? product.cbd : 0,
         categories: product.categories
     })
-
     const handleInputChange = (e) => {
-       
+
         setEditProduct({
             ...editedProduct,
             [e.target.name]: e.target.value
         })
-        setError(Validator({
+        setError(validator({
             ...editedProduct,
             [e.target.name]: e.target.value,
         }))
     }
 
     function handleSelectCategories(e) {
-        setEditProduct({
+        let categoryFound = editedProduct.categories.find(a => a === e.target.value)
+        if(!categoryFound) {
+            setEditProduct({
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
-        })
-        setError(Validator({
+            })
+            setError(validator({
             ...editedProduct,
             categories: [...editedProduct.categories, e.target.value],
-        }))
+          }))
+        }
     }
 
     function handleClickCategory(e) {
         e.preventDefault()
-        let categoryFound = editedProduct.categories.find(a => a === e.target.value)
-        setEditProduct({
+        let categoryFound = editedProduct.categories.find(a => a === newCategory)
+        if(!categoryFound){
+            setEditProduct({
             ...editedProduct,
-            categories: categoryFound ? [...editedProduct.categories] : [...editedProduct.categories, e.target.value],
+            categories: [...editedProduct.categories, newCategory],
         })
+        }
+        
     }
 
     function handleDeleteCategory(e) {
@@ -83,15 +82,24 @@ export function EditCard() {
         dispatch(editProduct(id, editedProduct))
         setEditProduct({
             name: '',
-            stock: 0,
-            price: 0,
+            stock: '',
+            price: '',
+            img: '',
             type: '',
             description: '',
-            thc: 0,
-            cbd: 0,
+            thc: '',
+            cbd: '',
             categories: []
-        });
-        navigate(-2)
+        }); 
+        swal({
+            title: `Product edited succesfully!`,
+            icon: "success",
+            button: 'Ok'
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                navigate('/home')
+            }
+        })
     }
 
 
@@ -101,16 +109,14 @@ export function EditCard() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(()=>{
-        return () => {setEditProduct(null)}
-    },[])
-
-    let errorSubmit = error.stateName === true || error.stateMessage === true || error.stateType === true;
+    useEffect(() => {
+        return () => { setEditProduct(null) }
+    }, [])
 
     return (
         <>
             <div className='create'>
-                <ButtonBack 
+                <ButtonBack
                     button={'Edit product'}
                 />
                 <div className='form-create'>
@@ -119,16 +125,15 @@ export function EditCard() {
                         onSubmit={handleSubmit}
                         category={handleSelectCategories}
                         newCategory={handleClickCategory}
-                        // setNewCategory={setNewCategory}
                         localState={editedProduct}
                         setLocalState={setEditProduct}
                         handleDeleteCategory={handleDeleteCategory}
+                        setNewCategory={setNewCategory}
                         error={error}
-                        errorSubmit={errorSubmit}
                         state={categories}
                         button={'Modify'}
                     />
-                    <Mockup 
+                    <Mockup
                         localState={editedProduct}
                         handleDeleteCategory={handleDeleteCategory}
                     />

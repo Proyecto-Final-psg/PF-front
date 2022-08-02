@@ -1,4 +1,8 @@
-.order-data{
+table{
+    cursor: default;
+}
+
+.order-data {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -6,7 +10,7 @@
     flex-wrap: nowrap;
 }
 
-#no-orders{
+#no-orders {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -14,14 +18,53 @@
     justify-content: center;
 }
 
-.filter-orders{
+.filter-orders {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    align-items: center;
     width: 80%;
 }
 
-.filter-orders select{
-    margin:5px;
+.filter-orders select {
+    margin: 5px;
     width: inherit;
+    height: 100%;
+}
+
+
+
+
+.tabla-conteiner::-webkit-scrollbar-thumb {
+    background-color: #2B5800;
+    border-radius: 20px;
+    border: 1px solid #f1f2f3;
+}
+
+.tabla-conteiner::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+@media (max-width: 525px) {
+
+    .tabla-conteiner {
+        overflow-x: auto;
+        width: 100vw;
+    }
+
+    .container-top {
+        width: 100vw;
+        overflow-x: auto;
+    }
+
+    .container-top::-webkit-scrollbar-thumb {
+        background-color: #2B5800;
+        border-radius: 20px;
+        border: 1px solid #f1f2f3;
+    }
+
+    .container-top::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
 }

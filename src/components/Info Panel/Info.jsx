@@ -4,12 +4,13 @@ import Aos from 'aos'
 import AnimatedNumbers from "react-animated-numbers";
 import 'aos/dist/aos.css'
 import { useSelector } from 'react-redux';
+import React from 'react';
 
-function Info() {
+const Info = React.memo(()=>{
     useEffect(() => {
         Aos.init({ duration: 2000,once: true, })
     }, [])
-
+    
     const products = useSelector(store => store.products)
     const stock = products.length
     // const [stock, setStock] = useState(products.length) //comente para deployd
@@ -37,7 +38,7 @@ function Info() {
         <br></br>
         <br></br>
         <div className="discounts" data-aos="fade-left">
-            <span>In July</span>
+            <span>In August</span>
             <AnimatedNumbers
                 includeComma
                 animateToNumber={discount}
@@ -56,6 +57,6 @@ function Info() {
 
 
     </div>
-}
+})
 
 export default Info

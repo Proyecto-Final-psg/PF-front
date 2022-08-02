@@ -1,5 +1,5 @@
 
-import { GET_USER_REVIEWS, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS,  GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS } from "./Constants"
+import {DISCOUNT, REMOVE_FAVORITE,CLEAN_FAVORITES, CLEAR_CART, GET_USER_REVIEWS, GET_ORDER_BY_ORDERID, GET_BEST_CUSTOMERS, GET_REVIEWS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
 
 
 const initialState = {
@@ -14,14 +14,43 @@ const initialState = {
     orderItems: [],
     itemsOfOrderId: [],
     user_order: {},
-    topCustomers:[],
-    auth0Users:[],
-    reviews:[],
-    userReviews:[],
-    order_detailed:{}
+    topCustomers: [],
+    auth0Users: [],
+    reviews: [],
+    userReviews: [],
+    order_detailed: {},
+    wishlist : [],    
+    discount:{}
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_FAVORITE:
+            console.log(state.wishlist)
+            const newFav = state.products.find(product => product.id === action.payload)
+            return {
+                ...state,
+                wishlist: [...state.wishlist, newFav]
+            }
+        case ADD_FAVORITE:
+            return {
+                ...state,
+                wishlist: action.payload
+            }
+        case CLEAN_FAVORITES:
+            return {
+                ...state,
+                whishlist: []
+            }
+        case REMOVE_FAVORITE:
+            return{
+                ...state,
+                wishlist: state.wishlist.filter( p => p.id !== action.payload)
+            }
+        case CLEAR_CART:
+            return {
+                ...state,
+                cart: []
+            }
         case GET_ALL_PRODUCTS:
             return {
                 ...state,
@@ -108,13 +137,13 @@ export const reducer = (state = initialState, action) => {
                 user_order: action.payload
             }
 
-        case GET_REVIEWS: 
-            return{
+        case GET_REVIEWS:
+            return {
                 ...state,
                 reviews: action.payload
             }
-        case GET_USER_REVIEWS: 
-            return{
+        case GET_USER_REVIEWS:
+            return {
                 ...state,
                 userReviews: action.payload
             }
@@ -148,6 +177,16 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 order_detailed: action.payload
             }
+        case DISCOUNT:
+            return {
+                ...state,
+                discount: action.payload
+            }
+        // case DISCOUNT:
+        //     return {
+        //         ...state,
+        //         discount: action.payload
+        //     }
 
         default:
             return state

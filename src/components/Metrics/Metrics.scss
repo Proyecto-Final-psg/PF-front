@@ -2,11 +2,19 @@
 @import '../../scss/mixins.scss';
 
 
-.custom-title {
+
+.custom-title{
     font-weight: bold;
     font-size: 30px;
     text-decoration-line: underline;
     text-decoration-color: rgba(0, 128, 0, 0.301);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-title span{
+    font-size: 34px;
 }
 
 table thead tr {
@@ -39,21 +47,22 @@ table thead tr abbr {
 }
 
 .menu {
-    
-    // background-color: red;
     width: 100%;
-    height: 150px;
-    
     overflow-y: auto;
-    display:block;  
+    display: block;
     overflow-x: hidden;
 
     @include respond-to('medium') {
         // background-color: green;
         height: 100%;
         width: auto;
+        
+        /* Hide the horizontal scroll */
+    }
 
-    /* Hide the horizontal scroll */
+    @include respond-to('large'){
+        position: sticky;
+        top: 80px;
     }
 }
 
@@ -93,9 +102,15 @@ table thead tr abbr {
 
 }
 
+
+.datas {
+    margin-top: 1% !important
+}
+
 .datas {
     // width: 40%;
     //   height: 96vh;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,9 +124,28 @@ table thead tr abbr {
 }
 
 .link {
-    color: white;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 .is-active {
     background-color: green($color: white);
+}
+
+@media (max-width: 525px) {
+    .menu {
+        height: auto;
+    }
+}
+
+#admin-table-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-decoration: none;
+}
+
+#admin-table-header span{
+    margin-left: 4px;
 }

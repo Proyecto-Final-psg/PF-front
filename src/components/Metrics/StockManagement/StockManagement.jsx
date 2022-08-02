@@ -4,10 +4,11 @@ import { NavLink } from 'react-router-dom'
 import { getAllProducts } from "../../../Redux/Actions"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-// import '../Metrics.scss'
 import './StockManagement.scss'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+import { aosEffectConfig } from "../Metrics";
 
-// ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
   ArcElement,
   CategoryScale,
@@ -21,56 +22,42 @@ ChartJS.register(
 
 export function StockManagement() {
 
+  useEffect(() => {
+    Aos.init({ duration: aosEffectConfig, once: true })
+  }, [])
+
   const products = useSelector(store => store.products)
   const dispatch = useDispatch()
   let noStock = products.filter(p => p.stock <= 0)
   let lowerThan10 = products.filter(p => p.stock > 0 && p.stock <= 10)
   let lowerThan50 = products.filter(p => p.stock > 10 && p.stock < 50)
+  let stock = products.length;
 
+  if (lowerThan10)
+    stock = stock - lowerThan10.length
 
-  //PIE CHART
+  if (lowerThan50)
+    stock = stock - lowerThan50.length
+
   const data = {
-    labels: ['No stock', 'Lower than 10', 'Lower than 50'],
+    labels: ['No stock', 'Lower than 10', 'Lower than 50', 'All Products'],
     datasets: [
       {
-        label: [noStock.length, lowerThan10.length, lowerThan50.length],
-        data: [noStock.length, lowerThan10.length, lowerThan50.length],
+        label: [noStock.length, lowerThan10.length, lowerThan50.length, stock],
+        data: [noStock.length, lowerThan10.length, lowerThan50.length, stock],
         backgroundColor: [
           'rgb(255, 109, 109)',
           '#FFF3CD',
-          'rgb(108, 177, 255)'
-
+          'rgb(108, 177, 255)',
+          'green'
         ],
         borderColor: [
           '#d62506',
           '#f9d66b',
-          '#2041a3'
-
+          '#2041a3',
+          'green'
         ],
         borderWidth: 1,
-      },
-    ],
-  };
-
-
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  // eslint-disable-next-line 
-  const data2 = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: products.map(p => p.stock),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y',
-      },
-      {
-        label: 'Dataset 2',
-        data: products.map(p => p.name),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y1',
       },
     ],
   };
@@ -82,64 +69,72 @@ export function StockManagement() {
     [])
 
 
-  return <div className="container datas">
-    <h1 className="mt-5 custom-title">Stock Management</h1>
-    {/* <hr /> */}
+  return (
+    <div className="container datas">
 
-    <div className="stock-mgm">
-      <table className="table is-bordered is-narrow shadow">
-        <thead>
-          <tr>
-            {/* <th><abbr title="ID">ID</abbr></th> */}
-            <th><abbr title="Product name">Product</abbr></th>
-            <th><abbr title="Stock">Stock</abbr></th>
-            <th><abbr title="Action">Action</abbr></th>
-          </tr>
-        </thead>
-        <tbody>
-          {noStock && noStock.map((p, i) => {
-            return <tr key={i} className='no-stock'>
-              {/* <th style={{ color: "white" }}>{p.id}</th> */}
-              <td>{p.name}</td>
-              <td>{p.stock}</td>
-              <td>
-                <NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink>
-              </td>
-            </tr>
-          })}
+      <h1 className="mt-5 custom-title">
+        Stock Management
+        <span id="stock" className="iconMenu material-symbols-outlined">inventory</span>
+      </h1>
+      <span>Stock with low quantity warnings</span>
+      <div className="cmp-stockManagement-container">
+        <div className="stock-mgm">
 
-          {lowerThan10 && lowerThan10.map((p, i) => {
-            return <tr key={i} className='lower-than-10'>
-              {/* <th style={{ color: "white" }}>{p.id}</th> */}
-              <td>{p.name}</td>
-              <td>{p.stock}</td>
-              <td><NavLink className='link' style={{color:"black"}} to={`/products/edit/${p.id}`}>Edit</NavLink></td>
-            </tr>
-          })}
-          {lowerThan50 && lowerThan50.map((p, i) => {
-            return <tr key={i}  className='lower-than-50'>
-              {/* <th style={{ color: "white" }}>{p.id}</th> */}
-              <td>{p.name}</td>
-              <td>{p.stock}</td>
-              <td><NavLink className='link' to={`/products/edit/${p.id}`}>Edit</NavLink></td>
-            </tr>
-          })}
+          <table className="table is-narrow shadow" data-aos='fade-right'>
+            <thead>
+              <tr>
+                <th><abbr title="Product name">Product</abbr></th>
+                <th><abbr title="Stock">Stock</abbr></th>
+                <th><abbr title="Action">Edit</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+              {noStock && noStock.map((p, i) => {
+                return <tr key={i} className='no-stock'>
+                  <td>{p.name}</td>
+                  <td>{p.stock}</td>
+                  <td id='edit-btn'>
+                    <NavLink className='link' to={`/products/edit/${p.id}`}>
+                      <span className="material-symbols-outlined">edit_note</span>
+                    </NavLink>
+                  </td>
+                </tr>
+              })}
 
-          {noStock.length === 0 && lowerThan10.length === 0 && lowerThan50.length === 0 &&
-            <tr className=''>
-              <th>-</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-          }
-        </tbody>
-      </table>
+              {lowerThan10 && lowerThan10.map((p, i) => {
+                return <tr key={i} className='lower-than-10'>
+                  <td>{p.name}</td>
+                  <td>{p.stock}</td>
+                  <td id='edit-btn'><NavLink className='link' to={`/products/edit/${p.id}`}>
+                    <span class="material-symbols-outlined">edit_note</span>
+                  </NavLink></td>
+                </tr>
+              })}
+              {lowerThan50 && lowerThan50.map((p, i) => {
+                return <tr key={i} className='lower-than-50'>
+                  <td>{p.name}</td>
+                  <td>{p.stock}</td>
+                  <td id='edit-btn'><NavLink className='link' to={`/products/edit/${p.id}`}>
+                    <span class="material-symbols-outlined">edit_note</span>
+                  </NavLink></td>
+                </tr>
+              })}
 
-      <div className="circular-chart">
-        <Pie data={data} />
+              {noStock.length === 0 && lowerThan10.length === 0 && lowerThan50.length === 0 &&
+                <tr className=''>
+                  <th>-</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+
+          <div className="circular-chart" data-aos='fade-left' data-aos-delay="600">
+            <Pie data={data} />
+          </div>
+        </div>
       </div>
-    </div>
-
-  </div>
+    </div>)
 }

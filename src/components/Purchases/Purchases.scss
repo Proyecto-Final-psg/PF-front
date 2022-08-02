@@ -2,13 +2,21 @@
 @import '../../scss/mixins.scss';
 
 .cmp-purchases-status {
-    margin-right: 10px;
-    box-shadow: 2px 2px 2px rgba(226, 216, 216, 0.648);
-    position: absolute;
-    right: 3px;
     display: flex;
-    flex-direction: column;
-    width: 90px;
+    flex-direction: row;
+    margin-top: 10px;
+
+    @include respond-to('medium') {
+        margin-right: 10px;
+        // box-shadow: 2px 2px 2px rgba(226, 216, 216, 0.648);
+        // position: absolute;
+        // right: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90px;
+    }
 }
 
 .span {
@@ -20,36 +28,62 @@
 }
 
 .camion {
-    width: 80px;
+    position: absolute;
+    right: 25px;
+    width: 51px;
+    margin-right: 10px;
+
+    @include respond-to('medium') {
+        top: 25px;
+        right: -2px;
+        /* margin-top: 13px; */
+        width: 51px;
+        position: relative;
+
+    }
 }
 
-.entregado {
-    width: 80px;
-    margin-left: 50px;
-
+.puntos {
+    position: relative;
+    bottom: 8px;
+    right: 45px;
 }
 
 .cmp-purchases-img-despachado {
-    position: absolute;
     width: 25px;
-    top: 67px;
-    margin-left: 60px;
+    height: 25px;
 
+    @include respond-to('medium') {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        top: 62px;
+        margin-left: 12px;
+
+    }
 }
 
 .cmp-purchases-img-mensaje {
-    position: absolute;
-    width: 31px;
-    top: 3px;
-    margin-left: 1px;
-    cursor: pointer;
+    display: none;
+
+    @include respond-to('medium') {
+        // position: absolute;
+        width: 31px;
+        // top: 3px;
+        margin-left: 1px;
+        cursor: pointer;
+    }
+}
+
+.tag {
+    width: 100%;
 }
 
 .cmp-purchases-img {
     object-fit: cover;
     object-position: top center;
     width: 37px;
-  
+
 }
 
 .container-card-inside {
@@ -60,47 +94,59 @@
 }
 
 .cmp-purchases-container {
-    width: 350px;
+    width: auto;
+    height: 120px;
+
     @include respond-to('medium') {
-        width: 750px;
+        width: auto;
     }
 }
 
 .media-left {
     right: 160px;
-    width: 70px;
-    height: 70px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(209, 205, 205);
-    margin-right: 1rem;
     display: flex;
     align-content: flex-start;
     justify-content: space-around;
-    margin-left: 10px;
-    box-shadow: 5px 5px 5px rgba(226, 216, 216, 0.648);
-    border-radius: 7px;
 }
 
 .container-card {
-    width: 750px;
     height: 100px;
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row;
+    flex-direction: column;
     cursor: pointer;
+
+    @include respond-to('medium') {
+        height: 100px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+    }
 }
 
 .container-imagenes-pequeñas {
-    display: none;
+    // display: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+
     @include respond-to('medium') {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
     }
 }
 
 .container-imagenPrincipal {
-    position: absolute;
-    right: 170px;
+    width: 40px;
+    @include respond-to('medium') {
+        //   display: flex;
+        //   justify-content: center;
+        //   align-items: center;
+    }
 }

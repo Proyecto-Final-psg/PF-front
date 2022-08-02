@@ -33,8 +33,11 @@ function Grid() {
     const indexOfLastPost = currentPage * itemsPerPage;
     const indexOfFirstPost = indexOfLastPost - itemsPerPage;
     let currentPosts = null;
-    currentPosts = allProducts.slice(indexOfFirstPost, indexOfLastPost).sort(compare)
-
+    
+    if(allProducts.length === 1)
+        currentPosts = allProducts
+    else
+        currentPosts = allProducts.slice(indexOfFirstPost, indexOfLastPost).sort(compare)
 
     const [categorySelected, setCategorySelected] = useState('none')
 
@@ -93,6 +96,7 @@ function Grid() {
 
     function productsByName(e) {
         e.preventDefault()
+        // console.log(searchProd.toLowerCase())
         // dispatch(getAllProducts())
         dispatch(getProductByName(searchProd.toLowerCase()))
     }
@@ -121,7 +125,7 @@ function Grid() {
 
             <form className='form' onSubmit={productsByName}>
                 <h4>FILTERS</h4>
-
+                <br />
                 <input list='products' autoComplete='off' className="grid-input" type="text" name="name" id="name" placeholder='Enter name product' onChange={fillProdSearch} />
                 <datalist id='products'>
 
@@ -137,13 +141,19 @@ function Grid() {
 
                 </datalist>
                 <br></br>
+                <button type='submit' className='btn btn-success btn-w' style={{width:"fit-content"}}>
+                    Search
+                    <span className="material-symbols-outlined">search</span>
+                </button>
+                <br></br>
                 <label className="grid-label">By category</label>
                 <select className="grid-input" name="category" id="" onChange={handleFilterCategory}>
                     <option className="grid-input" value="all" key='all'>All Categories</option>
                     {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select >
-                <br></br>
-                <input type="submit" value="Search" className='btn_search' />
+              
+                {/* <input type="submit" value="Search" className='btn_search' /> */}
+                
             </form>
 
             <div className='form'>
@@ -178,7 +188,10 @@ function Grid() {
                     </li>
 
                 </ul>
-                <button className="btn-filter-reset" onClick={resetFilters}>Reset filters</button>
+                <button className="btn-filter-reset btn-w" onClick={resetFilters} style={{width:"fit-content"}}>
+                    Reset filters
+                    <span className="material-symbols-outlined">restart_alt</span>
+                    </button>
             </div>
         </div>
 

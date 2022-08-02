@@ -1,29 +1,48 @@
 @import '../../../scss/breakpoints.scss';
 @import '../../../scss/mixins.scss';
 
-.no-stock{
-    background-color: rgb(255, 109, 109);
-    color: white
-    // font-weight: bold;
+.cmp-admin-loading-container {
+
+    width: 80vw;
 }
 
-.lower-than-10{
+.cmp-CardDetails-loading-img-2 {
+
+    left: -3%;
+    top: 20%;
+    position: relative;
+
+    @include respond-to('medium') {
+        left: 25%;
+
+        top: 20%;
+        position: relative;
+
+    }
+}
+.cmp-stockManagement-container{
+    margin-top: 4%;
+}
+.no-stock {
+    background-color: rgb(255, 109, 109);
+    color: white // font-weight: bold;
+}
+
+.lower-than-10 {
     background-color: #FFE99F;
     color: rgb(0, 0, 0);
     // font-weight: bold;
 }
 
-.lower-than-50{
+.lower-than-50 {
     background-color: rgb(108, 177, 255);
-    color: white
-    // font-weight: bold;
-}
-
-.stckmgm{
+    color: black;
     
 }
 
-.stock-mgm{
+
+
+.stock-mgm {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -31,38 +50,49 @@
     align-items: center;
     width: min-content;
 
- @include respond-to('medium') {
+    @include respond-to('medium') {
         // background: rgb(192, 188, 188);
         display: flex;
-    justify-content:space-between;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    width: min-content;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;;
+        width: min-content;
 
     }
 }
 
-.position{
-    display: flex;
-    flex-direction: row;
+#edit-btn{
+//     background: rgb(88,128,87);
+// background: linear-gradient(90deg, rgba(88,128,87,0) 0%, rgba(0,0,0,0.6250875350140056) 100%);
+vertical-align: middle;
 }
 
-#num1{
+#edit-btn span{
+    color: black;
+}
+
+.position {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+#num1 {
     background-color: rgb(91, 167, 5);
     padding: 3px 10px 3px 10px;
     border-radius: 100%;
     margin-right: 7px;
 }
 
-#num2{
+#num2 {
     background-color: rgb(196, 181, 54);
     padding: 3px 10px 3px 10px;
     border-radius: 100%;
     margin-right: 7px;
 }
 
-#num3{
+#num3 {
     background-color: rgb(168, 168, 168);
     padding: 3px 10px 3px 10px;
     border-radius: 100%;

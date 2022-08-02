@@ -1,24 +1,22 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../Redux/Actions';
-
-import { Validator } from './helpers/Validator';
+import { validator } from './helpers/Validator';
 import Form from './Form/Form';
 import Mockup from './Mockup/Mockup';
 import ButtonBack from './ButtonBack/ButtonBack';
+import swal from 'sweetalert'
 import './CreateProduct.scss'
 
 const CreateProduct = () => {
-    
-    
+
     const state = useSelector(state => state.categories);
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const [newCategory, setNewCategory] = useState('')
-
-    
-    
     const [createProd, setCreateProd] = useState({
         name: '',
         stock: '',
@@ -30,7 +28,7 @@ const CreateProduct = () => {
         cbd: '',
         categories: []
     })
-    
+
     const [error, setError] = useState({})
 
     const handleInputChange = (e) => {
@@ -38,28 +36,36 @@ const CreateProduct = () => {
             ...createProd,
             [e.target.name]: e.target.value,
         })
-        setError(Validator({
+        setError(validator({
             ...createProd,
             [e.target.name]: e.target.value,
         }))
     }
     function handleSelectCategories(e) {
-        setCreateProd({
+        let categoryFound = createProd.categories.find(a => a === e.target.value)
+        if(!categoryFound){
+           setCreateProd({
             ...createProd,
             categories: [...createProd.categories, e.target.value],
-        })
-        setError(Validator({
-            ...createProd,
-            categories: [...createProd.categories, e.target.value],
-        }))
+            })
+            setError(validator({
+                ...createProd,
+                categories: [...createProd.categories, e.target.value],
+            })) 
+        }
+        
     }
 
     function handleClickCategory(e) {
         e.preventDefault()
-        setCreateProd({
+        let categoryFound = createProd.categories.find(a => a === newCategory)
+        if(!categoryFound) {
+            setCreateProd({
             ...createProd,
             categories: [...createProd.categories, newCategory],
-        })
+            })
+        }
+        
     }
 
     const handleSubmit = (e) => {
@@ -77,7 +83,15 @@ const CreateProduct = () => {
                 cbd: '',
                 categories: []
             })
-            
+        swal({
+            title: `Product created succesfully!`,
+            icon: "success",
+            button: 'Ok'
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                navigate('/home')
+            }
+        })
     }
 
     function handleDeleteCategory(e) {
@@ -88,14 +102,13 @@ const CreateProduct = () => {
         });
     }
 
-    const errorSubmit = Object.keys(error).length > 0 ? true : false;
-
     return (
         <>
             <div className='create'>
-                <ButtonBack button={'Create'}/>
+                <ButtonBack button={'Create product'} />
                 <div className='form-create'>
-                    <Form 
+                    
+                    <Form
                         handleInputChange={handleInputChange}
                         onSubmit={handleSubmit}
                         category={handleSelectCategories}
@@ -104,14 +117,12 @@ const CreateProduct = () => {
                         localState={createProd}
                         setLocalState={setCreateProd}
                         error={error}
-                        errorSubmit={errorSubmit}
                         state={state}
                         button={'Create'}
                         handleDeleteCategory={handleDeleteCategory}
                     />
-                    <Mockup 
+                    <Mockup
                         localState={createProd}
-                        handleDeleteCategory={handleDeleteCategory}
                     />
                 </div>
             </div>
