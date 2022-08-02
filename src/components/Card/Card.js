@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import "./Card.scss";
 import { addToCart, getFavorite } from "../../Redux/Actions"
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteToCart } from '../../Redux/Actions';
@@ -9,8 +8,9 @@ import Toastify from 'toastify-js'
 import LoadingImg from '../../assets/Loading.gif'
 import { useState, useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
-
 import StarRating from '../ModalReview/StarRating/StarRating'
+import "./Card.scss";
+
 
 const Card = ({ name, id, description, img, price, stock, widthProp, heightProp }) => {
   const dispatch = useDispatch()
@@ -18,6 +18,9 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
   const allCartItems = useSelector(store => store.cart.map(item => item.name))
   const user = useSelector(state => state.user[0])
   const favourites = useSelector(state => state.wishlist)
+  const allReviews = useSelector(state => state.allReviews)
+  const score = allReviews.filter(r => r.productId === id).map(r => r.score)
+  const reducer = (accumulator, curr) => accumulator + curr;
   const { loginWithRedirect } = useAuth0()
   const productFavourite = favourites && favourites.find(f => f.id === id)
   let admin = user.roll === "admin" || user.roll === "super-admin"
@@ -107,11 +110,9 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
           </div>}
           {!loading && <div className="card-img">
             <img className="card-img" src={img} alt={description} />
-
             {
-
-              true &&
-              <StarRating clase={"stars"} value={4} />
+              score.length > 0 &&
+              <StarRating clase={"stars"} value={Math.round(score.reduce(reducer) / score.length)} />
             }
           </div>}
           <p className="text-body">{description}</p>

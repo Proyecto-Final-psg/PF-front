@@ -1,6 +1,18 @@
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { getAllReviews } from "../../Redux/Actions"
 import Card from "../Card/Card"
 
 export function Cards({ items }) {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(getAllReviews())
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    
+
     return <div className="grid">
         {items.length <= 0 && <p>No items found.</p>}
         {items && items.map(p => <Card
