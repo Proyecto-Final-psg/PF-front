@@ -11,11 +11,6 @@ const Carousel2 = React.memo(()=>{
     <div className='banner-img' id='three'></div>,
     <div className='banner-img' id='four'></div>,
     <div className='banner-img' id='five'></div>
-    // <img src={five} alt="5" />,
-    // <img  src={two} alt="2" />,
-    // <img src={three} alt="3" />,
-    // <img src={six} alt="6" />,
-    // <img src={four} alt="4" />,
   ]
 
   const callback = function (index) {
