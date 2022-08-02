@@ -6,7 +6,7 @@ export const validator = (input) => {
     let cond_description = /^[a-zA-Z 0-9\u00C0-\u00FF &@&!&¡&?&¿&()&=&+&/&:&;&_&,&.&%&-]*$/;
 
     let error = {}
-
+    
     if (input.name === '') error.name = 'Name is required'
     if (cond_name.test(input.name) === false) error.name = 'No symbols allowed'
 
@@ -21,11 +21,8 @@ export const validator = (input) => {
     if (input.address === '') error.address = 'Address is required'
     if (input.city === '') error.city = 'City is required'
     if (input.state === '') error.state = 'State is required'
-    if (input.zipCode === ''){
-        error.zipCode = 'Zip Code is required'
-    } else if(cond_numbers.test(input.zipCode) === false) {
-        error.zipCode = 'Zip Code must be a number'
-    } 
+    if (input.zipCode === '') error.zipCode = 'Zip Code is required'
+    
 
     if (input.email === '') error.email = 'Email is required'
     if (input.email && cond_email.test(input.email) === false) error.email = 'Must be a valid Email'
