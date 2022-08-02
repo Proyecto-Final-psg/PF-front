@@ -30,7 +30,6 @@ export function TopCustomers() {
 
   const dispatch = useDispatch()
   const topCustomers = useSelector(store => store.topCustomers)
-
   const [loading, setLoading] = useState(false)
   const [theCode, setTheCode] = useState(false)
 
