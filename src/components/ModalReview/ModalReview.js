@@ -92,7 +92,7 @@ const ModalReview = ({ modal, setModal, id }) => {
             <button className="delete" aria-label="close" onClick={() => setModal(false)}></button>
           </header>
           <section className="modal-card-body">
-            <input className="input field has-text-black-bis" type="text" placeholder="Your name" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
+            <input className="input field has-text-black-bis" type="text" placeholder="Your name or anonymous" value={review.name} name='name' onChange={handleInputChange} autoComplete='off' />
             <p className='warning'>{error.review}</p>
             <textarea className="textarea field" placeholder="Your review" value={review.review} name='review' onChange={handleInputChange} />
             <StarRating localState={review} setLocalState={setReview} modal={modal} />
