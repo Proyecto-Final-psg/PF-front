@@ -1,6 +1,12 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
+.carrusel{
+    margin-top: 50px;
+    @include respond-to('medium') {
+       margin-top: 30px;   
+    }
+}
 
 .react-3d-carousel .slider-container .slider-right div, .slider-left div{
     display: none;

@@ -22,7 +22,7 @@ const Carousel2 = React.memo(()=>{
     // console.log("callback",index);
   }
 
-  return <div className='mt-5'>
+  return <div className='carrusel'>
     <Carousel slides={slides} autoplay={true} interval={3000} onSlideChange={callback} />
 
   </div>
