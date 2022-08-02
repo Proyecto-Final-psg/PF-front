@@ -1,0 +1,80 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
+.carrusel{
+    margin-top: 50px;
+    @include respond-to('medium') {
+       margin-top: 30px;   
+    }
+}
+
+.react-3d-carousel .slider-container .slider-right div, .slider-left div{
+    display: none;
+}
+
+.banner-img{
+    width: 100%;    
+    height: 85px;    
+}
+
+#one{
+    background-image: url('../../assets/1_mobile.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+     @include respond-to('medium') {
+        background-image: url('../../assets/1.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;    
+    }
+}
+#two{
+    background-image: url('../../assets/3_mobile.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include respond-to('medium') {
+        background-image: url('../../assets/3.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;    
+    }
+}
+#three{
+    background-image: url('../../assets/4_mobile.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include respond-to('medium') {
+        background-image: url('../../assets/4.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;    
+    }
+}
+#four{
+    background-image: url('../../assets/5_mobile.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include respond-to('medium') {
+        background-image: url('../../assets/5.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;    
+    }
+}
+#five{
+    background-image: url('../../assets/6_mobile.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include respond-to('medium') {
+        background-image: url('../../assets/6.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;    
+    }
+}
+

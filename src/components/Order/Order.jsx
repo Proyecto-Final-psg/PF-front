@@ -113,10 +113,10 @@ function Order() {
                 if (res.discount !== 'Discount not found') {
                     if (!res.discount.used) {
                         discountText.textContent = res.discount.amount + '% COUPON!'
-                        aux = Math.ceil(subtotal + (subtotal * (10 / 100)))
-                        // console.log('subtotal', aux);
-                        d = Math.ceil(res.discount.amount * 100 / aux)
-                        // console.log(aux);
+                        aux = subtotal + (subtotal * (10 / 100))
+                        // console.log('total con envio', aux);
+                        d = Math.ceil(res.discount.amount * aux / 100)
+                        // console.log('valor a restar',d);
                         // console.log(d);
                         // console.log('CON DESCUENTO QUEDA ',);
                         setDisc(Math.ceil(aux - d))
@@ -181,18 +181,16 @@ function Order() {
                                 <input className="input" type="text" name='zipCode' onChange={handleInputAddress} />
                                 <p className="help">{error.zipCode ? <span style={{ color: 'red' }}>{error.zipCode}</span> : 'Zip code'}</p>
                             </div>
-
                         </div>
                     </div>
-
                 </form>
 
                 <hr className='hr-order' />
-                <form action="" className='mb-5' onSubmit={fetchTheCode}>
+                <form action="" className='coupon' onSubmit={fetchTheCode}>
                     <input type="text" name="" id="discountInput" placeholder='Coupon code' onChange={setTheCode} />
                     <button type='submit' className='btn btn-success btn-w'>Coupon</button>
                 </form>
-                <span style={{ fontSize: "20px", fontWeight: "bold" }} id='discountText' className='mb-3'></span>
+                <span style={{ fontSize: "15px", fontWeight: "bold"}} id='discountText' className='mb-5'></span>
                 <div className='bottom-container'>
                     <p className="label-order">Resume Order</p>
                     <div className='items-order'>
