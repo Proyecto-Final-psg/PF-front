@@ -1,6 +1,23 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
+.coupon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.coupon button{
+    margin: 10px;
+    width: fit-content;    
+}
+
+.coupon input{
+    height: 40px;
+    border: 1px solid rgb(177, 177, 177);
+}
+
 .order-container {
     height: auto;
     width: 100vw;
