@@ -89,7 +89,7 @@ const Form = ({ handleInputChange, onSubmit, newCategory, setNewCategory, catego
                     <div className='new-category'>
                         <input className='input is-hovered is-success' type="text" placeholder='New Category...' maxLength="10" onChange={(e) => setNewCategory(e.target.value)} name='categories' />
                         <button className='btn_category' onClick={newCategory}>
-                             <span class="material-symbols-outlined">add_circle</span>
+                             <span className="material-symbols-outlined">add_circle</span>
                         </button>
                     </div>
                     <div className='buttons-submit-categories'>
