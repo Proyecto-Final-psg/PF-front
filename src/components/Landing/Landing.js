@@ -69,7 +69,7 @@ export function Landing() {
                     <Login />
                     <NavLink to='./home' >
                         <button className="landing-button">
-                            Ingresar como invitado
+                            Guest
                         </button>
                     </NavLink>
                 </div>

@@ -161,8 +161,6 @@ export function TopCustomers() {
       }, (error) => {
         console.log(error.text);
       });
-
-
   };
 
 
