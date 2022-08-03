@@ -110,10 +110,12 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
           </div>}
           {!loading && <div className="card-img">
             <img className="card-img" src={img} alt={description} />
-            {
-              score.length > 0 &&
-              <StarRating clase={"stars"} value={Math.round(score.reduce(reducer) / score.length)} />
-            }
+            <div className="card-chala-container">
+              {
+                score.length > 0 &&
+                <StarRating clase={"stars"} value={Math.round(score.reduce(reducer) / score.length)} />
+              }
+            </div>
           </div>}
           <p className="text-body">{description}</p>
           <h2 className="card-price" > ${price}</h2>
