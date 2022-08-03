@@ -121,8 +121,6 @@ const Card = ({ name, id, description, img, price, stock, widthProp, heightProp 
 
       </NavLink>
 
-
-
       <div className={`stock ${stock === 0 ? 'none' : (stock < 10 ? 'low' : '')}`}>{stock === 0 ? 'No stock'
         :
         (stock < 10 ?
