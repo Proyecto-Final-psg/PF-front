@@ -10,6 +10,8 @@ import image1 from '../../assets/1.jpg';
 import image2 from '../../assets/2.jpg';
 import image3 from '../../assets/3.jpg';
 import image4 from '../../assets/4.jpg';
+import image5 from '../../assets/5.jpg';
+import image6 from '../../assets/6.jpg';
 import 'swiper/css/effect-fade';
 
 const Carousel2 = React.memo(() => {
@@ -18,12 +20,14 @@ const Carousel2 = React.memo(() => {
   return <div className='carrusel'>
     <Swiper className='mySwiper'
       modules={[Navigation, Pagination, A11y, EffectFade]}
-      autoplay={{ delay: 3000 }}
+      autoplay={{ delay: 4000 }}
       effect="fade"
     >
       <SwiperSlide>  <img src={image1} alt="Product pic" />     </SwiperSlide>
+      <SwiperSlide>  <img src={image6} alt="Product pic" />     </SwiperSlide>
       <SwiperSlide> <img src={image2} alt="Product pic" />   </SwiperSlide>
       <SwiperSlide> <img src={image3} alt="Product pic" />   </SwiperSlide>
+      <SwiperSlide> <img src={image5} alt="Product pic" />   </SwiperSlide>
       <SwiperSlide> <img src={image4} alt="Product pic" />   </SwiperSlide>
     </Swiper>
 
