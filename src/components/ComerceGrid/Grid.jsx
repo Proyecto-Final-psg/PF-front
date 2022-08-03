@@ -141,7 +141,7 @@ function Grid() {
 
                 </datalist>
                 <br></br>
-                <button type='submit' className='btn btn-success btn-w' style={{width:"fit-content"}}>
+                <button type='submit' className='btn_search' style={{width:"fit-content"}}>
                     Search
                     <span className="material-symbols-outlined">search</span>
                 </button>
@@ -188,7 +188,7 @@ function Grid() {
                     </li>
 
                 </ul>
-                <button className="btn-filter-reset btn-w" onClick={resetFilters} style={{width:"fit-content"}}>
+                <button className="btn-filter-reset-new" onClick={resetFilters} style={{width:"fit-content"}}>
                     Reset filters
                     <span className="material-symbols-outlined">restart_alt</span>
                     </button>

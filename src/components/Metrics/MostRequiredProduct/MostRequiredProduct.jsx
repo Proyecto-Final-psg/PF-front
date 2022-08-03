@@ -119,7 +119,7 @@ export function MostRequiredProduct() {
       </select>
       <button className="ml-4 btn btn-success btn-w" onClick={filter}>
         <span>Filter </span>
-        <span class="material-symbols-outlined">bar_chart</span>
+        <span className="material-symbols-outlined">bar_chart</span>
       </button>
 
     </div>

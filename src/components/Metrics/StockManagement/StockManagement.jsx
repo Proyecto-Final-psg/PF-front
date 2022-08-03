@@ -106,7 +106,7 @@ export function StockManagement() {
                   <td>{p.name}</td>
                   <td>{p.stock}</td>
                   <td id='edit-btn'><NavLink className='link' to={`/products/edit/${p.id}`}>
-                    <span class="material-symbols-outlined">edit_note</span>
+                    <span className="material-symbols-outlined">edit_note</span>
                   </NavLink></td>
                 </tr>
               })}
@@ -115,7 +115,7 @@ export function StockManagement() {
                   <td>{p.name}</td>
                   <td>{p.stock}</td>
                   <td id='edit-btn'><NavLink className='link' to={`/products/edit/${p.id}`}>
-                    <span class="material-symbols-outlined">edit_note</span>
+                    <span className="material-symbols-outlined">edit_note</span>
                   </NavLink></td>
                 </tr>
               })}

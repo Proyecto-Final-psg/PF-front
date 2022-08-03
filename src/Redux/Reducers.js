@@ -26,7 +26,7 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_FAVORITE:
-            console.log(state.wishlist)
+            // console.log(state.wishlist)
             const newFav = state.products.find(product => product.id === action.payload)
             return {
                 ...state,

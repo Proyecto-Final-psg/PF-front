@@ -2,9 +2,9 @@
 @import '../../scss/mixins.scss';
 
 .carrusel{
-    margin-top: 50px;
+    margin-top: 18px;
     @include respond-to('medium') {
-       margin-top: 30px;   
+       margin-top: 18px;   
     }
 }
 

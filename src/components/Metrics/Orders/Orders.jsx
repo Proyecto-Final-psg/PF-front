@@ -43,7 +43,7 @@ export function Orders() {
 
   function filterOrdersByStatus(e) {
     e.preventDefault()
-    console.log(statusFilter)
+    // console.log(statusFilter)
     if (statusFilter === "")
       setOrderList(orders)
     else {
@@ -69,7 +69,7 @@ export function Orders() {
       </select>
       <button type='submit' className="btn btn-success btn-w">
         <span>Filter </span>
-        <span class="material-symbols-outlined">content_paste_search</span>
+        <span className="material-symbols-outlined">content_paste_search</span>
       </button>
     </form>
 
@@ -91,9 +91,9 @@ export function Orders() {
                   <th className='fit'><NavLink to={`${__dirname}metrics/order-detailed/${o.id}`}>{o.id}</NavLink></th>
                   <td>{o.user_email && o.user_email !== "" ? o.user_email : 'N/A'}</td>
                   <td className='fit'>{
-                    (o.status === 'inprogress') ? <span class="material-symbols-outlined">hourglass_empty</span>
-                      : (o.status === 'completed') ? <span class="material-symbols-outlined">verified</span>
-                        : (o.status === 'canceled') ? <span class="material-symbols-outlined">cancel</span>
+                    (o.status === 'inprogress') ? <span className="material-symbols-outlined">hourglass_empty</span>
+                      : (o.status === 'completed') ? <span className="material-symbols-outlined">verified</span>
+                        : (o.status === 'canceled') ? <span className="material-symbols-outlined">cancel</span>
                           : ''
                   }</td>
                   <td>{formatDate(o.createdAt)}</td>

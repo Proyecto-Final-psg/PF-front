@@ -65,7 +65,7 @@ export function UserManagement() {
   }
 
   function searchUser(e) {
-    console.log('pressed');
+    // console.log('pressed');
     e.preventDefault()
     let res = usersprueba.filter(u => u.user_email.includes(search))
     setUserRol(res)
