@@ -1,5 +1,5 @@
 
-import { REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE,CLEAN_FAVORITES } from "./Constants"
+import { GET_ALL_REVIEWS, REMOVE_FAVORITE, GET_USER_REVIEWS,CLEAR_CART, GET_ORDER_BY_ORDERID,GET_BEST_CUSTOMERS, GET_REVIEWS,GET_USER_CART,  API_URL, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_PRODUCTS, CHANGE_ROLL,GET_ALL_ITEMS, ADD_TO_CART,UPDATE_TO_CART, DELETE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS,  GET_ITEMS_OF_ORDER, ADD_FAVORITE, GET_FAVORITE,CLEAN_FAVORITES } from "./Constants"
 
 export function getAllProducts() {
     return function (dispatch) {
@@ -165,6 +165,20 @@ export const getUserReviews = (id) => {
                 //console.log('data',data)
                 dispatch({
                     type: GET_USER_REVIEWS,
+                    payload: data
+                })
+            })
+    }
+}
+
+export const getAllReviews = () => {
+    return function (dispatch) {
+        return fetch(`${API_URL}/reviews`)
+            .then(res => res.json())
+            .then(data => {
+                console.log('data',data)
+                dispatch({
+                    type: GET_ALL_REVIEWS,
                     payload: data
                 })
             })

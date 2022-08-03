@@ -1,5 +1,5 @@
 
-import {DISCOUNT, REMOVE_FAVORITE,CLEAN_FAVORITES, CLEAR_CART, GET_USER_REVIEWS, GET_ORDER_BY_ORDERID, GET_BEST_CUSTOMERS, GET_REVIEWS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
+import {GET_ALL_REVIEWS, DISCOUNT, REMOVE_FAVORITE,CLEAN_FAVORITES, CLEAR_CART, GET_USER_REVIEWS, GET_ORDER_BY_ORDERID, GET_BEST_CUSTOMERS, GET_REVIEWS, GET_ITEMS_OF_ORDER, GET_ALL_PRODUCTS, GET_ALL_ORDERS, GET_ORDER_DETAILS, GET_ALL_ITEMS, ADD_TO_CART, DELETE_TO_CART, UPDATE_TO_CART, GET_ALL_USERS, GET_PRODUCT_BY_ID, GET_ALL_CATEGORIES, REGISTER_USER, ADD_GUEST, EDIT_PRODUCT, GET_USER_ORDER, GET_ORDER_ITEMS, GET_AUTH0_USERS, ADD_FAVORITE, GET_FAVORITE } from "./Constants"
 
 
 const initialState = {
@@ -18,6 +18,7 @@ const initialState = {
     auth0Users: [],
     reviews: [],
     userReviews: [],
+    allReviews:[],
     order_detailed: {},
     wishlist : [],    
     discount:{}
@@ -141,6 +142,12 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 reviews: action.payload
+            }
+
+        case GET_ALL_REVIEWS:
+            return {
+                ...state,
+                allReviews: action.payload
             }
         case GET_USER_REVIEWS:
             return {

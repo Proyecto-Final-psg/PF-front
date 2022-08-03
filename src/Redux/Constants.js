@@ -30,7 +30,8 @@ export const REMOVE_FAVORITE = 'REMOVE_FAVORITE'
 export const CLEAN_FAVORITES = 'CLEAN_FAVORITES'
 export const DISCOUNT_CREATED = 'DISCOUNT_CREATED'
 export const DISCOUNT = 'DISCOUNT'
-// export const API_URL = 'http://localhost:8081'
+export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS'
+//export const API_URL = 'http://localhost:8081'
 
 export const ModalStyle = {
   overlay: {
