@@ -184,15 +184,15 @@ export function TopCustomers() {
               <tr>
                 <th><abbr id="admin-table-header" title="User Name">
                   User
-                  <span class="material-symbols-outlined">person</span>
+                  <span className="material-symbols-outlined">person</span>
                 </abbr></th>
                 <th><abbr id="admin-table-header" title="Total">
                   Total
-                  <span class="material-symbols-outlined">savings</span>
+                  <span className="material-symbols-outlined">savings</span>
                 </abbr></th>
                 <th><abbr id="admin-table-header" title="Send discount coupon to the client">
                   Discount coupon
-                  <span class="material-symbols-outlined">shopping_bag</span>
+                  <span className="material-symbols-outlined">shopping_bag</span>
                 </abbr></th>
               </tr>
             </thead>

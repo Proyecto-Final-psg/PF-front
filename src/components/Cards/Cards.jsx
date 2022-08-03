@@ -13,7 +13,7 @@ export function Cards({ items }) {
     }, [])
     
 
-    return <div className="grid">
+    return <div className="grid-cards">
         {items.length <= 0 && <p>No items found.</p>}
         {items && items.map(p => <Card
             key={p.id}

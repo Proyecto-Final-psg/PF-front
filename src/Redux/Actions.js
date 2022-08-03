@@ -116,7 +116,7 @@ export function submitOrder(order) {
 
 ///users/subscribe
 export function subscribeStock(user_id, product_id) {
-    console.log(user_id, product_id);
+    // console.log(user_id, product_id);
     return function (dispatch) {
         return fetch(`${API_URL}/users/subscribe`, {
             method: 'POST', // or 'PUT'
@@ -597,7 +597,7 @@ export function createDiscount(code,percentage){
 
 export function usedCoupon(code){
     return function(){
-        console.log('aplicando descuento ',code);
+        // console.log('aplicando descuento ',code);
         return fetch(`${API_URL}/discount-used`,{
             method:"PUT",
             body: JSON.stringify({code}),

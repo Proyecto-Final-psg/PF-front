@@ -103,15 +103,15 @@ export function UserCrud() {
               <tr>
                 <th><abbr id="admin-table-header" title="User Name">
                   User Name
-                  <span class="material-symbols-outlined">person</span>
+                  <span className="material-symbols-outlined">person</span>
                 </abbr></th>
                 <th><abbr id="admin-table-header" title="User Email">
                   User Email
-                  <span class="material-symbols-outlined">mail</span>
+                  <span className="material-symbols-outlined">mail</span>
                 </abbr></th>
                 <th><abbr id="admin-table-header" title="Action">
                   Action
-                  <span class="material-symbols-outlined">lock</span>
+                  <span className="material-symbols-outlined">lock</span>
                 </abbr></th>
               </tr>
             </thead>
@@ -127,7 +127,7 @@ export function UserCrud() {
                       :
                       <button className="btn btn-danger btn-w-red" onClick={() => blockUser(u.user_id, 'lock')}>
                         <span>Lock </span>
-                        <span class="material-symbols-outlined">lock</span>
+                        <span className="material-symbols-outlined">lock</span>
                       </button>
                     }
                   </td>

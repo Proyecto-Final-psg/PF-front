@@ -1,24 +1,31 @@
 import './carousel.scss'
-import { Carousel } from '3d-react-carousal';
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import SwiperCore, { Navigation, Pagination, A11y, Autoplay, EffectFade } from 'swiper';
+import image1 from '../../assets/1.jpg';
+import image2 from '../../assets/2.jpg';
+import image3 from '../../assets/3.jpg';
+import image4 from '../../assets/4.jpg';
+import 'swiper/css/effect-fade';
 
-
-const Carousel2 = React.memo(()=>{
-  let slides = [
-    // <img src={one} alt="1" />,    
-    <div className='banner-img' id='one'></div>,
-    <div className='banner-img' id='two'></div>,
-    <div className='banner-img' id='three'></div>,
-    <div className='banner-img' id='four'></div>,
-    <div className='banner-img' id='five'></div>
-  ]
-
-  const callback = function (index) {
-    // console.log("callback",index);
-  }
+const Carousel2 = React.memo(() => {
+  SwiperCore.use([Autoplay]);
 
   return <div className='carrusel'>
-    <Carousel slides={slides} autoplay={true} interval={3000} onSlideChange={callback} />
+    <Swiper className='mySwiper'
+      modules={[Navigation, Pagination, A11y, EffectFade]}
+      autoplay={{ delay: 3000 }}
+      effect="fade"
+    >
+      <SwiperSlide>  <img src={image1} alt="Product pic" />     </SwiperSlide>
+      <SwiperSlide> <img src={image2} alt="Product pic" />   </SwiperSlide>
+      <SwiperSlide> <img src={image3} alt="Product pic" />   </SwiperSlide>
+      <SwiperSlide> <img src={image4} alt="Product pic" />   </SwiperSlide>
+    </Swiper>
 
   </div>
 

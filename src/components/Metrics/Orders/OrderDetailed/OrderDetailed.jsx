@@ -37,7 +37,7 @@ export function OrderDetailed() {
         })
             .then(data => data.json())
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setModal(false)
                 setLoading(false)
                 swal({
@@ -80,7 +80,7 @@ export function OrderDetailed() {
                     </select>
                     <button style={{ width: "100px" }} onClick={changeOrderStatus} className="btn btn-success btn-w">
                         <span>Save</span>
-                        <span class="material-symbols-outlined">save</span>
+                        <span className="material-symbols-outlined">save</span>
                     </button>
                     <button onClick={() => setModal(false)} className="m-2 btn btn-basic">Cancel</button>
                 </div>
@@ -111,9 +111,9 @@ export function OrderDetailed() {
                     {orderDetailed && orderDetailed.orden && <tr key={orderDetailed.orden.id}>
                         <td style={{ fontWeight: "bold" }}>{orderDetailed.orden.id}</td>
                         <td id='status-row'>
-                            {(orderDetailed.orden.status === 'inprogress') ? <span class="material-symbols-outlined" style={{ color: "rgb(167, 164, 0)" }}>hourglass_empty</span>
-                                : (orderDetailed.orden.status === 'completed') ? <span class="material-symbols-outlined" style={{ color: "green" }}>verified</span>
-                                    : (orderDetailed.orden.status === 'canceled') ? <span class="material-symbols-outlined" style={{ color: "red" }}>cancel</span>
+                            {(orderDetailed.orden.status === 'inprogress') ? <span className="material-symbols-outlined" style={{ color: "rgb(167, 164, 0)" }}>hourglass_empty</span>
+                                : (orderDetailed.orden.status === 'completed') ? <span className="material-symbols-outlined" style={{ color: "green" }}>verified</span>
+                                    : (orderDetailed.orden.status === 'canceled') ? <span className="material-symbols-outlined" style={{ color: "red" }}>cancel</span>
                                         : ''
                             }
                             <button onClick={modOrderStatus} className="btn btn-sm btn-success">Change</button>

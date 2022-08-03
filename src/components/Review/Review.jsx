@@ -14,10 +14,10 @@ export function Review({ name, score, review }) {
             max={10}
             easing="cubic-bezier(.03,.98,.52,.99)"
             >
-                   <div class="card-rev">
-       <div class="content-rev">
-           <div class="front card_load">
-               <h3 class="title">
+                   <div className="card-rev">
+       <div className="content-rev">
+           <div className="front card_load">
+               <h3 className="title">
                <div className="stars-review">
                             {score && [...Array(score)].map((star, i) => {
                                 return (
@@ -26,13 +26,13 @@ export function Review({ name, score, review }) {
                                 })}
                         </div>
                </h3>
-               <p class="subtitle">
+               <p className="subtitle">
                <h2><b>{name}</b></h2>
                </p>
            </div>
 
-           <div class="back">
-               <p class="description">
+           <div className="back">
+               <p className="description">
                <>{review}</>
                </p>
            </div>
