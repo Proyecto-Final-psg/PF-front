@@ -538,16 +538,18 @@ export function updateOrderStatus(id, status){
 //     }
 // }
 
-export function mailer(userid, order, status, address, arrayItems){
-    return fetch(`${API_URL}/mail`,{
-        method:"POST",
-        body: JSON.stringify({userid, order, status, address, arrayItems}),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(data => data.json())
-    .then(res => console.log('done',res))
+export function mailer(userid, email, order, status, address, arrayItems){
+    return function(){
+        return fetch(`${API_URL}/mail`,{
+            method:"POST",
+            body: JSON.stringify({userid, email, order, status, address, arrayItems}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => data.json())
+        .then(res => console.log('done',res))
+    }
 }
 
 export function getTopCustomers(){

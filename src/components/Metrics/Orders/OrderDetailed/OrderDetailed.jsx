@@ -30,6 +30,10 @@ export function OrderDetailed() {
         setModal(true)
     }
 
+    useEffect(()=>{
+        console.log(orderDetailed);
+    },[orderDetailed])
+
     function changeOrderStatus() {
         setLoading(true)
         fetch(`${API_URL}/update-order?id=${id}&status=${orderStatus}`, {
@@ -48,7 +52,7 @@ export function OrderDetailed() {
                 })
                     .then(() => {
                         dispatch(getOrdersByOrderId(id))
-                        dispatch(mailer(orderDetailed.orden.userUserId, orderDetailed.orden.id, orderStatus, orderDetailed.orden.address, orderDetailed.productos))
+                        dispatch(mailer(orderDetailed.orden.userUserId, orderDetailed.orden.user_email, orderDetailed.orden.id, orderStatus, orderDetailed.orden.address, orderDetailed.productos))
                     })
             }
             )
