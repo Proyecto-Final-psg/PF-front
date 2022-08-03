@@ -17,6 +17,8 @@ import 'swiper/css/scrollbar';
 import swal from 'sweetalert'
 import StarRating from '../ModalReview/StarRating/StarRating'
 import { addToFavourites, deleteFavourite, signInFav } from '../Account/Favourites/favortitesFunctions'
+import party from "party-js";
+import Toastify from 'toastify-js'
 
 export function CardDetails() {
     SwiperCore.use([Autoplay]);
@@ -56,7 +58,26 @@ export function CardDetails() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const addCart = () => {
+    const addCart = (e) => {
+        party.confetti(e.target, {
+            count: party.variation.range(20, 40),
+          });
+      
+          Toastify({
+            text: `Added ${product.name} to cart 🙌`,
+            duration: 3000,
+      
+            newWindow: true,
+            close: false,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "#438A00",
+              padding: "20px"
+            },
+            onClick: function () { } // Callback after click
+          }).showToast();
         dispatch(addToCart(product.id, product.name, product.price,))
     }
 
@@ -188,10 +209,10 @@ export function CardDetails() {
                             <button onClick={addCart} className='button button-add-cart-detail'>
                                 <div className="svg-wrapper-1">
                                     <div className="svg-wrapper">
-                                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd"><path d="M13.5 18c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm-3.5 1.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm14-16.5l-.743 2h-1.929l-3.473 12h-13.239l-4.616-11h2.169l3.776 9h10.428l3.432-12h4.195zm-12 4h3v2h-3v3h-2v-3h-3v-2h3v-3h2v3z" /></svg>
+                                        <span className="material-symbols-outlined">add_shopping_cart</span>
                                     </div>
                                 </div>
-                                <span>Add</span>
+                                <div id="text-button-cart">Add</div>
                             </button>
                             :
                             !subscribe ? <button className='button' onClick={handleClickStock}>Notify Me</button>

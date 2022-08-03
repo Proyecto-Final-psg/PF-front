@@ -49,6 +49,7 @@ const Account = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usr]);
 
+
   orders = orders.sort((a,b) => b.order_id - a.order_id)
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -132,8 +133,12 @@ const Account = () => {
                   <Accordion defaultActiveKey="1" data-aos="fade-left" key={i}>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
-                        Order n° {e.order_id}
                         <img src={mensaje} id='cmp-account-mensaje' alt='order-message'/>
+                        <span id="status-order-accordeon">
+                          <div>Order n°</div><b>{e.order_id}</b>
+                        </span>
+                        <span id="status-order-accordeon" > Status: <b>{e.status}</b></span>
+                        <span id="status-order-accordeon"> Shipping: <p style={{fontSize:"10px"}}>{e.address}</p></span>
                         </Accordion.Header>
                       <Accordion.Body>
                         <Purchases key={i} user={usr} data={e} />
