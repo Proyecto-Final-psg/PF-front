@@ -21,14 +21,33 @@ const Carousel2 = React.memo(() => {
     <Swiper className='mySwiper'
       modules={[Navigation, Pagination, A11y, EffectFade]}
       autoplay={{ delay: 4000 }}
-      effect="fade"
-    >
-      <SwiperSlide>  <img src={image1} alt="Product pic" />     </SwiperSlide>
-      <SwiperSlide>  <img src={image6} alt="Product pic" />     </SwiperSlide>
+      effect="fade">
+      <SwiperSlide>  
+        <div className='banner-img' id='one' ></div>
+        {/* <img src={image1} alt="Product pic" /> */}
+      </SwiperSlide>
+      <SwiperSlide>  
+        <div className='banner-img' id='two' ></div>
+        {/* <img src={image1} alt="Product pic" /> */}
+      </SwiperSlide>
+      <SwiperSlide>  
+        <div className='banner-img' id='three' ></div>
+        {/* <img src={image1} alt="Product pic" /> */}
+      </SwiperSlide>
+      <SwiperSlide>  
+        <div className='banner-img' id='four' ></div>
+        {/* <img src={image1} alt="Product pic" /> */}
+      </SwiperSlide>
+      <SwiperSlide>  
+        <div className='banner-img' id='five' ></div>
+        {/* <img src={image1} alt="Product pic" /> */}
+      </SwiperSlide>
+
+      {/* <SwiperSlide>  <img src={image6} alt="Product pic" />     </SwiperSlide>
       <SwiperSlide> <img src={image2} alt="Product pic" />   </SwiperSlide>
       <SwiperSlide> <img src={image3} alt="Product pic" />   </SwiperSlide>
       <SwiperSlide> <img src={image5} alt="Product pic" />   </SwiperSlide>
-      <SwiperSlide> <img src={image4} alt="Product pic" />   </SwiperSlide>
+      <SwiperSlide> <img src={image4} alt="Product pic" />   </SwiperSlide> */}
     </Swiper>
 
   </div>
