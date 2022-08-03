@@ -146,14 +146,14 @@ export function CardDetails() {
                     <button className='btn back' onClick={() => navigate(-1)}>
                         <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
-
+                    <div className='container-buttons_edit_remove'>
                     {admin &&
-                        <div className='container-buttons_edit_remove'>
+                        <>
                             <NavLink className='button-edit' to={`/products/edit/${id}`}>Edit</NavLink>
-                            <button className='button-delete'>Remove</button>
-                        </div>}
+                        </>
+                       }
                     {user || admin ?
-                        <div className='container-buttons_edit_remove'>
+                       
                         <button 
                         title={!productFavourite ? 'Add to favorites' : 'Remove from favorites'} 
                         className={ !productFavourite? "button-green-favorite" :"button-red-favorite" } 
@@ -161,7 +161,8 @@ export function CardDetails() {
                         : !productFavourite ? (e) => addToFavourites(e, product.id, product.name, user_id, dispatch)
                         : (e) => deleteFavourite(e, product.id, product.name, user_id, dispatch)
                         }>Favorite</button>
-                        </div> : null}
+                         : null}
+                     </div>
                     <br></br>
                     <div className='container-name'>
                         <p className='name-product-detail'>{product.name}</p>
