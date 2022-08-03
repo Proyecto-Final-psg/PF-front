@@ -16,8 +16,8 @@ export function Review({ name, score, review }) {
             >
                    <div className="card-rev">
        <div className="content-rev">
-           <div className="front card_load">
-               <h3 className="title">
+           <div className="front-review card_load">
+               <h3 className="title-review">
                <div className="stars-review">
                             {score && [...Array(score)].map((star, i) => {
                                 return (
@@ -26,13 +26,13 @@ export function Review({ name, score, review }) {
                                 })}
                         </div>
                </h3>
-               <p className="subtitle">
+               <p className="subtitle-review">
                <h2><b>{name}</b></h2>
                </p>
            </div>
 
-           <div className="back">
-               <p className="description">
+           <div className="back-review">
+               <p className="description-review">
                <>{review}</>
                </p>
            </div>

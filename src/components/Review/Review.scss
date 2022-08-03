@@ -20,26 +20,11 @@
   
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    /* From uiverse.io by @JoseIsra */
 .card-rev {
   width: fit-content;
   cursor: default;
-
+  border-radius: 100%;
 }
 
 .content-rev {
@@ -47,22 +32,23 @@
   position: relative;
   transition: all 1s;
   // background-color: rgb(196, 196, 196);
-  padding: 5em;
+  padding: 4.3em;
   transform-style: preserve-3d;
   // border-radius: 100%;
   align-items: center;
-  
+  border-radius: 100%;
+  border: 3px solid rgb(192, 191, 191);
 }
 
 .card-rev:hover .content-rev {
   transform: rotateY(0.5turn);
   // background-color: rgb(194, 20, 20);
   // border-radius: 100%;
-  
+  border-radius: 100%;
 }
 
-.front,
-.back {
+.front-review,
+.back-review {
   position: absolute;
   top: 0;
   left: 0;
@@ -77,25 +63,31 @@
   flex-wrap: nowrap;
   // border-radius: 100%;
   animation: load89234 2s infinite;
-  
+  border-radius: 100%;
 }
 
-.title {
-  transform: translateZ(5rem);
+.title-review {
+  transform: translateZ(2rem);
   font-size: 1rem;
 }
 
-.subtitle {
+.subtitle-review {
   transform: translateZ(2rem);
 }
 
-.back {
+.back-review {
   transform: rotateY(1.5turn);
+  background-color: rgb(71, 71, 71);
+  color: white;
+  border-radius: 100%;
   // background-color: #d2d2d2;
   // border-radius: 100%;
   
 }
 
+.description-review{
+  transform: translateZ(2rem);
+}
 
 .card_load {
   // width: 100%;
@@ -104,10 +96,11 @@
   float: left;
   background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 
   40%, #e5e5e5 48%);
-  border-radius: 20%;
+  // border-radius: 20%;
   background-size: 200% 100%;
   background-position: 100% 0;
   animation: load89234 2s infinite;
+  border-radius: 100%;
   }
 
   

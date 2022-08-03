@@ -220,7 +220,7 @@ export function TopCustomers() {
                       <div >
                         <form onSubmit={(e) => createCodeAndSendMail(e, o.username)} className="order-form" id='emailForm' >
                           <div>
-                            <input name="discount" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="%" id="input-disc" onChange={fillDiscountNumber} />
+                            <input name="" style={{ display: `${num < 4 && o.username !== 'null' ? '' : 'none'}` }} type="number" placeholder="%" id="input-disc" onChange={fillDiscountNumber} />
 
                           </div>
 
@@ -234,11 +234,11 @@ export function TopCustomers() {
                               <span id="sp">Send</span>
                             </button>
                           </div>
-                          <input type="text" name="name" id="name" value={usrDsc} style={{ display: "none" }} />
+                          <input type="text" name="name" id="name" value={usrDsc} style={{ display: "none" }} readOnly />
                           {/* <input type="text" name="order" readOnly value={o.id} style={{ display: "none" }} /> */}
-                          <input type="text" name="mailTo" id="mailTo" value={usrDsc} style={{ display: "none" }} />
-                          <input type="text" name="code" id='code' value={theCode} style={{ display: "none" }} />
-                          <input type="text" name="discount" id='discount' style={{ display: "none" }} />
+                          <input type="text" name="mailTo" id="mailTo" value={usrDsc} style={{ display: "none" }} readOnly />
+                          <input type="text" name="code" id='code' value={theCode} style={{ display: "none" }} readOnly />
+                          <input type="text" name="discount" id='discount' style={{ display: "none" }} readOnly value={percentage}  />
                         </form>
                       </div>
                     </td>
