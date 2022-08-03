@@ -176,7 +176,6 @@ export const getAllReviews = () => {
         return fetch(`${API_URL}/reviews`)
             .then(res => res.json())
             .then(data => {
-                console.log('data',data)
                 dispatch({
                     type: GET_ALL_REVIEWS,
                     payload: data
