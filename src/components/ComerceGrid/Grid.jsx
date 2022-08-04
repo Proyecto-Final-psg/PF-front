@@ -119,7 +119,6 @@ function Grid() {
 
     return <div className="grid">
 
-        {/* <Info /> */}
         <div className="filters">
 
 
@@ -152,7 +151,6 @@ function Grid() {
                     {allCategories && allCategories.map(c => <option key={c.id} value={c.category}>{c.category}</option>)}
                 </select >
               
-                {/* <input type="submit" value="Search" className='btn_search' /> */}
                 
             </form>
 
@@ -199,17 +197,7 @@ function Grid() {
             <Paginator postsPerPage={itemsPerPage} totalPosts={allProducts.length} paginate={paginate} currentPage={currentPage} />
 
             <Cards items={currentPosts} />
-            {/* 
-            {allProducts && allProducts.map((p, i) => 
-            <Card key={i} 
-            name={p.name} 
-            id={p.id}
-            img={p.img}
-             description={p.description}
-             price={p.price}
-             stock={p.stock}
-
-             />)} */}
+           
             <Paginator postsPerPage={itemsPerPage} totalPosts={allProducts.length} paginate={paginate} currentPage={currentPage} />
 
   
