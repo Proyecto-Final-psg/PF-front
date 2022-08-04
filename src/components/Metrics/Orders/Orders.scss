@@ -68,3 +68,14 @@ table{
     }
 
 }
+
+.order-detail-row{
+    width: 100%;
+    cursor: pointer;
+}
+
+.order-detail-row:hover{
+    background-color: #4b5f376c;
+    // color: white;
+    transition: 0.6s;
+}

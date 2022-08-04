@@ -37,14 +37,17 @@ const OrdenCompraDetail = () => {
                     <span className="material-symbols-outlined">keyboard_backspace</span>
                 </button>
                 {order.status === "completed" && <span className="tag is-primary is-large span-status">
-                    Success
+                    Order success
+                    <span className="material-symbols-outlined" style={{ marginLeft:"10px" }}>verified</span>
                 </span>}
                 {order.status === "inprogress" && <span className="tag is-warning is-large span-status">
-                    {order.status}
+                    This order is still in progress
+                    <span className="material-symbols-outlined" style={{ marginLeft:"10px"}}>hourglass_empty</span>
                 </span>}
 
                 {order.status === "canceled" && <span className="tag is-danger is-large span-status">
-                    Canceled
+                    This order has been canceled
+                    <span className="material-symbols-outlined" style={{ marginLeft:"10px" }}>cancel</span>
                 </span>}
 
             </div>
@@ -99,7 +102,7 @@ const OrdenCompraDetail = () => {
                                         modal: true,
                                         id: e.id
                                     })}>
-                                        Review
+                                        Leave a Review
                                     </button>
                                 }
                             </div>
@@ -109,7 +112,8 @@ const OrdenCompraDetail = () => {
             </div>
             {order.status === "inprogress" &&
                 < div className='cmp-detalle-button-pay'>
-                    <span onClick={continueToPay} className="tag is-success is-large">{`Continue To Pay  $ ${total}`}</span>
+                    <button onClick={continueToPay} className="btn btn-success">{`Finish payment  $ ${total}`}</button>
+                    {/* <span onClick={continueToPay} className="tag is-success is-large">{`Continue To Pay  $ ${total}`}</span> */}
                 </div>
             }
 
