@@ -6,12 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import SwiperCore, { Navigation, Pagination, A11y, Autoplay, EffectFade } from 'swiper';
-import image1 from '../../assets/1.jpg';
-import image2 from '../../assets/2.jpg';
-import image3 from '../../assets/3.jpg';
-import image4 from '../../assets/4.jpg';
-import image5 from '../../assets/5.jpg';
-import image6 from '../../assets/6.jpg';
+
 import 'swiper/css/effect-fade';
 
 const Carousel2 = React.memo(() => {
