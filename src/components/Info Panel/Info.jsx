@@ -12,10 +12,12 @@ const Info = React.memo(()=>{
     }, [])
     
     const products = useSelector(store => store.products)
+    const users = useSelector(store => store.users)
+    console.log(users)
     const stock = products.length
     // const [stock, setStock] = useState(products.length) //comente para deployd
     // const [discount, setDiscount] = useState(25)        //comente para deployd
-    const discount = 25
+    const sales = users.length
     return <div className='info'>
         <div className="all-products" data-aos="fade-right">
             <span >We have</span>
@@ -38,10 +40,10 @@ const Info = React.memo(()=>{
         <br></br>
         <br></br>
         <div className="discounts" data-aos="fade-left">
-            <span>In August</span>
+            <span>Today's new users</span>
             <AnimatedNumbers
                 includeComma
-                animateToNumber={discount}
+                animateToNumber={sales? sales : '0'}
                 fontStyle={{ fontSize: 80, color: "green" }}
                 configs={[
                     { mass: 1, tension: 220, friction: 100 },
@@ -52,7 +54,6 @@ const Info = React.memo(()=>{
                     { mass: 1, tension: 210, friction: 180 },
                 ]}
             />
-            <span>%</span>
         </div>
 
 
