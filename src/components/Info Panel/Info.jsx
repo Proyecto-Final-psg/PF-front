@@ -40,7 +40,7 @@ const Info = React.memo(()=>{
         <br></br>
         <br></br>
         <div className="discounts" data-aos="fade-left">
-            <span>Today's new users</span>
+            <span>Users of Weedical</span>
             <AnimatedNumbers
                 includeComma
                 animateToNumber={sales? sales : '0'}
