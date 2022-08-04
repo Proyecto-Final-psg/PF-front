@@ -17,23 +17,23 @@ const Carousel2 = React.memo(() => {
       modules={[Navigation, Pagination, A11y, EffectFade]}
       autoplay={{ delay: 4000 }}
       effect="fade">
-      <SwiperSlide>  
+      <SwiperSlide>
         <div className='banner-img' id='one' ></div>
         {/* <img src={image1} alt="Product pic" /> */}
       </SwiperSlide>
-      <SwiperSlide>  
+      <SwiperSlide>
         <div className='banner-img' id='two' ></div>
         {/* <img src={image1} alt="Product pic" /> */}
       </SwiperSlide>
-      <SwiperSlide>  
+      <SwiperSlide>
         <div className='banner-img' id='three' ></div>
         {/* <img src={image1} alt="Product pic" /> */}
       </SwiperSlide>
-      <SwiperSlide>  
+      <SwiperSlide>
         <div className='banner-img' id='four' ></div>
         {/* <img src={image1} alt="Product pic" /> */}
       </SwiperSlide>
-      <SwiperSlide>  
+      <SwiperSlide>
         <div className='banner-img' id='five' ></div>
         {/* <img src={image1} alt="Product pic" /> */}
       </SwiperSlide>
