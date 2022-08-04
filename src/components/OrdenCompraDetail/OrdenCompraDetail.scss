@@ -101,15 +101,23 @@
 }
 
 .cmp-detalle-button-pay {
-    margin-top: 30px;
-    width: 310px;
+    // margin-top: 30px;
+    // width: 310px;
     display: flex;
-    justify-content: space-around;
-    cursor: pointer;
+       justify-content: center;
+       flex-direction: row;
+       align-items: center;
+    // display: flex;
+    // justify-content: space-around;
+    // cursor: pointer;
     @include respond-to('medium') {
-       
-        left: 132px;
-        bottom: 200px;
+       display: flex;
+       justify-content: center;
+       flex-direction: row;
+       align-items: center;
+       margin-top: 20px;
+        // left: 132px;
+        // bottom: 200px;
 
     }
 }
@@ -139,7 +147,8 @@
 .btn-review {
     position: absolute;
     bottom: 10px;
-    width: 60px;
+    // width: 60px;
+    
     height: 30px;
     font-size: 12px;
     border: none;
