@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { registerUser, addGuest } from '../../Redux/Actions'
 import { API_URL } from '../../Redux/Constants'
+import swal from 'sweetalert'
 // import axios from 'axios'
 const Profile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,8 +42,22 @@ const Profile = () => {
                     setRoll(userRedux)
                 }
                 if (roll.block === true) {
-                    alert("Your user is locked. Please contact weedical.shop@gmail.com")
-                    logout({ returnTo: window.location.origin })
+                    // alert("Your user is locked. Please contact weedical.shop@gmail.com")
+                    // logout({ returnTo: window.location.origin })
+                    swal({
+                        title: `Your user is locked. Please contact weedical.shop@gmail.com`,
+                        // text: "Doing this, the user will be unable to login to Weedical",
+                        icon: "error",
+                        dangerMode: true,
+                        closeOnClickOutside: false
+                    })
+                        .then(
+                            function (isConfirm) {
+                                if (isConfirm) {
+                                    logout()
+                                }
+                            }
+                        )
                     let guest = [
                         {
                             email: "guest",

@@ -27,7 +27,7 @@ export function Review({ name, score, review }) {
                         </div>
                </h3>
                <p className="subtitle-review">
-               <h2><b>{name}</b></h2>
+               <b>{name}</b>
                </p>
            </div>
 
