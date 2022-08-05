@@ -11,7 +11,7 @@ const ModalReview = ({ modal, setModal, id }) => {
   const dispatch = useDispatch()
 
   const [review, setReview] = useState({
-    user_id: usr[0].user_id,
+    user_id: '',
     product_id: '',
     name: '',
     score: '',
@@ -23,6 +23,7 @@ const ModalReview = ({ modal, setModal, id }) => {
       setTimeout(() => {
         setReview({
           ...review,
+          user_id: usr[0].user_id,
           product_id: id
         })
       }, 1);

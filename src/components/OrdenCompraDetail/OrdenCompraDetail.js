@@ -38,23 +38,23 @@ const OrdenCompraDetail = () => {
                 </button>
                 {order.status === "completed" && <span className="tag is-primary is-large span-status">
                     Order success
-                    <span className="material-symbols-outlined" style={{ marginLeft:"10px" }}>verified</span>
+                    <span className="material-symbols-outlined" style={{ marginLeft: "10px" }}>verified</span>
                 </span>}
                 {order.status === "inprogress" && <span className="tag is-warning is-large span-status">
                     This order is still in progress
-                    <span className="material-symbols-outlined" style={{ marginLeft:"10px"}}>hourglass_empty</span>
+                    <span className="material-symbols-outlined" style={{ marginLeft: "10px" }}>hourglass_empty</span>
                 </span>}
 
                 {order.status === "canceled" && <span className="tag is-danger is-large span-status">
                     This order has been canceled
-                    <span className="material-symbols-outlined" style={{ marginLeft:"10px" }}>cancel</span>
+                    <span className="material-symbols-outlined" style={{ marginLeft: "10px" }}>cancel</span>
                 </span>}
 
             </div>
 
 
             <div className='over-cmp'>
-                <ModalReview modal={modal.modal} setModal={setModal} id={modal.id} />
+                <ModalReview modal={modal.modal} setModal={setModal} id={modal.id} order={id}/>
                 <div className='cmp-order-compra-detil-container-imgs'>
                     {order.arrayItems.map((e, i) => {
                         total += e.price * e.quantity
@@ -97,13 +97,15 @@ const OrdenCompraDetail = () => {
                                     </div>
                                 </NavLink>
                                 {
-                                    !userReviews.map(r => r.productId).filter(r => r === e.id).length &&
-                                    <button className='btn-review' onClick={() => setModal({
-                                        modal: true,
-                                        id: e.id
-                                    })}>
-                                        Leave a Review
-                                    </button>
+                                    !userReviews.map(r => r.productId).filter(r => r === e.id).length > 0 && 
+                                        <button className='btn-review' onClick={() => {
+                                            setModal({
+                                                modal: true,
+                                                id: e.id
+                                            })
+                                        }}>
+                                            Leave a Review
+                                        </button>
                                 }
                             </div>
                         )
