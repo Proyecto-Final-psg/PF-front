@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaCannabis } from 'react-icons/fa'
 import './StarRating.scss'
 
@@ -6,6 +6,14 @@ const StarRating = ({localState, setLocalState, modal, value,clase}) => {
 
   const [rating, setRating] = useState(value ? value : null)
   const [hover, setHover] = useState(value ? value : null)
+
+  useEffect(() => {
+    //console.log('star')
+    if(!value){
+      handleClick(0)
+    }
+  }, [modal])
+  
 
   const handleClick = (ratingValue) => {
     
