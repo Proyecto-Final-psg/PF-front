@@ -5,7 +5,12 @@
 
 .stars {
     position: relative;
-    bottom: 40px;
+    bottom: 90px;
+    @include respond-to('medium') {
+
+        position: relative;
+        bottom: 40px;
+    }
 }
 
 .card-img-loading {

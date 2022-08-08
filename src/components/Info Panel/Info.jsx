@@ -6,14 +6,14 @@ import 'aos/dist/aos.css'
 import { useSelector } from 'react-redux';
 import React from 'react';
 
-const Info = React.memo(()=>{
+const Info = React.memo(() => {
     useEffect(() => {
-        Aos.init({ duration: 2000,once: true, })
+        Aos.init({ duration: 2000, once: true, })
     }, [])
-    
+
     const products = useSelector(store => store.products)
     const users = useSelector(store => store.users)
-    console.log(users)
+
     const stock = products.length
     // const [stock, setStock] = useState(products.length) //comente para deployd
     // const [discount, setDiscount] = useState(25)        //comente para deployd
@@ -43,7 +43,7 @@ const Info = React.memo(()=>{
             <span>Users of Weedical</span>
             <AnimatedNumbers
                 includeComma
-                animateToNumber={sales? sales : '0'}
+                animateToNumber={sales ? sales : '0'}
                 fontStyle={{ fontSize: 80, color: "green" }}
                 configs={[
                     { mass: 1, tension: 220, friction: 100 },
