@@ -13,6 +13,9 @@ Weedical it's an e-commerce, part of the final project of the [Henry](https://tw
 
 As a result of 30 days `teamwork` we can present a solid and clean website, adding many extra features that makes a better UI and UX experience. 
 
+### Technologies: 
+React | Redux | Sass | Express | PostgreSQL | Sequelize | Auth0 | NodeJS
+
 ### **User view**
 
 As an USER role you can:
