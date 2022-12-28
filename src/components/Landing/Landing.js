@@ -62,8 +62,7 @@ export function Landing() {
                         And further of bad critics, they have healthy uses.
                         In Weedical we offer the best quality in this kind of products.
                     </p>
-                    <p className="landing-paragraph">
-                        This project is not real. It was developed as a final bootcamp project.
+                    <p className="landing-paragraph">                       
                         {/* PROYECTO FICTICIO DESARROLADO CON TERMINOS EDUCATIVOS */}
                     </p>
                     <Login />
